@@ -19,7 +19,7 @@
                         <p>{{$restaurant->address}}</p>
                         <p>{{$restaurant->piva}}</p>
                         <p>
-                            <a class="btn btn-warning" href="#">
+                            <a class="btn btn-warning" href="{{route('admin.restaurants.edit', ['slug' => $restaurant->slug])}}">
                                 Modifica Ristorante
                             </a>
                         </p>
@@ -28,7 +28,7 @@
                 <a class="btn btn-primary" href="{{route('admin.restaurants.create')}}">
                     Crea Ristorante
                 </a>
-                {{-- {{route('admin.restaurants.edit', ['slug' => $restaurant->slug])}} --}}
+
 
             </div>
         </div>
