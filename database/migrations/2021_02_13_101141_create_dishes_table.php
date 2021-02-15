@@ -18,7 +18,7 @@ class CreateDishesTable extends Migration
             $table->string('name', 30);
             $table->string('ingredients', 100)->nullable();
             $table->text('description')->nullable();
-            $table->unsignedDecimal('unit_price', 3,2);
+            $table->unsignedDecimal('unit_price', 5,2);
             $table->boolean('visible')->default(0);
             $table->string('slug')->unique();
             $table->string('img_cover')->nullable();
