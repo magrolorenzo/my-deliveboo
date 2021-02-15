@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Dish;
-
+use Illuminate\Support\Facades\Auth;
+use App\Restaurant;
+use Illuminate\Support\Str;
 
 class DishController extends Controller
 {
@@ -16,7 +18,13 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = Auth::user()->id;
+        $restaurant = Restaurant::where('user_id', $user_id)->first();
+        $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
+        $data = [
+            'dishes' => $dishes
+        ];
+        return view('admin.dishes.index', $data);
     }
 
     /**
@@ -26,7 +34,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dishes.create');
     }
 
     /**
@@ -37,7 +45,38 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+
+        $user_id = Auth::user()->id;
+        $restaurant = Restaurant::where('user_id', $user_id)->first();
+
+        $new_dish = new Dish(); // nuovo obj dish
+
+        $new_dish->fill($form_data);
+        $new_dish->restaurant_id = $restaurant->id;
+        // dd($new_dish);
+
+        $slug = Str::slug($new_dish->name);
+        $slug_base = $slug;
+
+        // verifico che lo slug non esista nel database
+        $dish_exist = Dish::where('slug', $slug)->first();
+        $contatore = 1;
+
+        // entro nel ciclo while se ho trovato un post con lo stesso $slug
+        while($dish_exist) {
+            // genero un nuovo slug aggiungendo il contatore alla fine
+            $slug = $slug_base . '-' . $contatore;
+            $contatore++;
+            $dish_exist = Dish::where('slug', $slug)->first();
+        }
+        // quando esco dal while sono sicuro che lo slug non esiste nel db
+        // assegno lo slug al post
+        $new_dish->slug = $slug;
+
+        $new_dish->save();
+
+        return redirect()->route('admin.home');
     }
 
     /**
