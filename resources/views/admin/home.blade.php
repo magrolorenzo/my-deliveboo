@@ -19,7 +19,7 @@
                         <p>{{$restaurant->address}}</p>
                         <p>{{$restaurant->piva}}</p>
                         <p>
-                            <a class="btn btn-warning" href="{{route('admin.restaurants.edit', ['slug' => $restaurant->slug])}}">
+                            <a class="btn btn-warning" href="{{route('admin.restaurants.edit', ['restaurant' => $restaurant->slug])}}">
                                 Modifica Ristorante
                             </a>
                         </p>

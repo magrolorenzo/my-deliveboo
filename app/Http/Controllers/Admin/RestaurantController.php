@@ -42,6 +42,15 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
+        // VALIDATE
+        $request -> validate([
+            'name' => 'required|max:50',
+            'address' => 'required|max:50',
+            'piva' => 'required|digits:11',
+            'img_cover' => 'nullable|image|max:512',
+            'categories' => 'required|exists:categories,id'
+        ]);
+        
         $form_data = $request->all();
         $user_id = Auth::user()->id;
         $new_restaurant = new Restaurant();
@@ -107,9 +116,43 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        // VALIDATE
+        $request -> validate([
+            'name' => 'required|max:50',
+            'address' => 'required|max:50',
+            'piva' => 'required|digits:11',
+            'img_cover' => 'nullable|image|max:512',
+            'categories' => 'required|exists:categories,id'
+        ]);
+
+        $form_data = $request->all();
+
+        if ($form_data['name'] != $restaurant->name) {
+            $slug = Str::slug($form_data['name']);
+            $slug_base = $slug;
+            // verifico che lo slug non esista nel database
+            $restaurant_exist = Restaurant::where('slug', $slug)->first();
+            $contatore = 1;
+            // entro nel ciclo while se ho trovato un post con lo stesso $slug
+            while($restaurant_exist) {
+                // genero un nuovo slug aggiungendo il contatore alla fine
+                $slug = $slug_base . '-' . $contatore;
+                $contatore++;
+                $restaurant_exist = Restaurant::where('slug', $slug)->first();
+            }
+            // quando esco dal while sono sicuro che lo slug non esiste nel db
+            // assegno lo slug al post
+            $restaurant->slug = $slug;
+        }
+
+        $restaurant->update($form_data);
+
+        // aggiorno le categorie nella tabella ponte
+        $restaurant->categories()->sync($form_data['categories']);
+
+        return redirect()->route('admin.home');
     }
 
     /**
