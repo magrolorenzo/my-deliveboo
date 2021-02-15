@@ -5,8 +5,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h1>Ristorante</h1>
-                <form action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->id]) }}" method="post">
+                <form action="#" method="post">
+                    {{-- {{ route('admin.restaurants.update', ['restaurant' => $restaurant->id]) }} --}}
                     @csrf
+                    @method('PUT')
+
                     <div class="form-group">
                         <label>Nome Ristorante</label>
                         <input type="text" name="name" class="form-control" placeholder="Inserisci il nome" value="{{old('name', $restaurant->name)}}" required>

@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::middleware('auth')->namespace('admin')->prefix('admin')->name('admin.')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
-    Route::resource('/restaurants', 'RestaurantController');
+
+    // Route::resource('/restaurants', 'RestaurantController');
+    Route::get('/restaurants/create', 'RestaurantController@create')->name('restaurants.create');
+    Route::post('/restaurants', 'RestaurantController@store')->name('restaurants.store');
+    Route::get('/restaurants/edit/{slug}', 'RestaurantController@edit')->name('restaurants.edit');
 
 });

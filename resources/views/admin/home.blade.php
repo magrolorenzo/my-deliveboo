@@ -29,6 +29,8 @@
                     Crea Ristorante
                 </a>
 
+                {{-- {{route('admin.restaurants.edit', ['slug' => $restaurant->slug])}} --}}
+
 
             </div>
         </div>

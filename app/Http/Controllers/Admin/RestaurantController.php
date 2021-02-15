@@ -63,8 +63,11 @@ class RestaurantController extends Controller
         $new_restaurant->slug = $slug;
         $new_restaurant->user_id = $user_id;
         $new_restaurant->save();
-        return redirect()->route('admin.home');
 
+        // passo i tag alla tabella ponte
+        $new_restaurant->categories()->sync($form_data['categories']);
+
+        return redirect()->route('admin.home');
     }
 
     /**
@@ -87,7 +90,14 @@ class RestaurantController extends Controller
     public function edit($slug)
     {
         $restaurant = Restaurant::where('slug', $slug)->first();
-        return  view('admin.restaurants.edit', compact('restaurant'));
+        if(!$restaurant) {
+            abort(404);
+        }
+        $data = [
+            'categories'=> Category::all(),
+            'restaurant' => $restaurant
+        ];
+        return  view('admin.restaurants.edit', $data);
     }
 
     /**
