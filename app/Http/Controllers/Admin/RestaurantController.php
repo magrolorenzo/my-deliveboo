@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Restaurant;
 use App\Category;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -40,6 +42,28 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
+        $form_data = $request->all();
+        $user_id = Auth::user()->id;
+        $new_restaurant = new Restaurant();
+        $new_restaurant->fill($form_data);
+        $slug = Str::slug($new_restaurant->name);
+        $slug_base = $slug;
+        // verifico che lo slug non esista nel database
+        $restaurant_exist = Restaurant::where('slug', $slug)->first();
+        $contatore = 1;
+        // entro nel ciclo while se ho trovato un post con lo stesso $slug
+        while($restaurant_exist) {
+            // genero un nuovo slug aggiungendo il contatore alla fine
+            $slug = $slug_base . '-' . $contatore;
+            $contatore++;
+            $restaurant_exist = Restaurant::where('slug', $slug)->first();
+        }
+        // quando esco dal while sono sicuro che lo slug non esiste nel db
+        // assegno lo slug al post
+        $new_restaurant->slug = $slug;
+        $new_restaurant->user_id = $user_id;
+        $new_restaurant->save();
+        return redirect()->route('admin.home');
 
     }
 
