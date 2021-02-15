@@ -14,11 +14,22 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    @foreach ($restaurants as $restaurant)
+                        <p>{{$restaurant->name}}</p>
+                        <p>{{$restaurant->address}}</p>
+                        <p>{{$restaurant->piva}}</p>
+                        <p>
+                            <a class="btn btn-warning" href="#">
+                                Modifica Ristorante
+                            </a>
+                        </p>
+                    @endforeach
                 </div>
                 <a class="btn btn-primary" href="{{route('admin.restaurants.create')}}">
                     Crea Ristorante
                 </a>
+                {{-- {{route('admin.restaurants.edit', ['slug' => $restaurant->slug])}} --}}
+
             </div>
         </div>
     </div>
