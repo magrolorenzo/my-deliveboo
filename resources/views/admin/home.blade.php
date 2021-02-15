@@ -16,6 +16,9 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+                <a class="btn btn-primary" href="{{route('admin.restaurants.create')}}">
+                    Crea Ristorante
+                </a>
             </div>
         </div>
     </div>
