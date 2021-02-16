@@ -36,7 +36,7 @@
 
                 <div class="form-group">
                     <label>Prezzo</label>
-                    <input name="unit_price" type="number" min="0.00" max="999.99" class="form-control" placeholder="Inserisci il prezzo" required value="{{old('unit_price')}}">
+                    <input name="unit_price" type="number" min="0.01" max="999.99" step="0.01" class="form-control" placeholder="Inserisci il prezzo" required value="{{old('unit_price')}}">
                     @error('unit_price')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
