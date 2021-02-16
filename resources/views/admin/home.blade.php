@@ -16,14 +16,19 @@
                             @endif
 
                             @foreach ($restaurants as $restaurant)
-                                <p>Nome Ristorante: {{$restaurant->name}}</p>
-                                <p>Indirizzo: {{$restaurant->address}}</p>
-                                <p>P.IVA: {{$restaurant->piva}}</p>
-                                <p>
-                                    <a class="btn btn-warning" href="{{route('admin.restaurants.edit', ['restaurant' => $restaurant->slug])}}">
+                                <div class="d-inline-block">
+                                    <p>Nome Ristorante: {{$restaurant->name}}</p>
+                                    <p>Indirizzo: {{$restaurant->address}}</p>
+                                    <p>P.IVA: {{$restaurant->piva}}</p>
+                                    <div class="d-inline-block">
+                                        <img src="{{asset("storage/".$restaurant->img_cover)}}" alt="" class="w-50">
+                                    </div>
+                                </div>
+                                <div>
+                                    <a class="btn btn-warning mt-3" href="{{route('admin.restaurants.edit', ['restaurant' => $restaurant->slug])}}">
                                         Modifica Ristorante
                                     </a>
-                                </p>
+                                </div>
                             @endforeach
                         </div>
                     @else

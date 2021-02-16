@@ -8,6 +8,7 @@ use App\Restaurant;
 use App\Category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -47,11 +48,16 @@ class RestaurantController extends Controller
             'name' => 'required|max:50',
             'address' => 'required|max:50',
             'piva' => 'required|digits:11',
-            'img_cover' => 'nullable|image|max:512',
+            'img_file' => 'nullable|image|max:512',
             'categories' => 'required|exists:categories,id'
         ]);
-        
+
         $form_data = $request->all();
+        if(array_key_exists("img_file", $form_data)){
+            $img_path = Storage::put("uploads", $form_data["img_file"]);
+            $form_data["img_cover"] = $img_path;
+        }
+
         $user_id = Auth::user()->id;
         $new_restaurant = new Restaurant();
         $new_restaurant->fill($form_data);
@@ -123,11 +129,16 @@ class RestaurantController extends Controller
             'name' => 'required|max:50',
             'address' => 'required|max:50',
             'piva' => 'required|digits:11',
-            'img_cover' => 'nullable|image|max:512',
+            'img_file' => 'nullable|image|max:512',
             'categories' => 'required|exists:categories,id'
         ]);
 
         $form_data = $request->all();
+
+        if(array_key_exists("img_file", $form_data)){
+            $img_path = Storage::put("uploads", $form_data["img_file"]);
+            $form_data["img_cover"] = $img_path;
+        }
 
         if ($form_data['name'] != $restaurant->name) {
             $slug = Str::slug($form_data['name']);
