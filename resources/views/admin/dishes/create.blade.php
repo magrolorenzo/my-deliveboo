@@ -43,6 +43,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Image</label>
+                    <input name="img_cover" type="file" class="form-control-file">
+                    @error('img_cover')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <p>Seleziona la visibilità:</p>
                     <div class="form-check">
                         <input name="visible" class="form-check-input" type="radio" value="0"

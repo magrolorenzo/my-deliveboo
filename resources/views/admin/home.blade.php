@@ -16,9 +16,9 @@
                             @endif
 
                             @foreach ($restaurants as $restaurant)
-                                <p>{{$restaurant->name}}</p>
-                                <p>{{$restaurant->address}}</p>
-                                <p>{{$restaurant->piva}}</p>
+                                <p>Nome Ristorante: {{$restaurant->name}}</p>
+                                <p>Indirizzo: {{$restaurant->address}}</p>
+                                <p>P.IVA: {{$restaurant->piva}}</p>
                                 <p>
                                     <a class="btn btn-warning" href="{{route('admin.restaurants.edit', ['restaurant' => $restaurant->slug])}}">
                                         Modifica Ristorante

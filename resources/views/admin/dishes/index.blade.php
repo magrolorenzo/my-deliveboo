@@ -29,9 +29,8 @@
                                     Vedi
                                     {{-- {{ route('admin.dish.show', ['dish' => $dish -> id]) }} --}}
                                 </a>
-                                <a href="#" class="btn btn-outline-dark">
+                                <a href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}" class="btn btn-outline-dark">
                                     Modifica
-                                    {{-- {{ route('admin.dishs.edit', ['dish' => $dish -> id]) }} --}}
                                 </a>
                                 <form class="d-none" action="#" method="post">
                                     {{-- {{ route('admin.dishs.destroy', ['dish' => $dish -> id]) }} --}}
