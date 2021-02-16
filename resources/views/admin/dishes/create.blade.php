@@ -18,7 +18,7 @@
 
                 <div class="form-group">
                     <label>Ingredienti</label>
-                    <input name="ingredients" type="text" class="form-control" placeholder="Inserisci gli ingredienti" required value="{{old('ingredients')}}">
+                    <textarea name="ingredients" class="form-control" rows="8" cols="80" placeholder="Inserisci gli ingredienti">{{old('ingredients')}}</textarea>
                     @error('ingredients')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
