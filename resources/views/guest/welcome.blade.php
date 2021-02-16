@@ -80,7 +80,7 @@
             @endif
 
             <div class="content">
-                <h1>Benvenuto, Lorenzo.</h1>
+                <h1>Benvenuto, Manfredi.</h1>
             </div>
         </div>
     </body>

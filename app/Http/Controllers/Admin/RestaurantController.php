@@ -54,7 +54,7 @@ class RestaurantController extends Controller
 
         $form_data = $request->all();
         if(array_key_exists("img_file", $form_data)){
-            $img_path = Storage::put("uploads", $form_data["img_file"]);
+            $img_path = Storage::put("uploads/restaurant_covers", $form_data["img_file"]);
             $form_data["img_cover"] = $img_path;
         }
 

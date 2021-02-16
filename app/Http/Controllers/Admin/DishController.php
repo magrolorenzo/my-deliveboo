@@ -21,6 +21,7 @@ class DishController extends Controller
     {
         $user_id = Auth::user()->id;
         $restaurant = Restaurant::where('user_id', $user_id)->first();
+
         $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
         $data = [
             'dishes' => $dishes
@@ -48,6 +49,7 @@ class DishController extends Controller
     {
         $request -> validate([
             'name' => 'required|max:30',
+            'restaurant_id' =>'required|exists:restaurants,id',
             'ingredients' => 'nullable|string|max:1000',
             'description' => 'nullable|string|max:1000',
             'unit_price' => 'required|numeric|between:00.01,999.99',
@@ -62,13 +64,11 @@ class DishController extends Controller
             $form_data["img_cover"] = $img_path;
         }
 
-        $user_id = Auth::user()->id;
-        $restaurant = Restaurant::where('user_id', $user_id)->first();
 
         $new_dish = new Dish(); // nuovo obj dish
 
         $new_dish->fill($form_data);
-        $new_dish->restaurant_id = $restaurant->id;
+
         // dd($new_dish);
 
         $slug = Str::slug($new_dish->name);

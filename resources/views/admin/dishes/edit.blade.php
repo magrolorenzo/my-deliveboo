@@ -17,6 +17,22 @@
                         @enderror
                     </div>
 
+                    <div class="form-group w-30 d-inline-block">
+                        <label>I miei ristoranti</label>
+                        <select name="restaurant_id">
+                            <option value="">Seleziona un ristorante</option>
+                            @foreach (Auth::user()->restaurants as $restaurant)
+                                <option value="{{$restaurant->id}}" {{old('restaurant_id', $dish->restaurant_id) == $restaurant->id ? 'selected' : ''}}>
+                                    {{$restaurant->name}}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('restaurant_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+
                     <div class="form-group">
                         <label>Ingredienti</label>
                         <textarea name="ingredients" class="form-control" rows="8" cols="80" placeholder="Inserisci gli ingredienti">{{old('ingredients', $dish->ingredients)}}</textarea>

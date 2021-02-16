@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header">I miei ristoranti</div>
 
                     @if(count($restaurants) > 0)
                         <div class="card-body">
@@ -31,14 +31,12 @@
                                 </div>
                             @endforeach
                         </div>
-                    @else
-                        <div>
-                            <a class="btn btn-primary" href="{{route('admin.restaurants.create')}}">
-                                Crea Ristorante
-                            </a>
-                        </div>
                     @endif
-
+                </div>
+                <div>
+                    <a class="btn btn-primary mt-3" href="{{route('admin.restaurants.create')}}">
+                        Crea Ristorante
+                    </a>
                 </div>
             </div>
         </div>
