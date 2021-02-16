@@ -31,12 +31,10 @@
                                 <a href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}" class="btn btn-outline-dark">
                                     Modifica
                                 </a>
-                                <form class="d-none" action="#" method="post">
-                                    {{-- {{ route('admin.dishs.destroy', ['dish' => $dish -> id]) }} --}}
+                                <form action="{{ route('admin.dishes.destroy', ['dish' => $dish->id]) }}" method="post" class="d-inline-block">
                                     @csrf
                                     @method('DELETE')
-
-                                    <button type="submit" name="button" class="btn btn-outline-danger">Elimina</button>
+                                    <button type="submit" name="button" class="btn btn-danger">Elimina</button>
                                 </form>
                             </td>
                         </tr>
