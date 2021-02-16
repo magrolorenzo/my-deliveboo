@@ -20,11 +20,12 @@ class DishController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id;
-        $restaurant = Restaurant::where('user_id', $user_id)->first();
+        $restaurants = Restaurant::where('user_id', $user_id)->get();
 
-        $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
+        // $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
         $data = [
-            'dishes' => $dishes
+            // 'dishes' => $dishes
+            'restaurants' => $restaurants
         ];
         return view('admin.dishes.index', $data);
     }
