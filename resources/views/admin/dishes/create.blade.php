@@ -16,6 +16,7 @@
                         @enderror
                     </div>
 
+                    {{-- Select per selezionare il ristorante --}}
                     <div class="form-group w-30 d-inline-block">
                         <label>I miei ristoranti</label>
                         <select name="restaurant_id">

@@ -5,6 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <table class="table">
+                    
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">id</th>
@@ -17,7 +18,7 @@
                     </thead>
                     <tbody>
                         @foreach ($restaurants as $restaurant)
-                            @foreach ($restaurant->dishes as $dish)                                
+                            @foreach ($restaurant->dishes as $dish)
                                 <tr>
                                     <th scope="row">{{ $dish->id }}</th>
                                     <td>{{ $dish->name }}</td>

@@ -3,19 +3,21 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">I miei ristoranti</div>
+            <div class="col-md-12">
 
-                    @if(count($restaurants) > 0)
-                        <div class="card-body">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
 
-                            @foreach ($restaurants as $restaurant)
+                @if(count($restaurants) > 0)
+                    @foreach ($restaurants as $restaurant)
+                        <div class="card mt-3">
+                            <div class="card-header">{{$restaurant->name}}</div>
+
+                            <div class="card-body">
+
                                 <div class="d-inline-block">
                                     <p>Nome Ristorante: {{$restaurant->name}}</p>
                                     <p>Indirizzo: {{$restaurant->address}}</p>
@@ -29,10 +31,10 @@
                                         Modifica Ristorante
                                     </a>
                                 </div>
-                            @endforeach
+                            </div>
                         </div>
-                    @endif
-                </div>
+                    @endforeach
+                @endif
                 <div>
                     <a class="btn btn-primary mt-3" href="{{route('admin.restaurants.create')}}">
                         Crea Ristorante
