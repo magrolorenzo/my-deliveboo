@@ -94,9 +94,17 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $dish = Dish::where('slug', $slug)->first();
+
+        if(!$dish) {
+            abort(404);
+        }
+        $data = [
+            'dish' => $dish
+        ];
+        return view('admin.dishes.show', $data);
     }
 
     /**
@@ -135,7 +143,7 @@ class DishController extends Controller
             'img_cover' => 'nullable|image|max:512',
             'visible' => 'required|boolean'
         ]);
-        
+
         $form_data = $request->all();
 
         if($form_data["name"] != $dish->name){

@@ -25,9 +25,8 @@
                             <td>{{ $dish->unit_price }} €</td>
                             <td>{{ $dish->visible == 0 ? "Non Visibile" : "Visibile" }}</td>
                             <td class="w-25">
-                                <a href="#" class="btn btn-outline-info">
-                                    Vedi
-                                    {{-- {{ route('admin.dish.show', ['dish' => $dish -> id]) }} --}}
+                                <a href="{{ route('admin.dishes.show', ['dish' => $dish->slug]) }}" class="btn btn-outline-info">
+                                    Dettagli
                                 </a>
                                 <a href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}" class="btn btn-outline-dark">
                                     Modifica
