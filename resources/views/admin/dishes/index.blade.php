@@ -10,10 +10,9 @@
                     <tr>
                         <th scope="col">id</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Ingredienti</th>
+                        <th scope="col">Ristorante</th>
                         <th scope="col">Prezzo unitario</th>
                         <th scope="col">Visibile</th>
-                        <th scope="col">Descrizione</th>
                         <th scope="col">Modifica</th>
                     </tr>
                 </thead>
@@ -22,10 +21,9 @@
                         <tr>
                             <th scope="row">{{ $dish->id }}</th>
                             <td>{{ $dish->name }}</td>
-                            <td>{{ $dish->ingredients }}</td>
-                            <td>{{ $dish->unit_price }}</td>
-                            <td>{{ $dish->visible }}</td>
-                            <td>{{ $dish->description }}</td>
+                            <td>{{ $dish->restaurant->name }}</td>
+                            <td>{{ $dish->unit_price }} €</td>
+                            <td>{{ $dish->visible == 0 ? "Non Visibile" : "Visibile" }}</td>
                             <td class="w-25">
                                 <a href="#" class="btn btn-outline-info">
                                     Vedi
