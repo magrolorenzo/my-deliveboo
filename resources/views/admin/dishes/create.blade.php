@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h1>Crea nuovo piatto</h1>
-            <form action="{{ route('admin.dishes.store') }}" method="post">
+            <form action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
@@ -44,8 +44,8 @@
 
                 <div class="form-group">
                     <label>Image</label>
-                    <input name="img_cover" type="file" class="form-control-file">
-                    @error('img_cover')
+                    <input name="img_file" type="file" class="form-control-file">
+                    @error('img_file')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>

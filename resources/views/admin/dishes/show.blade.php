@@ -20,9 +20,9 @@
                         <p>Descrizione</p>
                         <p>{{$dish->description}}</p>
                         <p>Prezzo: {{$dish->unit_price}} €</p>
-                        {{-- <div >
-                            <img src="" alt="">
-                        </div> --}}
+                        <div>
+                            <img src="{{asset("storage/".$dish->img_cover)}}" alt="" class="w-50">
+                        </div>
                         <p>Visibilità: {{$dish->visible == 0 ? "Non Visibile" : "Visibile"}}</p>
                     </div>
                 </div>

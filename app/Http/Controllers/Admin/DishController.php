@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Dish;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Restaurant;
 use Illuminate\Support\Str;
 
@@ -50,11 +51,16 @@ class DishController extends Controller
             'ingredients' => 'nullable|string|max:1000',
             'description' => 'nullable|string|max:1000',
             'unit_price' => 'required|numeric|between:00.01,999.99',
-            'img_cover' => 'nullable|image|max:512',
+            'img_file' => 'nullable|image|max:512',
             'visible' => 'required|boolean'
         ]);
 
         $form_data = $request->all();
+
+        if(array_key_exists("img_file", $form_data)){
+            $img_path = Storage::put("uploads/dishes_covers", $form_data["img_file"]);
+            $form_data["img_cover"] = $img_path;
+        }
 
         $user_id = Auth::user()->id;
         $restaurant = Restaurant::where('user_id', $user_id)->first();
@@ -140,11 +146,16 @@ class DishController extends Controller
             'ingredients' => 'nullable|string|max:1000',
             'description' => 'nullable|string|max:1000',
             'unit_price' => 'required|numeric|between:00.01,999.99',
-            'img_cover' => 'nullable|image|max:512',
+            'img_file' => 'nullable|image|max:512',
             'visible' => 'required|boolean'
         ]);
 
         $form_data = $request->all();
+
+        if(array_key_exists("img_file", $form_data)){
+            $img_path = Storage::put("uploads/dishes_covers", $form_data["img_file"]);
+            $form_data["img_cover"] = $img_path;
+        }
 
         if($form_data["name"] != $dish->name){
             // Ricreo slug

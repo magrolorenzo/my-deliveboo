@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h1>Modifica il piatto</h1>
-                <form action="{{ route('admin.dishes.update', ['dish' => $dish->id]) }}" method="post">
+                <form action="{{ route('admin.dishes.update', ['dish' => $dish->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -45,8 +45,8 @@
 
                     <div class="form-group">
                         <label>Image</label>
-                        <input name="img_cover" type="file" class="form-control-file">
-                        @error('img_cover')
+                        <input name="img_file" type="file" class="form-control-file">
+                        @error('img_file')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
