@@ -76,7 +76,7 @@ class DishController extends Controller
 
         $new_dish->save();
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.dishes.index');
     }
 
     /**
