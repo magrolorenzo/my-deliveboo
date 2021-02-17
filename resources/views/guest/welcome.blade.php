@@ -4,6 +4,7 @@
 
 
 @section('content')
+<div id="app">
   <nav class="navbar navbar-expand-md navbar-light bg-light">
             <div class="container d-flex justify-content-center">
 
@@ -15,7 +16,10 @@
                             </button>
                         </div>
                 </div>
+                <dish/>
                 
             </div>
-        </nav>
+    </nav>
+
+</div>
 @endsection

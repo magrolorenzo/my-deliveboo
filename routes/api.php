@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/dishes', 'Api\DishController@index');
+Route::get('/dishes', 'Api\DishController@index');

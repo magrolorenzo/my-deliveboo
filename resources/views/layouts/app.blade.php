@@ -19,6 +19,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
     <script src="https://kit.fontawesome.com/43febffcb7.js" crossorigin="anonymous"></script>
 </head>
 <body>
