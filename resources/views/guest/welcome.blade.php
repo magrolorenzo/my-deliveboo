@@ -6,7 +6,6 @@
 @section('content')
   <nav class="navbar navbar-expand-md navbar-light bg-light">
             <div class="container d-flex justify-content-center">
-            <h1>ciao</h1>
 
                 <div class="input-group w-50">
                     <input type="text" class="form-control" placeholder="Ristoranti, tipi di cucina...">
