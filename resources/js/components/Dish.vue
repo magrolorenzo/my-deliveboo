@@ -14,7 +14,7 @@
                 <p class="card-text">
                     {{ dishes[0].description }}
                 </p>
-                <p class="card-text">{{ dishes[0].unit_price }} $</p>
+                <p class="card-text">{{ dishes[0].unit_price }} €</p>
                 <p class="card-text">
                     {{ dishes[0].visible }}
                 </p>

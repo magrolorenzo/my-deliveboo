@@ -37668,7 +37668,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "card-text" }, [
-          _vm._v(_vm._s(_vm.dishes[0].unit_price) + " $")
+          _vm._v(_vm._s(_vm.dishes[0].unit_price) + " €")
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "card-text" }, [
