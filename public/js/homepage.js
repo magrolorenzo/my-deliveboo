@@ -93,23 +93,26 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var app = new Vue({
-  el: "#app",
-  data: {
-    dishes: [],
-    url_base: "http://localhost:8000/storage/"
-  },
-  methods: {},
-  mounted: function mounted() {
-    var _this = this;
+// import Vue from "vue";
+window.onload = function () {
+  var app = new Vue({
+    el: "#app",
+    data: {
+      dishes: [],
+      url_base: "http://localhost:8000/storage/"
+    },
+    methods: {},
+    mounted: function mounted() {
+      var _this = this;
 
-    axios.get("http://localhost:8000/api/dishes").then(function (dishes) {
-      var dish = dishes.data.results;
-      _this.dishes = dish;
-      console.log(dishes.data.results[0].name);
-    });
-  }
-});
+      axios.get("http://localhost:8000/api/dishes").then(function (dishes) {
+        var dish = dishes.data.results;
+        _this.dishes = dish;
+        console.log("************************************");
+      });
+    }
+  });
+};
 
 /***/ }),
 
@@ -120,7 +123,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
 
 
 /***/ })
