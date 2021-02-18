@@ -9,19 +9,16 @@
     <title>@yield('page-title')</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
     <script src="https://kit.fontawesome.com/43febffcb7.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-
         <div class="container">
 
             <a class="navbar-brand" href="{{ url('/') }}">
