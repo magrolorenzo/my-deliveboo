@@ -105,9 +105,18 @@ class RestaurantController extends Controller
     public function edit($slug)
     {
         $restaurant = Restaurant::where('slug', $slug)->first();
+        $user_id = Auth::user()->id;
+
         if(!$restaurant) {
             abort(404);
         }
+        if($user_id != $restaurant->user->id) {
+            // Aggiungere messaggio di errore per modifica piatto di un altro ristoratore
+            abort(404);
+        }
+
+
+
         $data = [
             'categories'=> Category::all(),
             'restaurant' => $restaurant

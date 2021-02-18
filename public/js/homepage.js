@@ -94,25 +94,24 @@
 /***/ (function(module, exports) {
 
 // import Vue from "vue";
-window.onload = function () {
-  var app = new Vue({
-    el: "#app",
-    data: {
-      dishes: [],
-      url_base: "http://localhost:8000/storage/"
-    },
-    methods: {},
-    mounted: function mounted() {
-      var _this = this;
+// window.onload = function(){
+var app = new Vue({
+  el: "#app",
+  data: {
+    dishes: [],
+    url_base: "http://localhost:8000/storage/"
+  },
+  methods: {},
+  mounted: function mounted() {
+    var _this = this;
 
-      axios.get("http://localhost:8000/api/dishes").then(function (dishes) {
-        var dish = dishes.data.results;
-        _this.dishes = dish;
-        console.log("************************************");
-      });
-    }
-  });
-};
+    axios.get("http://localhost:8000/api/dishes").then(function (dishes) {
+      var dish = dishes.data.results;
+      _this.dishes = dish;
+      console.log("************************************");
+    });
+  }
+}); // }
 
 /***/ }),
 

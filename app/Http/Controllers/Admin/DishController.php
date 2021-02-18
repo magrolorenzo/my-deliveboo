@@ -58,6 +58,14 @@ class DishController extends Controller
             'visible' => 'required|boolean'
         ]);
 
+        // Verifica id utente che invia richiesta di salvataggio piatto
+        $user_id = Auth::user()->id;
+        $restaurant_id_selected = $request->input("restaurant_id");
+        $selected_restaurant_user = Restaurant::where("id",$restaurant_id_selected)->value('user_id');
+        if($user_id != $selected_restaurant_user) {
+            abort(404);
+        }
+
         $form_data = $request->all();
 
         if(array_key_exists("img_file", $form_data)){
@@ -104,10 +112,16 @@ class DishController extends Controller
     public function show($slug)
     {
         $dish = Dish::where('slug', $slug)->first();
+        $user_id = Auth::user()->id;
 
         if(!$dish) {
             abort(404);
         }
+        if($user_id != $dish->restaurant->user->id) {
+            // Aggiungere messaggio di errore per modifica piatto di un altro ristoratore
+            abort(404);
+        }
+
         $data = [
             'dish' => $dish
         ];
@@ -124,9 +138,16 @@ class DishController extends Controller
     {
 
         $dish = Dish::where('slug', $slug)->first();
+        $user_id = Auth::user()->id;
+
         if(!$dish) {
             abort(404);
         }
+        if($user_id != $dish->restaurant->user->id) {
+            // Aggiungere messaggio di errore per modifica piatto di un altro ristoratore
+            abort(404);
+        }
+
         $data = [
             'dish' => $dish
         ];
@@ -144,12 +165,20 @@ class DishController extends Controller
     {
         $request -> validate([
             'name' => 'required|max:30',
+            'restaurant_id' =>'required|exists:restaurants,id',
             'ingredients' => 'nullable|string|max:1000',
             'description' => 'nullable|string|max:1000',
             'unit_price' => 'required|numeric|between:00.01,999.99',
             'img_file' => 'nullable|image|max:512',
             'visible' => 'required|boolean'
         ]);
+
+        $user_id = Auth::user()->id;
+        $restaurant_id_selected = $request->input("restaurant_id");
+        $selected_restaurant_user = Restaurant::where("id",$restaurant_id_selected)->value('user_id');
+        if($user_id != $selected_restaurant_user) {
+            abort(404);
+        }
 
         $form_data = $request->all();
 
@@ -189,6 +218,15 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
+        $user_id = Auth::user()->id;
+
+        if(!$dish) {
+            abort(404);
+        }
+        if($user_id != $dish->restaurant->user->id) {
+            // Aggiungere messaggio di errore per modifica piatto di un altro ristoratore
+            abort(404);
+        }
         $dish->delete();
         return redirect()->route('admin.dishes.index');
     }

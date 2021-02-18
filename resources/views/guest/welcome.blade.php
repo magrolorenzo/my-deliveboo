@@ -2,7 +2,7 @@
 @section('page-title', 'Welcome Page')
 
 @section('script')
-    {{-- <script src="{{ asset('js/homepage.js') }}" defer></script> --}}
+    <script src="{{ asset('js/homepage.js') }}" defer></script>
 @endsection
 
 @section('content')
@@ -34,7 +34,7 @@
                         <img :src="url_base + dishes[index].img_cover" alt="" class="card-img-top" />
 
                         <div class="card-body">
-                            <h1>@{{ dishes[index].name }}</h1>
+                            <h1>@{{ dishes[index].id }} - @{{ dishes[index].name }}</h1>
                             <p class="card-text">
                                 @{{ dishes[index].ingredients }}
                             </p>
@@ -60,5 +60,5 @@
         </div> {{-- Chiusura container --}}
 
     </div>
-    <script src="{{ asset('js/homepage.js') }}" defer></script>
+
 @endsection
