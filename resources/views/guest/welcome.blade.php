@@ -27,9 +27,9 @@
 
             <div class="row">
 
-                <div class="col-lg-4 mb-4">
+                <div class="d-flex flex-wrap">
 
-                    <div class="card" v-for="(dish,index) in dishes">
+                    <div class="card col-lg-4" v-for="(dish,index) in dishes">
 
                         <img :src="url_base + dishes[index].img_cover" alt="" class="card-img-top" />
 
