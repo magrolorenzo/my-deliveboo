@@ -99,9 +99,14 @@ var app = new Vue({
   el: "#app",
   data: {
     dishes: [],
+    categories: [],
     url_base: "http://localhost:8000/storage/"
   },
-  methods: {},
+  methods: {
+    selectedCategory: function selectedCategory() {
+      console.log('provaaaa');
+    }
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -109,6 +114,10 @@ var app = new Vue({
       var dish = dishes.data.results;
       _this.dishes = dish;
       console.log("************************************");
+    });
+    axios.get("http://localhost:8000/api/categories").then(function (categories) {
+      var category = categories.data.results;
+      _this.categories = category;
     });
   }
 }); // }
@@ -122,7 +131,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bool18\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
 
 
 /***/ })
