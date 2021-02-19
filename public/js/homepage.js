@@ -109,23 +109,50 @@ var app = new Vue({
     selectedCategory: function selectedCategory(category_id) {
       var _this = this;
 
+      /* se la categoria è stata selezionata la togli dall'array */
       if (this.selectedCategories.includes(category_id)) {
         this.selectedCategories = this.selectedCategories.filter(function (item) {
           return item !== category_id;
         });
-        console.log('presente');
-        console.log(this.selectedCategories);
-      } else {
-        this.selectedCategories.push(category_id);
-        console.log('non presente');
-        console.log(this.selectedCategories);
-      }
+        this.restaurants = this.restaurants.filter(function (item) {
+          return item.pivot.category_id !== category_id;
+        });
 
-      this.restaurants = [];
-      axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(function (restaurants) {
-        var restaurant = restaurants.data.results;
-        _this.restaurants = restaurant; // console.log(this.restaurants);
-      });
+        if (this.restaurants.length == 0) {
+          axios.get("http://localhost:8000/api/restaurants").then(function (restaurants) {
+            var restaurant = restaurants.data.results;
+            _this.restaurants = restaurant;
+          });
+        }
+      } else {
+        /* se è la prima categoria selezionata svuoto array e richiamo dati con chiamata all'api */
+        if (this.selectedCategories.length == 0) {
+          this.restaurants = [];
+          axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(function (response) {
+            var restaurant = response.data.results;
+            _this.restaurants = restaurant;
+          });
+        } else {
+          /* se seleziono una categoria non presente aggiungo i risultati ai dati precedenti */
+          axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(function (response) {
+            var restaurant = response.data.results;
+
+            var _loop = function _loop(index) {
+              restaurant = restaurant.filter(function (item) {
+                return item.id !== _this.restaurants[index].id;
+              });
+            };
+
+            for (var index = 0; index < _this.restaurants.length; index++) {
+              _loop(index);
+            }
+
+            _this.restaurants = _this.restaurants.concat(restaurant);
+          });
+        }
+
+        this.selectedCategories.push(category_id);
+      }
     }
   },
   mounted: function mounted() {
