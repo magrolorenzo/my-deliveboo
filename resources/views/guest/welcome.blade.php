@@ -21,6 +21,25 @@
                 </div>
             </div>
         </nav>
+        <div class="container">
+            <div class="row">
+                <div class="d-flex  flex-wrap">
+                    <div @click="selectedCategory(category.id)" class="card col-lg-4" v-for="(category,index) in categories">
+                        <p>@{{category.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="d-flex  flex-wrap">
+                    <div class="card col-lg-4" v-for="(restaurant,index) in restaurants">
+                        <p>@{{restaurant.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         {{-- Container con carte --}}
         <div class="container">

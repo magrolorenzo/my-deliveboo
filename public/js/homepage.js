@@ -99,19 +99,42 @@ var app = new Vue({
   el: "#app",
   data: {
     dishes: [],
+    categories: [],
+    restaurants: [],
     url_base: "http://localhost:8000/storage/"
   },
-  methods: {},
+  methods: {
+    selectedCategory: function selectedCategory(category_id) {
+      var _this = this;
+
+      axios.get("http://localhost:8000/api/restaurants", {
+        params: {
+          category_id: category_id
+        }
+      }).then(function (restaurants) {
+        var restaurant = restaurants.data.results;
+        _this.restaurants = restaurant;
+        console.log(_this.restaurants);
+      });
+    }
+  },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get("http://localhost:8000/api/dishes").then(function (dishes) {
       var dish = dishes.data.results;
-      _this.dishes = dish;
-      console.log("************************************");
+      _this2.dishes = dish;
+    });
+    axios.get("http://localhost:8000/api/categories").then(function (categories) {
+      var category = categories.data.results;
+      _this2.categories = category;
+    });
+    axios.get("http://localhost:8000/api/restaurants").then(function (restaurants) {
+      var restaurant = restaurants.data.results;
+      _this2.restaurants = restaurant;
     });
   }
-}); // }
+});
 
 /***/ }),
 
@@ -122,7 +145,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bool18\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
 
 
 /***/ })

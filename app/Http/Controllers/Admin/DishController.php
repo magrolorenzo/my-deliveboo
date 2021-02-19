@@ -54,7 +54,7 @@ class DishController extends Controller
             'ingredients' => 'nullable|string|max:1000',
             'description' => 'nullable|string|max:1000',
             'unit_price' => 'required|numeric|between:00.01,999.99',
-            'img_file' => 'nullable|image|max:512',
+            'img_file' => 'nullable|mimes:jpg,jpeg,png,bmp|max:512',
             'visible' => 'required|boolean'
         ]);
 
@@ -169,7 +169,7 @@ class DishController extends Controller
             'ingredients' => 'nullable|string|max:1000',
             'description' => 'nullable|string|max:1000',
             'unit_price' => 'required|numeric|between:00.01,999.99',
-            'img_file' => 'nullable|image|max:512',
+            'img_file' => 'nullable|mimes:jpg,jpeg,png,bmp|max:512',
             'visible' => 'required|boolean'
         ]);
 
