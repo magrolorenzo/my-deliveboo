@@ -100,27 +100,41 @@ var app = new Vue({
   data: {
     dishes: [],
     categories: [],
+    restaurants: [],
     url_base: "http://localhost:8000/storage/"
   },
   methods: {
-    selectedCategory: function selectedCategory() {
-      console.log('provaaaa');
+    selectedCategory: function selectedCategory(category_id) {
+      var _this = this;
+
+      axios.get("http://localhost:8000/api/restaurants", {
+        params: {
+          category_id: category_id
+        }
+      }).then(function (restaurants) {
+        var restaurant = restaurants.data.results;
+        _this.restaurants = restaurant;
+        console.log(_this.restaurants);
+      });
     }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get("http://localhost:8000/api/dishes").then(function (dishes) {
       var dish = dishes.data.results;
-      _this.dishes = dish;
-      console.log("************************************");
+      _this2.dishes = dish;
     });
     axios.get("http://localhost:8000/api/categories").then(function (categories) {
       var category = categories.data.results;
-      _this.categories = category;
+      _this2.categories = category;
+    });
+    axios.get("http://localhost:8000/api/restaurants").then(function (restaurants) {
+      var restaurant = restaurants.data.results;
+      _this2.restaurants = restaurant;
     });
   }
-}); // }
+});
 
 /***/ }),
 
