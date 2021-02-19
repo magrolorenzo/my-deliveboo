@@ -109,13 +109,22 @@ var app = new Vue({
     selectedCategory: function selectedCategory(category_id) {
       var _this = this;
 
-      this.selectedCategories.push(category_id);
+      if (this.selectedCategories.includes(category_id)) {
+        this.selectedCategories = this.selectedCategories.filter(function (item) {
+          return item !== category_id;
+        });
+        console.log('presente');
+        console.log(this.selectedCategories);
+      } else {
+        this.selectedCategories.push(category_id);
+        console.log('non presente');
+        console.log(this.selectedCategories);
+      }
+
       this.restaurants = [];
       axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(function (restaurants) {
         var restaurant = restaurants.data.results;
         _this.restaurants = restaurant; // console.log(this.restaurants);
-
-        console.log(_this.selectedCategories);
       });
     }
   },
@@ -146,7 +155,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bool18\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
 
 
 /***/ })

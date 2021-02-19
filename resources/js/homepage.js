@@ -13,13 +13,22 @@ var app = new Vue({
     },
     methods: {
         selectedCategory(category_id) {
-            this.selectedCategories.push(category_id);
+            if (this.selectedCategories.includes(category_id)) {
+                this.selectedCategories = this.selectedCategories.filter(item => item !== category_id);
+                console.log('presente');
+                console.log(this.selectedCategories)
+
+                
+            } else {
+                this.selectedCategories.push(category_id);
+                console.log('non presente')
+                console.log(this.selectedCategories)
+            }
             this.restaurants = [];
             axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(restaurants => {
                 let restaurant = restaurants.data.results;
                 this.restaurants = restaurant;
                 // console.log(this.restaurants);
-                console.log(this.selectedCategories);
             });
         },
 
