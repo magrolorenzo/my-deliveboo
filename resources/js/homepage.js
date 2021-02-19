@@ -7,18 +7,19 @@ var app = new Vue({
         dishes: [],
         categories: [],
         restaurants: [],
+        selectedRestaurants: [],
+        selectedCategories: [],
         url_base: "http://localhost:8000/storage/"
     },
     methods: {
         selectedCategory(category_id) {
-            axios.get("http://localhost:8000/api/restaurants", {
-                params: {
-                    category_id: category_id
-                }
-            }).then(restaurants => {
+            this.selectedCategories.push(category_id);
+            this.restaurants = [];
+            axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(restaurants => {
                 let restaurant = restaurants.data.results;
                 this.restaurants = restaurant;
-                console.log(this.restaurants);
+                // console.log(this.restaurants);
+                console.log(this.selectedCategories);
             });
         },
 

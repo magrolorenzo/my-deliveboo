@@ -101,20 +101,21 @@ var app = new Vue({
     dishes: [],
     categories: [],
     restaurants: [],
+    selectedRestaurants: [],
+    selectedCategories: [],
     url_base: "http://localhost:8000/storage/"
   },
   methods: {
     selectedCategory: function selectedCategory(category_id) {
       var _this = this;
 
-      axios.get("http://localhost:8000/api/restaurants", {
-        params: {
-          category_id: category_id
-        }
-      }).then(function (restaurants) {
+      this.selectedCategories.push(category_id);
+      this.restaurants = [];
+      axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(function (restaurants) {
         var restaurant = restaurants.data.results;
-        _this.restaurants = restaurant;
-        console.log(_this.restaurants);
+        _this.restaurants = restaurant; // console.log(this.restaurants);
+
+        console.log(_this.selectedCategories);
       });
     }
   },
