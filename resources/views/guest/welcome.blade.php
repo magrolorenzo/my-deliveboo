@@ -23,7 +23,7 @@
                     <div class="d-flex flex-wrap justify-content-between col-lg-12">
 
                         {{-- Card ristorante --}}
-                        <div v-for="(restaurant,index) in restaurants" class="card bg-light ml-3 mb-3 restaurant-card" >
+                        <div v-for="(restaurant,index) in restaurants" class="card bg-light  ml-3 mb-3 restaurant-card" >
 
                             {{-- Cover image --}}
                             <div v-if="restaurant.img_cover"  class="cover-container">
@@ -44,9 +44,15 @@
                                 <p class="card-text">
                                     <strong>Categorie:</strong> <span v-for="category in restaurant.categories" class="badge badge-info ml-1"> @{{category.name}}</span>
                                 </p>
+
+                                <div>
+                                    
+                                    <a :href="'/show/'+restaurant.slug" class="btn btn-success">
+                                        Visualizza
+                                    </a>
+                                </div>
                             </div>
 
-                            {{-- Immagine cover ristorante --}}
                         </div>
                     </div>
                 </div>
