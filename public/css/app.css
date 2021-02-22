@@ -10949,19 +10949,42 @@ a.text-dark:focus {
   color: red;
 }
 
-.container {
-  border: 2px solid black;
-}
-
 .info-container {
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
+}
+
+.info-container-left h1 {
+  font-size: 50px;
 }
 
 .dish-container {
   padding: 20px;
   display: flex;
   justify-content: space-around;
+}
+
+.info-section {
+  padding: 20px;
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+}
+
+.dishes-section {
+  background-color: #eeeeee;
+}
+
+footer {
+  padding: 20px 0 20px 0;
+  background-color: #ee5340;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navbar {
+  background-color: #ee5340;
 }
 
