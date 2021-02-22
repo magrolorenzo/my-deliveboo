@@ -24,7 +24,7 @@
     <div class="container">
         <div class="row">
             <div class="d-flex  flex-wrap">
-                <div @click="selectedCategory(category.id)" class="card col-lg-4" v-for="(category,index) in categories">
+                <div @click="selectedCategory(category.id)" class="card col-lg-4 text-center" v-for="(category,index) in categories">
                     <p>@{{category.name}}</p>
                 </div>
             </div>
@@ -33,8 +33,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="d-flex  flex-wrap">
-                <div class="card col-lg-4" v-for="(restaurant,index) in restaurants">
+            <div class="d-flex  flex-wrap mt-3 mx-auto">
+                <div class="card col-lg-4 text-center" v-for="(restaurant,index) in restaurants">
                     <p>@{{restaurant.name}}</p>
                     <a class="btn btn-success btn-sm" :href=" /show/ + restaurant.slug">
                         Visita il ristorante
@@ -49,7 +49,7 @@
 
         <div class="row">
 
-            <div class="d-flex flex-wrap">
+            <div class="d-flex flex-wrap mt-3">
 
                 <div class="card col-lg-4" v-for="(dish,index) in dishes">
 

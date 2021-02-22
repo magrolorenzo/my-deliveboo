@@ -23,7 +23,15 @@
     </nav>
     <div class="container">
         <div class="row">
-            <h1>Pagina show ristorante</h1>
+            <div class="col-12">
+                <div class="d-block">
+                    <img src="{{asset("storage/".$restaurant->img_cover)}}" alt="">
+
+                </div>
+                <h1>{{ $restaurant->name }}</h1>
+
+            </div>
+
         </div>
     </div>
 
