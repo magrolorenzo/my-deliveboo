@@ -10973,15 +10973,13 @@ header nav {
   height: 60px;
 }
 
-#main-dashboard-wrapper {
-  height: calc(100vh - 60px);
-}
-
-#main-dashboard-wrapper .row {
-  height: 100%;
-}
-
 #main-dashboard-wrapper .row #sidebarMenu {
-  height: 100%;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+#main-dashboard-wrapper .row main {
+  height: calc(100vh - 60px);
+  overflow-y: auto;
 }
 
