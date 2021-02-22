@@ -10,11 +10,20 @@
 
         <div id="app">
 
-            <div class="container mb-4 mt-4">
-                <div class="categories-wrapper d-flex flex-wrap justify-content-between">
-                    <div v-for="(category,index) in categories" class="btn ml-2" :class="selectedCategories.includes(category.id)? 'btn-warning' : 'btn-primary'" @click="selectedCategory(category.id)"  >
-                        <span>@{{category.name}}</span>
+            <div class="container mb-4 mt-4" >
+                <div class="row cat-row">
+                    <div class="categories-wrapper d-flex justify-content-between" id="cat">
+                        <div v-for="(category,index) in categories" class="btn ml-2 card-size" :class="selectedCategories.includes(category.id)? 'btn-warning' : 'btn-primary'" @click="selectedCategory(category.id)"  >
+                            <span>@{{category.name}}</span>
+                        </div>
+                        <div class="left" @click="moveLeft">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="right" @click="moveRight">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
                     </div>
+
                 </div>
             </div>
 

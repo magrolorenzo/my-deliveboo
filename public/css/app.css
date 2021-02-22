@@ -11009,7 +11009,6 @@ footer {
 
 .title {
   font-size: 50px;
-  color: red;
 }
 
 .info-section {
@@ -11197,5 +11196,43 @@ header nav {
 
 #welcome-blade .container .row .col-lg-12 .restaurant-card {
   width: 350px;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.categories-wrapper {
+  overflow-x: hidden;
+}
+
+.cat-row {
+  position: relative;
+}
+
+.card-size {
+  min-width: 200px;
+}
+
+.left,
+.right {
+  position: absolute;
+  font-size: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 7px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+
+.left {
+  left: -20px;
+}
+
+.right {
+  right: -20px;
 }
 

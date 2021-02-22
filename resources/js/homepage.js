@@ -9,7 +9,7 @@ var app = new Vue({
         restaurants: [],
         selectedRestaurants: [],
         selectedCategories: [],
-        url_base: "http://localhost:8000/storage/"
+        url_base: "http://localhost:8000/storage/",
     },
 
     methods: {
@@ -104,6 +104,13 @@ var app = new Vue({
             };
 
         },
+        moveRight() {
+            document.getElementById('cat').scrollLeft += 700;
+
+        },
+        moveLeft() {
+            document.getElementById('cat').scrollLeft -= 700;
+        }
 
     },
 

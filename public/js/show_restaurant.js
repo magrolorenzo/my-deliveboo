@@ -104,15 +104,15 @@ var app = new Vue({
   // ***************** Mounted
   mounted: function mounted() {// console.log(this.nome);
   }
-});
-var nome = document.getElementsByClassName("text-capitalize").innerHTML(); // var restaurant = {!! json_encode($restaurant) !!};
-// var restaurant = @json($restaurant->toArray());
-// var restaurant = {{$restaurant->toJson()}}
-// var nome = "{{ $restaurant->name }}";
-// localStorage.setItem('myCat', 'Tom');
-// console.log(localStorage.getItem("myCat"));
-
-console.log(nome);
+}); // var nome = document.getElementsByClassName("text-capitalize")[0].innerHTML();
+// // var restaurant = {!! json_encode($restaurant) !!};
+// // var restaurant = @json($restaurant->toArray());
+// // var restaurant = {{$restaurant->toJson()}}
+//
+// // var nome = "{{ $restaurant->name }}";
+// // localStorage.setItem('myCat', 'Tom');
+// // console.log(localStorage.getItem("myCat"));
+// console.log(nome);
 
 /***/ }),
 
@@ -123,7 +123,7 @@ console.log(nome);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\show_restaurant.js */"./resources/js/show_restaurant.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bool18\deliveboo\resources\js\show_restaurant.js */"./resources/js/show_restaurant.js");
 
 
 /***/ })

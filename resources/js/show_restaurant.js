@@ -31,7 +31,11 @@ var app = new Vue({
     }
 });
 
+<<<<<<< Updated upstream
 // var nome = document.getElementsById("prova").innerHTML();
+=======
+// var nome = document.getElementsByClassName("text-capitalize")[0].innerHTML();
+>>>>>>> Stashed changes
 // // var restaurant = {!! json_encode($restaurant) !!};
 // // var restaurant = @json($restaurant->toArray());
 // // var restaurant = {{$restaurant->toJson()}}
