@@ -1,3 +1,18 @@
-main {
-    
-} // end main
+#main-dashboard-wrapper {
+    height: calc(100vh - #{$dashboardHeaderHeight});
+
+    .row {
+        height: 100%;
+
+        // aside left nav-bar
+        #sidebarMenu {
+            height: 100%;
+        }
+
+        // main part -> content
+        main {
+
+        } // end main
+    }
+
+}

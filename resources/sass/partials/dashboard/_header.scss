@@ -1,5 +1,7 @@
 header {
-    #prova {
-        color: red;
+    height: $dashboardHeaderHeight;
+
+    nav {
+        height: $dashboardHeaderHeight;
     }
 } // fine header
