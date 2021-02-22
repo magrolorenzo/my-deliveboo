@@ -22,7 +22,7 @@
                     {{-- Select per selezionare il ristorante --}}
                     <div class="form-group w-30 d-inline-block">
                         <label>I miei ristoranti</label>
-                        <select name="restaurant_id">
+                        <select name="restaurant_id" v-model="restaurant_id">
                             <option value="">Seleziona un ristorante</option>
                             @foreach (Auth::user()->restaurants as $restaurant)
                                 <option value="{{$restaurant->id}}" {{old('restaurant_id') == $restaurant->id ? 'selected' : ''}}>

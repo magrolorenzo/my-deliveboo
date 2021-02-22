@@ -101,7 +101,8 @@ var app = new Vue({
     address: null,
     pIva: null,
     maxChars: 11,
-    price: null
+    price: null,
+    restaurant_id: null
   },
   methods: {
     validateForm: function validateForm(e) {
@@ -136,6 +137,10 @@ var app = new Vue({
 
       if (this.price < 0.01 || this.price > 1000) {
         this.errors.push('prezzo non valido');
+      }
+
+      if (!this.restaurant_id) {
+        this.errors.push('seleziona il ristorante!');
       }
 
       e.preventDefault();
