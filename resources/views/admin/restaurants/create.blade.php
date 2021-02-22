@@ -3,8 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div id="errors-root" class="col-md-8">
                 <h1>Ristorante</h1>
+                <div class="errors-list mt-4">
+                    <h1>test</h1>
+                </div>
                 <form action="{{route('admin.restaurants.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
