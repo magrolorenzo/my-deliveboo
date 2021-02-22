@@ -10944,6 +10944,44 @@ a.text-dark:focus {
   }
 }
 
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  display: inline-block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navbar {
+  background: linear-gradient(90deg, #ee5340 35%, rgba(238, 83, 64, 0.762342437) 100%);
+}
+
+.py-4 {
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
+.links {
+  font-size: 18px;
+}
+
+.links a {
+  color: white;
+}
+
 .title {
   font-size: 50px;
   color: red;
@@ -10995,6 +11033,27 @@ footer {
   color: white;
 }
 
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  display: inline-block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .navbar {
   background: linear-gradient(90deg, #ee5340 35%, rgba(238, 83, 64, 0.762342437) 100%);
 }
@@ -11010,5 +11069,23 @@ footer {
 
 .links a {
   color: white;
+}
+
+header {
+  height: 60px;
+}
+
+header nav {
+  height: 60px;
+}
+
+#main-dashboard-wrapper .row #sidebarMenu {
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+#main-dashboard-wrapper .row main {
+  height: calc(100vh - 60px);
+  overflow-y: auto;
 }
 

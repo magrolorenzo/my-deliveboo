@@ -4,14 +4,14 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
-//Sass
-@import "partials/_show.scss";
-@import "partials/_common";
 
 // Common
 @import "partials/variables";
 @import "partials/mixin";
 @import "partials/common";
+//Sass
+@import "partials/_show.scss";
+@import "partials/_common";
 
 // Dashboard
 @import "partials/dashboard/header";

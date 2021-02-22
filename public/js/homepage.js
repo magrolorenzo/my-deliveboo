@@ -145,7 +145,7 @@ var app = new Vue({
 
           if (remove_restaurant) {
             console.log("Ristorante con ID " + res.id + " rimosso");
-            this.restaurants.splice(res, 1);
+            this.restaurants.splice(i, 1);
             console.log(this.restaurants);
           }
 

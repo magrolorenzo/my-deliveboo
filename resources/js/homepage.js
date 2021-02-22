@@ -47,6 +47,7 @@ var app = new Vue({
                         //     console.log("** Categoria trovata **");
                         // };
                         // E non ha altre categorie selezionate
+
                         if(this.selectedCategories.includes( cat.id )){
                             remove_restaurant = false;
                             console.log("*** Non rimuovere");
@@ -56,7 +57,9 @@ var app = new Vue({
                     // rimuovo il ristorante dall'array
                     if(remove_restaurant){
                         console.log("Ristorante con ID " +res.id+ " rimosso");
-                        this.restaurants.splice(res,1);
+
+                        this.restaurants.splice(i,1);
+
                         console.log(this.restaurants);
                     };
                 };
