@@ -1,0 +1,19 @@
+#main-dashboard-wrapper {
+
+    .row {
+
+        // aside left nav-bar
+        #sidebarMenu {
+            height: calc(100vh - #{$dashboardHeaderHeight});
+            overflow-y: auto;
+        }
+
+        // main part -> content
+        main {
+            height: calc(100vh - #{$dashboardHeaderHeight});
+            overflow-y: auto;
+            
+        } // end main
+    }
+
+}
