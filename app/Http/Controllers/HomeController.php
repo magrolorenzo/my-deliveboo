@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Restaurant;
 
 class HomeController extends Controller
 {
@@ -11,7 +12,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-/*     public function __construct()
+    /*     public function __construct()
     {
         $this->middleware('auth');
     } */
@@ -24,5 +25,16 @@ class HomeController extends Controller
     public function index()
     {
         return view('guest.welcome');
+    }
+
+    public function show($slug)
+    {
+        $restaurant = Restaurant::where('slug', $slug)->first();
+
+        $data = [
+            'restaurant' => $restaurant
+        ];
+
+        return view('guest.show', $data);
     }
 }

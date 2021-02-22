@@ -19,7 +19,6 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-
     }
 
     /**
@@ -30,7 +29,7 @@ class RestaurantController extends Controller
     public function create()
     {
         $data = [
-            'categories'=> Category::all()
+            'categories' => Category::all()
         ];
         return view('admin.restaurants.create', $data);
     }
@@ -44,7 +43,7 @@ class RestaurantController extends Controller
     public function store(Request $request)
     {
         // VALIDATE
-        $request -> validate([
+        $request->validate([
             'name' => 'required|max:50',
             'address' => 'required|max:50',
             'piva' => 'required|digits:11',
@@ -53,7 +52,7 @@ class RestaurantController extends Controller
         ]);
 
         $form_data = $request->all();
-        if(array_key_exists("img_file", $form_data)){
+        if (array_key_exists("img_file", $form_data)) {
             $img_path = Storage::put("uploads/restaurant_covers", $form_data["img_file"]);
             $form_data["img_cover"] = $img_path;
         }
@@ -67,7 +66,7 @@ class RestaurantController extends Controller
         $restaurant_exist = Restaurant::where('slug', $slug)->first();
         $contatore = 1;
         // entro nel ciclo while se ho trovato un post con lo stesso $slug
-        while($restaurant_exist) {
+        while ($restaurant_exist) {
             // genero un nuovo slug aggiungendo il contatore alla fine
             $slug = $slug_base . '-' . $contatore;
             $contatore++;
@@ -107,10 +106,10 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::where('slug', $slug)->first();
         $user_id = Auth::user()->id;
 
-        if(!$restaurant) {
+        if (!$restaurant) {
             abort(404);
         }
-        if($user_id != $restaurant->user->id) {
+        if ($user_id != $restaurant->user->id) {
             // Aggiungere messaggio di errore per modifica piatto di un altro ristoratore
             abort(404);
         }
@@ -118,7 +117,7 @@ class RestaurantController extends Controller
 
 
         $data = [
-            'categories'=> Category::all(),
+            'categories' => Category::all(),
             'restaurant' => $restaurant
         ];
         return  view('admin.restaurants.edit', $data);
@@ -134,7 +133,7 @@ class RestaurantController extends Controller
     public function update(Request $request, Restaurant $restaurant)
     {
         // VALIDATE
-        $request -> validate([
+        $request->validate([
             'name' => 'required|max:50',
             'address' => 'required|max:50',
             'piva' => 'required|digits:11',
@@ -144,7 +143,7 @@ class RestaurantController extends Controller
 
         $form_data = $request->all();
 
-        if(array_key_exists("img_file", $form_data)){
+        if (array_key_exists("img_file", $form_data)) {
             $img_path = Storage::put("uploads/restaurant_covers", $form_data["img_file"]);
             $form_data["img_cover"] = $img_path;
         }
@@ -156,7 +155,7 @@ class RestaurantController extends Controller
             $restaurant_exist = Restaurant::where('slug', $slug)->first();
             $contatore = 1;
             // entro nel ciclo while se ho trovato un post con lo stesso $slug
-            while($restaurant_exist) {
+            while ($restaurant_exist) {
                 // genero un nuovo slug aggiungendo il contatore alla fine
                 $slug = $slug_base . '-' . $contatore;
                 $contatore++;
