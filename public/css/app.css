@@ -11130,3 +11130,7 @@ header nav {
   }
 }
 
+#main-dashboard-wrapper .row main .table .btn-column {
+  min-width: 320px;
+}
+
