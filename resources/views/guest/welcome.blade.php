@@ -22,11 +22,17 @@
             </div>
         </nav>
         <div class="container">
-            <div class="row">
-                <div class="d-flex  flex-wrap">
-                    <div @click="selectedCategory(category.id)" class="card col-lg-4" v-for="(category,index) in categories">
+            <div class="row cat-row">
+                <div class="d-flex flex-no-wrap category-container" id="cat">
+                    <div @click="selectedCategory(category.id)" class="card col-lg-4 card-size" v-for="(category,index) in categories">
                         <p>@{{category.name}}</p>
                     </div>
+                </div>
+                <div class="left" @click="leftClick">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="right" @click="rightClick">
+                    <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
         </div>

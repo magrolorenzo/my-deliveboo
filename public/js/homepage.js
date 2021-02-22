@@ -153,6 +153,12 @@ var app = new Vue({
 
         this.selectedCategories.push(category_id);
       }
+    },
+    rightClick: function rightClick() {
+      document.getElementById('cat').scrollLeft += 700;
+    },
+    leftClick: function leftClick() {
+      document.getElementById('cat').scrollLeft -= 700;
     }
   },
   mounted: function mounted() {
