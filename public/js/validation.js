@@ -93,7 +93,6 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
 var app = new Vue({
   el: '#errors-root',
   data: {
@@ -101,7 +100,8 @@ var app = new Vue({
     name: null,
     address: null,
     pIva: null,
-    maxChars: 11
+    maxChars: 11,
+    price: null
   },
   methods: {
     validateForm: function validateForm(e) {
@@ -125,12 +125,23 @@ var app = new Vue({
       }
 
       e.preventDefault();
+    },
+    validateDish: function validateDish(e) {
+      //svuota array
+      this.errors = []; //campi non vuoti
+
+      if (!this.name) {
+        this.errors.push('inserisci nome!');
+      }
+
+      if (this.price < 0.01 || this.price > 1000) {
+        this.errors.push('prezzo non valido');
+      }
+
+      e.preventDefault();
     }
   }
 });
-=======
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'C:\\MAMP\\htdocs\\boolean\\deliveboo\\resources\\js\\validation.js'");
->>>>>>> fix_categories
 
 /***/ }),
 
