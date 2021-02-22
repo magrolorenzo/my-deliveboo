@@ -6,7 +6,7 @@
             <div id="errors-root" class="col-md-8">
                 <h1>Ristorante</h1>
                 <div class="errors-list mt-4 mb-4" v-if="errors.length">
-                    <p class="alert-danger m-0" v-for="error in errors">@{{ error }}</p>
+                    <p class="alert-danger m-0" v-for="error in errors"> @{{ error }} </p>
                 </div>
                 <form action="{{route('admin.restaurants.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
