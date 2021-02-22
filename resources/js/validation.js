@@ -8,7 +8,7 @@ var app = new Vue ({
         maxChars : 11
     },
     methods : {
-        validateForm(e) {
+        validateForm : function(e) {
 
             //svuota array
             this.errors = [];
