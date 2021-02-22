@@ -9,7 +9,7 @@
     <div id="app">
 
         {{-- Navbar con search bar --}}
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-light">
             <div class="container d-flex justify-content-center">
                 <div class="input-group w-50">
                     <input type="text" class="form-control" placeholder="Ristoranti, tipi di cucina...">
@@ -20,64 +20,44 @@
                     </div>
                 </div>
             </div>
-        </nav>
-        <div class="container">
+        </nav> --}}
+
+        <div class="container mb-4">
             <div class="row">
-                <div class="d-flex  flex-wrap">
-                    <div @click="selectedCategory(category.id)" class="card col-lg-4" v-for="(category,index) in categories">
-                        <p>@{{category.name}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="d-flex  flex-wrap">
-                    <div class="card col-lg-4" v-for="(restaurant,index) in restaurants">
-                        <p>@{{restaurant.name}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- Container con carte --}}
-        <div class="container">
-
-            <div class="row">
-
                 <div class="d-flex flex-wrap">
+                    <div v-for="(category,index) in categories" class="btn ml-2" :class="selectedCategories.includes(category.id)? 'btn-warning' : 'btn-primary'" @click="selectedCategory(category.id)"  >
+                        <span>@{{category.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                    <div class="card col-lg-4" v-for="(dish,index) in dishes">
-
-                        <img :src="url_base + dishes[index].img_cover" alt="" class="card-img-top" />
-
+        <div class="container">
+            <div class="row">
+                <div class="d-flex flex-wrap col-lg-12">
+                    <div class="card  " v-for="(restaurant,index) in restaurants">
+                        {{-- Info ristorante --}}
                         <div class="card-body">
-                            <h1>@{{ dishes[index].id }} - @{{ dishes[index].name }}</h1>
+                            <h5>@{{ restaurant.id }} - @{{ restaurant.name }}</h5>
                             <p class="card-text">
-                                @{{ dishes[index].ingredients }}
+                                <strong>Indirizzo:</strong> @{{ restaurant.address }}
                             </p>
                             <p class="card-text">
-                                @{{ dishes[index].description }}
+                                <strong>P.IVA:</strong> @{{restaurant.piva }}
                             </p>
                             <p class="card-text">
-                                @{{ dishes[index].unit_price }} €
+                                <strong>Categorie:</strong> <span v-for="category in restaurant.categories"> @{{category.name}}</span>
                             </p>
-                            <p class="card-text">
-                                @{{ dishes[index].visible }}
-                            </p>
-                            <a href="" class="btn btn-outline-success btn-sm">Read More</a>
-                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
                         </div>
 
+                        {{-- Immagine cover ristorante --}}
+                        <div class="cover-container">
+                            {{-- <img :src="url_base + restaurant.img_cover" alt="" class="card-img-top" /> --}}
+                        </div>
                     </div>
-
-                </div>{{-- Chiusura Column --}}
-
-            </div>{{-- Chiusura Row --}}
-
-        </div> {{-- Chiusura container --}}
-
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection
