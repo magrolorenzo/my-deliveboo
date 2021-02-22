@@ -2,11 +2,11 @@
 @section('page-title', 'Welcome Page')
 
 @section('script')
-<script src="{{ asset('js/homepage.js') }}" defer></script>
+    <script src="{{ asset('js/homepage.js') }}" defer></script>
 @endsection
 
 @section('content')
-<div id="app">
+    <div id="app">
 
         {{-- Navbar con search bar --}}
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -31,7 +31,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
         <div class="container">
             <div class="row">
@@ -60,7 +59,5 @@
             </div>
         </div>
     </div>
-
-</div>
 
 @endsection
