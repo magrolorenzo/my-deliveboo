@@ -10966,7 +10966,7 @@ a {
 }
 
 .navbar {
-  background: linear-gradient(90deg, #ee5340 35%, rgba(238, 83, 64, 0.762342437) 100%);
+  background-color: #ffad00;
 }
 
 .py-4 {
@@ -10982,44 +10982,14 @@ a {
   color: white;
 }
 
-.title {
-  font-size: 50px;
-  color: red;
-}
-
-.info-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.info-container-left h1 {
-  font-size: 50px;
-}
-
-.dish-container {
-  padding: 20px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.info-section {
-  padding: 20px;
-  border-top: 1px solid silver;
-  border-bottom: 1px solid silver;
-}
-
-.dishes-section {
-  background-color: #eeeeee;
-}
-
 footer {
   padding: 20px 0 20px 0;
-  background: linear-gradient(90deg, #ee5340 35%, rgba(238, 83, 64, 0.762342437) 100%);
+  background-color: #ffad00;
 }
 
 .footer-container-top {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .footer-container-bottom {
@@ -11031,6 +11001,53 @@ footer {
 
 .footer-container-bottom small {
   color: white;
+}
+
+.title {
+  font-size: 50px;
+  color: red;
+}
+
+.info-section {
+  background-color: #a0d1ca;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-container-left h1 {
+  font-size: 50px;
+}
+
+.menu-title {
+  padding-top: 20px;
+}
+
+.dish-container {
+  padding: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.info-section {
+  padding: 50px;
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+}
+
+.dishes-section {
+  background-color: #eeeeee;
+}
+
+.btn-primary {
+  background-color: #bd472a;
+  border-color: #bd472a;
+}
+
+.info-res {
+  color: #828585;
 }
 
 body {
@@ -11055,7 +11072,7 @@ a {
 }
 
 .navbar {
-  background: linear-gradient(90deg, #ee5340 35%, rgba(238, 83, 64, 0.762342437) 100%);
+  background-color: #ffad00;
 }
 
 .py-4 {
@@ -11068,6 +11085,27 @@ a {
 }
 
 .links a {
+  color: white;
+}
+
+footer {
+  padding: 20px 0 20px 0;
+  background-color: #ffad00;
+}
+
+.footer-container-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-container-bottom {
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-container-bottom small {
   color: white;
 }
 

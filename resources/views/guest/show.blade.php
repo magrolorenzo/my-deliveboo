@@ -16,8 +16,16 @@
 
                         <div class="info-container-left">
                             <h1 class="text-capitalize">{{ $restaurant->name }}</h1>
-                            <h5>Italiano-Pizza-Aperti fino alle 23:59-Consegna gratuita-Distanza: 1.10 km</h5>
-                            <h5 class="address"> Indirizzo: {{ $restaurant->address}}</h5>
+                            <h5 class="info-res">
+                                <span><i class="fas fa-utensils"></i></span> Categoria:
+                                @foreach ($restaurant->categories as $category)
+                                {{ $category->name }}
+                                @endforeach
+                            </h5>
+                            <h5> <span><i class="fas fa-shipping-fast"></i></span> Consegna gratuita</h5>
+
+                            <h5>{{ $restaurant->category }}</h5>
+                            <h5 class="address"> <span><i class="fas fa-map-marker-alt"></i></span> Indirizzo: {{ $restaurant->address}}</h5>
                         </div>
                         <div class="info-container-right">
                             <img src="https://picsum.photos/400/400?random=1" alt="">
@@ -38,6 +46,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
+                    <div class="menu-title">
+                        <h1>Menù</h1>
+
+                    </div>
                     <div class="dish-container">
                         @foreach ($restaurant->dishes as $dish)
                         <div class="card" style="width: 18rem;">
@@ -47,7 +59,7 @@
                                 <p class="card-text">{{ $dish->ingredients }}</p>
                                 <p class="card-text">{{ $dish->description }}</p>
                                 <h5 class="card-text"> {{ $dish->unit_price }}</h5>
-                                <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
+                                <a id="chart-button" href="#" class="btn btn-primary">Aggiungi al carrello</a>
                             </div>
                         </div>
                         @endforeach
