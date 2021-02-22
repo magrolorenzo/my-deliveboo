@@ -10976,20 +10976,39 @@ a.text-dark:focus {
 
 footer {
   padding: 20px 0 20px 0;
-  background-color: #ee5340;
+  background: linear-gradient(90deg, #ee5340 35%, rgba(238, 83, 64, 0.762342437) 100%);
 }
 
-.footer-container {
+.footer-container-top {
   display: flex;
   justify-content: space-evenly;
 }
 
+.footer-container-bottom {
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-container-bottom small {
+  color: white;
+}
+
 .navbar {
-  background-color: #ee5340;
+  background: linear-gradient(90deg, #ee5340 35%, rgba(238, 83, 64, 0.762342437) 100%);
 }
 
 .py-4 {
   padding-bottom: 0 !important;
   padding-top: 0 !important;
+}
+
+.links {
+  font-size: 18px;
+}
+
+.links a {
+  color: white;
 }
 

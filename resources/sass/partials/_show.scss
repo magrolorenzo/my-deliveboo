@@ -32,10 +32,24 @@
 
 footer {
     padding: 20px 0 20px 0;
-    background-color: #ee5340;
+    background: linear-gradient(
+        90deg,
+        rgba(238, 83, 64, 1) 35%,
+        rgba(238, 83, 64, 0.76234243697479) 100%
+    );
 }
 
-.footer-container {
+.footer-container-top {
     display: flex;
     justify-content: space-evenly;
+}
+
+.footer-container-bottom {
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    small {
+        color: white;
+    }
 }
