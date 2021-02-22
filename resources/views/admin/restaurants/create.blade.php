@@ -6,7 +6,7 @@
             <div id="errors-root" class="col-md-8">
                 <h1>Ristorante</h1>
                 <div class="errors-list mt-4" v-for="error in errors">
-                    <p class="error-message">{{ error }}</p>
+                    @{{ error }}
                 </div>
                 <form action="{{route('admin.restaurants.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -62,4 +62,5 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/validation.js') }}" defer></script>
 @endsection
