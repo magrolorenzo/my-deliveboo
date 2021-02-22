@@ -9,6 +9,7 @@
 @import "partials/variables";
 @import "partials/mixin";
 @import "partials/common";
+
 //Sass
 @import "partials/_show.scss";
 @import "partials/_common";
@@ -17,3 +18,6 @@
 @import "partials/dashboard/header";
 @import "partials/dashboard/main";
 @import "partials/dashboard/footer";
+
+@import "partials/dashboard/home";
+@import "partials/dashboard/dishes";

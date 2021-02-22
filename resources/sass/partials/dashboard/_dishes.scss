@@ -1,0 +1,19 @@
+#main-dashboard-wrapper {
+
+    .row {
+
+        // main part -> content
+        main {
+
+            // VIEW dishes.index
+            // -> tabella con tutti i piatti
+            .table {
+                .btn-column {
+                    min-width: 320px;
+                }
+            }
+
+        } // end main
+    }
+
+}

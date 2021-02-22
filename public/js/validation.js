@@ -93,7 +93,6 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
 var app = new Vue({
   el: '#errors-root',
   data: {
@@ -128,9 +127,6 @@ var app = new Vue({
     }
   }
 });
-=======
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'C:\\MAMP\\htdocs\\boolean\\deliveboo\\resources\\js\\validation.js'");
->>>>>>> fix_categories
 
 /***/ }),
 
@@ -141,7 +137,7 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\validation.js */"./resources/js/validation.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\proj_boolean\20210214_deliveboo\deliveboo\resources\js\validation.js */"./resources/js/validation.js");
 
 
 /***/ })
