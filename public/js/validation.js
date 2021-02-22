@@ -120,7 +120,7 @@ var app = new Vue({
       }
 
       if (this.pIva.length < this.maxChars) {
-        this.errors.push('la partiva iva deve essere di 11 caratteri!');
+        this.errors.push('la partiva iva deve essere di ' + this.maxChars + ' caratteri!');
       }
 
       e.preventDefault();
