@@ -5,7 +5,7 @@ var app = new Vue ({
         name : null,
         address : null,
         pIva : null,
-        maxChar : 11
+        maxChars : 11
     },
     methods : {
 
