@@ -16,6 +16,7 @@
 
                         <div class="info-container-left">
                             <h1 class="text-capitalize">{{ $restaurant->name }}</h1>
+                            <h5>Italiano-Pizza-Aperti fino alle 23:59-Consegna gratuita-Distanza: 1.10 km</h5>
                             <h5 class="address"> Indirizzo: {{ $restaurant->address}}</h5>
                         </div>
                         <div class="info-container-right">
