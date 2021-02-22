@@ -17,22 +17,23 @@ var app = new Vue({
         selectedCategory(category_id) {
 
             console.log("ID cateogria selezionata: " + category_id);
+            console.log("Le categorie sono: " + this.selectedCategories);
 
-            /* se la categoria è già stata selezionata, la togli dall'array */
+            // Se la categoria selezionata è gia presente, deseleziono i risultati
             if (this.selectedCategories.includes(category_id)) {
 
                 console.log("Categoria già selezionata, rimuvore dal filtro");
 
                 // Rimuovo category_id dall'array dei filtri applicati
                 this.selectedCategories = this.selectedCategories.filter(item => item !== category_id);
-
+                console.log("Le categorie sono: " + this.selectedCategories);
                 // Rimuovo i ristoranti che hanno SOLO la categoria deselezionata
                 // this.restaurants = this.restaurants.filter(item => item.categories[0].id !== category_id);
 
                 // Ciclo i ristoranti
                 for (var i = 0; i < this.restaurants.length; i++) {
                     let res = this.restaurants[i];
-                    let remove_restaurant = false;
+                    let remove_restaurant = true;
 
                     // Ciclo gli obj categorie di ogniuno
 
@@ -41,26 +42,28 @@ var app = new Vue({
                         let cat =  res.categories[j];
 
                         // Se la categoria attuale del ristorante è quella deselezionata
-                        if(cat.id == category_id){
-                            remove_restaurant = true;
-                        };
+                        // if(cat.id == category_id){
+                        //     remove_restaurant = true;
+                        //     console.log("** Categoria trovata **");
+                        // };
                         // E non ha altre categorie selezionate
                         if(this.selectedCategories.includes( cat.id )){
                             remove_restaurant = false;
+                            console.log("*** Non rimuovere");
                         };
                     };
 
                     // rimuovo il ristorante dall'array
                     if(remove_restaurant){
-                        console.log("Ristorante con ID " +this.restaurants[i].id+ " rimosso");
-                        this.restaurants = this.restaurants.splice(this.restaurants[i]   );
+                        console.log("Ristorante con ID " +res.id+ " rimosso");
+                        this.restaurants.splice(res,1);
                         console.log(this.restaurants);
                     };
                 };
 
 
                 // Se non hai più categorie selezionate, mostra tutti i ristoranti
-                if (this.restaurants.length == 0) {
+                if (this.selectedCategories.length == 0) {
                     console.log("Ripopolo la homepage con tutti i ristoranti");
                     axios.get("http://localhost:8000/api/restaurants").then(restaurants => {
                         let restaurant = restaurants.data.results;
@@ -76,6 +79,7 @@ var app = new Vue({
                     axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(response => {
                         let restaurant = response.data.results;
                         this.restaurants = restaurant;
+                        console.log(this.restaurants);
                     });
 
                 } else {
@@ -87,12 +91,15 @@ var app = new Vue({
                             restaurant = restaurant.filter(item => item.id !== this.restaurants[index].id);
                         }
                         this.restaurants = this.restaurants.concat(restaurant);
-
+                        console.log(this.restaurants);
                     });
                 }
+
                 // Aggiunngo id della cateogria selezionata
                 this.selectedCategories.push(category_id);
-            }
+                console.log("Le categorie sono: " + this.selectedCategories);
+            };
+
         },
 
     },

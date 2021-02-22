@@ -35,7 +35,7 @@
         <div class="container">
             <div class="row">
                 <div class="d-flex flex-wrap col-lg-12">
-                    <div class="card  " v-for="(restaurant,index) in restaurants">
+                    <div class="card " v-for="(restaurant,index) in restaurants">
                         {{-- Info ristorante --}}
                         <div class="card-body">
                             <h5>@{{ restaurant.id }} - @{{ restaurant.name }}</h5>
