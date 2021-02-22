@@ -48,7 +48,7 @@ class RestaurantController extends Controller
             'name' => 'required|max:50',
             'address' => 'required|max:50',
             'piva' => 'required|digits:11',
-            'img_file' => 'nullable|image|max:512',
+            'img_file' => 'nullable|mimes:jpg,jpeg,png,bmp|max:512',
             'categories' => 'required|exists:categories,id'
         ]);
 
@@ -138,7 +138,7 @@ class RestaurantController extends Controller
             'name' => 'required|max:50',
             'address' => 'required|max:50',
             'piva' => 'required|digits:11',
-            'img_file' => 'nullable|image|max:512',
+            'img_file' => 'nullable|mimes:jpg,jpeg,png,bmp|max:512',
             'categories' => 'required|exists:categories,id'
         ]);
 

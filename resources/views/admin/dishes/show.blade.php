@@ -22,7 +22,7 @@
                         </div>
                         <div>
                             @if($dish->img_cover)
-                                <img src="{{asset("storage/".$restaurant->img_cover)}}" alt="{{$dish->name}}" class="w-50">
+                                <img src="{{asset("storage/".$dish->img_cover)}}" alt="{{$dish->name}}" class="w-50">
                             @else
                                 <p>Nessuna immagine caricata</p>
                             @endif

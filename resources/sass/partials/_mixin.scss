@@ -1,0 +1,13 @@
+@mixin clearfix {
+    display: table; clear: both; content: '';
+}
+
+@mixin flex($direction, $justify, $align) {
+    display: flex; flex-direction: $direction;
+    justify-content: $justify; align-items: $align;
+}
+
+@mixin posAbs($top, $right, $left, $btm) {
+    position: absolute;
+    top: $top; right: $right; left: $left; bottom: $btm;
+}

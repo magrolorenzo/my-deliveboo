@@ -9,20 +9,22 @@ use App\Category;
 
 class RestaurantController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $restaurants = Restaurant::all();
         return response()->json([
-            'success'=> true,
-            'results'=> $restaurants
+            'success' => true,
+            'results' => $restaurants
         ]);
     }
 
-    public function filtered($id){
+    public function filtered($id)
+    {
         $categoria = Category::find($id);
-        $pippo = $categoria->restaurants;
+        $ristoranti_selezionati = $categoria->restaurants;
         return response()->json([
-            'success'=> true,
-            'results'=> $pippo
+            'success' => true,
+            'results' => $ristoranti_selezionati
         ]);
     }
 }

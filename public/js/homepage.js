@@ -101,21 +101,58 @@ var app = new Vue({
     dishes: [],
     categories: [],
     restaurants: [],
+    selectedRestaurants: [],
+    selectedCategories: [],
     url_base: "http://localhost:8000/storage/"
   },
   methods: {
     selectedCategory: function selectedCategory(category_id) {
       var _this = this;
 
-      axios.get("http://localhost:8000/api/restaurants", {
-        params: {
-          category_id: category_id
+      /* se la categoria è stata selezionata la togli dall'array */
+      if (this.selectedCategories.includes(category_id)) {
+        this.selectedCategories = this.selectedCategories.filter(function (item) {
+          return item !== category_id;
+        });
+        this.restaurants = this.restaurants.filter(function (item) {
+          return item.pivot.category_id !== category_id;
+        });
+
+        if (this.restaurants.length == 0) {
+          axios.get("http://localhost:8000/api/restaurants").then(function (restaurants) {
+            var restaurant = restaurants.data.results;
+            _this.restaurants = restaurant;
+          });
         }
-      }).then(function (restaurants) {
-        var restaurant = restaurants.data.results;
-        _this.restaurants = restaurant;
-        console.log(_this.restaurants);
-      });
+      } else {
+        /* se è la prima categoria selezionata svuoto array e richiamo dati con chiamata all'api */
+        if (this.selectedCategories.length == 0) {
+          this.restaurants = [];
+          axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(function (response) {
+            var restaurant = response.data.results;
+            _this.restaurants = restaurant;
+          });
+        } else {
+          /* se seleziono una categoria non presente aggiungo i risultati ai dati precedenti */
+          axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(function (response) {
+            var restaurant = response.data.results;
+
+            var _loop = function _loop(index) {
+              restaurant = restaurant.filter(function (item) {
+                return item.id !== _this.restaurants[index].id;
+              });
+            };
+
+            for (var index = 0; index < _this.restaurants.length; index++) {
+              _loop(index);
+            }
+
+            _this.restaurants = _this.restaurants.concat(restaurant);
+          });
+        }
+
+        this.selectedCategories.push(category_id);
+      }
     }
   },
   mounted: function mounted() {
@@ -145,7 +182,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bool18\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\proj_boolean\20210214_deliveboo\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
 
 
 /***/ })
