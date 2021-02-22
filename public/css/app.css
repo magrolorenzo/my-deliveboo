@@ -10944,3 +10944,24 @@ a.text-dark:focus {
   }
 }
 
+.title {
+  font-size: 50px;
+  color: red;
+}
+
+.container {
+  border: 2px solid black;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.dish-container {
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
