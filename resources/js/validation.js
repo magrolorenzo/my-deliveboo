@@ -33,6 +33,10 @@ var app = new Vue ({
             e.preventDefault();
         },
 
-        
+        validateDish : function(e) {
+
+
+            e.preventDefault();
+        }
     },
 });
