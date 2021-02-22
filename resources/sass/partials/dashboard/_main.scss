@@ -6,6 +6,17 @@
         #sidebarMenu {
             height: calc(100vh - #{$dashboardHeaderHeight});
             overflow-y: auto;
+
+            ul.nav {
+                li.nav-item {
+                    min-height: 50px;
+                    i {
+                        display: inline-block;
+                        width: 40px;
+                        text-align: center;
+                    }
+                }
+            }
         }
 
         // main part -> content

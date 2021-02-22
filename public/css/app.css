@@ -11084,6 +11084,16 @@ header nav {
   overflow-y: auto;
 }
 
+#main-dashboard-wrapper .row #sidebarMenu ul.nav li.nav-item {
+  min-height: 50px;
+}
+
+#main-dashboard-wrapper .row #sidebarMenu ul.nav li.nav-item i {
+  display: inline-block;
+  width: 40px;
+  text-align: center;
+}
+
 #main-dashboard-wrapper .row main {
   height: calc(100vh - 60px);
   overflow-y: auto;
