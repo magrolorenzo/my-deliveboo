@@ -11160,6 +11160,7 @@ header nav {
   overflow-y: auto;
 }
 
+<<<<<<< HEAD
 #main-dashboard-wrapper .row main .restaurant-dashboard-card {
   flex-direction: column-reverse;
 }
@@ -11193,5 +11194,9 @@ header nav {
 
 #main-dashboard-wrapper .row main .table .btn-column {
   min-width: 320px;
+=======
+#welcome-blade .container .row .col-lg-12 .restaurant-card {
+  width: 350px;
+>>>>>>> fix_homepage
 }
 
