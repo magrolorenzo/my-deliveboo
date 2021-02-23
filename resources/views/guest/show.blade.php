@@ -15,7 +15,7 @@
                     <div class="info-container">
 
                         <div class="info-container-left">
-                            <h1 class="text-capitalize">{{ $restaurant->name }}</h1>
+                            <h1 id="restaurant-name" class="text-capitalize">{{ $restaurant->name }}</h1>
                             <h5 class="info-res">
                                 <span><i class="fas fa-utensils"></i></span> Categoria:
                                 @foreach ($restaurant->categories as $category)
@@ -137,9 +137,9 @@
         </div>
 
     </footer>
-    @php
+    {{-- @php
         echo json_encode($restaurant);
-    @endphp
+    @endphp --}}
 </div>
 
 @endsection
