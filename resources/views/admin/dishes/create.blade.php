@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+        <div class="">
+
+        </div>
         <div class="row justify-content-center">
             <div id="errors-root" class="col-md-8">
                 <h1>Crea nuovo piatto</h1>
