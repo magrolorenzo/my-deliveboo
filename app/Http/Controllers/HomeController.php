@@ -32,7 +32,8 @@ class HomeController extends Controller
         $restaurant = Restaurant::where('slug', $slug)->first();
 
         $data = [
-            'restaurant' => $restaurant
+            'restaurant' => $restaurant,
+            "js_r" => $restaurant->toJson()
         ];
 
         return view('guest.show', $data);

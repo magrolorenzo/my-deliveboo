@@ -2,7 +2,7 @@
 @section('page-title', 'Welcome Page')
 
 @section('script')
-<script src="{{ asset('js/homepage.js') }}" defer></script>
+<script src="{{ asset('js/show_restaurant.js') }}" defer></script>
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
                     <div class="info-container">
 
                         <div class="info-container-left">
-                            <h1 class="text-capitalize">{{ $restaurant->name }}</h1>
+                            <h1 class="text-capitalize" >{{ $restaurant->name }}</h1>
                             <h5>Italiano-Pizza-Aperti fino alle 23:59-Consegna gratuita-Distanza: 1.10 km</h5>
                             <h5 class="address"> Indirizzo: {{ $restaurant->address}}</h5>
                         </div>
@@ -23,7 +23,6 @@
                             <img src="https://picsum.photos/400/400?random=1" alt="">
                             <!-- {{asset("storage/".$restaurant->img_cover)}} -->
                         </div>
-
 
                     </div>
                 </div>
@@ -55,6 +54,11 @@
                 </div>
 
             </div>
+
+            <div class="">
+                <p >  </p>
+            </div>
+
         </div>
 
     </div>
@@ -121,7 +125,9 @@
         </div>
 
     </footer>
-
+    @php
+        echo json_encode($restaurant);
+    @endphp
 </div>
 
 @endsection
