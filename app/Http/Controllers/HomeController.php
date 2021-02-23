@@ -30,12 +30,12 @@ class HomeController extends Controller
     public function show($slug)
     {
         $restaurant = Restaurant::where('slug', $slug)->first();
-
-        $data = [
-            'restaurant' => $restaurant,
-            "js_r" => $restaurant->toJson()
-        ];
-
-        return view('guest.show', $data);
+        if ($restaurant) {
+            $data = [
+                'restaurant' => $restaurant
+            ];
+            return view('guest.show', $data);
+        }
+        abort(404);
     }
 }

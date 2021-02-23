@@ -15,12 +15,20 @@
                     <div class="info-container">
 
                         <div class="info-container-left">
-                            <h1 class="text-capitalize" >{{ $restaurant->name }}</h1>
-                            <h5>Italiano-Pizza-Aperti fino alle 23:59-Consegna gratuita-Distanza: 1.10 km</h5>
-                            <h5 class="address"> Indirizzo: {{ $restaurant->address}}</h5>
+                            <h1 class="text-capitalize">{{ $restaurant->name }}</h1>
+                            <h5 class="info-res">
+                                <span><i class="fas fa-utensils"></i></span> Categoria:
+                                @foreach ($restaurant->categories as $category)
+                                {{ $category->name }}
+                                @endforeach
+                            </h5>
+                            <h5> <span><i class="fas fa-shipping-fast"></i></span> Consegna gratuita</h5>
+
+                            <h5>{{ $restaurant->category }}</h5>
+                            <h5 class="address"> <span><i class="fas fa-map-marker-alt"></i></span> Indirizzo: {{ $restaurant->address}}</h5>
                         </div>
                         <div class="info-container-right">
-                            <img src="https://picsum.photos/400/400?random=1" alt="">
+                            <img src="https://picsum.photos/400/300?random=1" alt="">
                             <!-- {{asset("storage/".$restaurant->img_cover)}} -->
                         </div>
 
@@ -37,16 +45,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
+                    <div class="menu-title">
+                        <h1 class="text-uppercase">Menù</h1>
+
+                    </div>
                     <div class="dish-container">
                         @foreach ($restaurant->dishes as $dish)
                         <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="https://picsum.photos/100/100?random=1" alt="Card image cap">
+                            <img class="card-img-top-show" src="https://picsum.photos/286/180?random=1" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $dish->name }}</h5>
                                 <p class="card-text">{{ $dish->ingredients }}</p>
                                 <p class="card-text">{{ $dish->description }}</p>
                                 <h5 class="card-text"> {{ $dish->unit_price }}</h5>
-                                <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
+                                <a id="chart-button" href="#" class="btn btn-primary">Aggiungi al carrello</a>
                             </div>
                         </div>
                         @endforeach
