@@ -11027,7 +11027,7 @@ footer {
 }
 
 .info-container-left h5 {
-  color: #828585;
+  font-size: 16px;
 }
 
 .menu-title {
@@ -11064,7 +11064,7 @@ footer {
   border-color: #bd472a;
 }
 
-.card-img-top {
+.card-img-top-show {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
@@ -11160,7 +11160,6 @@ header nav {
   overflow-y: auto;
 }
 
-<<<<<<< HEAD
 #main-dashboard-wrapper .row main .restaurant-dashboard-card {
   flex-direction: column-reverse;
 }
@@ -11194,9 +11193,9 @@ header nav {
 
 #main-dashboard-wrapper .row main .table .btn-column {
   min-width: 320px;
-=======
+}
+
 #welcome-blade .container .row .col-lg-12 .restaurant-card {
   width: 350px;
->>>>>>> fix_homepage
 }
 
