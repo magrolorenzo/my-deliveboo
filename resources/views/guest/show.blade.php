@@ -28,7 +28,7 @@
                             <h5 class="address"> <span><i class="fas fa-map-marker-alt"></i></span> Indirizzo: {{ $restaurant->address}}</h5>
                         </div>
                         <div class="info-container-right">
-                            <img src="https://picsum.photos/400/400?random=1" alt="">
+                            <img src="https://picsum.photos/400/300?random=1" alt="">
                             <!-- {{asset("storage/".$restaurant->img_cover)}} -->
                         </div>
 
@@ -47,13 +47,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="menu-title">
-                        <h1>Menù</h1>
+                        <h1 class="text-uppercase">Menù</h1>
 
                     </div>
                     <div class="dish-container">
                         @foreach ($restaurant->dishes as $dish)
                         <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="https://picsum.photos/100/100?random=1" alt="Card image cap">
+                            <img class="card-img-top" src="https://picsum.photos/286/180?random=1" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $dish->name }}</h5>
                                 <p class="card-text">{{ $dish->ingredients }}</p>

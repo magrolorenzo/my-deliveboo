@@ -11003,13 +11003,17 @@ footer {
   color: white;
 }
 
+.navbar-brand {
+  font-size: 30px;
+}
+
 .title {
   font-size: 50px;
   color: red;
 }
 
 .info-section {
-  background-color: #a0d1ca;
+  background-color: #71dbd4;
 }
 
 .info-container {
@@ -11018,11 +11022,21 @@ footer {
 }
 
 .info-container-left h1 {
-  font-size: 50px;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.info-container-left h5 {
+  color: #828585;
 }
 
 .menu-title {
   padding-top: 20px;
+}
+
+.menu-title h1 {
+  font-size: 40px;
+  font-weight: 600;
 }
 
 .dish-container {
@@ -11041,13 +11055,18 @@ footer {
   background-color: #eeeeee;
 }
 
+.dishes-section .card {
+  border-radius: 20px;
+}
+
 .btn-primary {
   background-color: #bd472a;
   border-color: #bd472a;
 }
 
-.info-res {
-  color: #828585;
+.card-img-top {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 body {
@@ -11107,6 +11126,10 @@ footer {
 
 .footer-container-bottom small {
   color: white;
+}
+
+.navbar-brand {
+  font-size: 30px;
 }
 
 header {
