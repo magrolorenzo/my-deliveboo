@@ -27,7 +27,7 @@
 
                             {{-- Cover image --}}
                             <div v-if="restaurant.img_cover"  class="cover-container">
-                                <img :src="url_base + restaurant.img_cover" :title="restaurant.id + ' - ' + restaurant.name" class="card-img-top  w-100" />
+                                <img :src="url_base + restaurant.img_cover" :title="restaurant.id + ' - ' + restaurant.name" class="card-img-top " />
                             </div>
                             <div  v-else class="card-header">
                                 <span>Immagine non presente</span>
@@ -46,7 +46,7 @@
                                 </p>
 
                                 <div>
-                                    
+
                                     <a :href="'/show/'+restaurant.slug" class="btn btn-success">
                                         Visualizza
                                     </a>
