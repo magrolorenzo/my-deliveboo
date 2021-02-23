@@ -5,7 +5,9 @@ var app = new Vue ({
         name : null,
         address : null,
         pIva : null,
-        maxChars : 11
+        maxChars : 11,
+        price : null,
+        restaurant_id : null
     },
     methods : {
         validateForm : function(e) {
@@ -28,6 +30,27 @@ var app = new Vue ({
 
             if(this.pIva.length < this.maxChars) {
                 this.errors.push('la partiva iva deve essere di ' + this.maxChars +' caratteri!')
+            }
+
+            e.preventDefault();
+        },
+
+        validateDish : function(e) {
+
+            //svuota array
+            this.errors = [];
+
+            //campi non vuoti
+            if(!this.name) {
+                this.errors.push('inserisci nome!');
+            }
+
+            if(this.price < 0.01 || this.price > 1000) {
+                this.errors.push('prezzo non valido');
+            }
+
+            if(!this.restaurant_id){
+                this.errors.push('seleziona il ristorante!');
             }
 
             e.preventDefault();
