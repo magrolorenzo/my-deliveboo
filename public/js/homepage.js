@@ -153,6 +153,12 @@ var app = new Vue({
 
         this.selectedCategories.push(category_id);
       }
+    },
+    rightClick: function rightClick() {
+      document.getElementById('cat').scrollLeft += 700;
+    },
+    leftClick: function leftClick() {
+      document.getElementById('cat').scrollLeft -= 700;
     }
   },
   mounted: function mounted() {
@@ -182,7 +188,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\proj_boolean\20210214_deliveboo\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bool18\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
 
 
 /***/ })

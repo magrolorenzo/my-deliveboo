@@ -32,14 +32,14 @@ var app = new Vue({
                         let restaurant = response.data.results;
                         this.restaurants = restaurant;
                     });
-                    
+
                 } else {
                     /* se seleziono una categoria non presente aggiungo i risultati ai dati precedenti */
                     axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(response => {
                         let restaurant = response.data.results;
                         for (let index = 0; index < this.restaurants.length; index++) {
                             restaurant = restaurant.filter(item => item.id !== this.restaurants[index].id);
-                            
+
                         }
                         this.restaurants = this.restaurants.concat(restaurant);
 
@@ -48,7 +48,12 @@ var app = new Vue({
                 this.selectedCategories.push(category_id);
             }
         },
-
+        rightClick() {
+            document.getElementById('cat').scrollLeft += 700;
+        },
+        leftClick() {
+            document.getElementById('cat').scrollLeft -= 700;
+        }
     },
     mounted() {
         axios.get("http://localhost:8000/api/dishes").then(dishes => {
