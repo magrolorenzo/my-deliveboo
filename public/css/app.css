@@ -10960,7 +10960,8 @@ ul li {
   display: inline-block;
 }
 
-a {
+a,
+a:hover {
   color: inherit;
   text-decoration: none;
 }
@@ -11084,7 +11085,8 @@ ul li {
   display: inline-block;
 }
 
-a {
+a,
+a:hover {
   color: inherit;
   text-decoration: none;
 }
@@ -11284,8 +11286,33 @@ header nav#guest-navbar .navbar-nav .nav-link {
   right: -20px;
 }
 
-#welcome-blade .container .row .col-lg-12 .restaurant-card {
+#welcome-blade #restaurant-container .restaurant-card {
   width: 350px;
+  min-width: 350px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  margin: 1px 1px 5px;
+  border-radius: 3px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+#welcome-blade #restaurant-container .restaurant-card .cover-container {
+  height: 200px;
+}
+
+#welcome-blade #restaurant-container .restaurant-card .cover-container img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+#welcome-blade #restaurant-container .restaurant-card .card-title {
+  color: #2E3333;
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 600;
 }
 
 .button {

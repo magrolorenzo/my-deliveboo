@@ -3,7 +3,7 @@
         <div class="container">
             <!-- Left Side Of Navbar - Brand Logo -->
             <a class="navbar-brand logo-brand m-0 p-0 d-flex" href="{{ url('/') }}">
-                <img src="img/brand-logo.png" alt="brand logo Deliveroo">
+                <img src="{{ asset('/img/brand-logo.png') }}" alt="brand logo Deliveroo">
             </a>
 
             <!-- Right Side Of Navbar MOBILE - Hamburger menu -->
