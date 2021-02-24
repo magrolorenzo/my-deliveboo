@@ -96,34 +96,25 @@
                                     <span><strong>@{{ cart.subtotal }} €</strong></span>
                                 </li>
                             </ul>
-
-                            <button type="button" class="btn btn-primary btn-block waves-effect waves-light">go to checkout</button>
-                            <button type="button" class="btn btn-primary" name="button" @click="empty">Svuota</button>
+                            
+                            <div class="buttons-container" v-if="cart.subtotal != 0 ">
+                                <a href="{{route('guest.checkout', ['id'=>$restaurant->id])}}" class="btn btn-primary" >
+                                    Ordina e Paga
+                                </a>
+                                <button type="button" class="btn btn-primary" name="button" @click="empty">Svuota</button>
+                            </div>
 
                         </div>
                     </div>
                     <!-- Card -->
 
                 </div>
-
             </div>
-
-            <div class="">
-
-            </div>
-
-            <div class="">
-                <p >  </p>
-            </div>
-
         </div>
-
     </div>
 
     <div class="container">
-        <a href="{{route('guest.checkout', ['id'=>$restaurant->id])}}" class="btn btn-primary">
-            Ordina e Paga
-        </a>
+
     </div>
 
     <footer>

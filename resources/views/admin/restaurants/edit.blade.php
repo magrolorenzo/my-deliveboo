@@ -75,5 +75,5 @@
             </div>
         </div>
     </div>
-    {{-- <script src="{{ asset('js/validation.js') }}" defer></script> --}}
+    <script src="{{ asset('js/validation.js') }}" defer></script>
 @endsection
