@@ -15,6 +15,7 @@
                     <div class="info-container">
 
                         <div class="info-container-left">
+                            <h1 id="restaurant-id" class="text-capitalize" hidden>{{ $restaurant->id }}</h1>
                             <h1 id="restaurant-name" class="text-capitalize">{{ $restaurant->name }}</h1>
                             <h5 class="info-res">
                                 <span><i class="fas fa-utensils"></i></span> Categoria:
@@ -27,7 +28,7 @@
                             <h5>{{ $restaurant->category }}</h5>
                             <h5 class="address"> <span><i class="fas fa-map-marker-alt"></i></span> Indirizzo: {{ $restaurant->address}}</h5>
                         </div>
-                        
+
                         <div class="info-container-right">
                             <img src="{{asset("storage/".$restaurant->img_cover)}}" alt="">
 
@@ -51,18 +52,19 @@
 
                     </div>
                     <div class="dish-container">
-                        @foreach ($restaurant->dishes as $dish)
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top-show" src="{{asset("storage/".$dish->img_cover)}}" alt="Card image cap">
+
+                        <div class="card" style="width: 18rem;" v-if="dish.visible" v-for="dish in dishes">
+                            <img class="card-img-top-show" :src="'../storage/' + dish.img_cover" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $dish->name }}</h5>
-                                <p class="card-text">{{ $dish->ingredients }}</p>
-                                <p class="card-text">{{ $dish->description }}</p>
-                                <h5 class="card-text"> {{ $dish->unit_price }}</h5>
-                                <a id="chart-button" href="#" class="btn btn-primary">Aggiungi al carrello</a>
+                                <h5 class="card-title">@{{ dish.name }}</h5>
+                                <p class="card-text">@{{ dish.ingredients }}</p>
+                                <p class="card-text">@{{ dish.description }}</p>
+                                <h5 class="card-text">@{{ dish.unit_price }}</h5>
+                                {{-- <a id="chart-button" class="btn btn-primary" @click="add(dish)">-</a> --}}
+                                <a id="chart-button" class="btn btn-primary" @click="add(dish)">Aggiungi al carrello</a>
                             </div>
                         </div>
-                        @endforeach
+
                     </div>
                 </div>
 

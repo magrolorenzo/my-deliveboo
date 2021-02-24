@@ -2,45 +2,67 @@ var app = new Vue({
     el: "#app",
 
     data: {
-        contents: [],
-        // restaurant: {{!!json_encode($restaurant->toArray())!!}}
-        // nome: "{{ $restaurant->name }}"
-        currentRestaurantName: "",
+        currentRestaurantId: "",
         dishes: [],
+        cart: {
+            KEY: 'cartContent-',
+            contents: []
+        }
     },
 
     methods: {
-        getRestaurantName() {
-            this.currentRestaurantName = document.getElementById("restaurant-name").innerHTML;
+        getRestaurantId() {
+            this.currentRestaurantId = document.getElementById("restaurant-id").innerHTML;
+        },
+        add(dishObj) {
+            let id = dishObj.id;
+            let name = dishObj.name;
+            let unit_price = dishObj.unit_price;
+
+            let newCartItem = {
+                id,
+                name,
+                unit_price,
+                quantity: 1
+            }
+
+            let itemExists = false;
+            for (var i = 0; i < this.cart.contents.length; i++) {
+                // se presente nel carrello
+                if (this.cart.contents[i].id == newCartItem.id) {
+                    // aggiungo la quantità
+                    this.cart.contents[i].quantity++;
+                    itemExists = true;
+                }
+            }
+
+            // se non è nel carrello -> push
+            if (!itemExists) {
+                this.cart.contents.push(newCartItem);
+            }
+
+            // console.log(newCartItem);
+            // console.log(this.cart.contents);
+
+            // salvo nel localstorage
+            let _cart = JSON.stringify(this.cart.contents);
+            localStorage.setItem(this.cart.KEY + this.currentRestaurantId, _cart);
         }
     },
 
     // ***************** Mounted
     mounted() {
         let self = this;
-        // prendo nome di questo ristorante
-        self.getRestaurantName();
+
+        // prendo l'id del ristorante
+        self.getRestaurantId();
 
         // prendo tutti i piatti del ristorante
-        axios.get("http://localhost:8000/api/dishes").then(response => {
+        axios.get("http://localhost:8000/api/dishes/" + self.currentRestaurantId).then(response => {
             let thisRestaurantDishes = response.data.results;
 
             self.dishes = thisRestaurantDishes;
-            console.log(self.dishes);
+            // console.log(self.dishes);
         });
     }
 });
-
-<<<<<<< Updated upstream
-// var nome = document.getElementsById("prova").innerHTML();
-=======
-// var nome = document.getElementsByClassName("text-capitalize")[0].innerHTML();
->>>>>>> Stashed changes
-// // var restaurant = {!! json_encode($restaurant) !!};
-// // var restaurant = @json($restaurant->toArray());
-// // var restaurant = {{$restaurant->toJson()}}
-//
-// // var nome = "{{ $restaurant->name }}";
-// // localStorage.setItem('myCat', 'Tom');
-// // console.log(localStorage.getItem("myCat"));
-// console.log(nome);
