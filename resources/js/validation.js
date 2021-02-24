@@ -22,7 +22,7 @@ var app = new Vue ({
             }
 
             if (!address) {
-                this.errors.push('Attenzione! Inserisci il nome del ristorante!');
+                this.errors.push('Attenzione! Inserisci l\'indirizzo del ristorante!');
             }
 
             if(!piva || piva.length < this.minChars || isNaN(piva)) {
