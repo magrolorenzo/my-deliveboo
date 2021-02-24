@@ -46,7 +46,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-9">
                     <div class="menu-title">
                         <h1 class="text-uppercase">Menù</h1>
 
@@ -60,14 +60,54 @@
                                 <p class="card-text">@{{ dish.ingredients }}</p>
                                 <p class="card-text">@{{ dish.description }}</p>
                                 <h5 class="card-text">@{{ dish.unit_price }}</h5>
-                                {{-- <a id="chart-button" class="btn btn-primary" @click="add(dish)">-</a> --}}
-                                <a id="chart-button" class="btn btn-primary" @click="add(dish)">Aggiungi al carrello</a>
+                                <a id="chart-button" class="btn btn-primary" @click="decrease(dish)">-</a>
+                                <a id="chart-button" class="btn btn-primary" @click="add(dish)">+</a>
                             </div>
                         </div>
 
                     </div>
                 </div>
 
+                <div class="col-3">
+                    <!-- Card -->
+                    <div class="card mb-3">
+                        <div class="card-body">
+
+                            <h5 class="mb-3">carrello</h5>
+
+                            <ul class="list-group list-group-flush">
+
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" v-for="cartItem in cart.contents">
+                                    @{{ cartItem.name }}
+                                    <a class="btn btn-primary" @click="decrease(cartItem)">-</a>
+                                    <span>x@{{ cartItem.quantity }}</span>
+                                    <a class="btn btn-primary" @click="add(cartItem)">+</a>
+                                    <span>@{{ cartItem.unit_price }} €</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                    <div>
+                                        <strong>Totale</strong>
+                                        <strong>
+                                            <p class="mb-0">(IVA inclusa)</p>
+                                        </strong>
+                                    </div>
+                                    <span><strong>@{{ cart.subtotal }} €</strong></span>
+                                </li>
+                            </ul>
+
+                            <button type="button" class="btn btn-primary btn-block waves-effect waves-light">go to checkout</button>
+
+                        </div>
+                    </div>
+                    <!-- Card -->
+
+                </div>
+
+            </div>
+
+            <div class="">
+                <button type="button" name="button" @click="empty">Svuota</button>
             </div>
 
             <div class="">
