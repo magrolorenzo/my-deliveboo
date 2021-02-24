@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page-title', 'Welcome Page')
+@section('page-title', 'Deliveboo - Consegna a domicilio')
 
 @section('script')
     <script src="{{ asset('js/homepage.js') }}" defer></script>
@@ -7,41 +7,69 @@
 
 @section('content')
     <div id="welcome-blade">
+        <!-- Jumbotron di benvenuto -->
+        <section id="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>Benvenuto</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Main App: Filtri per categorie e stampa ristoranti -->
         <div id="app">
-
             <div class="container mb-4 mt-4" >
                 <div class="row cat-row mb-2">
-                    <div class="categories-wrapper d-flex justify-content-between" id="cat">
 
-                        {{-- Pulsanti categorie --}}
-                        <div v-for="(category,index) in categories" class="btn ml-2 card-size" :class="selectedCategories.includes(category.id)? 'btn-warning' : 'btn-primary'" @click="selectedCategory(category.id)"  >
-                            <span>@{{category.name}}</span>
+                    <div class="col-12">
+                        <h2>
+                            La selezione di DeliveBoo
+                        </h2>
+                    </div>
+
+                    <!-- Categorie -->
+                    <div class="col-12" id="category-container">
+
+                        <div class="category-container d-flex justify-content-between" id="cat">
+                            {{-- Pulsanti categorie --}}
+                            <div v-for="(category,index) in categories" class="mr-2 card-size p-4" :class="selectedCategories.includes(category.id)? 'selected' : ''" @click="selectedCategory(category.id)"  >
+                                <span>@{{category.name}}</span>
+                            </div>
                         </div>
 
                         {{-- Freccia sinistra --}}
-                        <div class="left" @click="moveLeft">
+                        <div class="category-arrow left" @click="moveLeft">
                             <i class="fas fa-chevron-left"></i>
                         </div>
 
                         {{-- Freccia destra --}}
-                        <div class="right" @click="moveRight">
+                        <div class="category-arrow right" @click="moveRight">
                             <i class="fas fa-chevron-right"></i>
                         </div>
 
-                    </div>
-                </div>
-                {{-- Bottone per svuotare i filtri applicati --}}
+                    </div><!-- Categorie -->
+                </div><!-- Fine Row Categorie -->
+
+                <!-- Bottone rimuovi i filtri -->
                 <div class="btn btn-warning ml-1" @click="clearCategories()">
                     Rimuovi filtri
                 </div>
             </div>
 
+            <!-- Ristoranti -->
             <div class="container mb-4 mt-4">
                 <div class="row">
+
+                    <h2>
+                        Ristoranti che consegnano nella tua città
+                    </h2>
+
+                    <!-- Container Ristoranti -->
                     <div class="d-flex flex-wrap justify-content-between col-lg-12">
 
-                        {{-- Card ristorante --}}
+                        <!-- Card del ristorante -->
                         <div v-for="(restaurant,index) in restaurants" class="card bg-light  ml-3 mb-3 restaurant-card" >
 
                             {{-- Cover image --}}
@@ -70,11 +98,11 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div><!-- END Card del ristorante -->
+                    </div><!-- END Container Ristoranti -->
                 </div>
             </div>
-        </div>
+        </div><!-- END Main App -->
     </div>
 
 @endsection
