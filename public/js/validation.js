@@ -97,55 +97,49 @@ var app = new Vue({
   el: '#errors-root',
   data: {
     errors: [],
-    name: null,
-    address: null,
-    pIva: null,
-    maxChars: 11,
-    price: null,
-    restaurant_id: null
+    minChars: 11
   },
   methods: {
-    validateForm: function validateForm(e) {
-      //svuota array
-      this.errors = []; //campi non vuoti
+    validateForm: function validateForm() {
+      this.errors = [];
+      var name = document.testform.name.value;
+      var address = document.testform.address.value;
+      var piva = document.testform.piva.value;
 
-      if (!this.name) {
-        this.errors.push('inserisci nome!');
+      if (!name) {
+        this.errors.push('Attenzione! Inserisci il nome del ristorante!');
       }
 
-      if (!this.address) {
-        this.errors.push('inserisci indirizzo!');
+      if (!address) {
+        this.errors.push('Attenzione! Inserisci l\'indirizzo del ristorante!');
       }
 
-      if (!this.pIva) {
-        this.errors.push('inserisci partita iva!');
+      if (!piva || piva.length < this.minChars || isNaN(piva)) {
+        this.errors.push('Attenzione! la partita iva deve essere un numero di almeno 11 caratteri!');
       }
-
-      if (this.pIva.length < this.maxChars) {
-        this.errors.push('la partiva iva deve essere di ' + this.maxChars + ' caratteri!');
-      }
-
-      e.preventDefault();
     },
-    validateDish: function validateDish(e) {
-      //svuota array
-      this.errors = []; //campi non vuoti
+    validateDish: function validateDish() {
+      this.errors = [];
+      var name = document.dishform.name.value;
+      var price = document.dishform.unit_price.value;
+      var restaurant = document.dishform.restaurant_id.value;
 
-      if (!this.name) {
-        this.errors.push('inserisci nome!');
+      if (!name) {
+        this.errors.push('Attenzione! Inserisci il nome del ristorante!');
       }
 
-      if (this.price < 0.01 || this.price > 1000) {
-        this.errors.push('prezzo non valido');
+      ;
+
+      if (!restaurant) {
+        this.errors.push('Attenzione! Seleziona un ristorante!');
       }
 
-      if (!this.restaurant_id) {
-        this.errors.push('seleziona il ristorante!');
+      if (!price || price < 0.01 || price > 999.99) {
+        this.errors.push('Attenzione! il prezzo deve essere compreso tra 0.01 e e 999.99 €');
       }
-
-      e.preventDefault();
     }
-  }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),

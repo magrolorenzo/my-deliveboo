@@ -60,7 +60,7 @@
                                 <p class="card-text">@{{ dish.ingredients }}</p>
                                 <p class="card-text">@{{ dish.description }}</p>
                                 <h5 class="card-text">@{{ dish.unit_price }}</h5>
-                                <a id="chart-button" class="btn btn-primary" @click="decrease(dish)">-</a>
+                                <a id="chart-button" class="btn btn-primary" @click="decrease(dish.id)">-</a>
                                 <a id="chart-button" class="btn btn-primary" @click="add(dish)">+</a>
                             </div>
                         </div>
@@ -69,6 +69,7 @@
                 </div>
 
                 <div class="col-3">
+
                     <!-- Card -->
                     <div class="card mb-3">
                         <div class="card-body">
@@ -79,7 +80,7 @@
 
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" v-for="cartItem in cart.contents">
                                     @{{ cartItem.name }}
-                                    <a class="btn btn-primary" @click="decrease(cartItem)">-</a>
+                                    <a class="btn btn-primary" @click="decrease(cartItem.id)">-</a>
                                     <span>x@{{ cartItem.quantity }}</span>
                                     <a class="btn btn-primary" @click="add(cartItem)">+</a>
                                     <span>@{{ cartItem.unit_price }} €</span>
@@ -97,6 +98,7 @@
                             </ul>
 
                             <button type="button" class="btn btn-primary btn-block waves-effect waves-light">go to checkout</button>
+                            <button type="button" class="btn btn-primary" name="button" @click="empty">Svuota</button>
 
                         </div>
                     </div>
@@ -107,7 +109,7 @@
             </div>
 
             <div class="">
-                <button type="button" name="button" @click="empty">Svuota</button>
+
             </div>
 
             <div class="">

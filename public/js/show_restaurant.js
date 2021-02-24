@@ -139,29 +139,22 @@ var app = new Vue({
 
       this.sync();
     },
-    decrease: function decrease(dishObj) {
-      var id = dishObj.id;
-      var name = dishObj.name;
-      var unit_price = dishObj.unit_price;
-      var newCartItem = {
-        id: id,
-        name: name,
-        unit_price: unit_price,
-        quantity: 1
-      };
-      var itemExists = false;
+    decrease: function decrease(thisId) {
+      var id = thisId;
 
       for (var i = 0; i < this.cart.contents.length; i++) {
-        if (this.cart.contents[i].id == newCartItem.id) {
+        // se trovo l'id giusto entro nell'if
+        if (this.cart.contents[i].id == id) {
+          // controllo la quantità -> se =1 rimuovo dall'array
           if (this.cart.contents[i].quantity == 1) {
             // rimuovo il piatto dall'array
-            this.remove(newCartItem.id);
+            this.remove(thisId);
           } else {
+            // se !=1 riduco la quantità di 1
             this.cart.contents[i].quantity--;
           }
+        } // se non trovo l'id non fa niente
 
-          itemExists = true;
-        }
       } // calcolo il totale
 
 
@@ -182,12 +175,10 @@ var app = new Vue({
       localStorage.setItem(this.cart.KEY + this.currentRestaurantId, _cart);
     },
     empty: function empty() {
-      //remove an item entirely from CART.contents based on its id
-      this.cart.contents = this.cart.contents.filter(function (item) {
-        return false;
-      }); // calcolo il totale
+      // svuota il carrello
+      this.cart.contents = []; // calcolo il totale
 
-      this.calculateSubtotal(); //update localStorage
+      this.calculateSubtotal(); // update localStorage
 
       this.sync();
     },
@@ -195,8 +186,7 @@ var app = new Vue({
       this.cart.subtotal = 0;
 
       for (var i = 0; i < this.cart.contents.length; i++) {
-        this.cart.subtotal = this.cart.subtotal + this.cart.contents[i].quantity * this.cart.contents[i].unit_price;
-        console.log(this.cart.subtotal);
+        this.cart.subtotal = this.cart.subtotal + this.cart.contents[i].quantity * this.cart.contents[i].unit_price; // console.log(this.cart.subtotal);
       }
     }
   },

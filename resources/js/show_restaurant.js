@@ -48,32 +48,23 @@ var app = new Vue({
             // aggiorno il local storage
             this.sync();
         },
-        decrease(dishObj) {
-            let id = dishObj.id;
-            let name = dishObj.name;
-            let unit_price = dishObj.unit_price;
+        decrease(thisId) {
+            let id = thisId;
 
-            let newCartItem = {
-                id,
-                name,
-                unit_price,
-                quantity: 1
-            }
-
-            let itemExists = false;
             for (var i = 0; i < this.cart.contents.length; i++) {
-
-                if (this.cart.contents[i].id == newCartItem.id) {
-
+                // se trovo l'id giusto entro nell'if
+                if (this.cart.contents[i].id == id) {
+                    // controllo la quantità -> se =1 rimuovo dall'array
                     if (this.cart.contents[i].quantity == 1) {
                         // rimuovo il piatto dall'array
-                        this.remove(newCartItem.id);
+                        this.remove(thisId);
                     } else {
+                        // se !=1 riduco la quantità di 1
                         this.cart.contents[i].quantity--;
                     }
-
-                    itemExists = true;
                 }
+
+                // se non trovo l'id non fa niente
             }
 
             // calcolo il totale
@@ -94,22 +85,20 @@ var app = new Vue({
             localStorage.setItem(this.cart.KEY + this.currentRestaurantId, _cart);
         },
         empty() {
-            //remove an item entirely from CART.contents based on its id
-            this.cart.contents = this.cart.contents.filter(item=>{
-                return false;
-            });
+            // svuota il carrello
+            this.cart.contents = [];
 
             // calcolo il totale
             this.calculateSubtotal();
 
-            //update localStorage
-            this.sync()
+            // update localStorage
+            this.sync();
         },
         calculateSubtotal() {
             this.cart.subtotal = 0;
             for (var i = 0; i < this.cart.contents.length; i++) {
                 this.cart.subtotal = this.cart.subtotal + this.cart.contents[i].quantity * this.cart.contents[i].unit_price;
-                console.log(this.cart.subtotal);
+                // console.log(this.cart.subtotal);
             }
         }
     },
