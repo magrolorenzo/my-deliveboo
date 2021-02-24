@@ -53,14 +53,14 @@
                     </div>
                     <div class="dish-container">
 
-                        <div class="card" style="width: 18rem;" v-for="dish in dishes">
+                        <div class="card" style="width: 18rem;" v-if="dish.visible" v-for="dish in dishes">
                             <img class="card-img-top-show" :src="'../storage/' + dish.img_cover" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">@{{ dish.name }}</h5>
                                 <p class="card-text">@{{ dish.ingredients }}</p>
                                 <p class="card-text">@{{ dish.description }}</p>
                                 <h5 class="card-text">@{{ dish.unit_price }}</h5>
-                                <a id="chart-button" href="#" class="btn btn-primary">Aggiungi al carrello</a>
+                                <a id="chart-button" href="#" class="btn btn-primary" @click="add(dish)">Aggiungi al carrello</a>
                             </div>
                         </div>
 

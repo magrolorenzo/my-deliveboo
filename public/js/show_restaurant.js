@@ -96,15 +96,42 @@
 var app = new Vue({
   el: "#app",
   data: {
-    contents: [],
-    // restaurant: {{!!json_encode($restaurant->toArray())!!}}
-    // nome: "{{ $restaurant->name }}"
     currentRestaurantId: "",
-    dishes: []
+    dishes: [],
+    cart: {
+      KEY: 'bkasjbdfkjasdkfjhaksdfjskd',
+      contents: []
+    }
   },
   methods: {
     getRestaurantId: function getRestaurantId() {
       this.currentRestaurantId = document.getElementById("restaurant-id").innerHTML;
+    },
+    add: function add(dishObj) {
+      var id = dishObj.id;
+      var name = dishObj.name;
+      var unit_price = dishObj.unit_price;
+      var newCartItem = {
+        id: id,
+        name: name,
+        unit_price: unit_price,
+        quantity: 1
+      };
+      var itemExists = false;
+
+      for (var i = 0; i < this.cart.contents.length; i++) {
+        if (this.cart.contents[i].id == newCartItem.id) {
+          this.cart.contents[i].quantity++;
+          itemExists = true;
+        }
+      }
+
+      if (!itemExists) {
+        this.cart.contents.push(newCartItem);
+      }
+
+      console.log(newCartItem);
+      console.log(this.cart.contents);
     }
   },
   // ***************** Mounted
