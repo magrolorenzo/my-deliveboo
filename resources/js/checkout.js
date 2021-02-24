@@ -17,6 +17,7 @@ var app = new Vue({
     },
 
     methods: {
+        
         getRestaurantId() {
             this.currentRestaurantId = document.getElementById("restaurant-id").innerHTML;
         },
@@ -52,13 +53,13 @@ var app = new Vue({
 
             // calcolo il totale
             this.calculateSubtotal();
-
             // aggiorno il local storage
             this.sync();
         },
 
+        // Metodo per diminuire quantità di oggetti nel carrello
         decrease(thisId) {
-            
+
             let id = thisId;
 
             for (var i = 0; i < this.cart.contents.length; i++) {
@@ -73,15 +74,16 @@ var app = new Vue({
                         this.cart.contents[i].quantity--;
                     }
                 }
-
                 // se non trovo l'id non fa niente
             }
 
             // calcolo il totale
             this.calculateSubtotal();
-
+            // aggiorno il local storage
             this.sync();
         },
+
+        // Rimuove elemento dal carrello
         remove(dish_id) {
             this.cart.contents = this.cart.contents.filter(item=>{
                 if(item.id !== dish_id) {
@@ -89,11 +91,14 @@ var app = new Vue({
                 }
             });
         },
+
+        // Sincronizza Vue con LocalStorage
         sync() {
             // salvo nel localstorage
             let _cart = JSON.stringify(this.cart.contents);
             localStorage.setItem(this.cart.KEY + this.currentRestaurantId, _cart);
         },
+
         empty() {
             // svuota il carrello
             this.cart.contents = [];
@@ -104,6 +109,8 @@ var app = new Vue({
             // update localStorage
             this.sync();
         },
+
+        // Ricalcola totale carrello
         calculateSubtotal() {
             this.cart.subtotal = 0;
             for (var i = 0; i < this.cart.contents.length; i++) {

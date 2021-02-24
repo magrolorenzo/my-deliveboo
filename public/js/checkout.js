@@ -144,6 +144,7 @@ var app = new Vue({
 
       this.sync();
     },
+    // Metodo per diminuire quantità di oggetti nel carrello
     decrease: function decrease(thisId) {
       var id = thisId;
 
@@ -163,9 +164,11 @@ var app = new Vue({
       } // calcolo il totale
 
 
-      this.calculateSubtotal();
+      this.calculateSubtotal(); // aggiorno il local storage
+
       this.sync();
     },
+    // Rimuove elemento dal carrello
     remove: function remove(dish_id) {
       this.cart.contents = this.cart.contents.filter(function (item) {
         if (item.id !== dish_id) {
@@ -173,6 +176,7 @@ var app = new Vue({
         }
       });
     },
+    // Sincronizza Vue con LocalStorage
     sync: function sync() {
       // salvo nel localstorage
       var _cart = JSON.stringify(this.cart.contents);
@@ -187,6 +191,7 @@ var app = new Vue({
 
       this.sync();
     },
+    // Ricalcola totale carrello
     calculateSubtotal: function calculateSubtotal() {
       this.cart.subtotal = 0;
 
