@@ -201,20 +201,15 @@ var app = new Vue({
         ;
       }
 
-<<<<<<< HEAD
-      ;
+      ; // Chiusura else
     },
+    // Chiusura metodo per filtrare categorie
     moveRight: function moveRight() {
       document.getElementById('cat').scrollLeft += 700;
     },
     moveLeft: function moveLeft() {
       document.getElementById('cat').scrollLeft -= 700;
     }
-=======
-      ; // Chiusura else
-    } // Chiusura metodo per filtrare categorie
-
->>>>>>> lorenzo_cart
   },
   // ***************** Mounted *****************
   mounted: function mounted() {
@@ -242,11 +237,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bool18\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
-=======
 module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
->>>>>>> lorenzo_cart
 
 
 /***/ })

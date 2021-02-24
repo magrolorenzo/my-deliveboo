@@ -9,7 +9,7 @@ var app = new Vue({
     },
 
     methods: {
-
+        
         // Metodo per ricaricare tutti i ristoranti
         loadRestaurants(){
             axios.get("http://localhost:8000/api/restaurants").then((response) => {
@@ -94,14 +94,8 @@ var app = new Vue({
 
             }; // Chiusura else
 
-        } // Chiusura metodo per filtrare categorie
+        }, // Chiusura metodo per filtrare categorie
 
-                // Aggiunngo id della cateogria selezionata
-                this.selectedCategories.push(category_id);
-                console.log("Le categorie sono: " + this.selectedCategories);
-            };
-
-        },
         moveRight() {
             document.getElementById('cat').scrollLeft += 700;
 
