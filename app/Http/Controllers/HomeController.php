@@ -39,8 +39,9 @@ class HomeController extends Controller
         abort(404);
     }
 
-    public function checkout($id){
+    public function checkout(Request $request){
 
+        $id = $request->input("id");
         $restaurant = Restaurant::find($id);
 
         if(!$restaurant){

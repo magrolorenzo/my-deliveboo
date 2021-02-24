@@ -16,7 +16,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/show/{slug}', 'HomeController@show')->name('guest.show');
-Route::get('/checkout/{id}', 'HomeController@checkout')->name('guest.checkout');
+Route::get('/checkout', 'HomeController@checkout')->name('guest.checkout');
 
 Route::middleware('auth')->namespace('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');

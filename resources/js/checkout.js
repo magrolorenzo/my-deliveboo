@@ -1,13 +1,17 @@
 var app = new Vue({
     el: "#app",
-
     data: {
-        currentRestaurantId: "",
+        customer_name: "",
+        customer_surname: "",
+        customer_email: "",
+        delivery_address: "",
+        id : null,
         dishes: [],
         cart: {
             KEY: 'cartContent-',
             contents: []
         }
+
     },
 
     methods: {

@@ -2,7 +2,7 @@
 @section('page-title', 'Checkout Page')
 
 @section('script')
-    {{-- <script src="{{ asset('js/show_restaurant.js') }}" defer></script> --}}
+    <script src="{{ asset('js/checkout.js') }}" defer></script>
 @endsection
 
 @section('content')
@@ -11,32 +11,41 @@
         <div class="container mt-5">
             <div class="row">
 
+                <h2 :id="{{json_encode($restaurant->id)}}">
+
+                    id ristorante: {{$restaurant->id}}
+
+                </h2>
+
+            </div>
+            <div class="row">
+
                 {{-- Sezione form Cliente --}}
-                <div class="col-5 shadow">
+                <div class="col-5 pt-4 pb-4 border rounded">
                     <h2>Inserisci qui i tuoi dati</h2>
                     <form action="" method="post">
                         @csrf
 
                         {{-- Nome Cliente --}}
-                        <div class="form-group w-50 d-inline-block">
+                        <div class="form-group">
                             <label>Nome</label>
                             <input type="text" name="customer_name" class="form-control" placeholder="Inserisci il tuo Nome" value="{{old('customer_name')}}" required>
                         </div>
 
                         {{-- Cognome Cliente --}}
-                        <div class="form-group w-50 d-inline-block">
+                        <div class="form-group">
                             <label>Cognome</label>
                             <input type="text" name="customer_surname" class="form-control" placeholder="Inserisci il tuo Cognome" value="{{old('customer_surname')}}" required>
                         </div>
 
                         {{-- e-mail Cliente --}}
-                        <div class="form-group w-50 d-inline-block">
+                        <div class="form-group">
                             <label>E-mail</label>
                             <input type="text" name="customer_email" class="form-control" placeholder="Inserisci la tua e-mail" value="{{old('customer_email')}}" required>
                         </div>
 
                         {{-- Indirizzo di consegna --}}
-                        <div class="form-group w-50 d-inline-block">
+                        <div class="form-group">
                             <label>Indirizzo di consegna</label>
                             <input type="text" name="delivery_address" class="form-control" placeholder="Inserisci l'indirizzo di consegna" value="{{old('delivery_address')}}" required>
                         </div>
@@ -61,8 +70,6 @@
                     </div>
                 </div>
             </div>
-
-
 
             {{-- <footer>
             <div class="container">
