@@ -38,4 +38,23 @@ class HomeController extends Controller
         }
         abort(404);
     }
+
+    public function checkout(Request $request){
+
+        $id = $request->input("id");
+        $restaurant = Restaurant::find($id);
+
+        if(!$restaurant){
+            abort(404);
+        };
+
+        $data = [
+            'restaurant' => $restaurant
+        ];
+
+        return view("guest.checkout", $data);
+    }
+
+
+
 }
