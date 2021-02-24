@@ -104,6 +104,7 @@ var app = new Vue({
   // ***************** Mounted
   mounted: function mounted() {// console.log(this.nome);
   }
+<<<<<<< HEAD
 }); // var nome = document.getElementsByClassName("text-capitalize")[0].innerHTML();
 // // var restaurant = {!! json_encode($restaurant) !!};
 // // var restaurant = @json($restaurant->toArray());
@@ -113,6 +114,17 @@ var app = new Vue({
 // // localStorage.setItem('myCat', 'Tom');
 // // console.log(localStorage.getItem("myCat"));
 // console.log(nome);
+=======
+});
+var nome = document.getElementsByClassName("text-capitalize")[0].innerHTML(); // var restaurant = {!! json_encode($restaurant) !!};
+// var restaurant = @json($restaurant->toArray());
+// var restaurant = {{$restaurant->toJson()}}
+// var nome = "{{ $restaurant->name }}";
+// localStorage.setItem('myCat', 'Tom');
+// console.log(localStorage.getItem("myCat"));
+
+console.log(nome);
+>>>>>>> lorenzo_cart
 
 /***/ }),
 

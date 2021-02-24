@@ -23,25 +23,30 @@
                             <i class="fas fa-chevron-right"></i>
                         </div>
                     </div>
+                    {{-- Bottone per svuotare i filtri applicati --}}
+                    <div class="btn btn-warning ml-1" @click="clearCategories()">
+                        Rimuovi filtri
+                    </div>
+                </div>                
 
-                </div>
             </div>
 
             <div class="container mb-4 mt-4">
                 <div class="row">
-                    <div class="d-flex flex-wrap justify-content-between col-lg-12">
+                    <div class="d-flex flex-wrap justify-content-start col-lg-12">
 
                         {{-- Card ristorante --}}
                         <div v-for="(restaurant,index) in restaurants" class="card bg-light  ml-3 mb-3 restaurant-card" >
 
                             {{-- Cover image --}}
-                            <div v-if="restaurant.img_cover"  class="cover-container">
-                                <img :src="url_base + restaurant.img_cover" :title="restaurant.id + ' - ' + restaurant.name" class="card-img-top " />
+                            <div v-if="restaurant.img_cover"  class="cover-container ">
+                                <img :src="url_base + restaurant.img_cover" :title="restaurant.id + ' - ' + restaurant.name" class="card-img-top img-fluid" />
                             </div>
+                            {{-- Se non ha alcuna Cover image, visualizza card header --}}
                             <div  v-else class="card-header">
                                 <span>Immagine non presente</span>
                             </div>
-                            {{-- Info ristorante --}}
+                            {{-- Card body con Info ristorante --}}
                             <div class="card-body">
                                 <h5 class="card-title">@{{ restaurant.name }}</h5>
                                 <p class="card-text">
@@ -54,21 +59,17 @@
                                     <strong>Categorie:</strong> <span v-for="category in restaurant.categories" class="badge badge-info ml-1"> @{{category.name}}</span>
                                 </p>
 
+                                {{-- Bottone per show ristorante --}}
                                 <div>
-
                                     <a :href="'/show/'+restaurant.slug" class="btn btn-success">
                                         Visualizza
                                     </a>
                                 </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
+                            </div> {{-- Chiusura Card Body --}}
+                        </div> {{-- Chiusura Card --}}
+                    </div> {{-- Chiusura col--}}
+                </div> {{-- Chiusura row --}}
+            </div> {{-- Chiusura container --}}
+        </div> {{-- Fine app Vue --}}
+    </div> {{-- Fine sezione --}}
 @endsection
