@@ -16,4 +16,13 @@ class DishController extends Controller
             'results'=> $dishes
         ]);
     }
+
+    public function filterDishes($id) {
+        $filteredDishes = Dish::where('restaurant_id', $id)->get();
+
+        return response()->json([
+            'success'=> true,
+            'results'=> $filteredDishes
+        ]);
+    }
 }

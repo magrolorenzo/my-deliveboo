@@ -93,7 +93,33 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\MAMP\\htdocs\\boolean\\deliveboo\\resources\\js\\show_restaurant.js: Unexpected token (34:0)\n\n\u001b[0m \u001b[90m 32 |\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 33 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 34 |\u001b[39m \u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mUpdated\u001b[39m upstream\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 35 |\u001b[39m \u001b[90m// var nome = document.getElementsById(\"prova\").innerHTML();\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 36 |\u001b[39m \u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 37 |\u001b[39m \u001b[90m// var nome = document.getElementsByClassName(\"text-capitalize\")[0].innerHTML();\u001b[39m\u001b[0m\n    at Parser._raise (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:776:17)\n    at Parser.raiseWithData (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:769:17)\n    at Parser.raise (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:737:17)\n    at Parser.unexpected (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:9253:16)\n    at Parser.parseExprAtom (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10743:20)\n    at Parser.parseExprSubscripts (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10318:23)\n    at Parser.parseUpdate (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10298:21)\n    at Parser.parseMaybeUnary (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10276:23)\n    at Parser.parseExprOps (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10141:23)\n    at Parser.parseMaybeConditional (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10115:23)\n    at Parser.parseMaybeAssign (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10078:21)\n    at Parser.parseExpressionBase (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10023:23)\n    at C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10017:39\n    at Parser.allowInAnd (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11711:16)\n    at Parser.parseExpression (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10017:17)\n    at Parser.parseStatementContent (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11977:23)\n    at Parser.parseStatement (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11846:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:12428:25)\n    at Parser.parseBlockBody (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:12419:10)\n    at Parser.parseTopLevel (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11777:10)\n    at Parser.parse (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:13583:10)\n    at parse (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:13636:38)\n    at parser (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\core\\lib\\parser\\index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:99:38)\n    at normalizeFile.next (<anonymous>)\n    at run (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\core\\lib\\transformation\\index.js:31:50)\n    at run.next (<anonymous>)\n    at Function.transform (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\@babel\\core\\lib\\transform.js:27:41)\n    at transform.next (<anonymous>)\n    at step (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\gensync\\index.js:261:32)\n    at C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\gensync\\index.js:273:13\n    at async.call.result.err.err (C:\\MAMP\\htdocs\\boolean\\deliveboo\\node_modules\\gensync\\index.js:223:11)");
+var app = new Vue({
+  el: "#app",
+  data: {
+    contents: [],
+    // restaurant: {{!!json_encode($restaurant->toArray())!!}}
+    // nome: "{{ $restaurant->name }}"
+    currentRestaurantId: "",
+    dishes: []
+  },
+  methods: {
+    getRestaurantId: function getRestaurantId() {
+      this.currentRestaurantId = document.getElementById("restaurant-id").innerHTML;
+    }
+  },
+  // ***************** Mounted
+  mounted: function mounted() {
+    var self = this; // prendo l'id del ristorante
+
+    self.getRestaurantId(); // prendo tutti i piatti del ristorante
+
+    axios.get("http://localhost:8000/api/dishes/" + self.currentRestaurantId).then(function (response) {
+      var thisRestaurantDishes = response.data.results;
+      self.dishes = thisRestaurantDishes;
+      console.log(self.dishes);
+    });
+  }
+});
 
 /***/ }),
 
@@ -104,7 +130,7 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\show_restaurant.js */"./resources/js/show_restaurant.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\proj_boolean\20210214_deliveboo\deliveboo\resources\js\show_restaurant.js */"./resources/js/show_restaurant.js");
 
 
 /***/ })

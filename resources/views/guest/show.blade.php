@@ -15,6 +15,7 @@
                     <div class="info-container">
 
                         <div class="info-container-left">
+                            <h1 id="restaurant-id" class="text-capitalize" hidden>{{ $restaurant->id }}</h1>
                             <h1 id="restaurant-name" class="text-capitalize">{{ $restaurant->name }}</h1>
                             <h5 class="info-res">
                                 <span><i class="fas fa-utensils"></i></span> Categoria:
@@ -27,7 +28,7 @@
                             <h5>{{ $restaurant->category }}</h5>
                             <h5 class="address"> <span><i class="fas fa-map-marker-alt"></i></span> Indirizzo: {{ $restaurant->address}}</h5>
                         </div>
-                        
+
                         <div class="info-container-right">
                             <img src="{{asset("storage/".$restaurant->img_cover)}}" alt="">
 

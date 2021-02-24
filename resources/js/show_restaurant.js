@@ -5,42 +5,30 @@ var app = new Vue({
         contents: [],
         // restaurant: {{!!json_encode($restaurant->toArray())!!}}
         // nome: "{{ $restaurant->name }}"
-        currentRestaurantName: "",
+        currentRestaurantId: "",
         dishes: [],
     },
 
     methods: {
-        getRestaurantName() {
-            this.currentRestaurantName = document.getElementById("restaurant-name").innerHTML;
+        getRestaurantId() {
+            this.currentRestaurantId = document.getElementById("restaurant-id").innerHTML;
         }
     },
 
     // ***************** Mounted
     mounted() {
         let self = this;
-        // prendo nome di questo ristorante
-        self.getRestaurantName();
+
+        // prendo l'id del ristorante
+        self.getRestaurantId();
 
         // prendo tutti i piatti del ristorante
-        axios.get("http://localhost:8000/api/dishes").then(response => {
+        axios.get("http://localhost:8000/api/dishes/" + self.currentRestaurantId).then(response => {
             let thisRestaurantDishes = response.data.results;
+
 
             self.dishes = thisRestaurantDishes;
             console.log(self.dishes);
         });
     }
 });
-
-<<<<<<< Updated upstream
-// var nome = document.getElementsById("prova").innerHTML();
-=======
-// var nome = document.getElementsByClassName("text-capitalize")[0].innerHTML();
->>>>>>> Stashed changes
-// // var restaurant = {!! json_encode($restaurant) !!};
-// // var restaurant = @json($restaurant->toArray());
-// // var restaurant = {{$restaurant->toJson()}}
-//
-// // var nome = "{{ $restaurant->name }}";
-// // localStorage.setItem('myCat', 'Tom');
-// // console.log(localStorage.getItem("myCat"));
-// console.log(nome);
