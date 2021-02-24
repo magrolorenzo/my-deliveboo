@@ -149,8 +149,7 @@ var app = new Vue({
 
     axios.get("http://localhost:8000/api/dishes/" + self.currentRestaurantId).then(function (response) {
       var thisRestaurantDishes = response.data.results;
-      self.dishes = thisRestaurantDishes;
-      console.log(self.dishes);
+      self.dishes = thisRestaurantDishes; // console.log(self.dishes);
     });
   }
 });

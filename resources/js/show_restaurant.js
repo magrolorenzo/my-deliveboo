@@ -62,7 +62,7 @@ var app = new Vue({
             let thisRestaurantDishes = response.data.results;
 
             self.dishes = thisRestaurantDishes;
-            console.log(self.dishes);
+            // console.log(self.dishes);
         });
     }
 });
