@@ -85,6 +85,15 @@ var app = new Vue({
             // salvo nel localstorage
             let _cart = JSON.stringify(this.cart.contents);
             localStorage.setItem(this.cart.KEY + this.currentRestaurantId, _cart);
+        },
+        empty() {
+            //remove an item entirely from CART.contents based on its id
+            this.cart.contents = this.cart.contents.filter(item=>{
+                return false;
+            });
+
+            //update localStorage
+            this.sync()
         }
     },
 
