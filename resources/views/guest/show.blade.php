@@ -78,6 +78,12 @@
 
     </div>
 
+    <div class="container">
+        <a href="{{route('guest.checkout', ['id'=>$restaurant->id])}}" class="btn btn-primary">
+            Ordina e Paga
+        </a>
+    </div>
+
     <footer>
         <div class="container">
             <div class="row">
