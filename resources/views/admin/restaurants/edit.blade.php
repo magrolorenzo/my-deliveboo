@@ -8,27 +8,27 @@
                 <div class="errors-list mt-4 mb-4" v-if="errors.length">
                     <p class="alert-danger m-0" v-for="error in errors">@{{error}}</p>
                 </div>
-                <form action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->id]) }}" method="post" enctype="multipart/form-data">
+                <form name="testform" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
                     <div class="form-group">
                         <label>Nome Ristorante</label>
-                        <input type="text" name="name" class="form-control" v-model="name" placeholder="Inserisci il nome" value="{{old('name', $restaurant->name)}}" required>
+                        <input id="name" type="text" name="name" class="form-control" placeholder="Inserisci il nome" value="{{old('name', $restaurant->name)}}" required>
                         @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label>Indirizzo</label>
-                        <input name="address" type="text" class="form-control" v-model="address" placeholder="Inserisci indirizzo" required value="{{old('address',$restaurant->address )}}">
+                        <input name="address" type="text" class="form-control" placeholder="Inserisci indirizzo" required value="{{old('address',$restaurant->address )}}">
                         @error('address')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label>P. Iva</label>
-                        <input name="piva" type="text" class="form-control" v-model="pIva" placeholder="Inserisci la partita iva" required value="{{old('piva', $restaurant->piva)}}">
+                        <input name="piva" type="text" class="form-control" placeholder="Inserisci la partita iva" required value="{{old('piva', $restaurant->piva)}}">
                         @error('piva')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

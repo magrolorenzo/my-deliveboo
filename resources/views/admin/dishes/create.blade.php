@@ -2,21 +2,18 @@
 
 @section('content')
     <div class="container">
-        <div class="">
-
-        </div>
         <div class="row justify-content-center">
             <div id="errors-root" class="col-md-8">
                 <h1>Crea nuovo piatto</h1>
                 <div class="errors-list mt-4 mb-4" v-if="errors.length">
                     <p class="alert alert-danger m-0" v-for="error in errors">@{{error}}</p>
                 </div>
-                <form action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
+                <form name="dishform" action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group w-50 d-inline-block">
                         <label>Nome Piatto</label>
-                        <input type="text" name="name" class="form-control" v-model="name" placeholder="Inserisci il nome del piatto" value="{{old('name')}}" required>
+                        <input type="text" name="name" class="form-control" placeholder="Inserisci il nome del piatto" value="{{old('name')}}" required>
                         @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -25,7 +22,7 @@
                     {{-- Select per selezionare il ristorante --}}
                     <div class="form-group w-30 d-inline-block">
                         <label>I miei ristoranti</label>
-                        <select name="restaurant_id" v-model="restaurant_id">
+                        <select name="restaurant_id">
                             <option value="">Seleziona un ristorante</option>
                             @foreach (Auth::user()->restaurants as $restaurant)
                                 <option value="{{$restaurant->id}}" {{old('restaurant_id') == $restaurant->id ? 'selected' : ''}}>
@@ -58,7 +55,7 @@
 
                     <div class="form-group">
                         <label>Prezzo</label>
-                        <input name="unit_price" type="number" min="0.01" max="999.99" step="0.01" class="form-control" v-model="price" placeholder="Inserisci il prezzo" required value="{{old('unit_price')}}">
+                        <input name="unit_price" type="number" min="0.01" max="999.99" step="0.01" class="form-control" placeholder="Inserisci il prezzo" required value="{{old('unit_price')}}">
                         @error('unit_price')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
