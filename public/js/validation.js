@@ -157,11 +157,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\validation.js */"./resources/js/validation.js");
-=======
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\deliveboo\resources\js\validation.js */"./resources/js/validation.js");
->>>>>>> main
 
 
 /***/ })

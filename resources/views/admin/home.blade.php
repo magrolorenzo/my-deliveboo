@@ -21,7 +21,7 @@
                     @foreach ($restaurants as $restaurant)
                         <div class="card restaurant-dashboard-card w-100 justify-content-between my-2">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $restaurant->name }}</h5>
+                                <h5 class="card-title">{{ $restaurant->id }} - {{ $restaurant->name }}</h5>
                                 <p class="card-text">Indirizzo: {{ $restaurant->address }}</p>
                                 <p class="card-text">P. IVA: {{ $restaurant->piva }}</p>
                                 <a class="btn btn-secondary d-none d-md-inline-block" href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->slug]) }}">
@@ -30,11 +30,14 @@
                             </div>
 
                             <!-- img di copertirna -->
-                            @if($restaurant->img_cover)
-                                <div class="restaurant-img-container">
+                            <div class="restaurant-img-container">
+                                @if($restaurant->img_cover)
                                     <img class="restaurant-img" src="{{ asset("storage/".$restaurant->img_cover) }}" alt="">
-                                </div>
-                            @endif
+                                @else
+                                    <img class="restaurant-img" src="{{ asset("storage/images/img-not-found.png") }}" alt="">                                    
+                                @endif
+                            </div>
+
                         </div>
                     @endforeach
                 @endif

@@ -105,7 +105,7 @@ var app = new Vue({
   mounted: function mounted() {// console.log(this.nome);
   }
 });
-var nome = document.getElementsByClassName("text-capitalize").innerHTML(); // var restaurant = {!! json_encode($restaurant) !!};
+var nome = document.getElementsByClassName("text-capitalize")[0].innerHTML(); // var restaurant = {!! json_encode($restaurant) !!};
 // var restaurant = @json($restaurant->toArray());
 // var restaurant = {{$restaurant->toJson()}}
 // var nome = "{{ $restaurant->name }}";
