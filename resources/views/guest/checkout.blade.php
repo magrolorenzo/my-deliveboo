@@ -12,9 +12,7 @@
             <div class="row">
 
                 <h2 :id="{{json_encode($restaurant->id)}}">
-
                     id ristorante: {{$restaurant->id}}
-
                 </h2>
 
             </div>
