@@ -100,7 +100,8 @@ var app = new Vue({
     dishes: [],
     cart: {
       KEY: 'cartContent-',
-      contents: []
+      contents: [],
+      subtotal: 0
     }
   },
   methods: {
@@ -131,8 +132,10 @@ var app = new Vue({
 
       if (!itemExists) {
         this.cart.contents.push(newCartItem);
-      } // aggiorno il local storage
+      } // calcolo il totale
 
+
+      this.calculateSubtotal(); // aggiorno il local storage
 
       this.sync();
     },
@@ -159,8 +162,10 @@ var app = new Vue({
 
           itemExists = true;
         }
-      }
+      } // calcolo il totale
 
+
+      this.calculateSubtotal();
       this.sync();
     },
     remove: function remove(dish_id) {
@@ -180,9 +185,19 @@ var app = new Vue({
       //remove an item entirely from CART.contents based on its id
       this.cart.contents = this.cart.contents.filter(function (item) {
         return false;
-      }); //update localStorage
+      }); // calcolo il totale
+
+      this.calculateSubtotal(); //update localStorage
 
       this.sync();
+    },
+    calculateSubtotal: function calculateSubtotal() {
+      this.cart.subtotal = 0;
+
+      for (var i = 0; i < this.cart.contents.length; i++) {
+        this.cart.subtotal = this.cart.subtotal + this.cart.contents[i].quantity * this.cart.contents[i].unit_price;
+        console.log(this.cart.subtotal);
+      }
     }
   },
   // ***************** Mounted
@@ -194,7 +209,14 @@ var app = new Vue({
     axios.get("http://localhost:8000/api/dishes/" + self.currentRestaurantId).then(function (response) {
       var thisRestaurantDishes = response.data.results;
       self.dishes = thisRestaurantDishes; // console.log(self.dishes);
-    });
+    }); // controllo se c'è qlc nel carrello in local storage
+
+    var _contents = localStorage.getItem(this.cart.KEY + this.currentRestaurantId);
+
+    if (_contents) {
+      this.cart.contents = JSON.parse(_contents);
+      this.calculateSubtotal();
+    }
   }
 });
 

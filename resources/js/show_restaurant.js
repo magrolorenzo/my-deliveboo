@@ -6,7 +6,8 @@ var app = new Vue({
         dishes: [],
         cart: {
             KEY: 'cartContent-',
-            contents: []
+            contents: [],
+            subtotal: 0
         }
     },
 
@@ -41,6 +42,9 @@ var app = new Vue({
                 this.cart.contents.push(newCartItem);
             }
 
+            // calcolo il totale
+            this.calculateSubtotal();
+
             // aggiorno il local storage
             this.sync();
         },
@@ -72,6 +76,9 @@ var app = new Vue({
                 }
             }
 
+            // calcolo il totale
+            this.calculateSubtotal();
+
             this.sync();
         },
         remove(dish_id) {
@@ -92,8 +99,18 @@ var app = new Vue({
                 return false;
             });
 
+            // calcolo il totale
+            this.calculateSubtotal();
+
             //update localStorage
             this.sync()
+        },
+        calculateSubtotal() {
+            this.cart.subtotal = 0;
+            for (var i = 0; i < this.cart.contents.length; i++) {
+                this.cart.subtotal = this.cart.subtotal + this.cart.contents[i].quantity * this.cart.contents[i].unit_price;
+                console.log(this.cart.subtotal);
+            }
         }
     },
 
@@ -111,5 +128,12 @@ var app = new Vue({
             self.dishes = thisRestaurantDishes;
             // console.log(self.dishes);
         });
+
+        // controllo se c'è qlc nel carrello in local storage
+        let _contents = localStorage.getItem(this.cart.KEY + this.currentRestaurantId);
+        if(_contents){
+            this.cart.contents = JSON.parse(_contents);
+            this.calculateSubtotal();
+        }
     }
 });
