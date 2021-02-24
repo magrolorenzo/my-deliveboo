@@ -99,7 +99,7 @@ var app = new Vue({
     currentRestaurantId: "",
     dishes: [],
     cart: {
-      KEY: 'bkasjbdfkjasdkfjhaksdfjskd',
+      KEY: 'cartContent-',
       contents: []
     }
   },
@@ -120,18 +120,25 @@ var app = new Vue({
       var itemExists = false;
 
       for (var i = 0; i < this.cart.contents.length; i++) {
+        // se presente nel carrello
         if (this.cart.contents[i].id == newCartItem.id) {
+          // aggiungo la quantità
           this.cart.contents[i].quantity++;
           itemExists = true;
         }
-      }
+      } // se non è nel carrello -> push
+
 
       if (!itemExists) {
         this.cart.contents.push(newCartItem);
-      }
+      } // console.log(newCartItem);
+      // console.log(this.cart.contents);
+      // salvo nel localstorage
 
-      console.log(newCartItem);
-      console.log(this.cart.contents);
+
+      var _cart = JSON.stringify(this.cart.contents);
+
+      localStorage.setItem(this.cart.KEY + this.currentRestaurantId, _cart);
     }
   },
   // ***************** Mounted

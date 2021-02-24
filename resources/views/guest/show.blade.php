@@ -60,7 +60,8 @@
                                 <p class="card-text">@{{ dish.ingredients }}</p>
                                 <p class="card-text">@{{ dish.description }}</p>
                                 <h5 class="card-text">@{{ dish.unit_price }}</h5>
-                                <a id="chart-button" href="#" class="btn btn-primary" @click="add(dish)">Aggiungi al carrello</a>
+                                {{-- <a id="chart-button" class="btn btn-primary" @click="add(dish)">-</a> --}}
+                                <a id="chart-button" class="btn btn-primary" @click="add(dish)">Aggiungi al carrello</a>
                             </div>
                         </div>
 
