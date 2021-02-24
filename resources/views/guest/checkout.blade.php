@@ -11,7 +11,7 @@
         <div class="container mt-5">
             <div class="row">
 
-                <h2 :id="{{json_encode($restaurant->id)}}">
+                <h2 :currentRestaurantId="{{json_encode($restaurant->id)}}">
                     id ristorante: {{$restaurant->id}}
                 </h2>
 
@@ -56,7 +56,36 @@
                 {{-- Sezione riepilogo Ordine --}}
                 <div class="col-5 offset-2 shadow">
                     <h2>Riepilogo Ordine</h2>
-                    <p>Inserire qui carrello con possibilità di modificare le quantità dei prodotti</p>
+
+                    <div class="card-body">
+                        <h5 class="mb-3">carrello</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" v-for="cartItem in cart.contents">
+                                @{{ cartItem.name }}
+                                <a class="btn btn-primary" @click="decrease(cartItem.id)">-</a>
+                                <span>x@{{ cartItem.quantity }}</span>
+                                <a class="btn btn-primary" @click="add(cartItem)">+</a>
+                                <span>@{{ cartItem.unit_price }} €</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                <div>
+                                    <strong>Totale</strong>
+                                    <strong>
+                                        <p class="mb-0">(IVA inclusa)</p>
+                                    </strong>
+                                </div>
+                                <span><strong>@{{ cart.subtotal }} €</strong></span>
+                            </li>
+                        </ul>
+                        <div class="buttons-container" v-if="cart.subtotal != 0 ">
+                            <a href="{{route('guest.checkout', ['id'=>$restaurant->id])}}" class="btn btn-primary" >
+                                Ordina e Paga
+                            </a>
+                            <button type="button" class="btn btn-primary" name="button" @click="empty">Svuota</button>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
 
