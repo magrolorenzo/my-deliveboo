@@ -41,9 +41,47 @@ var app = new Vue({
                 this.cart.contents.push(newCartItem);
             }
 
-            // console.log(newCartItem);
-            // console.log(this.cart.contents);
+            // aggiorno il local storage
+            this.sync();
+        },
+        decrease(dishObj) {
+            let id = dishObj.id;
+            let name = dishObj.name;
+            let unit_price = dishObj.unit_price;
 
+            let newCartItem = {
+                id,
+                name,
+                unit_price,
+                quantity: 1
+            }
+
+            let itemExists = false;
+            for (var i = 0; i < this.cart.contents.length; i++) {
+
+                if (this.cart.contents[i].id == newCartItem.id) {
+
+                    if (this.cart.contents[i].quantity == 1) {
+                        // rimuovo il piatto dall'array
+                        this.remove(newCartItem.id);
+                    } else {
+                        this.cart.contents[i].quantity--;
+                    }
+
+                    itemExists = true;
+                }
+            }
+
+            this.sync();
+        },
+        remove(dish_id) {
+            this.cart.contents = this.cart.contents.filter(item=>{
+                if(item.id !== dish_id) {
+                    return true;
+                }
+            });
+        },
+        sync() {
             // salvo nel localstorage
             let _cart = JSON.stringify(this.cart.contents);
             localStorage.setItem(this.cart.KEY + this.currentRestaurantId, _cart);

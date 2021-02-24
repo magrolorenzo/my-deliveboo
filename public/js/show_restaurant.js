@@ -131,11 +131,47 @@ var app = new Vue({
 
       if (!itemExists) {
         this.cart.contents.push(newCartItem);
-      } // console.log(newCartItem);
-      // console.log(this.cart.contents);
+      } // aggiorno il local storage
+
+
+      this.sync();
+    },
+    decrease: function decrease(dishObj) {
+      var id = dishObj.id;
+      var name = dishObj.name;
+      var unit_price = dishObj.unit_price;
+      var newCartItem = {
+        id: id,
+        name: name,
+        unit_price: unit_price,
+        quantity: 1
+      };
+      var itemExists = false;
+
+      for (var i = 0; i < this.cart.contents.length; i++) {
+        if (this.cart.contents[i].id == newCartItem.id) {
+          if (this.cart.contents[i].quantity == 1) {
+            // rimuovo il piatto dall'array
+            this.remove(newCartItem.id);
+          } else {
+            this.cart.contents[i].quantity--;
+          }
+
+          itemExists = true;
+        }
+      }
+
+      this.sync();
+    },
+    remove: function remove(dish_id) {
+      this.cart.contents = this.cart.contents.filter(function (item) {
+        if (item.id !== dish_id) {
+          return true;
+        }
+      });
+    },
+    sync: function sync() {
       // salvo nel localstorage
-
-
       var _cart = JSON.stringify(this.cart.contents);
 
       localStorage.setItem(this.cart.KEY + this.currentRestaurantId, _cart);
