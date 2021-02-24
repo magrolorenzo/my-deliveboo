@@ -7,82 +7,105 @@
 
 @section('content')
     <div id="app">
-        <div class="info-section">
 
+        {{-- Sezione con info del ristorante --}}
+        <div class="info-section">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="info-container">
 
+                            {{-- Sezione di sinistra con info ristorante --}}
                             <div class="info-container-left">
                                 <h1 id="restaurant-id" class="text-capitalize" hidden>{{ $restaurant->id }}</h1>
+
+                                {{-- Nome Ristorante --}}
                                 <h1 id="restaurant-name" class="text-capitalize">{{ $restaurant->name }}</h1>
+
+                                {{-- Lista categorie ristorante --}}
                                 <h5 class="info-res">
                                     <span><i class="fas fa-utensils"></i></span> Categoria:
                                     @foreach ($restaurant->categories as $category)
-                                        {{ $category->name }}
+                                        <span class="badge badge-info">{{ $category->name }}</span>
                                     @endforeach
                                 </h5>
-                                <h5> <span><i class="fas fa-shipping-fast"></i></span> Consegna gratuita</h5>
 
-                                <h5>{{ $restaurant->category }}</h5>
-                                <h5 class="address"> <span><i class="fas fa-map-marker-alt"></i></span> Indirizzo: {{ $restaurant->address}}</h5>
+                                <h5><span><i class="fas fa-shipping-fast"></i></span> Consegna gratuita</h5>
+
+                                <h5 class="address"><span><i class="fas fa-map-marker-alt"></i></span> Indirizzo: {{ $restaurant->address}}</h5>
                             </div>
 
-                            <div class="info-container-right">
-                                <img src="{{asset("storage/".$restaurant->img_cover)}}" alt="">
-
+                            {{-- Sezione di destra con immagine ristorante --}}
+                            <div class="info-container-right rounded">
+                                <img src="{{asset("storage/".$restaurant->img_cover)}}" class="rounded">
                             </div>
+                        </div> {{-- Chiusura info container --}}
+                    </div> {{-- Chiusura col-12 --}}
+                </div> {{-- Chiusura row --}}
+            </div> {{-- Chiusura Container --}}
+        </div> {{-- Chiusura info sextion --}}
 
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
+        {{-- Sezione menu e carrello--}}
         <div class="dishes-section">
 
             <div class="container">
+
                 <div class="row">
+
                     <div class="col-9">
                         <div class="menu-title">
-                            <h1 class="text-uppercase">Menù</h1>
-
+                            <h1 class="text-uppercase">
+                                Menù
+                            </h1>
                         </div>
-                        <div class="dish-container">
 
+                        {{-- Contenitore lista piatti del menù --}}
+                        <div class="dish-container">
+                            {{-- Card piatto --}}
                             <div class="card" style="width: 18rem;" v-if="dish.visible" v-for="dish in dishes">
-                                <img class="card-img-top-show" :src="'../storage/' + dish.img_cover" alt="Card image cap">
+
+                                {{-- Immagine piatto --}}
+                                <div v-if="dish.img_cover"  class="cover-container">
+                                    <img :src="'../storage/' + dish.img_cover" class="card-img-top" />
+                                </div>
+                                <div  v-else class="card-header rounded">
+                                    <span>Immagine non presente</span>
+                                </div>
+
+                                {{-- Info piatto --}}
                                 <div class="card-body">
                                     <h5 class="card-title">@{{ dish.name }}</h5>
                                     <p class="card-text">@{{ dish.ingredients }}</p>
                                     <p class="card-text">@{{ dish.description }}</p>
-                                    <h5 class="card-text">@{{ dish.unit_price }}</h5>
-                                    <a id="chart-button" class="btn btn-primary" @click="decrease(dish.id)">-</a>
-                                    <a id="chart-button" class="btn btn-primary" @click="add(dish)">+</a>
+                                    <h5 class="card-text">@{{ dish.unit_price }} €</h5>
+                                    <a id="chart-button" class="btn btn-sm btn-primary" @click="decrease(dish.id)">-</a>
+                                    <a id="chart-button" class="btn btn-sm btn-primary" @click="add(dish)">+</a>
                                 </div>
                             </div>
-
                         </div>
-                    </div>
+                    </div> {{-- Chiusura col-9 --}}
 
-                    <div class="col-3">
 
-                        <!-- Card -->
-                        <div class="card mb-3">
+                    <div class="col-3 pt-5">
+
+                        <!-- Card carrello -->
+                        <div class="card mb-3 mt-5">
+
+                            <div class="card-header mb-3">
+                                <h5>
+                                    Carrello
+                                </h5>
+                            </div>
+
                             <div class="card-body">
 
-                                <h5 class="mb-3">carrello</h5>
-
+                                {{-- Lista elementi del carrello --}}
                                 <ul class="list-group list-group-flush">
-
                                     <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" v-for="cartItem in cart.contents">
                                         @{{ cartItem.name }}
-                                        <a class="btn btn-primary" @click="decrease(cartItem.id)">-</a>
+                                        <a class="btn btn-sm btn-primary" @click="decrease(cartItem.id)">-</a>
                                         <span>x@{{ cartItem.quantity }}</span>
-                                        <a class="btn btn-primary" @click="add(cartItem)">+</a>
+                                        <a class="btn btn-sm btn-primary" @click="add(cartItem)">+</a>
                                         <span>@{{ cartItem.unit_price }} €</span>
                                     </li>
 
@@ -97,20 +120,23 @@
                                     </li>
                                 </ul>
 
-                                <div class="buttons-container" v-if="cart.subtotal != 0 ">
-                                    <a href="{{route('guest.checkout', ['id'=>$restaurant->id])}}" class="btn btn-primary" >
-                                        Ordina e Paga
+                                {{-- Bottoni per checkout e per svotare carrello  --}}
+                                <div class="buttons-group" v-if="cart.subtotal != 0 ">
+                                    <a href="{{route('guest.checkout', ['id'=>$restaurant->id])}}" class="btn btn-success" >
+                                        Checkout
                                     </a>
-                                    <button type="button" class="btn btn-primary" name="button" @click="empty">Svuota</button>
+                                    <button type="button" class="btn btn-danger" name="button" @click="empty">Svuota <i class="fas fa-trash-alt"></i></button>
                                 </div>
 
                             </div>
                         </div>
                         <!-- Card -->
 
-                    </div>
+                    </div> {{-- Chiusura col-3 --}}
+
                 </div>
-            </div>
+
+            </div> {{-- Fine container --}}
         </div>
 
         <div class="container">

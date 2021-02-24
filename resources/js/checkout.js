@@ -5,7 +5,7 @@ var app = new Vue({
         customer_surname: "",
         customer_email: "",
         delivery_address: "",
-        
+
         currentRestaurantId: "",
         dishes: [],
         cart: {
@@ -35,6 +35,7 @@ var app = new Vue({
             }
 
             let itemExists = false;
+
             for (var i = 0; i < this.cart.contents.length; i++) {
                 // se presente nel carrello
                 if (this.cart.contents[i].id == newCartItem.id) {
@@ -57,6 +58,7 @@ var app = new Vue({
         },
 
         decrease(thisId) {
+            
             let id = thisId;
 
             for (var i = 0; i < this.cart.contents.length; i++) {

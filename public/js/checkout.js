@@ -100,10 +100,12 @@ var app = new Vue({
     customer_surname: "",
     customer_email: "",
     delivery_address: "",
+    currentRestaurantId: "",
     dishes: [],
     cart: {
       KEY: 'cartContent-',
-      contents: []
+      contents: [],
+      subtotal: 0
     }
   },
   methods: {
@@ -194,7 +196,18 @@ var app = new Vue({
     }
   },
   // ***************** Mounted
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    var self = this; // prendo l'id del ristorante
+
+    self.getRestaurantId();
+
+    var _contents = localStorage.getItem(this.cart.KEY + this.currentRestaurantId);
+
+    if (_contents) {
+      this.cart.contents = JSON.parse(_contents);
+      this.calculateSubtotal();
+    }
+  }
 });
 
 /***/ }),
