@@ -1,0 +1,29 @@
+header {
+    height: $guestHeaderHeight;
+    color: $textPr;
+
+
+
+    nav#guest-navbar {
+        height: $guestHeaderHeight;
+        background-color: #fff;
+        border-bottom: 1px solid rgba(0,0,0,.08);
+
+        // Brand Logo
+        .logo-brand {
+            height: 32px;
+            img {
+                height: 100%;
+            }
+        }
+
+        // Menu
+        .navbar-nav {
+            // link
+            .nav-link {
+                color: $textPr;
+            }
+        }
+
+    }
+} // fine header

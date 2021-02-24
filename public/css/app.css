@@ -11194,6 +11194,29 @@ header nav {
   min-width: 320px;
 }
 
+header {
+  height: 70px;
+  color: #2E3333;
+}
+
+header nav#guest-navbar {
+  height: 70px;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+header nav#guest-navbar .logo-brand {
+  height: 32px;
+}
+
+header nav#guest-navbar .logo-brand img {
+  height: 100%;
+}
+
+header nav#guest-navbar .navbar-nav .nav-link {
+  color: #2E3333;
+}
+
 #welcome-blade .container .row .col-lg-12 .restaurant-card {
   width: 350px;
 }

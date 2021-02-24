@@ -7,8 +7,11 @@ $line-height-base: 1.6;
 $spacing-unit : 10px;
 $gutter: 15px;
 
-// html
+// HTML DASHBOARD
 $dashboardHeaderHeight: 60px;
+
+// HTML GUEST
+$guestHeaderHeight: 70px;
 
 // Colors
 $blue: #3490dc;
@@ -23,16 +26,7 @@ $teal: #4dc0b5;
 $cyan: #6cb2eb;
 
 // Proj color
-$brandPr: #101010;
-$textPr: #ffffff;
-$textPrAlt: #989898;
-
-$prInverse: #f1f1f1;
-$textPrInverse: #000000;
-
-$btnPr: #009cff;
-$textBtnPr: #ffffff;
-
+$textPr: #2E3333;
 
 // Body
 $body-bg: #f8fafc;
