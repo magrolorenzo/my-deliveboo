@@ -1,12 +1,20 @@
 var app = new Vue({
     el: "#app",
     data: {
-        customer_name: "",
-        customer_surname: "",
-        customer_email: "",
-        delivery_address: "",
+
+        // Dati che voglio inviare alal rotta e/o Controller
+
+        // array con dati cliente
+        // array cart.contents
+        customer_infos: [
+            customer_name: "",
+            customer_surname: "",
+            customer_email: "",
+            delivery_address: "",
+        ],
 
         currentRestaurantId: "",
+        
         dishes: [],
         cart: {
             KEY: 'cartContent-',
@@ -139,57 +147,37 @@ var app = new Vue({
     }
 });
 
+// Braintree
+// Copiato script in fondo alla  pagina index della repo di demo di braintree
 
-// ***
-var button = document.querySelector('#submit-button');
+var form = document.querySelector('#payment-form');
+var client_token = document.getElementById("token").innerHTML;
+
 
 braintree.dropin.create({
-    // Insert your tokenization key here
-    authorization: 'sandbox_q7sppc96_t2dv6mqb3mg6srfn',
-    container: '#dropin-container'
+    authorization: client_token,
+    selector: '#bt-dropin'
+
 }, function (createErr, instance) {
-    button.addEventListener('click', function () {
-        instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
-            // When the user clicks on the 'Submit payment' button this code will send the
-            // encrypted payment information in a variable called a payment method nonce
-            $.ajax({
-                type: 'POST',
-                url: '/checkout',
-                data: {'paymentMethodNonce': payload.nonce}
-            }).done(function(result) {
-                // Tear down the Drop-in UI
-                instance.teardown(function (teardownErr) {
-                    if (teardownErr) {
-                        console.error('Could not tear down Drop-in UI!');
-                    } else {
-                        console.info('Drop-in UI has been torn down!');
-                        // Remove the 'Submit payment' button
-                        $('#submit-button').remove();
-                    }
-                });
-                
-                if (result.success) {
-                    $('#checkout-message').html('<h1>Success</h1><p>Your Drop-in UI is working! Check your <a href="https://sandbox.braintreegateway.com/login">sandbox Control Panel</a> for your test transactions.</p><p>Refresh to try another transaction.</p>');
-                } else {
-                    console.log(result);
-                    $('#checkout-message').html('<h1>Error</h1><p>Check your console.</p>');
-                }
-            });
+    if (createErr) {
+        console.log('Create Error', createErr);
+        return;
+    }
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        instance.requestPaymentMethod(function (err, payload) {
+            if (err) {
+                console.log('Request Payment Method Error', err);
+                return;
+            }
+
+            // Add the nonce to the form and submit
+            document.querySelector('#nonce').value = payload.nonce;
+            form.submit();
+
+
+
         });
     });
 });
-
-
-// Braintree
-// var button = document.querySelector('#submit-button');
-//
-// braintree.dropin.create({
-//     authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
-//     selector: '#dropin-container'
-// }, function (err, instance) {
-//     button.addEventListener('click', function () {
-//         instance.requestPaymentMethod(function (err, payload) {
-//             // Submit payload.nonce to your server
-//         });
-//     })
-// });

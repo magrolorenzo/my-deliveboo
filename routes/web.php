@@ -17,6 +17,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/show/{slug}', 'HomeController@show')->name('guest.show');
 Route::get('/checkout', 'HomeController@checkout')->name('guest.checkout');
+Route::post('/pay-and-order', 'HomeController@pay_and_order')->name('guest.pay');
 
 Route::middleware('auth')->namespace('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -26,5 +27,5 @@ Route::middleware('auth')->namespace('admin')->prefix('admin')->name('admin.')->
 });
 
 // Rotte per pagamento braintree
-Route::get('/', 'PaymentController@checkout');
-Route::post('/', 'PaymentController@checkout');
+// Route::get('/', 'PaymentController@checkout');
+// Route::post('/', 'PaymentController@checkout');
