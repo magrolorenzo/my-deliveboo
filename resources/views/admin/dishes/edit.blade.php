@@ -3,9 +3,12 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div id="errors-root" class="col-md-8">
                 <h1>Modifica il piatto</h1>
-                <form action="{{ route('admin.dishes.update', ['dish' => $dish->id]) }}" method="post" enctype="multipart/form-data">
+                <div class="errors-list mt-4 mb-4" v-if="errors.length">
+                    <p class="alert alert-danger m-0" v-for="error in errors">@{{error}}</p>
+                </div>
+                <form name="dishform" action="{{ route('admin.dishes.update', ['dish' => $dish->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -23,7 +26,7 @@
                             <option value="">Seleziona un ristorante</option>
                             @foreach (Auth::user()->restaurants as $restaurant)
                                 <option value="{{$restaurant->id}}" {{old('restaurant_id', $dish->restaurant_id) == $restaurant->id ? 'selected' : ''}}>
-                                    {{$restaurant->name}}
+                                    {{$restaurant->id}} - {{$restaurant->name}}
                                 </option>
                             @endforeach
                         </select>
@@ -92,7 +95,8 @@
 
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success">
+                        {{-- @click="validateDish" --}}
+                        <button type="submit" class="btn btn-success"  >
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg> Aggiorna i dati del piatto
                         </button>
                     </div>
@@ -100,4 +104,5 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/validation.js') }}" defer></script>
 @endsection

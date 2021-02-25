@@ -1,74 +1,124 @@
-// import Vue from "vue";
-// window.onload = function(){
-
 var app = new Vue({
     el: "#app",
+
     data: {
-        dishes: [],
         categories: [],
-        restaurants: [],
-        selectedRestaurants: [],
         selectedCategories: [],
+        restaurants: [],
         url_base: "http://localhost:8000/storage/"
     },
+
     methods: {
+        
+        // Metodo per ricaricare tutti i ristoranti
+        loadRestaurants(){
+            axios.get("http://localhost:8000/api/restaurants").then((response) => {
+                let all_restaurants = response.data.results;
+                this.restaurants = all_restaurants;
+            });
+        },
+
+        // Metodo per svuotare i filtri categorie
+        clearCategories(){
+            if (this.selectedCategories.length > 0) {
+                this.selectedCategories = [];
+                this.restaurants = [];
+                this.loadRestaurants();
+            };
+        },
+
+        // Metodo per filtrare i ristoranti con click su bottone categoria
         selectedCategory(category_id) {
-            /* se la categoria è stata selezionata la togli dall'array */
-            if (this.selectedCategories.includes(category_id)) {
-                this.selectedCategories = this.selectedCategories.filter(item => item !== category_id);
-                this.restaurants = this.restaurants.filter(item => item.pivot.category_id !== category_id);
-                if (this.restaurants.length == 0) {
-                    axios.get("http://localhost:8000/api/restaurants").then(restaurants => {
-                        let restaurant = restaurants.data.results;
-                        this.restaurants = restaurant;
+
+            // Se la categoria non è presente, aggiungo ristoranti
+            if (!this.selectedCategories.includes(category_id)) {
+
+                // Se è la prima categoria selezionata, svuoto array e faccio chiamata ajax
+                if (this.selectedCategories.length == 0) {
+
+                    axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then((response) => {
+                        let selected_restaurants = response.data.results;
+                        this.restaurants = [];
+                        this.restaurants = selected_restaurants;
+                        this.selectedCategories.push(category_id);
+                    });
+
+                } else {
+                    // Altrimenti aggiungo i nuovi ristoranti filtrati nell array
+                    axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then((response) => {
+                        let selected_restaurants = response.data.results;
+                        for (let index = 0; index < this.restaurants.length; index++) {
+                            // Se un ristorante con più categorie è già presente, non lo riaggungo
+                            selected_restaurants = selected_restaurants.filter(item => item.id !== this.restaurants[index].id);
+                        }
+                        this.selectedCategories.push(category_id);
+                        this.restaurants = this.restaurants.concat(selected_restaurants);
                     });
                 }
 
             } else {
-                /* se è la prima categoria selezionata svuoto array e richiamo dati con chiamata all'api */
-                if (this.selectedCategories.length == 0) {
-                    this.restaurants = [];
-                    axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(response => {
-                        let restaurant = response.data.results;
-                        this.restaurants = restaurant;
-                    });
 
-                } else {
-                    /* se seleziono una categoria non presente aggiungo i risultati ai dati precedenti */
-                    axios.get("http://localhost:8000/api/filtered-restaurants/" + category_id).then(response => {
-                        let restaurant = response.data.results;
-                        for (let index = 0; index < this.restaurants.length; index++) {
-                            restaurant = restaurant.filter(item => item.id !== this.restaurants[index].id);
+                // Array di salvataggio ID ristoranti da eliminare
+                let res_id = [];
 
-                        }
-                        this.restaurants = this.restaurants.concat(restaurant);
+                // Rimuovo category_id dall'array dei filtri applicati
+                this.selectedCategories = this.selectedCategories.filter(item => item !== category_id);
 
-                    });
-                }
-                this.selectedCategories.push(category_id);
-            }
-        },
-        rightClick() {
+                // Rimuovo i ristoranti che non hanno categorie filtrate
+                for (var i = 0; i < this.restaurants.length; i++) {
+
+                    let res = this.restaurants[i];
+                    let remove_restaurant = true;
+
+                    // Ciclo gli obj categorie di ogni ristorante
+                    for (var j = 0; j < res.categories.length; j++) {
+
+                        let cat =  res.categories[j];
+                        if(this.selectedCategories.includes( cat.id )){
+                            remove_restaurant = false;
+                        };
+                    };
+
+                    if(remove_restaurant){
+                        res_id.push(res.id);
+                    };
+                };
+
+                // rimuovo i ristoranti dall'array
+                this.restaurants = this.restaurants.filter(item => !res_id.includes(item.id));
+
+                // Se non hai più categorie selezionate, mostra tutti i ristoranti
+                if (this.restaurants.length == 0) {
+                    this.loadRestaurants();
+                };
+
+            }; // Chiusura else
+
+        }, // Chiusura metodo per filtrare categorie
+
+        moveRight() {
             document.getElementById('cat').scrollLeft += 700;
+
         },
-        leftClick() {
+        moveLeft() {
             document.getElementById('cat').scrollLeft -= 700;
         }
+
     },
+
+    // ***************** Mounted *****************
     mounted() {
-        axios.get("http://localhost:8000/api/dishes").then(dishes => {
-            let dish = dishes.data.results;
-            this.dishes = dish;
+
+        // Carica tutte le categorie
+        axios.get("http://localhost:8000/api/categories").then((response) => {
+            let all_categories = response.data.results;
+            this.categories = all_categories;
         });
 
-        axios.get("http://localhost:8000/api/categories").then(categories => {
-            let category = categories.data.results;
-            this.categories = category;
-        });
-
-        axios.get("http://localhost:8000/api/restaurants").then(restaurants => {
-            let restaurant = restaurants.data.results;
-            this.restaurants = restaurant;
+        // Carica tutti i ristoranti
+        axios.get("http://localhost:8000/api/restaurants").then((response) => {
+            let all_restaurants = response.data.results;
+            this.restaurants = all_restaurants;
         });
     }
 });

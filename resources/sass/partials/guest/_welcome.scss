@@ -1,0 +1,108 @@
+#welcome-blade{
+
+    #jumbotron {
+        padding: 40px 0;
+        background-color: $backgroundBrandPr;
+
+        color: $textTitlePr;
+    }
+
+    // categorie
+    #category-container {
+        position: relative;
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        .category-container {
+            overflow-x: hidden;
+
+            // Category Card
+            .card-size {
+                min-width: 180px; height: 90px;
+                display: flex;
+                align-items: flex-end;
+                color: #fff;
+                text-shadow: 0 1px 4px rgb(0 0 0 / 8%);
+                background-color: $backgroundBrandPr;
+                border-radius: 4px;
+                // background: -webkit-gradient(linear,left top,left bottom,color-stop(50%,transparent),to(rgba(0,0,0,.16)));
+                // background: linear-gradient(180deg, transparent 50%,rgba(0,0,0,.16));
+                font-weight: 700;
+                font-size: 16px;
+                cursor: pointer;
+
+                &.selected {
+                    background-color: $orange;
+                }
+            }
+        }
+
+        .category-arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 56px; height: 56px;
+
+            position: absolute;
+            font-size: 20px;
+
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0 7px;
+            cursor: pointer;
+
+            background: #fff;
+            color: $backgroundBrandPr;
+            border: 1px solid rgba(0,0,0,.04);
+            border-radius: 50%;
+            -webkit-box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
+            box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
+
+            &:hover {
+                box-shadow: 0 6px 20px rgb(0 0 0 / 8%);
+            }
+        }
+
+        .category-arrow.left {
+            left: -20px;
+        }
+
+        .category-arrow.right {
+            right: -20px;
+        }
+    }
+
+    // ristoranti
+    #restaurant-container {
+
+        .restaurant-card{
+            width: 350px;
+            min-width: 350px;
+            box-shadow: 0 1px 4px rgb(0 0 0 / 8%), 0 0 0 1px rgb(0 0 0 / 4%);
+            margin: 1px 1px 5px;
+            border-radius: 3px;
+            background-color: #fff;
+            overflow: hidden;
+
+            // parte superiore: img
+            .cover-container{
+                height: 200px;
+                img {
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+
+            // titolo
+            .card-title {
+                color: $textPr;
+                font-size: 14px;
+                line-height: 19px;
+                font-weight: 600;
+            }
+        }
+    }
+}

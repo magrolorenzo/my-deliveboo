@@ -12,15 +12,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'HomeController@index')->name('home');
-
 Auth::routes();
 
-Route::middleware('auth')->namespace('admin')->prefix('admin')->name('admin.')->group(function(){
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/show/{slug}', 'HomeController@show')->name('guest.show');
+Route::get('/checkout', 'HomeController@checkout')->name('guest.checkout');
+
+Route::middleware('auth')->namespace('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/orders', 'OrderController@index')->name('orders');
 
     Route::resource('/restaurants', 'RestaurantController');
     Route::resource('/dishes', 'DishController');
+    Route::get('/orders', 'OrderController@index')->name('orders');
 });

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/dishes', 'Api\DishController@index');
+Route::get('/dishes/{id}', 'Api\DishController@filterDishes');
 Route::get('/categories', 'Api\CategoryController@index');
 Route::get('/restaurants', 'Api\RestaurantController@index');
 Route::get('/filtered-restaurants/{id}', 'Api\RestaurantController@filtered');

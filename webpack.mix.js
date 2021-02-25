@@ -13,4 +13,8 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .js('resources/js/homepage.js', 'public/js');
+    .js('resources/js/homepage.js', 'public/js')
+    .js('resources/js/validation.js','public/js')
+    .js('resources/js/show_restaurant.js','public/js')
+    .js('resources/js/checkout.js','public/js')
+    ;
