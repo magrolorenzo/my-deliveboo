@@ -26,7 +26,7 @@ var app = new Vue ({
             }
 
             if(!piva || piva.length < this.minChars || isNaN(piva)) {
-                this.errors.push('Attenzione! la partita iva deve essere un numero di almeno 11 caratteri!');
+                this.errors.push('Attenzione! la partita iva deve essere un numero di almeno 11 cifre!');
             }
         },
 

@@ -81,21 +81,25 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/show_restaurant.js":
-/*!*****************************************!*\
-  !*** ./resources/js/show_restaurant.js ***!
-  \*****************************************/
+/***/ "./resources/js/payment.js":
+/*!*********************************!*\
+  !*** ./resources/js/payment.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 var app = new Vue({
   el: "#app",
   data: {
+    customer_name: "",
+    customer_surname: "",
+    customer_email: "",
+    delivery_address: "",
     currentRestaurantId: "",
     dishes: [],
     cart: {
@@ -108,6 +112,7 @@ var app = new Vue({
     getRestaurantId: function getRestaurantId() {
       this.currentRestaurantId = document.getElementById("restaurant-id").innerHTML;
     },
+    // Metodo per incrementare quantità di oggetti nel carrello
     add: function add(dishObj) {
       var id = dishObj.id;
       var name = dishObj.name;
@@ -139,6 +144,7 @@ var app = new Vue({
 
       this.sync();
     },
+    // Metodo per diminuire quantità di oggetti nel carrello
     decrease: function decrease(thisId) {
       var id = thisId;
 
@@ -158,9 +164,11 @@ var app = new Vue({
       } // calcolo il totale
 
 
-      this.calculateSubtotal();
+      this.calculateSubtotal(); // aggiorno il local storage
+
       this.sync();
     },
+    // Rimuove elemento dal carrello
     remove: function remove(dish_id) {
       this.cart.contents = this.cart.contents.filter(function (item) {
         if (item.id !== dish_id) {
@@ -168,6 +176,7 @@ var app = new Vue({
         }
       });
     },
+    // Sincronizza Vue con LocalStorage
     sync: function sync() {
       // salvo nel localstorage
       var _cart = JSON.stringify(this.cart.contents);
@@ -182,6 +191,7 @@ var app = new Vue({
 
       this.sync();
     },
+    // Ricalcola totale carrello
     calculateSubtotal: function calculateSubtotal() {
       this.cart.subtotal = 0;
 
@@ -194,12 +204,7 @@ var app = new Vue({
   mounted: function mounted() {
     var self = this; // prendo l'id del ristorante
 
-    self.getRestaurantId(); // prendo tutti i piatti del ristorante
-
-    axios.get("http://localhost:8000/api/dishes/" + self.currentRestaurantId).then(function (response) {
-      var thisRestaurantDishes = response.data.results;
-      self.dishes = thisRestaurantDishes; // console.log(self.dishes);
-    }); // controllo se c'è qlc nel carrello in local storage
+    self.getRestaurantId();
 
     var _contents = localStorage.getItem(this.cart.KEY + this.currentRestaurantId);
 
@@ -208,18 +213,45 @@ var app = new Vue({
       this.calculateSubtotal();
     }
   }
+}); // Braintree
+// Copiato script in fondo alla  pagina index della repo di demo di braintree
+
+var form = document.querySelector('#payment-form');
+var client_token = document.getElementById("token").innerHTML;
+braintree.dropin.create({
+  authorization: client_token,
+  selector: '#bt-dropin'
+}, function (createErr, instance) {
+  if (createErr) {
+    console.log('Create Error', createErr);
+    return;
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    instance.requestPaymentMethod(function (err, payload) {
+      if (err) {
+        console.log('Request Payment Method Error', err);
+        return;
+      } // Add the nonce to the form and submit
+
+
+      document.querySelector('#nonce').value = payload.nonce;
+      form.submit();
+    });
+  });
 });
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************************!*\
-  !*** multi ./resources/js/show_restaurant.js ***!
-  \***********************************************/
+/***/ 4:
+/*!***************************************!*\
+  !*** multi ./resources/js/payment.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\show_restaurant.js */"./resources/js/show_restaurant.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\payment.js */"./resources/js/payment.js");
 
 
 /***/ })

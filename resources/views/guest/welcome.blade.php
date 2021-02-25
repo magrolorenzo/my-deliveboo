@@ -38,6 +38,18 @@
             <div class="container mb-4 mt-4" >
                 <div class="row cat-row mb-2">
 
+                    {{-- Messaggio di avvenuto ordine --}}
+                    @if (session("success_message"))
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">Well done!</h4>
+                            <p>{{session("success_message")}}</p>
+                            <hr>
+                            <p class="mb-0">Acquista ancora presso uno dei nostri ristoranti!</p>
+                        </div>
+
+                    @endif
+
+
                     <div class="col-12">
                         <h2>
                             La selezione di DeliveBoo

@@ -1,12 +1,20 @@
 var app = new Vue({
     el: "#app",
     data: {
-        customer_name: "",
-        customer_surname: "",
-        customer_email: "",
-        delivery_address: "",
+
+        // Dati che voglio inviare alal rotta e/o Controller
+
+        // array con dati cliente
+        // array cart.contents
+        customer_infos: [
+            customer_name: "",
+            customer_surname: "",
+            customer_email: "",
+            delivery_address: "",
+        ],
 
         currentRestaurantId: "",
+        
         dishes: [],
         cart: {
             KEY: 'cartContent-',
@@ -140,15 +148,36 @@ var app = new Vue({
 });
 
 // Braintree
-var button = document.querySelector('#submit-button');
+// Copiato script in fondo alla  pagina index della repo di demo di braintree
+
+var form = document.querySelector('#payment-form');
+var client_token = document.getElementById("token").innerHTML;
+
 
 braintree.dropin.create({
-    authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
-    selector: '#dropin-container'
-}, function (err, instance) {
-    button.addEventListener('click', function () {
+    authorization: client_token,
+    selector: '#bt-dropin'
+
+}, function (createErr, instance) {
+    if (createErr) {
+        console.log('Create Error', createErr);
+        return;
+    }
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
         instance.requestPaymentMethod(function (err, payload) {
-            // Submit payload.nonce to your server
+            if (err) {
+                console.log('Request Payment Method Error', err);
+                return;
+            }
+
+            // Add the nonce to the form and submit
+            document.querySelector('#nonce').value = payload.nonce;
+            form.submit();
+
+
+
         });
-    })
+    });
 });

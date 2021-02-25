@@ -2,41 +2,35 @@
 @section('page-title', 'Checkout Page')
 
 @section('script')
-    <script src="{{ asset('js/checkout.js') }}" defer></script>
-    <script src="https://js.braintreegateway.com/web/dropin/1.26.1/js/dropin.js"></script>
+    <script src="{{ asset('js/payment.js') }}" defer></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://js.braintreegateway.com/web/dropin/1.26.1/js/dropin.min.js"></script>
 @endsection
 
 @section('content')
     <div id="app">
-
         <div class="container mt-5">
-
             <div class="row">
-
                 {{-- Sezione form Cliente --}}
                 <div class="col-5 pt-4 pb-4 border rounded">
                     <h2>Inserisci qui i tuoi dati</h2>
                     <form action="" method="post">
                         @csrf
-
                         {{-- Nome Cliente --}}
                         <div class="form-group">
                             <label>Nome</label>
                             <input type="text" name="customer_name" class="form-control" placeholder="Inserisci il tuo Nome" value="{{old('customer_name')}}" required>
                         </div>
-
                         {{-- Cognome Cliente --}}
                         <div class="form-group">
                             <label>Cognome</label>
                             <input type="text" name="customer_surname" class="form-control" placeholder="Inserisci il tuo Cognome" value="{{old('customer_surname')}}" required>
                         </div>
-
                         {{-- e-mail Cliente --}}
                         <div class="form-group">
                             <label>E-mail</label>
                             <input type="text" name="customer_email" class="form-control" placeholder="Inserisci la tua e-mail" value="{{old('customer_email')}}" required>
                         </div>
-
                         {{-- Indirizzo di consegna --}}
                         <div class="form-group">
                             <label>Indirizzo di consegna</label>
@@ -61,7 +55,10 @@
                     {{-- Carrello --}}
                     <div class="card-body">
 
-                        <h5>Ristorante: <span  id="restaurant-id">{{$restaurant->id}}</span> - {{$restaurant->name}}</h5>
+                        <h5>Ristorante:</h5>
+                        <p>
+                            {{$restaurant->name}} - #<span  id="restaurant-id">{{$restaurant->id}}</span>
+                        </p>
 
                         {{-- Lista elementi del carrello --}}
                         <ul class="list-group list-group-flush">
@@ -72,7 +69,7 @@
                                 <a class="btn btn-sm btn-primary" @click="add(cartItem)">+</a>
                                 <span>@{{ cartItem.unit_price }} €</span>
                             </li>
-
+                            {{-- Totale Carrello --}}
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                 <div>
                                     <strong>Totale</strong>
@@ -83,36 +80,45 @@
                                 <span><strong>@{{ cart.subtotal }} €</strong></span>
                             </li>
                         </ul>
-
-                        {{-- Bottoni per checkout e per svotare carrello  --}}
-                        <div class="buttons-group" v-if="cart.subtotal != 0 ">
-                            <a href="{{route('guest.checkout', ['id'=>$restaurant->id])}}" class="btn btn-success" >
-                                Checkout
-                            </a>
-                            <button type="button" class="btn btn-danger" name="button" @click="empty">Svuota <i class="fas fa-trash-alt"></i></button>
-                        </div>
-
                     </div>
-
-
                 </div>
-
-
-
-
             </div>
         </div>
 
         {{-- Sezione di pagamento --}}
-        <div class="container mt-5">
+        <div class="container mt-5 mb-5 ">
             <div class="row">
+                {{-- Braintree --}}
                 <div class="col-12 shadow">
-                    <h2>Pagamento</h2>
 
+                    <div class="wrapper">
+                        <div class="checkout container">
 
+                            <form method="post" id="payment-form" action="{{route("guest.pay")}}">
+                                @csrf
+                                <section>
+                                    <label for="amount">
+                                        <span class="input-label">Amount</span>
+                                        <div class="input-wrapper amount-wrapper">
+                                            <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" :value="cart.subtotal">
+                                        </div>
+                                    </label>
 
-                    <div id="dropin-container"></div>
-                    <button id="submit-button" class="button button--small button--green">Purchase</button>
+                                    <div class="bt-drop-in-wrapper">
+                                        <div id="bt-dropin"></div>
+                                    </div>
+                                </section>
+
+                                <span id="token" hidden>{{$token}}</span>
+                                <input id="nonce" name="payment_method_nonce" type="hidden" />
+                                <button class="button" type="submit">
+                                    <span>Paga e ordina</span>
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+
 
                 </div>
             </div>
@@ -183,9 +189,9 @@
 
 
     </div>
+</div>
 
-    {{-- Script braintree --}}
-
+{{-- Script braintree --}}
 
 
 @endsection
