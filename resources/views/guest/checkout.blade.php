@@ -2,7 +2,8 @@
 @section('page-title', 'Checkout Page')
 
 @section('script')
-    <script src="{{ asset('js/checkout.js') }}" defer></script>
+    <script src="{{ asset('js/payment.js') }}" defer></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://js.braintreegateway.com/web/dropin/1.26.1/js/dropin.js"></script>
 @endsection
 
@@ -108,9 +109,7 @@
             <div class="row">
                 <div class="col-12 shadow">
                     <h2>Pagamento</h2>
-
-
-
+                    {{-- Braintree --}}
                     <div id="dropin-container"></div>
                     <button id="submit-button" class="button button--small button--green">Purchase</button>
 

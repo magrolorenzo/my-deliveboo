@@ -213,18 +213,58 @@ var app = new Vue({
       this.calculateSubtotal();
     }
   }
-}); // Braintree
+}); // ***
 
 var button = document.querySelector('#submit-button');
 braintree.dropin.create({
-  authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
-  selector: '#dropin-container'
-}, function (err, instance) {
+  // Insert your tokenization key here
+  authorization: 'sandbox_q7sppc96_t2dv6mqb3mg6srfn',
+  container: '#dropin-container'
+}, function (createErr, instance) {
   button.addEventListener('click', function () {
-    instance.requestPaymentMethod(function (err, payload) {// Submit payload.nonce to your server
+    instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+      // When the user clicks on the 'Submit payment' button this code will send the
+      // encrypted payment information in a variable called a payment method nonce
+      $.ajax({
+        type: 'POST',
+        url: '/checkout',
+        data: {
+          'paymentMethodNonce': payload.nonce
+        }
+      }).done(function (result) {
+        // Tear down the Drop-in UI
+        instance.teardown(function (teardownErr) {
+          if (teardownErr) {
+            console.error('Could not tear down Drop-in UI!');
+          } else {
+            console.info('Drop-in UI has been torn down!'); // Remove the 'Submit payment' button
+
+            $('#submit-button').remove();
+          }
+        });
+
+        if (result.success) {
+          $('#checkout-message').html('<h1>Success</h1><p>Your Drop-in UI is working! Check your <a href="https://sandbox.braintreegateway.com/login">sandbox Control Panel</a> for your test transactions.</p><p>Refresh to try another transaction.</p>');
+        } else {
+          console.log(result);
+          $('#checkout-message').html('<h1>Error</h1><p>Check your console.</p>');
+        }
+      });
     });
   });
-});
+}); // Braintree
+// var button = document.querySelector('#submit-button');
+//
+// braintree.dropin.create({
+//     authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
+//     selector: '#dropin-container'
+// }, function (err, instance) {
+//     button.addEventListener('click', function () {
+//         instance.requestPaymentMethod(function (err, payload) {
+//             // Submit payload.nonce to your server
+//         });
+//     })
+// });
 
 /***/ }),
 
@@ -235,7 +275,7 @@ braintree.dropin.create({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\proj_boolean\20210214_deliveboo\deliveboo\resources\js\checkout.js */"./resources/js/checkout.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\checkout.js */"./resources/js/checkout.js");
 
 
 /***/ })

@@ -24,3 +24,7 @@ Route::middleware('auth')->namespace('admin')->prefix('admin')->name('admin.')->
     Route::resource('/dishes', 'DishController');
     Route::get('/orders', 'OrderController@index')->name('orders');
 });
+
+// Rotte per pagamento braintree
+Route::get('/', 'PaymentController@checkout');
+Route::post('/', 'PaymentController@checkout');
