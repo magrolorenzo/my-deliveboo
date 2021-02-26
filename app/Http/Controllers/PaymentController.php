@@ -108,8 +108,8 @@ class PaymentController extends Controller
             $new_customer->order_id = $order_id;
             $new_customer->save();
             // Invio mail al customer
-            Mail::to($new_customer->customer_email)->send(new OrderMail);
-            // dd($new_customer);
+            // Passo come parametro al costruttore l oggetto intero $new_customer per recuparare i dati nel corpo della mail
+            Mail::to($new_customer->customer_email)->send(new OrderMail($new_customer));
 
             return redirect()->route('home')->with("success_message", "Grazie di aver effettuato un ordine con noi!");
             // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
