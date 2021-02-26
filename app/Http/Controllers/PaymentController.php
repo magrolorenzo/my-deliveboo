@@ -43,6 +43,14 @@ class PaymentController extends Controller
 
     public function pay_and_order(Request $request){
 
+        // validation
+        $request->validate([
+            'customer_name' => 'required|max:30',
+            'customer_surname' => 'required|max:30',
+            'customer_email' => 'required',
+            'delivery_address' => 'required',
+        ]);
+
         $gateway = new \Braintree\Gateway([
             'environment' => getenv('BT_ENVIRONMENT'),
             'merchantId' => getenv('BT_MERCHANT_ID'),

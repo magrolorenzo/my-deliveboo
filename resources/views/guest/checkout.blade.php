@@ -20,22 +20,34 @@
                         <!-- Nome -->
                         <div class="form-group">
                             <label>Nome</label>
-                            <input type="text" value="prova" name="customer_name" class="form-control" placeholder="Inserisci il tuo Nome" value="{{old('customer_name')}}" required>
+                            <input type="text" value="prova" name="customer_name" class="form-control" maxlength="30" placeholder="Inserisci il tuo Nome" value="{{old('customer_name')}}" required>
+                            @error('customer_name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <!-- Cognome -->
                         <div class="form-group">
                             <label>Cognome</label>
-                            <input type="text" value="prova" name="customer_surname" class="form-control" placeholder="Inserisci il tuo Cognome" value="{{old('customer_surname')}}" required>
+                            <input type="text" value="prova" name="customer_surname" class="form-control" maxlength="30" placeholder="Inserisci il tuo Cognome" value="{{old('customer_surname')}}" required>
+                            @error('customer_surname')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <!-- Email -->
                         <div class="form-group">
                             <label>E-mail</label>
                             <input type="text" value="prova" name="customer_email" class="form-control" placeholder="Inserisci la tua e-mail" value="{{old('customer_email')}}" required>
+                            @error('customer_email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <!-- Indirizzo di spedizione -->
                         <div class="form-group">
                             <label>Indirizzo di consegna</label>
                             <input type="text" value="prova" name="delivery_address" class="form-control" placeholder="Inserisci l'indirizzo di consegna" value="{{old('delivery_address')}}" required>
+                            @error('delivery_address')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
 
