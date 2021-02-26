@@ -141,6 +141,33 @@ var app = new Vue({
       if (!price || price < 0.01 || price > 999.99) {
         this.errors.push('Attenzione! il prezzo deve essere compreso tra 0.01 e e 999.99 €');
       }
+    },
+    validateCheckout: function validateCheckout() {
+      this.errors = [];
+      var name = document.checkoutform.customer_name.value;
+      var surname = document.checkoutform.customer_surname.value;
+      var mail = document.checkoutform.customer_email.value;
+      var address = document.checkoutform.delivery_address.value;
+
+      if (!name) {
+        this.errors.push('Attenzione! Inserisci il nome!');
+      }
+
+      ;
+
+      if (!surname) {
+        this.errors.push('Attenzione! Inserisci il cognome!');
+      }
+
+      if (!mail) {
+        this.errors.push('Attenzione! Inserisci la tua email!');
+      } else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.mail)) {
+        this.errors.push('Attenzione! La mail deve avere un formato valido!');
+      }
+
+      if (!address) {
+        this.errors.push('Attenzione! Inserisci un indirizzo di consegna!');
+      }
     }
   },
   mounted: function mounted() {}

@@ -87,7 +87,7 @@
                         </div>
 
                         <!-- Hidden input -> Carrello JSON -->
-                        <input type="text" name="currentCart" class="form-control d-none" v-model="JSONCart">
+                        <input type="text" name="currentCart" class="form-control" v-model="JSONCart">
 
                         <!-- Braintree section -->
                         <section>
