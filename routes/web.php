@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -25,8 +26,5 @@ Route::middleware('auth')->namespace('admin')->prefix('admin')->name('admin.')->
     Route::resource('/restaurants', 'RestaurantController');
     Route::resource('/dishes', 'DishController');
     Route::get('/orders', 'OrderController@index')->name('orders');
+    Route::get('/statistics', 'HomeController@stats')->name('stats');
 });
-
-// Rotte per pagamento braintree
-// Route::get('/', 'PaymentController@checkout');
-// Route::post('/', 'PaymentController@checkout');

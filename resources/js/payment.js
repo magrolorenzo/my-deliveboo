@@ -2,10 +2,22 @@ var app = new Vue({
     el: "#app",
     data: {
 
+<<<<<<< HEAD
+=======
+        // Dati che voglio inviare alal rotta e/o Controller
+
+        // array con dati cliente
+        // array cart.contents
+
+>>>>>>> chart.js
         customer_name: "",
         customer_surname: "",
         customer_email: "",
         delivery_address: "",
+<<<<<<< HEAD
+=======
+
+>>>>>>> chart.js
 
         currentRestaurantId: "",
 
