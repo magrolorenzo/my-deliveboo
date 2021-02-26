@@ -93,7 +93,164 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\MAMP\\htdocs\\bool18\\deliveboo\\resources\\js\\payment.js: Unexpected token (9:0)\n\n\u001b[0m \u001b[90m  7 |\u001b[39m         \u001b[90m// array con dati cliente\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m  8 |\u001b[39m         \u001b[90m// array cart.contents\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  9 |\u001b[39m \u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 10 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 11 |\u001b[39m \u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 12 |\u001b[39m \u001b[33m>>>\u001b[39m\u001b[33m>>>\u001b[39m\u001b[33m>\u001b[39m main\u001b[0m\n    at Parser._raise (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:776:17)\n    at Parser.raiseWithData (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:769:17)\n    at Parser.raise (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:737:17)\n    at Parser.unexpected (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:9253:16)\n    at Parser.parseIdentifierName (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11512:18)\n    at Parser.parseIdentifier (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11485:23)\n    at Parser.parseMaybePrivateName (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10813:19)\n    at Parser.parsePropertyName (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11298:155)\n    at Parser.parsePropertyDefinition (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11184:22)\n    at Parser.parseObjectLike (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11099:25)\n    at Parser.parseExprAtom (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10659:23)\n    at Parser.parseExprSubscripts (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10318:23)\n    at Parser.parseUpdate (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10298:21)\n    at Parser.parseMaybeUnary (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10276:23)\n    at Parser.parseExprOps (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10141:23)\n    at Parser.parseMaybeConditional (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10115:23)\n    at Parser.parseMaybeAssign (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10078:21)\n    at C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10045:39\n    at Parser.allowInAnd (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11717:12)\n    at Parser.parseMaybeAssignAllowIn (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10045:17)\n    at Parser.parseObjectProperty (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11260:101)\n    at Parser.parseObjPropValue (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11285:100)\n    at Parser.parsePropertyDefinition (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11209:10)\n    at Parser.parseObjectLike (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11099:25)\n    at Parser.parseExprAtom (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10659:23)\n    at Parser.parseExprSubscripts (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10318:23)\n    at Parser.parseUpdate (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10298:21)\n    at Parser.parseMaybeUnary (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10276:23)\n    at Parser.parseExprOps (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10141:23)\n    at Parser.parseMaybeConditional (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10115:23)\n    at Parser.parseMaybeAssign (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10078:21)\n    at C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10045:39\n    at Parser.allowInAnd (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11717:12)\n    at Parser.parseMaybeAssignAllowIn (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:10045:17)\n    at Parser.parseExprListItem (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11477:18)\n    at Parser.parseExprList (C:\\MAMP\\htdocs\\bool18\\deliveboo\\node_modules\\@babel\\parser\\lib\\index.js:11447:22)");
+var app = new Vue({
+  el: "#app",
+  data: {
+    customer_name: "",
+    customer_surname: "",
+    customer_email: "",
+    delivery_address: "",
+    currentRestaurantId: "",
+    dishes: [],
+    cart: {
+      KEY: 'cartContent-',
+      contents: [],
+      subtotal: 0
+    },
+    JSONCart: ''
+  },
+  methods: {
+    getRestaurantId: function getRestaurantId() {
+      this.currentRestaurantId = document.getElementById("restaurant-id").innerHTML;
+    },
+    // Metodo per incrementare quantità di oggetti nel carrello
+    add: function add(dishObj) {
+      var id = dishObj.id;
+      var name = dishObj.name;
+      var unit_price = dishObj.unit_price;
+      var newCartItem = {
+        id: id,
+        name: name,
+        unit_price: unit_price,
+        quantity: 1
+      };
+      var itemExists = false;
+
+      for (var i = 0; i < this.cart.contents.length; i++) {
+        // se presente nel carrello
+        if (this.cart.contents[i].id == newCartItem.id) {
+          // aggiungo la quantità
+          this.cart.contents[i].quantity++;
+          itemExists = true;
+        }
+      } // se non è nel carrello -> push
+
+
+      if (!itemExists) {
+        this.cart.contents.push(newCartItem);
+      } // calcolo il totale
+
+
+      this.calculateSubtotal(); // aggiorno il local storage
+
+      this.sync();
+    },
+    // Metodo per diminuire quantità di oggetti nel carrello
+    decrease: function decrease(thisId) {
+      var id = thisId;
+
+      for (var i = 0; i < this.cart.contents.length; i++) {
+        // se trovo l'id giusto entro nell'if
+        if (this.cart.contents[i].id == id) {
+          // controllo la quantità -> se =1 rimuovo dall'array
+          if (this.cart.contents[i].quantity == 1) {
+            // rimuovo il piatto dall'array
+            this.remove(id);
+          } else {
+            // se !=1 riduco la quantità di 1
+            this.cart.contents[i].quantity--;
+          }
+        } // se non trovo l'id non fa niente
+
+      } // calcolo il totale
+
+
+      this.calculateSubtotal(); // aggiorno il local storage
+
+      this.sync();
+    },
+    // Rimuove elemento dal carrello
+    remove: function remove(dish_id) {
+      this.cart.contents = this.cart.contents.filter(function (item) {
+        if (item.id !== dish_id) {
+          return true;
+        }
+      });
+    },
+    // Sincronizza Vue con LocalStorage
+    sync: function sync() {
+      // salvo nel localstorage
+      var _cart = JSON.stringify(this.cart.contents);
+
+      localStorage.setItem(this.cart.KEY + this.currentRestaurantId, _cart);
+      this.JSONCart = _cart;
+      console.log(_cart);
+      console.log(this.JSONCart);
+    },
+    empty: function empty() {
+      // svuota il carrello
+      this.cart.contents = []; // calcolo il totale
+
+      this.calculateSubtotal(); // update localStorage
+
+      this.sync();
+    },
+    // Ricalcola totale carrello
+    calculateSubtotal: function calculateSubtotal() {
+      this.cart.subtotal = 0;
+
+      for (var i = 0; i < this.cart.contents.length; i++) {
+        this.cart.subtotal = this.cart.subtotal + this.cart.contents[i].quantity * this.cart.contents[i].unit_price; // console.log(this.cart.subtotal);
+      }
+    },
+    // controlla che non sia modificato il prezzo
+    priceCheck: function priceCheck() {
+      console.log("ciao");
+    }
+  },
+  // ***************** Mounted
+  mounted: function mounted() {
+    var self = this; // prendo l'id del ristorante
+
+    self.getRestaurantId();
+
+    var _contents = localStorage.getItem(this.cart.KEY + this.currentRestaurantId);
+
+    if (_contents) {
+      this.cart.contents = JSON.parse(_contents);
+      this.calculateSubtotal();
+    }
+
+    this.sync();
+  }
+}); // ***************************************** Braintree
+// Copiato script in fondo alla  pagina index della repo di demo di braintree
+
+var form = document.querySelector('#payment-form');
+var client_token = document.getElementById("token").innerHTML;
+braintree.dropin.create({
+  authorization: client_token,
+  selector: '#bt-dropin'
+}, function (createErr, instance) {
+  if (createErr) {
+    console.log('Create Error', createErr);
+    return;
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    instance.requestPaymentMethod(function (err, payload) {
+      if (err) {
+        console.log('Request Payment Method Error', err);
+        return;
+      } // Add the nonce to the form and submit
+
+
+      document.querySelector('#nonce').value = payload.nonce;
+      form.submit();
+    });
+  });
+});
 
 /***/ }),
 

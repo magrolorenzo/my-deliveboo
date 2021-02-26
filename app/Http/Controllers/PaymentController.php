@@ -37,11 +37,19 @@ class PaymentController extends Controller
             "token" => $token
         ];
 
-        return view("guest.checkout-prova", $data);
+        return view("guest.checkout", $data);
     }
 
 
     public function pay_and_order(Request $request){
+
+        // validation
+        $request->validate([
+            'customer_name' => 'required|max:30',
+            'customer_surname' => 'required|max:30',
+            'customer_email' => 'required',
+            'delivery_address' => 'required',
+        ]);
 
         $gateway = new \Braintree\Gateway([
             'environment' => getenv('BT_ENVIRONMENT'),
