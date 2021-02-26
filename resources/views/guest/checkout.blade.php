@@ -11,9 +11,14 @@
     <div id="app">
         <div class="container mt-5">
             <div class="row">
-                <div class="col-12">
+                <div id="errors-root" class="col-12">
+
+                    <div class="errors-list mt-4 mb-4" v-if="errors.length">
+                        <p class="alert alert-danger m-0" v-for="error in errors">@{{error}}</p>
+                    </div>
+
                     <!-- Inizio form -> pagamento -->
-                    <form method="post" id="payment-form" action="{{route("guest.pay")}}">
+                    <form name="checkoutform" method="post" id="payment-form" action="{{route("guest.pay")}}">
                         @csrf
 
                         <h2>Inserisci i tuoi dati</h2>
@@ -114,4 +119,5 @@
             </div><!-- END row -->
         </div><!-- END container -->
     </div>
+    <script src="{{ asset('js/validation.js') }}" defer></script>
 @endsection
