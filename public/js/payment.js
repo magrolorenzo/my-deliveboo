@@ -96,9 +96,6 @@
 var app = new Vue({
   el: "#app",
   data: {
-    // Dati che voglio inviare alal rotta e/o Controller
-    // array con dati cliente
-    // array cart.contents
     customer_name: "",
     customer_surname: "",
     customer_email: "",
@@ -224,104 +221,33 @@ var app = new Vue({
     this.sync();
   }
 }); // ***************************************** Braintree
+// Copiato script in fondo alla  pagina index della repo di demo di braintree
 
 var form = document.querySelector('#payment-form');
-var submit = document.querySelector('input[type="submit"]');
 var client_token = document.getElementById("token").innerHTML;
-braintree.client.create({
-  authorization: client_token
-}, function (clientErr, clientInstance) {
-  if (clientErr) {
-    console.error(clientErr);
+braintree.dropin.create({
+  authorization: client_token,
+  selector: '#bt-dropin'
+}, function (createErr, instance) {
+  if (createErr) {
+    console.log('Create Error', createErr);
     return;
-  } // This example shows Hosted Fields, but you can also use this
-  // client instance to create additional components here, such as
-  // PayPal or Data Collector.
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    instance.requestPaymentMethod(function (err, payload) {
+      if (err) {
+        console.log('Request Payment Method Error', err);
+        return;
+      } // Add the nonce to the form and submit
 
 
-  braintree.hostedFields.create({
-    client: clientInstance,
-    styles: {
-      'input': {
-        'font-size': '14px'
-      },
-      'input.invalid': {
-        'color': 'red'
-      },
-      'input.valid': {
-        'color': 'green'
-      }
-    },
-    fields: {
-      number: {
-        selector: '#card-number',
-        placeholder: '4111 1111 1111 1111'
-      },
-      cvv: {
-        selector: '#cvv',
-        placeholder: '123'
-      },
-      expirationDate: {
-        selector: '#expiration-date',
-        placeholder: '10/2022'
-      }
-    }
-  }, function (hostedFieldsErr, hostedFieldsInstance) {
-    if (hostedFieldsErr) {
-      console.error(hostedFieldsErr);
-      return;
-    }
-
-    submit.removeAttribute('disabled');
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
-        if (tokenizeErr) {
-          console.error(tokenizeErr);
-          return;
-        } // If this was a real integration, this is where you would
-        // send the nonce to your server.
-
-
-        console.log('Got a nonce: ' + payload.nonce);
-        document.querySelector('#nonce').value = payload.nonce;
-        form.submit();
-      });
-    }, false);
+      document.querySelector('#nonce').value = payload.nonce;
+      form.submit();
+    });
   });
-}); // ***************************************** Braintree
-// Copiato script in fondo alla  pagina index della repo di demo di braintree
-// var form = document.querySelector('#payment-form');
-// var client_token = document.getElementById("token").innerHTML;
-//
-//
-// braintree.dropin.create({
-//     authorization: client_token,
-//     selector: '#bt-dropin'
-//
-// }, function (createErr, instance) {
-//     if (createErr) {
-//         console.log('Create Error', createErr);
-//         return;
-//     }
-//     form.addEventListener('submit', function (event) {
-//         event.preventDefault();
-//
-//         instance.requestPaymentMethod(function (err, payload) {
-//             if (err) {
-//                 console.log('Request Payment Method Error', err);
-//                 return;
-//             }
-//
-//             // Add the nonce to the form and submit
-//             document.querySelector('#nonce').value = payload.nonce;
-//             form.submit();
-//
-//
-//
-//         });
-//     });
-// });
+});
 
 /***/ }),
 
@@ -332,7 +258,7 @@ braintree.client.create({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\proj_boolean\20210214_deliveboo\deliveboo\resources\js\payment.js */"./resources/js/payment.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\payment.js */"./resources/js/payment.js");
 
 
 /***/ })

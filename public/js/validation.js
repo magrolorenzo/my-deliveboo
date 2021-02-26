@@ -117,6 +117,10 @@ var app = new Vue({
       if (!piva || piva.length < this.minChars || isNaN(piva)) {
         this.errors.push('Attenzione! la partita iva deve essere un numero di almeno 11 cifre!');
       }
+
+      if (!document.querySelector('form[name="testform"] input[name="categories[]"]:checked')) {
+        this.errors.push('Attenzione! Seleziona almeno una categoria!');
+      }
     },
     validateDish: function validateDish() {
       this.errors = [];
@@ -151,7 +155,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\proj_boolean\20210214_deliveboo\deliveboo\resources\js\validation.js */"./resources/js/validation.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\validation.js */"./resources/js/validation.js");
 
 
 /***/ })
