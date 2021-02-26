@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderMail; // Oggetto creato per invio mail al customer
+
 use App\Restaurant;
 use App\Order;
 use App\OrderItem;
+use App\Customer;
 
 class PaymentController extends Controller
 {
@@ -97,7 +102,14 @@ class PaymentController extends Controller
                 $new_order_item->save();
             }
 
-            // dd($new_order->id);
+            // Invio mail a customer
+            $new_customer = new Customer();
+            $new_customer->fill($form_data);
+            $new_customer->order_id = $order_id;
+            $new_customer->save;
+            // Invio mail al customer
+            Mail::to($new_customer->customer_mail)->send(new OrderMail);
+            // dd($new_customer);
 
             return redirect()->route('home')->with("success_message", "Grazie di aver effettuato un ordine con noi!");
             // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
