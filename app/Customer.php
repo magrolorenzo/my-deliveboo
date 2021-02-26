@@ -14,4 +14,8 @@ class Customer extends Model
         'delivery_address'
     ];
 
+    public function order()
+    {
+        return $this->hasOne('App\Order');
+    }
 }
