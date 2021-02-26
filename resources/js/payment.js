@@ -6,21 +6,21 @@ var app = new Vue({
 
         // array con dati cliente
         // array cart.contents
-        customer_infos: [
-            customer_name: "",
-            customer_surname: "",
-            customer_email: "",
-            delivery_address: "",
-        ],
+        customer_name: "",
+        customer_surname: "",
+        customer_email: "",
+        delivery_address: "",
 
         currentRestaurantId: "",
-        
+
         dishes: [],
         cart: {
             KEY: 'cartContent-',
             contents: [],
             subtotal: 0
-        }
+        },
+
+        JSONCart: '',
 
     },
 
@@ -76,7 +76,7 @@ var app = new Vue({
                     // controllo la quantità -> se =1 rimuovo dall'array
                     if (this.cart.contents[i].quantity == 1) {
                         // rimuovo il piatto dall'array
-                        this.remove(thisId);
+                        this.remove(id);
                     } else {
                         // se !=1 riduco la quantità di 1
                         this.cart.contents[i].quantity--;
@@ -105,6 +105,9 @@ var app = new Vue({
             // salvo nel localstorage
             let _cart = JSON.stringify(this.cart.contents);
             localStorage.setItem(this.cart.KEY + this.currentRestaurantId, _cart);
+            this.JSONCart = _cart;
+            console.log(_cart);
+            console.log(this.JSONCart);
         },
 
         empty() {
@@ -143,6 +146,9 @@ var app = new Vue({
             this.cart.contents = JSON.parse(_contents);
             this.calculateSubtotal();
         }
+
+        console.log("prima del sync");
+        this.sync();
 
     }
 });

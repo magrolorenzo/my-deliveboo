@@ -96,6 +96,9 @@
 var app = new Vue({
   el: "#app",
   data: {
+    // Dati che voglio inviare alal rotta e/o Controller
+    // array con dati cliente
+    // array cart.contents
     customer_name: "",
     customer_surname: "",
     customer_email: "",
@@ -106,7 +109,8 @@ var app = new Vue({
       KEY: 'cartContent-',
       contents: [],
       subtotal: 0
-    }
+    },
+    JSONCart: ''
   },
   methods: {
     getRestaurantId: function getRestaurantId() {
@@ -154,7 +158,7 @@ var app = new Vue({
           // controllo la quantità -> se =1 rimuovo dall'array
           if (this.cart.contents[i].quantity == 1) {
             // rimuovo il piatto dall'array
-            this.remove(thisId);
+            this.remove(id);
           } else {
             // se !=1 riduco la quantità di 1
             this.cart.contents[i].quantity--;
@@ -182,6 +186,9 @@ var app = new Vue({
       var _cart = JSON.stringify(this.cart.contents);
 
       localStorage.setItem(this.cart.KEY + this.currentRestaurantId, _cart);
+      this.JSONCart = _cart;
+      console.log(_cart);
+      console.log(this.JSONCart);
     },
     empty: function empty() {
       // svuota il carrello
@@ -212,6 +219,9 @@ var app = new Vue({
       this.cart.contents = JSON.parse(_contents);
       this.calculateSubtotal();
     }
+
+    console.log("prima del sync");
+    this.sync();
   }
 }); // Braintree
 // Copiato script in fondo alla  pagina index della repo di demo di braintree
@@ -251,7 +261,7 @@ braintree.dropin.create({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\payment.js */"./resources/js/payment.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\proj_boolean\20210214_deliveboo\deliveboo\resources\js\payment.js */"./resources/js/payment.js");
 
 
 /***/ })
