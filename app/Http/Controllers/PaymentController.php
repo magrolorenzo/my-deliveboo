@@ -106,9 +106,9 @@ class PaymentController extends Controller
             $new_customer = new Customer();
             $new_customer->fill($form_data);
             $new_customer->order_id = $order_id;
-            $new_customer->save;
+            $new_customer->save();
             // Invio mail al customer
-            Mail::to($new_customer->customer_mail)->send(new OrderMail);
+            Mail::to($new_customer->customer_email)->send(new OrderMail);
             // dd($new_customer);
 
             return redirect()->route('home')->with("success_message", "Grazie di aver effettuato un ordine con noi!");

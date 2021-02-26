@@ -21,22 +21,22 @@
                     {{-- Nome Cliente --}}
                     <div class="form-group">
                         <label>Nome</label>
-                        <input type="text" value="marco" name="customer_name" class="form-control" placeholder="Inserisci il tuo Nome" value="{{old('customer_name')}}" required>
+                        <input type="text" value="Marco" name="customer_name" class="form-control" placeholder="Inserisci il tuo Nome" value="{{old('customer_name')}}" required>
                     </div>
                     {{-- Cognome Cliente --}}
                     <div class="form-group">
                         <label>Cognome</label>
-                        <input type="text" value="marco" name="customer_surname" class="form-control" placeholder="Inserisci il tuo Cognome" value="{{old('customer_surname')}}" required>
+                        <input type="text" value="Rossi" name="customer_surname" class="form-control" placeholder="Inserisci il tuo Cognome" value="{{old('customer_surname')}}" required>
                     </div>
                     {{-- e-mail Cliente --}}
                     <div class="form-group">
                         <label>E-mail</label>
-                        <input type="text" value="marco" name="customer_email" class="form-control" placeholder="Inserisci la tua e-mail" value="{{old('customer_email')}}" required>
+                        <input type="text" value="marco@marco.it" name="customer_email" class="form-control" placeholder="Inserisci la tua e-mail" value="{{old('customer_email')}}" required>
                     </div>
                     {{-- Indirizzo di consegna --}}
                     <div class="form-group">
                         <label>Indirizzo di consegna</label>
-                        <input type="text" value="marco" name="delivery_address" class="form-control" placeholder="Inserisci l'indirizzo di consegna" value="{{old('delivery_address')}}" required>
+                        <input type="text" value="Via Marco" name="delivery_address" class="form-control" placeholder="Inserisci l'indirizzo di consegna" value="{{old('delivery_address')}}" required>
                     </div>
 
 
