@@ -28,6 +28,11 @@ var app = new Vue ({
             if(!piva || piva.length < this.minChars || isNaN(piva)) {
                 this.errors.push('Attenzione! la partita iva deve essere un numero di almeno 11 cifre!');
             }
+
+            if (!document.querySelector('form[name="testform"] input[name="categories[]"]:checked')) {
+                this.errors.push('Attenzione! Seleziona almeno una categoria!');
+            }
+
         },
 
         validateDish(){

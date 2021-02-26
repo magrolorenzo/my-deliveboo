@@ -16,8 +16,9 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/show/{slug}', 'HomeController@show')->name('guest.show');
-Route::get('/checkout', 'HomeController@checkout')->name('guest.checkout');
-Route::post('/pay-and-order', 'HomeController@pay_and_order')->name('guest.pay');
+
+Route::get('/checkout', 'PaymentController@checkout')->name('guest.checkout');
+Route::post('/pay-and-order', 'PaymentController@pay_and_order')->name('guest.pay');
 
 Route::middleware('auth')->namespace('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');

@@ -3,6 +3,12 @@
 
 @section('script')
     <script src="{{ asset('js/homepage.js') }}" defer></script>
+
+    @if (session("success_message"))
+        <script type="text/javascript">
+            localStorage.clear();
+        </script>
+    @endif
 @endsection
 
 @section('content')
@@ -31,7 +37,6 @@
                             <hr>
                             <p class="mb-0">Acquista ancora presso uno dei nostri ristoranti!</p>
                         </div>
-
                     @endif
 
 

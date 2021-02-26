@@ -219,7 +219,11 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bool18\deliveboo\resources\js\show_restaurant.js */"./resources/js/show_restaurant.js");
+=======
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\proj_boolean\20210214_deliveboo\deliveboo\resources\js\show_restaurant.js */"./resources/js/show_restaurant.js");
+>>>>>>> main
 
 
 /***/ })
