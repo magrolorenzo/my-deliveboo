@@ -37,7 +37,7 @@ class PaymentController extends Controller
             "token" => $token
         ];
 
-        return view("guest.checkout-prova", $data);
+        return view("guest.checkout", $data);
     }
 
 

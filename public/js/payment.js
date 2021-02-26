@@ -258,7 +258,7 @@ braintree.dropin.create({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\payment.js */"./resources/js/payment.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\proj_boolean\20210214_deliveboo\deliveboo\resources\js\payment.js */"./resources/js/payment.js");
 
 
 /***/ })
