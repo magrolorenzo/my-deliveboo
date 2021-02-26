@@ -95,7 +95,6 @@ class PaymentController extends Controller
                 $new_order_item->fill($cart[$i]);
                 // dd($new_order_item);
                 $new_order_item->save();
-
             }
 
             // dd($new_order->id);
