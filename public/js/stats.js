@@ -39945,7 +39945,7 @@ __webpack_require__.r(__webpack_exports__);
 var app = new Vue({
   el: "#app",
   data: {
-    totalGennaio: 0,
+    totalFebbraio: 0,
     totalOrders: []
   },
   mounted: function mounted() {
@@ -39957,16 +39957,20 @@ var app = new Vue({
 
       for (var index = 0; index < orders.length; index++) {
         var price = parseFloat(orders[index].unit_price * orders[index].quantity);
-        _this.totalGennaio = _this.totalGennaio + price;
-        console.log(_this.totalGennaio);
+
+        if (date == 2) {
+          _this.totalFebbraio = _this.totalFebbraio + price;
+        }
 
         if (!_this.totalOrders.includes(orders[index].order_id)) {
           _this.totalOrders.push(orders[index].order_id);
         }
-      }
 
-      console.log(_this.totalOrders);
+        var date = dayjs(orders[index].created_at, 'YYYY-M-D  H:m').format('M');
+        console.log(date);
+      }
       /* grafico guadagno mensile */
+
 
       var ctx = document.getElementById('myChart').getContext('2d');
       chart_js__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.global.defaultFontSize = 18;
@@ -39977,7 +39981,7 @@ var app = new Vue({
           labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
           datasets: [{
             label: 'Vendite mensili',
-            data: [_this.totalGennaio, 19, 131, 43, 242, 112, 87, 5, 94, 43, 27, 32],
+            data: [19, _this.totalFebbraio, 131, 43, 242, 112, 87, 5, 94, 43, 27, 32],
             backgroundColor: ['#71dbd4', '#D0EB99', '#71dbd4', '#D0EB99', '#71dbd4', '#D0EB99', '#71dbd4', '#D0EB99', '#71dbd4', '#D0EB99', '#71dbd4', '#D0EB99'],
             borderWidth: 1,
             borderColor: 'black'
@@ -40017,7 +40021,7 @@ var app = new Vue({
           labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
           datasets: [{
             label: 'Vendite mensili',
-            data: [_this.totalOrders.length, 5, 23, 17, 54, 8, 35, 5, 44, 87, 12, 65],
+            data: [5, _this.totalOrders.length, 23, 17, 54, 8, 35, 5, 44, 87, 12, 65],
             backgroundColor: ['#71dbd4', '#D0EB99', '#71dbd4', '#D0EB99', '#71dbd4', '#D0EB99', '#71dbd4', '#D0EB99', '#71dbd4', '#D0EB99', '#71dbd4', '#D0EB99'],
             borderWidth: 1,
             borderColor: 'black'

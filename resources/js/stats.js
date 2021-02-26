@@ -3,7 +3,7 @@ import Chart from 'chart.js';
 var app = new Vue({
     el: "#app",
     data: {
-        totalGennaio: 0,
+        totalFebbraio: 0,
         totalOrders: []
     },
 
@@ -16,16 +16,20 @@ var app = new Vue({
                 for (let index = 0; index < orders.length; index++) {
                     let price = parseFloat(orders[index].unit_price * orders[index].quantity);
 
-                    this.totalGennaio = this.totalGennaio + price;
-                    console.log(this.totalGennaio);
+                    if (date == 2) {
+                        this.totalFebbraio = this.totalFebbraio + price;
+                        
+                    }
 
                     if (!this.totalOrders.includes(orders[index].order_id)) {
                         this.totalOrders.push(orders[index].order_id)
                     }
                     
+                    let date = dayjs(orders[index].created_at, 'YYYY-M-D  H:m').format('M');
+                    console.log(date);
                 }
 
-                console.log(this.totalOrders);
+
 
                                                                             /* grafico guadagno mensile */
                 
@@ -41,7 +45,7 @@ var app = new Vue({
                         labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
                         datasets: [{
                             label: 'Vendite mensili',
-                            data: [this.totalGennaio, 19, 131, 43, 242, 112, 87, 5, 94, 43, 27, 32],
+                            data: [19, this.totalFebbraio, 131, 43, 242, 112, 87, 5, 94, 43, 27, 32],
                             backgroundColor: [
                                 '#71dbd4',
                                 '#D0EB99',
@@ -104,7 +108,7 @@ var app = new Vue({
                         labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
                         datasets: [{
                             label: 'Vendite mensili',
-                            data: [this.totalOrders.length, 5, 23, 17, 54, 8, 35, 5, 44, 87, 12, 65],
+                            data: [5, this.totalOrders.length, 23, 17, 54, 8, 35, 5, 44, 87, 12, 65],
                             backgroundColor: [
                                 '#71dbd4',
                                 '#D0EB99',
