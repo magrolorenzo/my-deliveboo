@@ -81,81 +81,30 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/validation.js":
-/*!************************************!*\
-  !*** ./resources/js/validation.js ***!
-  \************************************/
-/*! no static exports found */
+/***/ "./resources/js/stats.js":
+/*!*******************************!*\
+  !*** ./resources/js/stats.js ***!
+  \*******************************/
+/*! no exports provided */
 /***/ (function(module, exports) {
 
-var app = new Vue({
-  el: '#errors-root',
-  data: {
-    errors: [],
-    minChars: 11
-  },
-  methods: {
-    validateForm: function validateForm() {
-      this.errors = [];
-      var name = document.testform.name.value;
-      var address = document.testform.address.value;
-      var piva = document.testform.piva.value;
-
-      if (!name) {
-        this.errors.push('Attenzione! Inserisci il nome del ristorante!');
-      }
-
-      if (!address) {
-        this.errors.push('Attenzione! Inserisci l\'indirizzo del ristorante!');
-      }
-
-      if (!piva || piva.length < this.minChars || isNaN(piva)) {
-        this.errors.push('Attenzione! la partita iva deve essere un numero di almeno 11 cifre!');
-      }
-
-      if (!document.querySelector('form[name="testform"] input[name="categories[]"]:checked')) {
-        this.errors.push('Attenzione! Seleziona almeno una categoria!');
-      }
-    },
-    validateDish: function validateDish() {
-      this.errors = [];
-      var name = document.dishform.name.value;
-      var price = document.dishform.unit_price.value;
-      var restaurant = document.dishform.restaurant_id.value;
-
-      if (!name) {
-        this.errors.push('Attenzione! Inserisci il nome del ristorante!');
-      }
-
-      ;
-
-      if (!restaurant) {
-        this.errors.push('Attenzione! Seleziona un ristorante!');
-      }
-
-      if (!price || price < 0.01 || price > 999.99) {
-        this.errors.push('Attenzione! il prezzo deve essere compreso tra 0.01 e e 999.99 €');
-      }
-    }
-  },
-  mounted: function mounted() {}
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'C:\\MAMP\\htdocs\\boolean\\esercizi\\deliveboo\\resources\\js\\stats.js'");
 
 /***/ }),
 
-/***/ 2:
-/*!******************************************!*\
-  !*** multi ./resources/js/validation.js ***!
-  \******************************************/
+/***/ 5:
+/*!*************************************!*\
+  !*** multi ./resources/js/stats.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\deliveboo\resources\js\validation.js */"./resources/js/validation.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\deliveboo\resources\js\stats.js */"./resources/js/stats.js");
 
 
 /***/ })
