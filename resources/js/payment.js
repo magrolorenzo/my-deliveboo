@@ -76,7 +76,7 @@ var app = new Vue({
                     // controllo la quantità -> se =1 rimuovo dall'array
                     if (this.cart.contents[i].quantity == 1) {
                         // rimuovo il piatto dall'array
-                        this.remove(thisId);
+                        this.remove(id);
                     } else {
                         // se !=1 riduco la quantità di 1
                         this.cart.contents[i].quantity--;

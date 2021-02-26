@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Restaurant;
+use App\Order;
+use App\OrderItem;
 
 class PaymentController extends Controller
 {
@@ -41,8 +43,6 @@ class PaymentController extends Controller
 
     public function pay_and_order(Request $request){
 
-        // dd($request->input());
-
         $gateway = new \Braintree\Gateway([
             'environment' => getenv('BT_ENVIRONMENT'),
             'merchantId' => getenv('BT_MERCHANT_ID'),
@@ -67,7 +67,38 @@ class PaymentController extends Controller
             $transaction = $result->transaction;
 
             // Qui salvataggio dati tabella ordini ??
+            $form_data = $request->all();
 
+            // prendo dati cliente e li salvo nel DB
+            $new_order = new Order();
+            $new_order->fill($form_data);
+
+            $new_order->save();
+
+            // prendo l'id dell'ordine salvato
+            $order_id = $new_order->id;
+
+            // prendo i dati del carrello e li salvo nel DB
+            $cart = json_decode($form_data['currentCart'], true);
+
+
+            for ($i=0; $i < count($cart); $i++) {
+                // creo nuovo oggetto
+                $new_order_item = new OrderItem();
+
+                // aggiunto e modifico i dati del singolo elemento
+                $cart[$i]['order_id'] = $order_id;
+                $cart[$i]['dish_id'] = $cart[$i]['id'];
+                $cart[$i]['dish_name'] = $cart[$i]['name'];
+
+                // compilo e salvo nel db
+                $new_order_item->fill($cart[$i]);
+                // dd($new_order_item);
+                $new_order_item->save();
+
+            }
+
+            // dd($new_order->id);
 
             return redirect()->route('home')->with("success_message", "Grazie di aver effettuato un ordine con noi!");
             // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
