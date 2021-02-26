@@ -202,6 +202,10 @@ var app = new Vue({
       for (var i = 0; i < this.cart.contents.length; i++) {
         this.cart.subtotal = this.cart.subtotal + this.cart.contents[i].quantity * this.cart.contents[i].unit_price; // console.log(this.cart.subtotal);
       }
+    },
+    // controlla che non sia modificato il prezzo
+    priceCheck: function priceCheck() {
+      console.log("ciao");
     }
   },
   // ***************** Mounted
@@ -217,7 +221,6 @@ var app = new Vue({
       this.calculateSubtotal();
     }
 
-    console.log("prima del sync");
     this.sync();
   }
 }); // ***************************************** Braintree

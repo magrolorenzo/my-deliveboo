@@ -101,9 +101,14 @@
                         <input id="nonce" name="payment_method_nonce" type="hidden" />
 
                         <!-- BTN di submit del form -->
+                        <button class="btn btn-primary" type="button" @click="priceCheck">
+                            Verifica
+                        </button>
                         <button class="button" type="submit">
                             <span>Paga e ordina</span>
                         </button>
+
+
                     </form>
                 </div><!-- END col-12 -->
             </div><!-- END row -->

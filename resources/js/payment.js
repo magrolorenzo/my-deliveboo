@@ -124,8 +124,12 @@ var app = new Vue({
                 this.cart.subtotal = this.cart.subtotal + this.cart.contents[i].quantity * this.cart.contents[i].unit_price;
                 // console.log(this.cart.subtotal);
             }
-        }
+        },
 
+        // controlla che non sia modificato il prezzo
+        priceCheck() {
+            console.log("ciao");
+        }
 
     },
 
@@ -143,9 +147,7 @@ var app = new Vue({
             this.calculateSubtotal();
         }
 
-        console.log("prima del sync");
         this.sync();
-
     }
 });
 
