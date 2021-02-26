@@ -96,6 +96,9 @@
 var app = new Vue({
   el: "#app",
   data: {
+    // Dati che voglio inviare alal rotta e/o Controller
+    // array con dati cliente
+    // array cart.contents
     customer_name: "",
     customer_surname: "",
     customer_email: "",
@@ -251,7 +254,7 @@ braintree.dropin.create({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\deliveboo\resources\js\payment.js */"./resources/js/payment.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\deliveboo\resources\js\payment.js */"./resources/js/payment.js");
 
 
 /***/ })

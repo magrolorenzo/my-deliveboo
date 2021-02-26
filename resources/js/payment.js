@@ -6,12 +6,12 @@ var app = new Vue({
 
         // array con dati cliente
         // array cart.contents
-        customer_infos: [
-            customer_name: "",
-            customer_surname: "",
-            customer_email: "",
-            delivery_address: "",
-        ],
+
+        customer_name: "",
+        customer_surname: "",
+        customer_email: "",
+        delivery_address: "",
+
 
         currentRestaurantId: "",
         
