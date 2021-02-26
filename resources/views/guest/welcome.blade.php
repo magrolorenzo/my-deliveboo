@@ -17,21 +17,6 @@
                 </div>
             </div>
         </nav>
-        <div class="container">
-            <div class="row cat-row">
-                <div class="d-flex flex-no-wrap category-container" id="cat">
-                    <div @click="selectedCategory(category.id)" class="card col-lg-4 card-size" v-for="(category,index) in categories">
-                        <p>@{{category.name}}</p>
-                    </div>
-                </div>
-                <div class="left" @click="leftClick">
-                    <i class="fas fa-chevron-left"></i>
-                </div>
-                <div class="right" @click="rightClick">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div>
-        </div>
 
         <!-- Main App: Filtri per categorie e stampa ristoranti -->
         <div id="app">
@@ -96,10 +81,10 @@
                     </div>
 
                     <!-- Container Ristoranti -->
-                    <div class="d-flex flex-wrap justify-content-between col-lg-12">
+                    <div class="d-flex flex-wrap justify-content-between col-md-6 col-lg-12">
 
                         <!-- Card del ristorante -->
-                        <div v-for="(restaurant,index) in restaurants" class="card bg-light mb-3 restaurant-card" >
+                        <div v-for="(restaurant,index) in restaurants" class="card mb-3 restaurant-card" >
 
                             <a :href="'/show/'+restaurant.slug">
                                 {{-- Cover image --}}
@@ -111,13 +96,13 @@
                                 </div>
                                 {{-- Info ristorante --}}
                                 <div class="card-body">
-                                    <h5 class="card-title">@{{ restaurant.name }}</h5>
+                                    <h3 class="card-title title-name">@{{ restaurant.name }}</h3>
                                     <p class="card-text">
                                         <strong>Indirizzo:</strong> @{{ restaurant.address }}
                                     </p>
-                                    <p class="card-text">
+                                    {{-- <p class="card-text">
                                         <strong>P.IVA:</strong> @{{restaurant.piva }}
-                                    </p>
+                                    </p> --}}
                                     <p class="card-text">
                                         <strong>Categorie:</strong> <span v-for="category in restaurant.categories" class="badge badge-info ml-1"> @{{category.name}}</span>
                                     </p>
@@ -131,5 +116,6 @@
             </div>
         </div><!-- END Main App -->
     </div>
+
 
 @endsection

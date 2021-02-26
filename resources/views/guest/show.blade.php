@@ -143,7 +143,7 @@
 
         </div>
 
-        <footer>
+        {{-- <footer>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -204,7 +204,7 @@
                 </div>
             </div>
 
-        </footer>
+        </footer> --}}
         {{-- @php
         echo json_encode($restaurant);
     @endphp --}}
