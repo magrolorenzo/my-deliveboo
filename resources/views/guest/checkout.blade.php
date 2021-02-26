@@ -4,7 +4,10 @@
 @section('script')
     <script src="{{ asset('js/payment.js') }}" defer></script>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://js.braintreegateway.com/web/dropin/1.26.1/js/dropin.min.js"></script>
+    {{-- <script src="https://js.braintreegateway.com/web/dropin/1.26.1/js/dropin.min.js"></script> --}}
+    <script src="https://js.braintreegateway.com/web/3.73.1/js/client.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.73.1/js/hosted-fields.min.js"></script>
+
 @endsection
 
 @section('content')
@@ -91,104 +94,168 @@
                 {{-- Braintree --}}
                 <div class="col-12 shadow">
 
-                    <div class="wrapper">
-                        <div class="checkout container">
-
-                            <form method="post" id="payment-form" action="{{route("guest.pay")}}">
-                                @csrf
-                                <section>
-                                    <label for="amount">
-                                        <span class="input-label">Amount</span>
-                                        <div class="input-wrapper amount-wrapper">
-                                            <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" :value="cart.subtotal">
-                                        </div>
-                                    </label>
-
-                                    <div class="bt-drop-in-wrapper">
-                                        <div id="bt-dropin"></div>
-                                    </div>
-                                </section>
-
-                                <span id="token" hidden>{{$token}}</span>
-                                <input id="nonce" name="payment_method_nonce" type="hidden" />
-                                <button class="button" type="submit">
-                                    <span>Paga e ordina</span>
-                                </button>
-                            </form>
-
-                        </div>
-                    </div>
-
-
+                    {{-- Form originale braintree --}}
+                    {{-- <div class="wrapper">
+                    <div class="checkout container">
+                    <form method="post" id="payment-form" action="{{route("guest.pay")}}">
+                    @csrf
+                    <section>
+                    <label for="amount">
+                    <span class="input-label">Amount</span>
+                    <div class="input-wrapper amount-wrapper">
+                    <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" :value="cart.subtotal" class="form-control-plaintext">
                 </div>
-            </div>
+            </label>
+
+            <div class="bt-drop-in-wrapper">
+            <div id="bt-dropin"></div>
         </div>
+    </section>
 
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="footer-container-top">
+    <span id="token" hidden>{{$token}}</span>
+    <input id="nonce" name="payment_method_nonce" type="hidden" />
+    <button class="button" type="submit">
+    <span>Paga e ordina</span>
+</button>
+</form>
 
-                            <div class="card" style="width: 15rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Scopri Deliveboo</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Chi siamo</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Pressroom</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Il nostro blog</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Programmazione</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Lavora con noi</h6>
-                                </div>
-                            </div>
+</div>
+</div> --}}
 
-                            <div class="card" style="width: 15rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Note legali</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Termini e condizioni</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Informativa sulla privacy</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Cookies</h6>
-                                </div>
-                            </div>
+<div class="wrapper">
+    <div class="checkout container">
+        <form method="post" id="payment-form" action="{{route("guest.pay")}}">
+            @csrf
 
-                            <div class="card" style="width: 15rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aiuto</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Contatti</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">FAQ</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Tipi di cucina</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Mappa del sito</h6>
-
-                                </div>
-                            </div>
-
-                            <div class="card" style="width: 15rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Scarica l'App</h5>
-
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="footer-container-bottom">
-                            <small>© 2021 Deliveboo</small>
-                            <div class="links">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+            {{-- Nome Cliente --}}
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" name="customer_name" class="form-control" placeholder="Inserisci il tuo Nome" value="{{old('customer_name')}}" required>
+            </div>
+            {{-- Cognome Cliente --}}
+            <div class="form-group">
+                <label>Cognome</label>
+                <input type="text" name="customer_surname" class="form-control" placeholder="Inserisci il tuo Cognome" value="{{old('customer_surname')}}" required>
+            </div>
+            {{-- e-mail Cliente --}}
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="text" name="customer_email" class="form-control" placeholder="Inserisci la tua e-mail" value="{{old('customer_email')}}" required>
+            </div>
+            {{-- Indirizzo di consegna --}}
+            <div class="form-group">
+                <label>Indirizzo di consegna</label>
+                <input type="text" name="delivery_address" class="form-control" placeholder="Inserisci l'indirizzo di consegna" value="{{old('delivery_address')}}" required>
             </div>
 
-        </footer>
+            <label>Numero Carta</label>
+            <div class="form-group" id="card-number"  name="card-number">
 
+            </div>
+
+            <label>Numero Carta</label>
+            <div class="form-group" id="expiration-date"  name="expiration-date">
+
+            </div>
+
+
+
+
+            {{-- Totale Carrello --}}
+            <section>
+                <label for="amount">
+                    <span class="input-label">Amount</span>
+                    <div class="input-wrapper amount-wrapper">
+                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" :value="cart.subtotal" class="form-control-plaintext">
+                    </div>
+                </label>
+                <div class="bt-drop-in-wrapper">
+                    <div id="bt-dropin"></div>
+                </div>
+            </section>
+
+            {{-- Token nascosto --}}
+            <span id="token" hidden>{{$token}}</span>
+            {{-- Nonce nascosto --}}
+            <input id="nonce" name="payment_method_nonce" type="hidden" />
+            <button class="button" type="submit">
+                <span>Paga e ordina</span>
+            </button>
+        </form>
 
     </div>
+</div>
+
+
+</div>
+</div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="footer-container-top">
+
+                    <div class="card" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Scopri Deliveboo</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Chi siamo</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Pressroom</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Il nostro blog</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Programmazione</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Lavora con noi</h6>
+                        </div>
+                    </div>
+
+                    <div class="card" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Note legali</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Termini e condizioni</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Informativa sulla privacy</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Cookies</h6>
+                        </div>
+                    </div>
+
+                    <div class="card" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Aiuto</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Contatti</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">FAQ</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Tipi di cucina</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Mappa del sito</h6>
+
+                        </div>
+                    </div>
+
+                    <div class="card" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Scarica l'App</h5>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="footer-container-bottom">
+                    <small>© 2021 Deliveboo</small>
+                    <div class="links">
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                        <a href=""><i class="fab fa-facebook"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</footer>
+
+
+</div>
 </div>
 
 {{-- Script braintree --}}
