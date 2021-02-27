@@ -16,10 +16,14 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
 
-            $table->string('customer_name', 30);
-            $table->string('customer_surname', 30);
-            $table->string('customer_email');
-            $table->string('delivery_address');
+            // Rimosse colonne che sono atate aggiunte a tabella customers
+            // Aggiunta colonna amount con totale ordine
+
+            // $table->string('customer_name', 30);
+            // $table->string('customer_surname', 30);
+            // $table->string('customer_email');
+            // $table->string('delivery_address');
+            $table->unsignedDecimal('amount', 6,2);
 
             $table->timestamps();
         });
