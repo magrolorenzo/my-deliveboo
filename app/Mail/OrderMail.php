@@ -12,15 +12,15 @@ class OrderMail extends Mailable
     use Queueable, SerializesModels;
 
     // Variabile di istanza necessaria per il passaggio dei dati nella mail
-    public $customer;
+    public $order_infos;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($_new_customer)
+    public function __construct($_new_order)
     {
-        $this->customer = $_new_customer;
+        $this->order_infos = $_new_order;
     }
 
     /**
