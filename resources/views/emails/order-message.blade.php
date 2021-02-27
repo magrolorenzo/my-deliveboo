@@ -172,7 +172,9 @@
                                             <table cellpadding="0" cellspacing="0" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" valign="top" width="100%">
                                                 <tr style="vertical-align: top;" valign="top">
                                                     <td align="center" style="word-break: break-word; vertical-align: top; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px; text-align: center; width: 100%;" valign="top" width="100%">
-                                                        <h1 style="color:#555555;direction:ltr;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:23px;font-weight:normal;letter-spacing:normal;line-height:120%;text-align:center;margin-top:0;margin-bottom:0;"><strong>Grazie per aver ordinato!</strong></h1>
+                                                        <h1 style="color:#555555;direction:ltr;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:23px;font-weight:normal;letter-spacing:normal;line-height:120%;text-align:center;margin-top:0;margin-bottom:0;">
+                                                            <strong>Grazie {{$customer->customer_name}} per  aver ordinato!</strong>
+                                                        </h1>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -192,7 +194,7 @@
                                                 </tbody>
                                             </table>
                                             <div align="center" class="img-container center fixedwidth" style="padding-right: 0px;padding-left: 0px;">
-                                                <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><a href="http://localhost:8000/" style="outline:none" tabindex="-1" target="_blank"><img align="center" alt="order" border="0" class="center fixedwidth" src="images/illo_hero_transparent.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 306px; display: block;" title="order" width="306"/></a>
+                                                <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><a href="http://localhost:8000/" style="outline:none" tabindex="-1" target="_blank"><img align="center" alt="order" border="0" class="center fixedwidth" src="{{asset("images/mail/illo_hero_transparent.png")}}" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 306px; display: block;" title="order" width="306"/></a>
                                                 <!--[if mso]></td></tr></table><![endif]-->
                                             </div>
                                             <table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top" width="100%">
