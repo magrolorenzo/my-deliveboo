@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderMail; // Oggetto creato per invio mail al customer
+
 use App\Restaurant;
 use App\Order;
 use App\OrderItem;
+use App\Customer;
 
 class PaymentController extends Controller
 {
@@ -77,10 +82,9 @@ class PaymentController extends Controller
             // Qui salvataggio dati tabella ordini ??
             $form_data = $request->all();
 
-            // prendo dati cliente e li salvo nel DB
+            // Salvo dati ordine nel db 
             $new_order = new Order();
             $new_order->fill($form_data);
-
             $new_order->save();
 
             // prendo l'id dell'ordine salvato
@@ -89,6 +93,8 @@ class PaymentController extends Controller
             // prendo i dati del carrello e li salvo nel DB
             $cart = json_decode($form_data['currentCart'], true);
 
+            // Array vuoto dove salvero di nuovo gli elementi del carello per stmparli in mail
+            $order_items = [];
 
             for ($i=0; $i < count($cart); $i++) {
                 // creo nuovo oggetto
@@ -103,9 +109,26 @@ class PaymentController extends Controller
                 $new_order_item->fill($cart[$i]);
                 // dd($new_order_item);
                 $new_order_item->save();
+                array_push($order_items, $new_order_item);
             }
 
-            // dd($new_order->id);
+            // Invio mail a customer
+            $new_customer = new Customer();
+            $new_customer->fill($form_data);
+            $new_customer->order_id = $order_id;
+            $new_customer->save();
+
+            $order_infos = [
+                "order" => $new_order,
+                "order_items" => $order_items,
+                "customer" => $new_customer,
+                // Quando la colonna amount sarà in order, togliere amount qui sotto e modificare corpo mail
+                "amount" => $amount
+            ];
+
+            // Invio mail al customer
+            // Passo come parametro al costruttore l oggetto intero $new_customer per recuparare i dati nel corpo della mail
+            Mail::to($new_customer->customer_email)->send(new OrderMail($order_infos));
 
             return redirect()->route('home')->with("success_message", "Grazie di aver effettuato un ordine con noi!");
             // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);

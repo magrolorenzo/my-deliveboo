@@ -26,7 +26,7 @@
                             <option value="">Seleziona un ristorante</option>
                             @foreach (Auth::user()->restaurants as $restaurant)
                                 <option value="{{$restaurant->id}}" {{old('restaurant_id') == $restaurant->id ? 'selected' : ''}}>
-                                    {{$restaurant->name}}
+                                    {{ $restaurant->id }} - {{$restaurant->name}}
                                 </option>
                             @endforeach
                         </select>
