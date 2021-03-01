@@ -62,14 +62,18 @@
                             <div class="row">
                                 {{-- Card piatto --}}
                                 <div class="col-6" v-if="dish.visible" v-for="dish in dishes">
-                                    <div class="dish-card my-2 p-2">
+                                    <div class="dish-card my-2 p-2" :class="getCartQuantity(dish.id) != 0 ? 'addedToCart' : ''">
                                         {{-- Info piatto --}}
                                         <div class="dish-info">
                                             <h5 class="card-title">@{{ dish.name }}</h5>
                                             <p class="card-text">@{{ dish.description }}</p>
                                             <p class="card-text">@{{ dish.unit_price }} €</p>
-                                            <a id="chart-button" class="btn btn-sm btn-primary" @click="decrease(dish.id)">-</a>
-                                            <a id="chart-button" class="btn btn-sm btn-primary" @click="add(dish)">+</a>
+
+                                            <div class="quantity">
+                                                <a class="btn btn-primary-alt" @click="decrease(dish.id)">-</a>
+                                                <span>@{{ getCartQuantity(dish.id) }}</span>
+                                                <a class="btn btn-primary-alt" @click="add(dish)">+</a>
+                                            </div>
                                         </div>
 
                                         {{-- Immagine piatto --}}
