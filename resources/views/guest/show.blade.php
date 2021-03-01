@@ -85,7 +85,7 @@
 
 
                     {{-- Carrello --}}
-                    <div class="col-4 cart">
+                    <div class="col-4 cart py-3">
                         <h5>Carrello</h5>
 
                         {{-- Lista elementi del carrello --}}
@@ -93,9 +93,9 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" v-for="cartItem in cart.contents">
                                 {{-- Quantità con pulsanti aggiungi/togli --}}
                                 <div class="quantity">
-                                    <a class="btn btn-sm btn-primary" @click="decrease(cartItem.id)">-</a>
+                                    <a class="btn btn-primary-alt" @click="decrease(cartItem.id)">-</a>
                                     <span>@{{ cartItem.quantity }}</span>
-                                    <a class="btn btn-sm btn-primary" @click="add(cartItem)">+</a>
+                                    <a class="btn btn-primary-alt" @click="add(cartItem)">+</a>
                                 </div>
 
                                 {{-- Nome --}}
@@ -109,12 +109,12 @@
                                 </div>
                             </li>
 
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 my-3 subtot">
                                 <div>
-                                    <strong>Totale</strong>
-                                    <strong>
+                                    <strong>Subtotale</strong>
+                                    {{-- <strong>
                                         <p class="mb-0">(IVA inclusa)</p>
-                                    </strong>
+                                    </strong> --}}
                                 </div>
                                 <span><strong>@{{ cart.subtotal }} €</strong></span>
                             </li>
@@ -125,7 +125,7 @@
                             <a href="{{ route('guest.checkout', ['id'=>$restaurant->id]) }}" class="btn btn-primary-brand" >
                                 Vai alla cassa
                             </a>
-                            <button type="button" class="btn btn-danger" name="button" @click="empty">Svuota <i class="fas fa-trash-alt"></i></button>
+                            <button type="button" class="btn btn-danger ml-2" name="button" @click="empty"><i class="fas fa-trash-alt"></i></button>
                         </div>
 
                     </div> {{-- Chiusura col-4 -> Carrello --}}
