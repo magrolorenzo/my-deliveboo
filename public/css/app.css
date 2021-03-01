@@ -11023,6 +11023,9 @@ footer {
 
 * {
   scroll-behavior: smooth;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .category-container {
@@ -11379,8 +11382,8 @@ header nav#guest-navbar .navbar-nav .nav-link {
 }
 
 #welcome-blade #restaurant-container .restaurant-card .card-title {
-  color: #fff;
-  font-size: 16px;
+  color: #2E3333;
+  font-size: 19px;
   line-height: 19px;
   font-weight: 600;
   color: #fff;

@@ -99,7 +99,11 @@
                         </label>
 
                         <!-- BTN di submit del form -->
+<<<<<<< Updated upstream
                         <button class="btn btn-primary" type="button" @click="priceCheck; validateCheckout">
+=======
+                        <button class="btn btn-primary" type="button" @click="priceCheck">
+>>>>>>> Stashed changes
                             Verifica
                         </button>
                         <button class="button" type="submit">
@@ -114,6 +118,7 @@
                         <span>Paga e ordina</span>
                     </button>
 
+<<<<<<< Updated upstream
 
                 </form>
             </div><!-- END col-12 -->
@@ -122,3 +127,12 @@
 </div>
 <!-- <script src="{{ asset('js/validation.js') }}" defer></script> -->
 @endsection
+=======
+                    </form>
+                </div><!-- END col-12 -->
+            </div><!-- END row -->
+        </div><!-- END container -->
+    </div>
+    {{-- <script src="{{ asset('js/validation.js') }}" defer></script> --}}
+@endsection
+>>>>>>> Stashed changes

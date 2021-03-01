@@ -1,12 +1,15 @@
 var app = new Vue({
     el: "#app",
     data: {
+<<<<<<< Updated upstream
 
         // Dati che voglio inviare alal rotta e/o Controller
 
         // array con dati cliente
         // array cart.contents
 
+=======
+>>>>>>> Stashed changes
         errors: [],
         customer_name: "",
         customer_surname: "",
