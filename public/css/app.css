@@ -10948,6 +10948,10 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 img {
   max-width: 100%;
 }
@@ -10993,11 +10997,20 @@ footer {
   justify-content: space-between;
 }
 
+.footer-container-top .row {
+  width: 100%;
+}
+
+.footer-container-top .card {
+  margin-top: 10px;
+}
+
 .footer-container-bottom {
   height: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 
 .footer-container-bottom small {
@@ -11006,6 +11019,44 @@ footer {
 
 .navbar-brand {
   font-size: 30px;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.category-container {
+  overflow-x: hidden;
+}
+
+.cat-row {
+  position: relative;
+}
+
+.card-size {
+  min-width: 200px;
+  text-align: center;
+}
+
+.left,
+.right {
+  position: absolute;
+  font-size: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 7px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.left {
+  left: -15px;
+}
+
+.right {
+  right: -15px;
 }
 
 .title {
@@ -11073,6 +11124,10 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 img {
   max-width: 100%;
 }
@@ -11118,11 +11173,20 @@ footer {
   justify-content: space-between;
 }
 
+.footer-container-top .row {
+  width: 100%;
+}
+
+.footer-container-top .card {
+  margin-top: 10px;
+}
+
 .footer-container-bottom {
   height: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 
 .footer-container-bottom small {
@@ -11222,15 +11286,19 @@ header nav#guest-navbar .navbar-nav .nav-link {
 #welcome-blade #jumbotron {
   padding: 40px 0;
   background-color: #00CCBC;
+  height: 70vh;
   color: #440063;
+  background-image: url(/images/foods.png?3567b73de508c642d921a0f49e0212b5);
+  background-size: cover;
+  background-position: center;
+}
+
+#welcome-blade .main {
+  background-color: #00CCBC;
 }
 
 #welcome-blade #category-container {
   position: relative;
-}
-
-#welcome-blade #category-container * {
-  scroll-behavior: smooth;
 }
 
 #welcome-blade #category-container .category-container {
@@ -11259,8 +11327,6 @@ header nav#guest-navbar .navbar-nav .nav-link {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 56px;
-  height: 56px;
   position: absolute;
   font-size: 20px;
   top: 50%;
@@ -11292,7 +11358,7 @@ header nav#guest-navbar .navbar-nav .nav-link {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
   margin: 1px 1px 5px;
   border-radius: 3px;
-  background-color: #fff;
+  background-color: transparent;
   overflow: hidden;
 }
 
@@ -11308,11 +11374,16 @@ header nav#guest-navbar .navbar-nav .nav-link {
      object-position: center;
 }
 
+#welcome-blade #restaurant-container .restaurant-card:hover {
+  transform: scale(1.1);
+}
+
 #welcome-blade #restaurant-container .restaurant-card .card-title {
-  color: #2E3333;
-  font-size: 14px;
+  color: #fff;
+  font-size: 16px;
   line-height: 19px;
   font-weight: 600;
+  color: #fff;
 }
 
 .button {

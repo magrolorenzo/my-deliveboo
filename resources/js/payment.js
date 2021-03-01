@@ -1,6 +1,7 @@
 var app = new Vue({
     el: "#app",
     data: {
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
@@ -10,15 +11,20 @@ var app = new Vue({
         // array cart.contents
 
 >>>>>>> chart.js
+=======
+>>>>>>> main
         customer_name: "",
         customer_surname: "",
         customer_email: "",
         delivery_address: "",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> chart.js
 
+=======
+>>>>>>> main
         currentRestaurantId: "",
 
         dishes: [],
@@ -114,8 +120,8 @@ var app = new Vue({
             let _cart = JSON.stringify(this.cart.contents);
             localStorage.setItem(this.cart.KEY + this.currentRestaurantId, _cart);
             this.JSONCart = _cart;
-            console.log(_cart);
-            console.log(this.JSONCart);
+            // console.log(_cart);
+            // console.log(this.JSONCart);
         },
 
         empty() {
@@ -136,8 +142,64 @@ var app = new Vue({
                 this.cart.subtotal = this.cart.subtotal + this.cart.contents[i].quantity * this.cart.contents[i].unit_price;
                 // console.log(this.cart.subtotal);
             }
-        }
+        },
 
+        // controlla che non sia modificato il prezzo
+        priceCheck() {
+            console.log("in funzione check");
+
+            let thisRestaurantDishes;
+
+            // prendo tutti i piatti del ristorante
+            axios.get("http://localhost:8000/api/dishes/" + this.currentRestaurantId).then(response => {
+                console.log("in chiamata ajax");
+                // mi salvo tutti i piatti del ristorante
+                thisRestaurantDishes = response.data.results;
+                console.log(thisRestaurantDishes);
+
+                // prendo i dati dall'input nascosto e controllo che non sia stato cambiato il prezzo
+                let currentInputCart = this.JSONCart;
+                console.log("carrello di input modificato");
+                console.log(currentInputCart);
+
+                let currentInputArrayCart = JSON.parse(currentInputCart);
+                console.log("carrello array modificato");
+                console.log(currentInputArrayCart);
+
+
+                let checkArray; // array di controllo -> se vuoto OK
+                checkArray = currentInputArrayCart.filter((item) => {
+                    let isCorrectPrice = false; // var appoggio se vera il prezzo è giusto
+                    console.log("id del piatto in vue");
+                    console.log(item.id);
+                    // ciclo tutti i piatti del ristorante
+                    thisRestaurantDishes.forEach((databaseItem, i) => {
+                        console.log("piatto database id");
+                        console.log(databaseItem.id);
+
+                        if (item.id == databaseItem.id && item.unit_price == databaseItem.unit_price) {
+                            isCorrectPrice = true;
+                            console.log("sono uguali");
+                        }
+                    });
+
+                    return !isCorrectPrice;
+                });
+                console.log(checkArray);
+
+                // final check
+                if (checkArray.length == 0) {
+                    // array controllo vuoto -> ok : submit il form
+                    console.log("ARRAY NON MODIFICATO");
+
+                } else {
+                    // errore rigenera la pagina
+                    console.log("ARRAY MODIFICATO");
+                }
+
+
+            }); // fine chiamata di controllo
+        }
 
     },
 
@@ -155,9 +217,7 @@ var app = new Vue({
             this.calculateSubtotal();
         }
 
-        console.log("prima del sync");
         this.sync();
-
     }
 });
 

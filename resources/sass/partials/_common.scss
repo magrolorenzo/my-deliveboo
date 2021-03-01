@@ -3,6 +3,10 @@ body {
     // font-family: sans-serif;
 }
 
+* {
+    scroll-behavior: smooth;
+}
+
 img {
     max-width: 100%;
 }
@@ -44,6 +48,12 @@ footer {
 .footer-container-top {
     display: flex;
     justify-content: space-between;
+    .row {
+        width: 100%;
+    }
+    .card {
+        margin-top: 10px;
+    }
 }
 
 .footer-container-bottom {
@@ -51,6 +61,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 10px;
     small {
         color: white;
     }

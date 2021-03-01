@@ -6,9 +6,10 @@
 
 
 // Common
-@import "partials/variables";
-@import "partials/mixin";
-@import "partials/common";
+@import 'partials/variables';
+@import 'partials/mixin';
+@import 'partials/common';
+@import 'partials/carousel';
 
 //Sass
 @import "partials/_show.scss";

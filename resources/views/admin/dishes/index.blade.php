@@ -29,7 +29,7 @@
                     <tr>
                         <th scope="row">{{ $dish->id }}</th>
                         <td>{{ $dish->name }}</td>
-                        <td>{{ $dish->restaurant->name }}</td>
+                        <td>{{ $dish->restaurant->id }} - {{ $dish->restaurant->name }}</td>
                         <td>{{ $dish->unit_price }} €</td>
                         <td>{{ $dish->visible == 0 ? "Non Visibile" : "Visibile" }}</td>
                         <td>
