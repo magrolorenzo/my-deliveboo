@@ -17,6 +17,11 @@
                     </h1>
                 </div>
 
+                {{-- Bottone per creare un nuovo ristorante --}}
+                <div class="d-none d-md-block">
+                    <a class="btn btn-success mt-3" href="{{ route('admin.restaurants.create') }}">Crea nuovo ristorante <i class="fas fa-plus"></i></a>
+                </div>
+
                 @if(count($restaurants) > 0)
                     @foreach ($restaurants as $restaurant)
                         <div class="card restaurant-dashboard-card w-100 justify-content-between my-2">
@@ -24,7 +29,7 @@
                                 <h5 class="card-title">{{ $restaurant->id }} - {{ $restaurant->name }}</h5>
                                 <p class="card-text">Indirizzo: {{ $restaurant->address }}</p>
                                 <p class="card-text">P. IVA: {{ $restaurant->piva }}</p>
-                                <a class="btn btn-secondary d-none d-md-inline-block" href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->slug]) }}">
+                                <a class="btn btn-primary  d-md-inline-block" href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->slug]) }}">
                                     Modifica
                                 </a>
                             </div>
@@ -34,7 +39,7 @@
                                 @if($restaurant->img_cover)
                                     <img class="restaurant-img" src="{{ asset("storage/".$restaurant->img_cover) }}" alt="">
                                 @else
-                                    <img class="restaurant-img" src="{{ asset("storage/images/img-not-found.png") }}" alt="">                                    
+                                    <img class="restaurant-img" src="{{ asset("/images/img-not-found.png") }}" alt="">
                                 @endif
                             </div>
 
@@ -42,10 +47,7 @@
                     @endforeach
                 @endif
 
-                {{-- Bottone per creare un nuovo ristorante --}}
-                <div class="d-none d-md-block">
-                    <a class="btn btn-secondary mt-3" href="{{ route('admin.restaurants.create') }}">Crea nuovo ristorante</a>
-                </div>
+
 
             </div>
         </div>

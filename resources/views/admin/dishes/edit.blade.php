@@ -101,6 +101,11 @@
                         </button>
                     </div>
                 </form>
+                <div>
+                    <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
+                        🠔 Indietro
+                    </a>
+                </div>
             </div>
         </div>
     </div>
