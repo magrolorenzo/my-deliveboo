@@ -8,10 +8,10 @@
 @endsection
 
 @section('content')
-<div id="app">
-    <div class="container mt-5">
-        <div class="row">
-            <div id="errors-root" class="col-12">
+    <div id="app">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12">
 
                 <div class="errors-list mt-4 mb-4" v-if="errors.length">
                     <p class="alert alert-danger m-0" v-for="error in errors">@{{error}}</p>
@@ -98,12 +98,13 @@
                             </div>
                         </label>
 
-                        <div class="bt-drop-in-wrapper">
-                            <div id="bt-dropin"></div>
-                        </div>
-                    </section>
-                    <span id="token" hidden>{{$token}}</span>
-                    <input id="nonce" name="payment_method_nonce" type="hidden" />
+                        <!-- BTN di submit del form -->
+                        <button class="btn btn-primary" type="button" @click="priceCheck; validateCheckout">
+                            Verifica
+                        </button>
+                        <button class="button" type="submit">
+                            <span>Paga e ordina</span>
+                        </button>
 
                     <!-- BTN di submit del form -->
                     <button class="btn btn-primary" type="button" @click="priceCheck">
