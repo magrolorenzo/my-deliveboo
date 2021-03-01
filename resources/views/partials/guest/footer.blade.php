@@ -3,7 +3,7 @@
     <div class="container">
         <div class="footer-container-top">
             {{-- <div class="col-12"> --}}
-                <div class="row d-flex justify-content-between">
+                <div class="row d-flex foot-flex">
 
                     <div class="card" style="width: 15rem;">
                         <div class="card-body">
