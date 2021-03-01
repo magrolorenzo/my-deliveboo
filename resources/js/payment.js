@@ -1,20 +1,12 @@
 var app = new Vue({
     el: "#app",
     data: {
-
-        // Dati che voglio inviare alal rotta e/o Controller
-
-        // array con dati cliente
-        // array cart.contents
-        customer_infos: [
-            customer_name: "",
-            customer_surname: "",
-            customer_email: "",
-            delivery_address: "",
-        ],
-
+        customer_name: "",
+        customer_surname: "",
+        customer_email: "",
+        delivery_address: "",
         currentRestaurantId: "",
-        
+
         dishes: [],
         cart: {
             KEY: 'cartContent-',

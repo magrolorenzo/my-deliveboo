@@ -31,6 +31,8 @@
             @yield('content')
         </main>
 
+        @include('partials.guest.footer')
+
         @yield('script')
     </body>
 
