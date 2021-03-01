@@ -23,3 +23,15 @@
     }
 
 }
+// show dish
+.dish-cover-container{
+    max-height: 300px;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+
+    img{
+        width: auto;
+        max-height: 100%;
+    }
+}

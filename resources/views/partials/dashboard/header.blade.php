@@ -20,7 +20,7 @@
 
             <!-- link logout -> redirect -->
             <li class="nav-item ml-2">
-                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                <a class="btn btn-outline-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
                 Logout
             </a>

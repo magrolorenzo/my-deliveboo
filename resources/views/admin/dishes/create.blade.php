@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        
         <div class="row justify-content-center">
             <div id="errors-root" class="col-md-8">
                 <h1>Crea nuovo piatto</h1>
@@ -37,7 +38,7 @@
 
                     <div class="form-group">
                         <label>Ingredienti</label>
-                        <textarea name="ingredients" class="form-control" rows="8" cols="80" placeholder="Inserisci gli ingredienti">{{old('ingredients')}}</textarea>
+                        <textarea name="ingredients" class="form-control" rows="5" cols="80" placeholder="Inserisci gli ingredienti">{{old('ingredients')}}</textarea>
                         @error('ingredients')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -45,7 +46,7 @@
 
                     <div class="form-group">
                         <label>Description</label>
-                        <textarea name="description" class="form-control" rows="8" cols="80" placeholder="Inserisci la descrizione">{{
+                        <textarea name="description" class="form-control" rows="5" cols="80" placeholder="Inserisci la descrizione">{{
                             old('description')
                         }}</textarea>
                         @error('description')
@@ -99,6 +100,13 @@
                         </button>
                     </div>
                 </form>
+
+                <div>
+                    <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
+                        🠔 Indietro
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>
