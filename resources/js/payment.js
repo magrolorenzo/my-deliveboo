@@ -11,7 +11,7 @@ var app = new Vue({
         delivery_address: "",
 
         currentRestaurantId: "",
-        
+
         dishes: [],
         cart: {
             KEY: 'cartContent-',
@@ -129,6 +129,20 @@ var app = new Vue({
             }
         },
 
+        // Funzione di controllo degli input
+        checkInput() {
+
+
+            this.validateCheckout();
+
+            this.priceCheck();
+
+            // if (this.errors.length === 0) {
+            //     form.submit();
+            // }
+
+        },
+
         // controlla che non sia modificato il prezzo
         priceCheck() {
             console.log("in funzione check");
@@ -162,7 +176,7 @@ var app = new Vue({
                         console.log("piatto database id");
                         console.log(databaseItem.id);
 
-                        if (item.id == databaseItem.id && item.unit_price == databaseItem.unit_price) {
+                        if (item.id === databaseItem.id && item.unit_price === databaseItem.unit_price) {
                             isCorrectPrice = true;
                             console.log("sono uguali");
                         }
@@ -177,13 +191,48 @@ var app = new Vue({
                     // array controllo vuoto -> ok : submit il form
                     console.log("ARRAY NON MODIFICATO");
 
+                    // ricalcolo il totale
+                    this.calculateSubtotal();
+
                 } else {
                     // errore rigenera la pagina
-                    console.log("ARRAY MODIFICATO");
+                    this.errors.push('Attenzione! Ordine non effettuato!');
                 }
 
 
             }); // fine chiamata di controllo
+        },
+
+        validateCheckout () {
+            console.log("validateCheckout");
+            this.errors = [];
+
+            let chart = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            var name = document.checkoutform.customer_name.value;
+            var surname = document.checkoutform.customer_surname.value;
+            var mail = document.checkoutform.customer_email.value;
+            var address = document.checkoutform.delivery_address.value;
+
+
+            if (!name) {
+                this.errors.push('Attenzione! Inserisci il nome!');
+            };
+
+            if (!surname) {
+                this.errors.push('Attenzione! Inserisci il cognome!');
+            }
+
+            if (!mail) {
+                this.errors.push('Attenzione! Inserisci la tua email!');
+            }
+            else if (!chart.test(mail)) {
+                this.errors.push('Attenzione! La mail deve avere un formato valido!');
+            }
+
+            if (!address) {
+                this.errors.push('Attenzione! Inserisci un indirizzo di consegna!');
+            }
         }
 
     },
@@ -231,6 +280,8 @@ braintree.dropin.create({
                 console.log('Request Payment Method Error', err);
                 return;
             }
+
+
 
             // Add the nonce to the form and submit
             document.querySelector('#nonce').value = payload.nonce;
