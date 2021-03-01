@@ -161,9 +161,10 @@ var app = new Vue({
 
       if (!mail) {
         this.errors.push('Attenzione! Inserisci la tua email!');
-      } else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.mail)) {
-        this.errors.push('Attenzione! La mail deve avere un formato valido!');
-      }
+      } //else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.mail)) {
+      //     this.errors.push('Attenzione! La mail deve avere un formato valido!');
+      // }
+
 
       if (!address) {
         this.errors.push('Attenzione! Inserisci un indirizzo di consegna!');
@@ -182,11 +183,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\deliveboo\resources\js\validation.js */"./resources/js/validation.js");
-=======
 module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bool18\deliveboo\resources\js\validation.js */"./resources/js/validation.js");
->>>>>>> main
 
 
 /***/ })
