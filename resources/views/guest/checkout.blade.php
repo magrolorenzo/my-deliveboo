@@ -87,7 +87,7 @@
                         </div>
 
                         <!-- Hidden input -> Carrello JSON -->
-                        <input type="text" name="currentCart" class="form-control d-none" v-model="JSONCart">
+                        <input type="text" name="currentCart" class="form-control" v-model="JSONCart">
 
                         <!-- Braintree section -->
                         <section>
@@ -106,7 +106,7 @@
                         <input id="nonce" name="payment_method_nonce" type="hidden" />
 
                         <!-- BTN di submit del form -->
-                        <button class="btn btn-primary" type="button" @click="priceCheck">
+                        <button class="btn btn-primary" type="button" @click="priceCheck, validateCheckout">
                             Verifica
                         </button>
                         <button class="button" type="submit">
