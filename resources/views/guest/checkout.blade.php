@@ -41,7 +41,7 @@
                     <!-- Email -->
                     <div class="form-group">
                         <label>E-mail</label>
-                        <input type="text" value="prova" name="customer_email" class="form-control" placeholder="Inserisci la tua e-mail" value="{{old('customer_email')}}" required>
+                        <input type="text" value="prova@prova.it" name="customer_email" class="form-control" placeholder="Inserisci la tua e-mail" value="{{old('customer_email')}}" required>
                         @error('customer_email')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -107,7 +107,7 @@
                     <input id="nonce" name="payment_method_nonce" type="hidden" />
 
                     <!-- BTN di submit del form -->
-                    <button class="btn btn-primary" type="button" @click="priceCheck">
+                    <button class="btn btn-primary" type="button" @click="checkInput">
                         Verifica
                     </button>
                     <button class="button" type="submit">
@@ -119,5 +119,4 @@
         </div><!-- END row -->
     </div><!-- END container -->
 </div>
-<!-- <script src="{{ asset('js/validation.js') }}" defer></script> -->
 @endsection
