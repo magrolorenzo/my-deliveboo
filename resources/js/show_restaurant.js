@@ -100,6 +100,19 @@ var app = new Vue({
                 this.cart.subtotal = this.cart.subtotal + this.cart.contents[i].quantity * this.cart.contents[i].unit_price;
                 // console.log(this.cart.subtotal);
             }
+        },
+        getCartQuantity(dish_id) {
+            let currentCart = this.cart.contents; // carrello attuale
+            let itemQuantity = 0; // variabile appoggio, se vera l'elemento è nel carrello
+
+            // ciclo il carrello per cercare l'id dell'oggetto
+            currentCart.forEach((cartDish) => {
+                if (cartDish.id == dish_id) {
+                    itemQuantity = cartDish.quantity;
+                }
+            });
+
+            return itemQuantity;
         }
     },
 

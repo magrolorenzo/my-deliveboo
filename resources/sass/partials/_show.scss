@@ -1,59 +1,112 @@
-.title {
-    font-size: 50px;
-}
-
+// Sezione info del ristorante
 .info-section {
-    background-color: #71dbd4;
-}
+    // background-color: #71dbd4;
+    height: $showRestaurantCoverHeight;
+    // height: calc(#{$guestHeaderHeight} + #{$showRestaurantCoverHeight});
+    // padding-top: $guestHeaderHeight;
+    // position: absolute;
+    // top: 0; left: 0; right: 0;
+    // z-index: -1;
 
-.info-container {
     display: flex;
-    justify-content: space-between;
-}
+    flex-direction: row;
+    align-items: center;
 
-.info-container-left {
-    h1 {
-        font-size: 60px;
-        font-weight: 600;
+    // background-image: image();
+    .info-container {
+        display: flex;
+        // justify-content: center;
+
+        .restaurant-info {
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+
+            h1 {
+                font-size: 60px;
+                font-weight: 600;
+            }
+            h5 {
+                font-size: 16px;
+            }
+        }
     }
-    h5 {
-        font-size: 16px;
-    }
 }
 
-.menu-title {
-    padding-top: 20px;
-    h1 {
-        font-size: 40px;
-        font-weight: 600;
-    }
-}
-
-.dish-container {
-    padding: 50px;
-    display: flex;
-    justify-content: space-around;
-}
-
-.info-section {
-    padding: 50px;
-    border-top: 1px solid silver;
-    border-bottom: 1px solid silver;
-}
-
+// Sezione Info dei piatti
 .dishes-section {
+    // height: 100vh;
+    // padding-top: calc(100vh - #{$guestHeaderHeight} + #{$showRestaurantCoverHeight});
     background-color: #eeeeee;
-    .card {
-        border-radius: 20px;
+
+    // Carrello
+    .cart {
+        display: block;
+        // position: absolute;
+        width: 100%;
+        // right: 0;
+        align-self: flex-start;
+
+        background-color: #fff;
+        border-radius: 0 0 2px 2px;
+        box-shadow: 0px 22px 24px 0px rgb(46 51 51 / 7%);
+
+        .btn-primary-alt {
+            display: inline-flex;
+            justify-content: center; align-items: center;
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            padding: 0;
+            font-weight: bold;
+            font-size: 10px;
+            border: 2px solid #00ccbc;
+        }
+
+        .subtot {
+            border-top: 1px solid rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .buttons-group {
+            display: flex;
+
+            // bottone vai alla cassa
+            .btn-primary-brand {
+                flex-grow: 1;
+                padding: 15px 30px;
+            }
+
+            // bottone svuota carrello
+            .btn-danger {
+                width: 56px;
+                flex-grow: 0;
+            }
+        }
+
+    } // END Cart
+
+    .dish-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; align-items: center;
+        background-color: #fff;
+        color: #828585;
+        border-left: 4px solid transparent;
+        &.addedToCart {
+            border-left: 4px solid #00ccbc;
+        }
+        &:hover {
+            box-shadow: 0px 22px 24px 0px rgb(0 0 0 / 8%);
+        }
+
+        h5 {
+            color: $textPr;
+        }
+
+        .dish-info {
+
+        }
+        .dish-img {
+
+        }
     }
-}
-
-.btn-primary {
-    background-color: #bd472a;
-    border-color: #bd472a;
-}
-
-.card-img-top-show {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
 }
