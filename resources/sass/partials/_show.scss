@@ -1,11 +1,16 @@
-
-
-.title {
-    font-size: 50px;
-}
-
+// Sezione info del ristorante
 .info-section {
     // background-color: #71dbd4;
+    height: $showRestaurantCoverHeight;
+    // height: calc(#{$guestHeaderHeight} + #{$showRestaurantCoverHeight});
+    // padding-top: $guestHeaderHeight;
+    // position: absolute;
+    // top: 0; left: 0; right: 0;
+    // z-index: -1;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
     // background-image: image();
     .info-container {
@@ -25,13 +30,12 @@
             }
         }
     }
-
-
-
-
 }
 
+// Sezione Info dei piatti
 .dishes-section {
+    // height: 100vh;
+    // padding-top: calc(100vh - #{$guestHeaderHeight} + #{$showRestaurantCoverHeight});
     background-color: #eeeeee;
 
     // Carrello
@@ -86,11 +90,12 @@
         justify-content: space-between; align-items: center;
         background-color: #fff;
         color: #828585;
+        border-left: 4px solid transparent;
+        &.addedToCart {
+            border-left: 4px solid #00ccbc;
+        }
         &:hover {
             box-shadow: 0px 22px 24px 0px rgb(0 0 0 / 8%);
-        }
-        &.addedToCart {
-            box-shadow: inset 4px 0px 0px 0px #00ccbc;
         }
 
         h5 {

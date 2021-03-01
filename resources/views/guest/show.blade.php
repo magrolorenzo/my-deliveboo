@@ -9,7 +9,7 @@
     <div id="app">
 
         {{-- Sezione con info del ristorante --}}
-        <div class="info-section" style="background-image: url({{ asset('storage/'.$restaurant->img_cover) }}); background-position: center; background-size: cover">
+        <section class="info-section" style="background-image: url({{ asset('storage/'.$restaurant->img_cover) }}); background-position: center; background-size: cover">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -43,7 +43,7 @@
                     </div> {{-- Chiusura col-12 --}}
                 </div> {{-- Chiusura row --}}
             </div> {{-- Chiusura Container --}}
-        </div> {{-- Chiusura info sextion --}}
+        </section> {{-- Chiusura info sextion --}}
 
         {{-- Sezione menu e carrello--}}
         <section class="dishes-section">
@@ -65,7 +65,7 @@
                                     <div class="dish-card my-2 p-2" :class="getCartQuantity(dish.id) != 0 ? 'addedToCart' : ''">
                                         {{-- Info piatto --}}
                                         <div class="dish-info">
-                                            <h5 class="card-title">@{{ dish.name }}</h5>
+                                            <h5 class="card-title capitalize">@{{ dish.name }}</h5>
                                             <p class="card-text">@{{ dish.description }}</p>
                                             <p class="card-text">@{{ dish.unit_price }} €</p>
 
