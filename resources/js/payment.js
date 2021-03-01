@@ -11,7 +11,7 @@ var app = new Vue({
         delivery_address: "",
 
         currentRestaurantId: "",
-
+        
         dishes: [],
         cart: {
             KEY: 'cartContent-',
