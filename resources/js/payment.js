@@ -1,12 +1,10 @@
 var app = new Vue({
     el: "#app",
     data: {
-
         customer_name: "",
         customer_surname: "",
         customer_email: "",
         delivery_address: "",
-
         currentRestaurantId: "",
 
         dishes: [],

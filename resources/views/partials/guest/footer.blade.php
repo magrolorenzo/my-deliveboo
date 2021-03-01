@@ -1,8 +1,9 @@
+
 <footer>
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="footer-container-top">
+        <div class="footer-container-top">
+            {{-- <div class="col-12"> --}}
+                <div class="row d-flex justify-content-between">
 
                     <div class="card" style="width: 15rem;">
                         <div class="card-body">
@@ -42,10 +43,15 @@
 
                         </div>
                     </div>
-
                 </div>
+        </div>
+    </div>
 
-                <div class="footer-container-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="footer-container-bottom">
+                <div class="col-12">
+
                     <small>© 2021 Deliveboo</small>
                     <div class="links">
                         <a href=""><i class="fab fa-twitter"></i></a>
@@ -55,6 +61,12 @@
                     </div>
                 </div>
             </div>
+
+        </div>
+
+    </div>
+
+            {{-- </div> --}}
 
         </div>
     </div>

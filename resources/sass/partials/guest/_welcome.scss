@@ -3,18 +3,20 @@
     #jumbotron {
         padding: 40px 0;
         background-color: $backgroundBrandPr;
-
+        height: 70vh;
         color: $textTitlePr;
+        background-image: url('../imgs/foods.png');
+        background-size: cover;
+        background-position: center;
+        }
+
+    .main {
+        background-color: $backgroundBrandPr;
     }
 
     // categorie
     #category-container {
         position: relative;
-
-        * {
-            scroll-behavior: smooth;
-        }
-
         .category-container {
             overflow-x: hidden;
 
@@ -94,14 +96,19 @@
                     object-fit: cover;
                     object-position: center;
                 }
-            }
 
+            }
+            &:hover {
+                transform: scale(1.1);
+
+            }
             // titolo
             .card-title {
-                color: #fff;
-                font-size: 16px;
+                color: $textPr;
+                font-size: 19px;
                 line-height: 19px;
                 font-weight: 600;
+                color: #fff;
             }
         }
     }
