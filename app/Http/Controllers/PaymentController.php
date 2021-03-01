@@ -74,10 +74,9 @@ class PaymentController extends Controller
             // Qui salvataggio dati tabella ordini ??
             $form_data = $request->all();
 
-            // prendo dati cliente e li salvo nel DB
+            // Salvo dati ordine nel db 
             $new_order = new Order();
             $new_order->fill($form_data);
-
             $new_order->save();
 
             // prendo l'id dell'ordine salvato
