@@ -17,7 +17,7 @@ class CreateRestaurantsTable extends Migration
             $table->id();
             $table->string('name', 50);
             $table->string('address', 50);
-            $table->char('piva', 11);
+            $table->char('piva', 11)->unique();
             $table->string('slug')->unique();
             $table->string('img_cover')->nullable();
             $table->timestamps();
