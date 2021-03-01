@@ -131,9 +131,16 @@ var app = new Vue({
 
         // Funzione di controllo degli input
         checkInput() {
+
+
             this.validateCheckout();
 
             this.priceCheck();
+
+            // if (this.errors.length === 0) {
+            //     form.submit();
+            // }
+
         },
 
         // controlla che non sia modificato il prezzo
@@ -273,6 +280,8 @@ braintree.dropin.create({
                 console.log('Request Payment Method Error', err);
                 return;
             }
+
+
 
             // Add the nonce to the form and submit
             document.querySelector('#nonce').value = payload.nonce;
