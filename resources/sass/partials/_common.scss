@@ -73,3 +73,12 @@ footer {
 .navbar-brand {
     font-size: 30px;
 }
+
+.btn-primary-brand {
+    color: #fff;
+    background: #00ccbc;
+    &:hover {
+        color: #fff;
+        background: #00c2b3;
+    }
+}

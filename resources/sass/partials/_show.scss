@@ -1,23 +1,53 @@
+
+
 .title {
     font-size: 50px;
 }
 
 .info-section {
-    background-color: #71dbd4;
-}
+    // background-color: #71dbd4;
 
-.info-container {
-    display: flex;
-    justify-content: space-between;
-}
+    // background-image: image();
+    .info-container {
+        display: flex;
+        // justify-content: center;
 
-.info-container-left {
-    h1 {
-        font-size: 60px;
-        font-weight: 600;
+        .restaurant-info {
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+
+            h1 {
+                font-size: 60px;
+                font-weight: 600;
+            }
+            h5 {
+                font-size: 16px;
+            }
+        }
     }
-    h5 {
-        font-size: 16px;
+
+
+
+
+}
+
+.dishes-section {
+    background-color: #eeeeee;
+
+    // Carrello
+    .cart {
+        display: block;
+        position: absolute;
+        width: 100%;
+        right: 0;
+        background-color: #fff;
+        border-radius: 0 0 2px 2px;
+        box-shadow: 0px 22px 24px 0px rgb(46 51 51 / 7%);
+        
+        .btn-primary-brand {
+            display: block;
+            padding: 15px 30px;
+        }
     }
 }
 
@@ -29,12 +59,6 @@
     }
 }
 
-.dish-container {
-    padding: 50px;
-    display: flex;
-    justify-content: space-around;
-}
-
 .info-section {
     padding: 50px;
     border-top: 1px solid silver;
@@ -42,7 +66,7 @@
 }
 
 .dishes-section {
-    background-color: #eeeeee;
+
     .card {
         border-radius: 20px;
     }

@@ -9,14 +9,14 @@
     <div id="app">
 
         {{-- Sezione con info del ristorante --}}
-        <div class="info-section">
+        <div class="info-section" style="background-image: url({{ asset('storage/'.$restaurant->img_cover) }}); background-position: center; background-size: cover">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="info-container">
 
                             {{-- Sezione di sinistra con info ristorante --}}
-                            <div class="info-container-left">
+                            <div class="restaurant-info p-5">
                                 <h1 id="restaurant-id" class="text-capitalize" hidden>{{ $restaurant->id }}</h1>
 
                                 {{-- Nome Ristorante --}}
@@ -36,9 +36,9 @@
                             </div>
 
                             {{-- Sezione di destra con immagine ristorante --}}
-                            <div class="info-container-right rounded">
-                                <img src="{{asset("storage/".$restaurant->img_cover)}}" class="rounded">
-                            </div>
+                            {{-- <div class="info-container-right rounded">
+                                <img src="{{ asset("storage/".$restaurant->img_cover) }}" class="rounded">
+                            </div> --}}
                         </div> {{-- Chiusura info container --}}
                     </div> {{-- Chiusura col-12 --}}
                 </div> {{-- Chiusura row --}}
@@ -46,13 +46,11 @@
         </div> {{-- Chiusura info sextion --}}
 
         {{-- Sezione menu e carrello--}}
-        <div class="dishes-section">
-
+        <section class="dishes-section">
             <div class="container">
-
                 <div class="row">
-
-                    <div class="col-9">
+                    {{-- Piatti --}}
+                    <div class="col-8">
                         <div class="menu-title">
                             <h1 class="text-uppercase">
                                 Menù
@@ -83,61 +81,57 @@
                                 </div>
                             </div>
                         </div>
-                    </div> {{-- Chiusura col-9 --}}
+                    </div>{{-- Chiusura col-9 -> Piatti --}}
 
 
-                    <div class="col-3 pt-5">
+                    {{-- Carrello --}}
+                    <div class="col-4 cart">
+                        <h5>Carrello</h5>
 
-                        <!-- Card carrello -->
-                        <div class="card mb-3 mt-5">
-
-                            <div class="card-header mb-3">
-                                <h5>
-                                    Carrello
-                                </h5>
-                            </div>
-
-                            <div class="card-body">
-
-                                {{-- Lista elementi del carrello --}}
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" v-for="cartItem in cart.contents">
-                                        @{{ cartItem.name }}
-                                        <a class="btn btn-sm btn-primary" @click="decrease(cartItem.id)">-</a>
-                                        <span>x@{{ cartItem.quantity }}</span>
-                                        <a class="btn btn-sm btn-primary" @click="add(cartItem)">+</a>
-                                        <span>@{{ cartItem.unit_price }} €</span>
-                                    </li>
-
-                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                                        <div>
-                                            <strong>Totale</strong>
-                                            <strong>
-                                                <p class="mb-0">(IVA inclusa)</p>
-                                            </strong>
-                                        </div>
-                                        <span><strong>@{{ cart.subtotal }} €</strong></span>
-                                    </li>
-                                </ul>
-
-                                {{-- Bottoni per checkout e per svotare carrello  --}}
-                                <div class="buttons-group" v-if="cart.subtotal != 0 ">
-                                    <a href="{{route('guest.checkout', ['id'=>$restaurant->id])}}" class="btn btn-success" >
-                                        Checkout
-                                    </a>
-                                    <button type="button" class="btn btn-danger" name="button" @click="empty">Svuota <i class="fas fa-trash-alt"></i></button>
+                        {{-- Lista elementi del carrello --}}
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" v-for="cartItem in cart.contents">
+                                {{-- Quantità con pulsanti aggiungi/togli --}}
+                                <div class="quantity">
+                                    <a class="btn btn-sm btn-primary" @click="decrease(cartItem.id)">-</a>
+                                    <span>@{{ cartItem.quantity }}</span>
+                                    <a class="btn btn-sm btn-primary" @click="add(cartItem)">+</a>
                                 </div>
 
-                            </div>
+                                {{-- Nome --}}
+                                <div class="name">
+                                    @{{ cartItem.name }}
+                                </div>
+
+                                {{-- Prezzo --}}
+                                <div class="price">
+                                    <span>@{{ cartItem.unit_price }} €</span>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                <div>
+                                    <strong>Totale</strong>
+                                    <strong>
+                                        <p class="mb-0">(IVA inclusa)</p>
+                                    </strong>
+                                </div>
+                                <span><strong>@{{ cart.subtotal }} €</strong></span>
+                            </li>
+                        </ul>
+
+                        {{-- Bottoni per checkout e per svotare carrello  --}}
+                        <div class="buttons-group" v-if="cart.subtotal != 0 ">
+                            <a href="{{ route('guest.checkout', ['id'=>$restaurant->id]) }}" class="btn btn-primary-brand" >
+                                Vai alla cassa
+                            </a>
+                            <button type="button" class="btn btn-danger" name="button" @click="empty">Svuota <i class="fas fa-trash-alt"></i></button>
                         </div>
-                        <!-- Card -->
 
-                    </div> {{-- Chiusura col-3 --}}
-
-                </div>
-
-            </div> {{-- Fine container --}}
-        </div>
+                    </div> {{-- Chiusura col-4 -> Carrello --}}
+                </div>{{-- Fine row --}}
+            </div>{{-- Fine container --}}
+        </section>
 
         <div class="container">
 
