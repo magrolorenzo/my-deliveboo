@@ -51,7 +51,7 @@
                     </div>
 
                     <!-- Categorie -->
-                    <div class="col-12" id="category-container">
+                    <div class="col-11 col-md-12" id="category-container">
 
                         <div class="category-container d-flex justify-content-between" id="cat">
                             {{-- Pulsanti categorie --}}
@@ -90,7 +90,7 @@
                     </div>
 
                     <!-- Container Ristoranti -->
-                    <div class="d-flex flex-wrap justify-content-between col-md-6 col-lg-12">
+                    <div class="d-flex flex-wrap flex-conditions">
 
                         <!-- Card del ristorante -->
                         <div v-for="(restaurant,index) in restaurants" class="card mb-3 restaurant-card" >

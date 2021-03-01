@@ -11,6 +11,7 @@
 @import 'partials/common';
 @import 'partials/carousel';
 
+
 //Sass
 @import "partials/_show.scss";
 @import "partials/_common";
@@ -27,3 +28,5 @@
 @import "partials/guest/header";
 @import "partials/guest/_welcome";
 @import "partials/guest/_braintree";
+
+@import "partials/mediaqueries";
