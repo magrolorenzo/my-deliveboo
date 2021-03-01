@@ -49,7 +49,7 @@
         <section class="dishes-section">
             <div class="container">
                 <div class="row">
-                    {{-- Piatti --}}
+                    {{-- Titolo --}}
                     <div class="col-8">
                         <div class="menu-title">
                             <h1 class="text-uppercase">
@@ -58,30 +58,30 @@
                         </div>
 
                         {{-- Contenitore lista piatti del menù --}}
-                        <div class="dish-container">
-                            {{-- Card piatto --}}
-                            <div class="card" style="width: 18rem;" v-if="dish.visible" v-for="dish in dishes">
+                        <div class="container-fluid p-0">
+                            <div class="row">
+                                {{-- Card piatto --}}
+                                <div class="col-6" v-if="dish.visible" v-for="dish in dishes">
+                                    <div class="dish-card my-2 p-2">
+                                        {{-- Info piatto --}}
+                                        <div class="dish-info">
+                                            <h5 class="card-title">@{{ dish.name }}</h5>
+                                            <p class="card-text">@{{ dish.description }}</p>
+                                            <p class="card-text">@{{ dish.unit_price }} €</p>
+                                            <a id="chart-button" class="btn btn-sm btn-primary" @click="decrease(dish.id)">-</a>
+                                            <a id="chart-button" class="btn btn-sm btn-primary" @click="add(dish)">+</a>
+                                        </div>
 
-                                {{-- Immagine piatto --}}
-                                <div v-if="dish.img_cover"  class="cover-container">
-                                    <img :src="'../storage/' + dish.img_cover" class="card-img-top" />
-                                </div>
-                                <div  v-else class="card-header rounded">
-                                    <span>Immagine non presente</span>
-                                </div>
-
-                                {{-- Info piatto --}}
-                                <div class="card-body">
-                                    <h5 class="card-title">@{{ dish.name }}</h5>
-                                    <p class="card-text">@{{ dish.ingredients }}</p>
-                                    <p class="card-text">@{{ dish.description }}</p>
-                                    <h5 class="card-text">@{{ dish.unit_price }} €</h5>
-                                    <a id="chart-button" class="btn btn-sm btn-primary" @click="decrease(dish.id)">-</a>
-                                    <a id="chart-button" class="btn btn-sm btn-primary" @click="add(dish)">+</a>
-                                </div>
+                                        {{-- Immagine piatto --}}
+                                        <div v-if="dish.img_cover"  class="dish-img">
+                                            <img :src="'../storage/' + dish.img_cover" class="card-img-top" />
+                                        </div>
+                                    </div>
+                                </div>{{-- Chiusura col-6 -> Card Piatti --}}
                             </div>
-                        </div>
-                    </div>{{-- Chiusura col-9 -> Piatti --}}
+                        </div>{{-- Chiusura row -> Card Piatti --}}
+                    </div>{{-- Chiusura col-8 -> Piatti --}}
+
 
 
                     {{-- Carrello --}}
@@ -111,7 +111,7 @@
 
                             <li class="list-group-item d-flex justify-content-between align-items-center px-0 my-3 subtot">
                                 <div>
-                                    <strong>Subtotale</strong>
+                                    <strong>Totale</strong>
                                     {{-- <strong>
                                         <p class="mb-0">(IVA inclusa)</p>
                                     </strong> --}}
