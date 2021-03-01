@@ -8,10 +8,10 @@
 @endsection
 
 @section('content')
-    <div id="app">
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-12">
+<div id="app">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
 
                 <div class="errors-list mt-4 mb-4" v-if="errors.length">
                     <p class="alert alert-danger m-0" v-for="error in errors">@{{error}}</p>
@@ -96,19 +96,15 @@
                             <div class="input-wrapper amount-wrapper">
                                 <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" :value="cart.subtotal" readonly>
                             </div>
-                        </label>
 
-                        <!-- BTN di submit del form -->
-<<<<<<< Updated upstream
-                        <button class="btn btn-primary" type="button" @click="priceCheck; validateCheckout">
-=======
-                        <button class="btn btn-primary" type="button" @click="priceCheck">
->>>>>>> Stashed changes
-                            Verifica
-                        </button>
-                        <button class="button" type="submit">
-                            <span>Paga e ordina</span>
-                        </button>
+                            <div class="bt-drop-in-wrapper">
+                                <div id="bt-dropin"></div>
+                            </div>
+                        </label>
+                    </section>
+
+                    <span id="token" hidden>{{$token}}</span>
+                    <input id="nonce" name="payment_method_nonce" type="hidden" />
 
                     <!-- BTN di submit del form -->
                     <button class="btn btn-primary" type="button" @click="priceCheck">
@@ -118,8 +114,6 @@
                         <span>Paga e ordina</span>
                     </button>
 
-<<<<<<< Updated upstream
-
                 </form>
             </div><!-- END col-12 -->
         </div><!-- END row -->
@@ -127,12 +121,3 @@
 </div>
 <!-- <script src="{{ asset('js/validation.js') }}" defer></script> -->
 @endsection
-=======
-                    </form>
-                </div><!-- END col-12 -->
-            </div><!-- END row -->
-        </div><!-- END container -->
-    </div>
-    {{-- <script src="{{ asset('js/validation.js') }}" defer></script> --}}
-@endsection
->>>>>>> Stashed changes
