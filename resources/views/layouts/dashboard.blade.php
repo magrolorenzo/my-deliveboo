@@ -39,7 +39,7 @@
             <!-- aside nav-bar -->
             @include('partials.dashboard.sidebar-menu')
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 py-4">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 pb-4">
                 @yield('content')
             </main>
         </div>
