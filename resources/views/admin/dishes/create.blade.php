@@ -8,7 +8,7 @@
                 <div class="errors-list mt-4 mb-4" v-if="errors.length">
                     <p class="alert alert-danger m-0" v-for="error in errors">@{{error}}</p>
                 </div>
-                <form name="dishform" action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
+                <form id="dish-form" name="dishform" action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group w-50 d-inline-block">

@@ -37,6 +37,10 @@ var app = new Vue ({
 
         validateDish(){
 
+            event.preventDefault();
+
+            let thisForm = document.getElementById('dish-form');
+
             this.errors = [];
 
             var name = document.dishform.name.value;
@@ -44,7 +48,7 @@ var app = new Vue ({
             var restaurant = document.dishform.restaurant_id.value;
 
             if (!name) {
-                this.errors.push('Attenzione! Inserisci il nome del ristorante!');
+                this.errors.push('Attenzione! Inserisci il nome del piatto!');
             };
 
             if (!restaurant) {
@@ -54,10 +58,15 @@ var app = new Vue ({
             if (!price || price < 0.01 || price > 999.99) {
                 this.errors.push('Attenzione! il prezzo deve essere compreso tra 0.01 e e 999.99 €');
             }
+
+            if (this.errors.length === 0) {
+                console.log("ok ");
+                thisForm.submit();
+            }
         },
 
         // validateCheckout () {
-        // 
+        //
         //     this.errors = [];
         //
         //     var name = document.checkoutform.customer_name.value;
