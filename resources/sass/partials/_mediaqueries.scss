@@ -5,6 +5,14 @@
                 justify-content: center;
             }
         }
+        #category-container {
+            .category-container{
+                .card-size {
+                    min-width: 100px;
+                    min-height: 30px;
+                }
+            }
+        }
 
     }
 
