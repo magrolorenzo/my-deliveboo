@@ -11,6 +11,7 @@ use App\Restaurant;
 use App\Order;
 use App\OrderItem;
 use App\Customer;
+use App\Dish;
 
 class PaymentController extends Controller
 {
@@ -63,8 +64,40 @@ class PaymentController extends Controller
             'privateKey' => getenv('BT_PRIVATE_KEY')
         ]);
 
+        // Pesco i dati di input del form
+        $form_data = $request->all();
 
-        $amount = $request->amount;
+        $amount = 0;
+
+        $cart = json_decode($form_data['currentCart'], true);
+
+        // Array vuoto dove salvero di nuovo gli elementi del carello per stmparli in mail
+        $order_items = [];
+
+        for ($i=0; $i < count($cart); $i++) {
+            // creo nuovo oggetto
+            $new_order_item = new OrderItem();
+            $this_dish = Dish::where("id", $cart[$i]['id'])->first();
+
+            // aggiunto e modifico i dati del singolo elemento
+            // $cart[$i]['order_id'] = $order_id;
+            $cart[$i]['dish_id'] = $cart[$i]['id'];
+            $cart[$i]['dish_name'] = $cart[$i]['name'];
+
+            // Riassegno lo unit price del piatto
+            $cart[$i]['unit_price'] = $this_dish->unit_price;
+
+            // compilo e salvo nel db
+            $new_order_item->fill($cart[$i]);
+
+            array_push($order_items, $new_order_item);
+            // Ricalcolo l'amount del carrello onde evitare di ricevere le modifiche fatte dall'utente
+            $amount += $new_order_item->unit_price*$new_order_item->quantity;
+        }
+
+        // dd($order_items);
+
+        // $amount = $request->amount;
         $nonce = $request->payment_method_nonce;
 
         $result = $gateway->transaction()->sale([
@@ -82,7 +115,7 @@ class PaymentController extends Controller
             // Qui salvataggio dati tabella ordini ??
             $form_data = $request->all();
 
-            // Salvo dati ordine nel db 
+            // Salvo dati ordine nel db
             $new_order = new Order();
             $new_order->fill($form_data);
             $new_order->save();
@@ -90,26 +123,11 @@ class PaymentController extends Controller
             // prendo l'id dell'ordine salvato
             $order_id = $new_order->id;
 
-            // prendo i dati del carrello e li salvo nel DB
-            $cart = json_decode($form_data['currentCart'], true);
-
-            // Array vuoto dove salvero di nuovo gli elementi del carello per stmparli in mail
-            $order_items = [];
-
-            for ($i=0; $i < count($cart); $i++) {
-                // creo nuovo oggetto
-                $new_order_item = new OrderItem();
-
-                // aggiunto e modifico i dati del singolo elemento
-                $cart[$i]['order_id'] = $order_id;
-                $cart[$i]['dish_id'] = $cart[$i]['id'];
-                $cart[$i]['dish_name'] = $cart[$i]['name'];
-
-                // compilo e salvo nel db
-                $new_order_item->fill($cart[$i]);
-                // dd($new_order_item);
-                $new_order_item->save();
-                array_push($order_items, $new_order_item);
+            // prendo i dati del carrello salvati in precedenza
+            // Assegno il valore order_id e li salvo nel DB
+            for ($i=0; $i <count($order_items) ; $i++) {
+                $order_items[$i]["order_id"] = $order_id;
+                $order_items[$i]->save();
             }
 
             // Invio mail a customer
