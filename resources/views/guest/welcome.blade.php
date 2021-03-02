@@ -55,7 +55,7 @@
 
                         <div class="category-container d-flex justify-content-between" id="cat">
                             {{-- Pulsanti categorie --}}
-                            <div v-for="(category,index) in categories" class="mr-2 card-size p-4" :class="selectedCategories.includes(category.id)? 'selected' : ''" @click="selectedCategory(category.id)"  >
+                            <div v-for="(category,index) in categories" class="mr-2 card-size p-4" :class="selectedCategories.includes(category.id)? 'selected' : ''" @click="selectedCategory(category.id)" :id="category.name">
                                 <span>@{{category.name}}</span>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                 </div><!-- Fine Row Categorie -->
 
                 <!-- Bottone rimuovi i filtri -->
-                <div class="btn btn-warning ml-1" @click="clearCategories()">
+                <div class="btn btn-warning ml-1 mt-10" @click="clearCategories()">
                     Rimuovi filtri
                 </div>
             </div>

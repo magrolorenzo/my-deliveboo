@@ -23,13 +23,15 @@
 
             // Category Card
             .card-size {
-                min-width: 180px; height: 90px;
+                min-width: 180px;
+                min-height: 90px;
                 display: flex;
                 align-items: flex-end;
                 color: #fff;
                 text-shadow: 0 1px 4px rgb(0 0 0 / 8%);
                 background-color: $backgroundBrandPr;
                 border-radius: 4px;
+                background-size: cover;
                 // background: -webkit-gradient(linear,left top,left bottom,color-stop(50%,transparent),to(rgba(0,0,0,.16)));
                 // background: linear-gradient(180deg, transparent 50%,rgba(0,0,0,.16));
                 font-weight: 700;
@@ -39,6 +41,36 @@
                 &.selected {
                     background-color: $orange;
                 }
+            }
+            #Italiano {
+                background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/pasta.png');
+            }
+            #Giapponese {
+                background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/sushi-1.png');
+            }
+            #Cinese {
+                background-image: url('https://rs-menus-api.roocdn.com/images/c4d646bb-c071-441a-afa4-e625935f32d1/image.jpeg');
+            }
+            #Indiano {
+                background-image: url('https://f.roocdn.com/images/menus/212763/header-image.jpg');
+            }
+            #Fusion {
+                background-image: url('https://rs-menus-api.roocdn.com/images/3dbd97e3-8ce9-4c31-9a65-75dcf1cfa368/image.jpeg');
+            }
+            #Hamburger {
+                background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/burgers-1.png');
+            }
+            #Pizza {
+                background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/pizza.png');
+            }
+            #Kebab {
+                background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/kebab.png');
+            }
+            #Greco {
+                background-image: url('https://rs-menus-api.roocdn.com/images/4828a08c-2388-4f11-ac20-8c0362ea1c6e/image.jpeg');
+            }
+            #Thailandese {
+                background-image: url('https://f.roocdn.com/images/menus/54856/header-image.jpg');
             }
         }
 

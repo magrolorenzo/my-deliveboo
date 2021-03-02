@@ -9,7 +9,7 @@ var app = new Vue({
     },
 
     methods: {
-        
+
         // Metodo per ricaricare tutti i ristoranti
         loadRestaurants(){
             axios.get("http://localhost:8000/api/restaurants").then((response) => {
@@ -97,11 +97,18 @@ var app = new Vue({
         }, // Chiusura metodo per filtrare categorie
 
         moveRight() {
-            document.getElementById('cat').scrollLeft += 700;
+            if (window.matchMedia("(max-width: 768px)")) {
+                document.getElementById('cat').scrollLeft += 50;
+            }
+
+            document.getElementById('cat').scrollLeft += 500;
 
         },
         moveLeft() {
-            document.getElementById('cat').scrollLeft -= 700;
+            if (window.matchMedia("(max-width: 768px)")) {
+                document.getElementById('cat').scrollLeft -= 150;
+            }
+            document.getElementById('cat').scrollLeft -= 500;
         }
 
     },
