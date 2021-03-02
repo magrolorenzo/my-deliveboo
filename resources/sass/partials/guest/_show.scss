@@ -1,12 +1,6 @@
 // Sezione info del ristorante
 .info-section {
-    // background-color: #71dbd4;
     height: $showRestaurantCoverHeight;
-    // height: calc(#{$guestHeaderHeight} + #{$showRestaurantCoverHeight});
-    // padding-top: $guestHeaderHeight;
-    // position: absolute;
-    // top: 0; left: 0; right: 0;
-    // z-index: -1;
 
     display: flex;
     flex-direction: row;
@@ -19,7 +13,7 @@
 
         .restaurant-info {
             backdrop-filter: blur(10px);
-            border-radius: 20px;
+            color: #fff;
 
             h1 {
                 font-size: 60px;
@@ -27,6 +21,12 @@
             }
             h5 {
                 font-size: 16px;
+            }
+
+            .restaurant-icon {
+                width: 25px;
+                display: inline-flex;
+                justify-content: center;
             }
         }
     }
@@ -37,11 +37,13 @@
     // height: 100vh;
     // padding-top: calc(100vh - #{$guestHeaderHeight} + #{$showRestaurantCoverHeight});
     background-color: #eeeeee;
+    padding-bottom: 60px;
 
     // Carrello
     .cart {
         display: block;
-        // position: absolute;
+        position: sticky;
+        top: 0;
         width: 100%;
         // right: 0;
         align-self: flex-start;
@@ -106,7 +108,6 @@
         background-color: #fff;
         color: #828585;
         border-left: 4px solid transparent;
-        cursor: pointer;
         &.addedToCart {
             border-left: 4px solid #00ccbc;
         }
@@ -120,6 +121,16 @@
 
         .dish-info {
 
+            .info {
+                h5 {
+                    display: inline-block;
+                }
+
+                i {
+                    color:  #00ccbc;
+                    cursor: pointer;
+                }
+            }
         }
         .dish-img {
             width: 100px; height: 100px;
@@ -142,12 +153,13 @@
 
     .card-dish-selected {
         width: 50%; max-width: 500px;
+        max-height: 80%;
         position: absolute;
         top: 50%; left: 50%;
         transform: translate(-50%, -50%);
         backdrop-filter: blur(1px);
+        z-index: 10;
 
-        height: 200px;
         background-color: #fff;
         box-shadow: 0px 22px 24px 0px rgb(0 0 0 / 8%);
         border-radius: 3px;
@@ -164,6 +176,23 @@
                 transform: translateY(-50%);
                 cursor: pointer;
                 color: #00ccbc;
+            }
+        }
+
+        .body {
+            font-size: 14px;
+
+            .dish-img {
+                height: 200px;
+                img {
+                    width: 100%; height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+            .dish-description {
+                max-height: 200px;
+                overflow-y: auto;
             }
         }
     }

@@ -22,17 +22,18 @@
                                 {{-- Nome Ristorante --}}
                                 <h1 id="restaurant-name" class="text-capitalize">{{ $restaurant->name }}</h1>
 
+                                <p class="address"><span><i class="fas fa-map-marker-alt restaurant-icon"></i></span> Indirizzo: {{ $restaurant->address}}</p>
+
                                 {{-- Lista categorie ristorante --}}
-                                <h5 class="info-res">
-                                    <span><i class="fas fa-utensils"></i></span> Categoria:
+                                <p class="info-res">
+                                    <span><i class="fas fa-utensils restaurant-icon"></i></span> Categorie:
                                     @foreach ($restaurant->categories as $category)
                                         <span class="badge badge-info">{{ $category->name }}</span>
                                     @endforeach
-                                </h5>
+                                </p>
 
-                                <h5><span><i class="fas fa-shipping-fast"></i></span> Consegna gratuita</h5>
+                                <p><span><i class="fas fa-shipping-fast restaurant-icon"></i></span> Consegna gratuita</p>
 
-                                <h5 class="address"><span><i class="fas fa-map-marker-alt"></i></span> Indirizzo: {{ $restaurant->address}}</h5>
                             </div>
 
                             {{-- Sezione di destra con immagine ristorante --}}
@@ -51,22 +52,25 @@
                 <div class="row">
                     {{-- Titolo --}}
                     <div class="col-12 col-lg-8">
-                        <div class="menu-title">
-                            <h1 class="text-uppercase">
-                                Menù
-                            </h1>
+                        <div class="menu-title mt-2">
+                            <h3>
+                                Lista dei piatti
+                            </h3>
                         </div>
 
                         {{-- Contenitore lista piatti del menù --}}
                         <div class="container-fluid p-0">
                             <div class="row">
                                 {{-- Card piatto --}}
-                                <div class="col-12 col-md-6" v-if="dish.visible" v-for="dish in dishes" @click="dishInfo(dish)">
+                                <div class="col-12 col-md-6" v-if="dish.visible" v-for="dish in dishes">
                                     <div class="dish-card my-2 p-2" :class="getCartQuantity(dish.id) != 0 ? 'addedToCart' : ''">
                                         {{-- Info piatto --}}
                                         <div class="dish-info">
-                                            <h5 class="card-title capitalize">@{{ dish.name }}</h5>
-                                            <p class="card-text">@{{ dish.unit_price }} €</p>
+                                            <div class="info" @click="dishInfo(dish)">
+                                                <h5 class="card-title capitalize">@{{ dish.name }}</h5>
+                                                <i class="fas fa-info-circle"></i>
+                                                <p class="card-text">@{{ dish.unit_price }} €</p>
+                                            </div>
 
                                             <div class="quantity">
                                                 <a class="btn btn-primary-alt" @click="decrease(dish.id)">-</a>
@@ -131,11 +135,6 @@
                             <button type="button" class="btn btn-danger ml-2" name="button" @click="empty"><i class="fas fa-trash-alt"></i></button>
                         </div>
 
-                        {{-- Cart Icon link --}}
-                        <a href="#cart" class="cart-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-
                     </div> {{-- Chiusura col-4 -> Carrello --}}
                 </div>{{-- Fine row --}}
             </div>{{-- Fine container --}}
@@ -151,12 +150,15 @@
                 </div>
 
                 <div class="body p-4">
-                    <div class="dish-img">
-                        <img :src="'../storage/' + thisSelectedDish.img_cover" alt="">
+                    <div class="dish-img" v-if="thisSelectedDish.img_cover">
+                        <img :src="'../storage/' + thisSelectedDish.img_cover" :alt="thisSelectedDish.name">
                     </div>
-                    <p>@{{ thisSelectedDish.description ? thisSelectedDish.description : 'Descrizione non disponibile' }}</p>
-                    <p>@{{ thisSelectedDish.ingredients ? thisSelectedDish.ingredients : 'Ingredienti non disponibili' }}</p>
-                    <p>@{{ thisSelectedDish.unit_price }}</p>
+
+                    <div class="dish-description">
+                        <p>Descrizione: @{{ thisSelectedDish.description ? thisSelectedDish.description : 'Descrizione non disponibile' }}</p>
+                        <p>Ingredienti: @{{ thisSelectedDish.ingredients ? thisSelectedDish.ingredients : 'Ingredienti non disponibili' }}</p>
+                        <p>Prezzo: @{{ thisSelectedDish.unit_price }}€</p>
+                    </div>
                 </div>
             </div>
         </div>
