@@ -13,7 +13,6 @@
 
 
 //Sass
-@import "partials/_show.scss";
 @import "partials/_common";
 
 // Dashboard
@@ -28,5 +27,6 @@
 @import "partials/guest/header";
 @import "partials/guest/_welcome";
 @import "partials/guest/_braintree";
+@import "partials/guest/show";
 
 @import "partials/mediaqueries";
