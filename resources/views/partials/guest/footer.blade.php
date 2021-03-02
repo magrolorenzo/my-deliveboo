@@ -69,7 +69,9 @@
                         <div class="card-body">
                             <h5 class="card-title">Scarica l'App</h5>
                             <div class="imgbox mt-4">
-                                <img src="https://iconape.com/wp-content/png_logo_vector/app-store-google-play-logo.png" alt="scarica l'app">
+                                <a href="#">
+                                    <img src="https://iconape.com/wp-content/png_logo_vector/app-store-google-play-logo.png" alt="scarica l'app">
+                                </a>
                             </div>
 
 
@@ -83,13 +85,14 @@
         <div class="row">
             <div class="footer-container-bottom">
                 <div class="col-12">
-
-                    <small>© 2021 Deliveboo</small>
                     <div class="links">
                         <a href=""><i class="fab fa-twitter"></i></a>
                         <a href=""><i class="fab fa-facebook"></i></a>
                         <a href=""><i class="fab fa-instagram"></i></a>
 
+                    </div>
+                    <div class="">
+                        <small>© 2021 Deliveboo</small>
                     </div>
                 </div>
             </div>
