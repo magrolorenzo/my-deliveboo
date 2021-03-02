@@ -28,6 +28,10 @@ a, a:hover {
     background-color: #ffad00;
 }
 
+.d-none.not-loading {
+    display: block !important;
+}
+
 .py-4 {
     padding-bottom: 0 !important;
     padding-top: 0 !important;

@@ -8,12 +8,23 @@ var app = new Vue({
             KEY: 'cartContent-',
             contents: [],
             subtotal: 0
-        }
+        },
+        dishSelected: false,
+        thisSelectedDish: {},
+        isLoading: true,
     },
 
     methods: {
         getRestaurantId() {
             this.currentRestaurantId = document.getElementById("restaurant-id").innerHTML;
+        },
+        dishInfo(dishObj) {
+            this.dishSelected = true;
+            this.thisSelectedDish = dishObj;
+        },
+        closeDishInfo() {
+            this.dishSelected = false;
+            this.thisSelectedDish = {};
         },
         add(dishObj) {
             let id = dishObj.id;
@@ -129,6 +140,8 @@ var app = new Vue({
 
             self.dishes = thisRestaurantDishes;
             // console.log(self.dishes);
+
+            self.isLoading = false;
         });
 
         // controllo se c'è qlc nel carrello in local storage
