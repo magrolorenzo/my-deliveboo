@@ -70,120 +70,110 @@
                         </div>
 
 
-                        <!-- Carrello -->
+                        <!-- Carrello e Barintree row -->
                         <div class="form-row">
 
-                            {{-- Card Carrello --}}
-                            <div class="card border-info mt-2 mb-2 col-12 col-md-5 p-0">
 
-                                <div class="card-header  text-white bg-info">
-                                    <h4><i class="fas fa-shopping-cart"></i> Riepilogo Carrello</h4>
-                                </div>
+                            {{-- Carrello Marco --}}
+                            <div id="cart" class="cart py-3  mt-2 mb-2 col-12 col-md-5">
+                                <h5>
+                                    {{$restaurant->name}} - #<span  id="restaurant-id">{{$restaurant->id}}</span>
+                                </h5>
 
-                                <div class="card-body">
-                                    <div class="">
-                                        {{-- <h5>Ristorante:</h5> --}}
-                                        <h5>
+                                {{-- Lista elementi del carrello --}}
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" v-for="cartItem in cart.contents">
+                                        {{-- Quantità con pulsanti aggiungi/togli --}}
+                                        <div class="quantity">
+                                            <a class="btn btn-primary-alt" @click="decrease(cartItem.id)"><i class="fas fa-minus"></i></a>
+                                            <span>@{{ cartItem.quantity }}</span>
+                                            <a class="btn btn-primary-alt" @click="add(cartItem)"><i class="fas fa-plus"></i></a>
+                                        </div>
 
-                                            {{$restaurant->name}} - #<span  id="restaurant-id">{{$restaurant->id}}</span>
-                                        </h5>
+                                        {{-- Nome --}}
+                                        <div class="name">
+                                            @{{ cartItem.name }}
+                                        </div>
+
+                                        {{-- Prezzo --}}
+                                        <div class="price">
+                                            <span>@{{ cartItem.unit_price }} €</span>
+                                        </div>
+                                    </li>
+
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 my-3 subtot">
+                                        <div>
+                                            <strong>Totale</strong>
+                                            {{-- <strong>
+                                            <p class="mb-0">(IVA inclusa)</p>
+                                        </strong> --}}
                                     </div>
+                                    <span><strong>@{{ cart.subtotal }} €</strong></span>
+                                </li>
+                            </ul>
 
-                                    {{-- <h6>
-                                        <strong>Ristorante: </strong>{{$restaurant->name}} - #<span id="restaurant-id">{{$restaurant->id}}</span>
-                                    </h6> --}}
+                            {{-- Bottoni per checkout e per svotare carrello  --}}
+                            {{-- <div class="buttons-group" v-if="cart.subtotal != 0">
+                            <a href="{{ route('guest.checkout', ['id'=>$restaurant->id]) }}" class="btn btn-primary-brand" >
+                            Vai alla cassa
+                        </a>
+                        <button type="button" class="btn btn-danger ml-2" name="button" @click="empty"><i class="fas fa-trash-alt"></i></button>
+                    </div> --}}
 
-                                    <!-- Elementi nel carrello -->
-                                    <div class="cart-items-wrapper">
+                    {{-- Cart Icon link --}}
+                    {{-- <a href="#cart" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </a> --}}
 
-                                        <div v-for="cartItem in cart.contents" class="row text-center align-items-center mt-1 mb-1 ">
-                                            {{-- Nome piatto --}}
-                                            <div class="col-4 p-0">
-                                                <span>
-                                                    @{{ cartItem.name }}
-                                                </span>
-                                            </div>
-                                            {{-- Tasto - --}}
-                                            <div class="col-1 p-0">
-                                                <a class="btn btn-sm btn-danger" @click="decrease(cartItem.id)"><i class="fas fa-minus"></i></a>
-                                            </div>
-                                            {{-- Quantità selezionata --}}
-                                            <div class="col-3 p-0">
-                                                <span>
-                                                    <strong>
-                                                        x @{{ cartItem.quantity }}
-                                                    </strong>
-                                                </span>
-                                            </div>
-                                            {{-- Tasto + --}}
-                                            <div class="col-1 p-0">
-                                                <a class="btn btn-sm btn-success" @click="add(cartItem)"><i class="fas fa-plus"></i></a>
-                                            </div>
-                                            <div class="col-3 p-0">
-                                                <span>@{{ cartItem.unit_price }} €</span>
-                                            </div>
-                                        </div>
-
-                                        <!-- Totale -->
-                                        <div class="row mt-2 text-center">
-                                            <div class="col-4 p-0">
-                                                <strong>Totale</strong>
-                                                <strong>
-                                                    <p class="mb-0">(IVA inclusa)</p>
-                                                </strong>
-                                            </div>
-
-                                            <div class="col-3 offset-5 p-0">
-                                                <span><strong>@{{ cart.subtotal }} €</strong></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+            </div> {{-- Chiusura col-4 -> Carrello --}}
 
 
-                            <!-- Braintree section -->
-                            <div class="col d-flex justify-content-center">
-                                <section >
-                                    <label for="amount">
-                                        <div class="input-wrapper amount-wrapper">
-                                            <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" :value="cart.subtotal" readonly hidden>
-                                        </div>
 
-                                        <div class="bt-drop-in-wrapper">
-                                            <div id="bt-dropin"></div>
-                                        </div>
-                                    </label>
-                                </section>
-                            </div>
+
+
+            {{-- Card Carrello --}}
+
+            <!-- Braintree section -->
+            <div class="col d-flex justify-content-center">
+                <section >
+                    <label for="amount">
+                        <div class="input-wrapper amount-wrapper">
+                            <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" :value="cart.subtotal" readonly hidden>
                         </div>
 
-                        <div class="d-none">
-                            <!-- Hidden inputs  -->
-                            {{-- ID ristorante --}}
-                            <input type="text" name="restaurant_id" class="form-control d-none" v-model="currentRestaurantId">
-                            {{-- JSON Carrello --}}
-                            <input type="text" name="currentCart" class="form-control" v-model="JSONCart" readonly hidden>
-                            {{-- Braintree Token --}}
-                            <span id="token" hidden >{{$token}}</span>
-                            {{-- Braintree Nonce --}}
-                            <input id="nonce" name="payment_method_nonce" type="hidden" readonly />
+                        <div class="bt-drop-in-wrapper">
+                            <div id="bt-dropin"></div>
                         </div>
+                    </label>
+                </section>
+            </div>
+        </div> {{-- Chiusura form-row --}}
 
-                        <!-- BTN di submit del form -->
-                        <div class="text-center mt-3 mb-2">
-                            <button class="btn btn-primary" type="button" @click="checkInput">
-                                Verifica
-                            </button>
-                            <button class="btn btn-success" type="submit">
-                                <span>Paga e ordina</span>
-                            </button>
-                        </div>
+        <div class="d-none">
+            <!-- Hidden inputs  -->
+            {{-- ID ristorante --}}
+            <input type="text" name="restaurant_id" class="form-control d-none" v-model="currentRestaurantId">
+            {{-- JSON Carrello --}}
+            <input type="text" name="currentCart" class="form-control" v-model="JSONCart" readonly hidden>
+            {{-- Braintree Token --}}
+            <span id="token" hidden >{{$token}}</span>
+            {{-- Braintree Nonce --}}
+            <input id="nonce" name="payment_method_nonce" type="hidden" readonly />
+        </div>
 
-                    </form>
-                </div><!-- END col-12 -->
-            </div><!-- END row -->
-        </div><!-- END container -->
-    </div>
+        <!-- BTN di submit del form -->
+        <div class="text-center mt-3 mb-2">
+            <button class="btn btn-primary" type="button" @click="checkInput">
+                Verifica
+            </button>
+            <button class="btn btn-success" type="submit">
+                <span>Paga e ordina</span>
+            </button>
+        </div>
+
+    </form>
+</div><!-- END col-12 -->
+</div><!-- END row -->
+</div><!-- END container -->
+</div>
 @endsection
