@@ -8,12 +8,22 @@ var app = new Vue({
             KEY: 'cartContent-',
             contents: [],
             subtotal: 0
-        }
+        },
+        dishSelected: false,
+        thisSelectedDish: {},
     },
 
     methods: {
         getRestaurantId() {
             this.currentRestaurantId = document.getElementById("restaurant-id").innerHTML;
+        },
+        dishInfo(dishObj) {
+            this.dishSelected = true;
+            this.thisSelectedDish = dishObj;
+        },
+        closeDishInfo() {
+            this.dishSelected = false;
+            this.thisSelectedDish = {};
         },
         add(dishObj) {
             let id = dishObj.id;

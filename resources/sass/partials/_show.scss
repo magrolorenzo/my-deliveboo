@@ -106,6 +106,7 @@
         background-color: #fff;
         color: #828585;
         border-left: 4px solid transparent;
+        cursor: pointer;
         &.addedToCart {
             border-left: 4px solid #00ccbc;
         }
@@ -127,6 +128,42 @@
                 width: 100%; height: 100%;
                 object-fit: cover;
                 object-position: center;
+            }
+        }
+    }
+}
+
+// Dish selected
+.selected-dish-info {
+    position: fixed;
+    top: 0; bottom: 0;
+    right: 0; left: 0;
+    background-color: rgba(0,0,0,0.2);
+
+    .card-dish-selected {
+        width: 50%; max-width: 500px;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        backdrop-filter: blur(1px);
+
+        height: 200px;
+        background-color: #fff;
+        box-shadow: 0px 22px 24px 0px rgb(0 0 0 / 8%);
+        border-radius: 3px;
+
+        .header {
+            width: 100%; height: 40px;
+            border-bottom: 1px solid rgba(0,0,0,.08);
+            display: flex;
+            justify-content: center; align-items: center;
+
+            .close-dish-info {
+                position: absolute;
+                top: 20px; right: 40px;
+                transform: translateY(-50%);
+                cursor: pointer;
+                color: #00ccbc;
             }
         }
     }

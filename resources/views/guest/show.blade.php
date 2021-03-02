@@ -61,12 +61,11 @@
                         <div class="container-fluid p-0">
                             <div class="row">
                                 {{-- Card piatto --}}
-                                <div class="col-12 col-md-6" v-if="dish.visible" v-for="dish in dishes">
+                                <div class="col-12 col-md-6" v-if="dish.visible" v-for="dish in dishes" @click="dishInfo(dish)">
                                     <div class="dish-card my-2 p-2" :class="getCartQuantity(dish.id) != 0 ? 'addedToCart' : ''">
                                         {{-- Info piatto --}}
                                         <div class="dish-info">
                                             <h5 class="card-title capitalize">@{{ dish.name }}</h5>
-                                            <p class="card-text">@{{ dish.description }}</p>
                                             <p class="card-text">@{{ dish.unit_price }} €</p>
 
                                             <div class="quantity">
@@ -142,12 +141,25 @@
             </div>{{-- Fine container --}}
         </section>
 
-        <div class="container">
+        <div class="selected-dish-info" v-if="dishSelected">
+            <div class="card-dish-selected">
+                <div class="header">
+                    <h5 class="text-uppercase m-0">@{{ thisSelectedDish.name }}</h5>
+                    <div class="close-dish-info" @click="closeDishInfo">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
 
+                <div class="body p-4">
+                    <div class="dish-img">
+                        <img :src="'../storage/' + thisSelectedDish.img_cover" alt="">
+                    </div>
+                    <p>@{{ thisSelectedDish.description ? thisSelectedDish.description : 'Descrizione non disponibile' }}</p>
+                    <p>@{{ thisSelectedDish.ingredients ? thisSelectedDish.ingredients : 'Ingredienti non disponibili' }}</p>
+                    <p>@{{ thisSelectedDish.unit_price }}</p>
+                </div>
+            </div>
         </div>
-        {{-- @php
-        echo json_encode($restaurant);
-    @endphp --}}
 </div>
 
 @endsection
