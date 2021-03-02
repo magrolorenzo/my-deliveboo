@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use App\Order;
 
 class OrderController extends Controller
 {
@@ -22,12 +23,13 @@ class OrderController extends Controller
         return view('admin.orders.index', $data);
     }
 
-    public function show(){
-        $userRestaurants = Auth::user()->restaurants;
+    public function show($id){
+        $thisOrder = Order::where('id', $id)->first();
+        // dd($thisOrder->order_items);
 
         $data = [
             // 'dishes' => $dishes
-            'userRestaurants' => $userRestaurants
+            'orderDetails' => $thisOrder
         ];
 
 
