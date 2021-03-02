@@ -48,7 +48,7 @@
 
         {{-- Sezione menu e carrello--}}
         <section class="dishes-section">
-            <div class="container">
+            <div class="container d-none" :class="!isLoading ? 'not-loading' : ''">
                 <div class="row">
                     {{-- Titolo --}}
                     <div class="col-12 col-lg-8">
@@ -140,7 +140,7 @@
             </div>{{-- Fine container --}}
         </section>
 
-        <div class="selected-dish-info" v-if="dishSelected">
+        <div class="selected-dish-info d-none" :class="!isLoading ? 'not-loading' : ''" v-if="dishSelected">
             <div class="card-dish-selected">
                 <div class="header">
                     <h5 class="text-uppercase m-0">@{{ thisSelectedDish.name }}</h5>

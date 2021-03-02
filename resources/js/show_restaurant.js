@@ -11,6 +11,7 @@ var app = new Vue({
         },
         dishSelected: false,
         thisSelectedDish: {},
+        isLoading: true,
     },
 
     methods: {
@@ -139,6 +140,8 @@ var app = new Vue({
 
             self.dishes = thisRestaurantDishes;
             // console.log(self.dishes);
+
+            self.isLoading = false;
         });
 
         // controllo se c'è qlc nel carrello in local storage
