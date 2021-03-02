@@ -18,4 +18,4 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/show_restaurant.js','public/js')
     .js('resources/js/payment.js', 'public/js')
     .js('resources/js/stats.js', 'public/js')
-    ;
+    .js('resources/js/orders.js', 'public/js');

@@ -10,17 +10,6 @@
             </h1>
         </div>
 
-        {{-- <!-- select Ristoranti dell'utente -->
-        <h2>Filtra i tuoi ristoranti</h2>
-        <select name="restaurant_id">
-            <option value="">Tutti i ristoranti</option>
-            @foreach ($userRestaurants as $restaurant)
-                <option value="{{$restaurant->id}}">
-                    {{$restaurant->id}} - {{$restaurant->name}}
-                </option>
-            @endforeach
-        </select> --}}
-
         <!-- tabella piatti -->
         <h2>I tuoi ordini</h2>
         <table class="table table-sm table-bordered table-hover text-center">
