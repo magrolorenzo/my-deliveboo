@@ -48,9 +48,9 @@
                     <td  class="align-middle">@{{ order.restaurant_id }}</td>
                     <td  class="align-middle">@{{ order.amount }} €</td>
                     <td>
-                        {{-- <a href="{{ route('admin.orders.show', ['id' => $order->id]) }}" class="btn btn-info">
+                        <a :href="'http://localhost:8000/admin/orders/' + order.id" class="btn btn-info">
                             Dettagli
-                        </a> --}}
+                        </a>
                     </td>
                 </tr>
             </tbody>
