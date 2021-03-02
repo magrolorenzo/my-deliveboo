@@ -2,6 +2,7 @@ var app = new Vue({
     el: "#app",
     data: {
         restaurants: [],
+        selectedRestaurantId: 0,
         orders: []
     },
     methods: {
@@ -24,6 +25,10 @@ var app = new Vue({
             });
 
             this.orders = allOrders;
+        },
+        filterOrders(event) {
+            // console.log(event.target.value);
+            this.selectedRestaurantId = event.target.value;
         }
     },
     mounted() {

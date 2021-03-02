@@ -19,7 +19,7 @@
 
         <!-- select Ristoranti dell'utente -->
         <h2>Filtra i tuoi ristoranti</h2>
-        <select name="restaurant_id">
+        <select name="restaurant_id" @change="filterOrders($event)">
             <option value="">Tutti i ristoranti</option>
             <option :value="restaurant.id" v-for="restaurant in restaurants">
                 @{{restaurant.id}} - @{{restaurant.name}}
@@ -42,7 +42,7 @@
 
             <!-- righe -->
             <tbody>
-                <tr v-for="order in orders">
+                <tr v-for="order in orders" v-if="selectedRestaurantId == 0 || selectedRestaurantId == order.restaurant_id">
                     <th scope="row"  class="align-middle">@{{ order.id }}</th>
                     <td  class="align-middle">@{{ order.created_at }}</td>
                     <td  class="align-middle">@{{ order.restaurant_id }}</td>
