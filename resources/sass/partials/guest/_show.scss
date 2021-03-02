@@ -30,6 +30,24 @@
     }
 }
 
+.cart-ref {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 10;
+
+    .cart-ref-container {
+        color: #00ccbc;
+        display: flex;
+        justify-content: center; align-items: center;
+        height: 60px;
+        i {
+            margin-right: 20px;
+        }
+    }
+
+}
+
 // Sezione Info dei piatti
 .dishes-section {
     min-height: calc(100vh - #{$showRestaurantCoverHeight} - #{$guestHeaderHeight});

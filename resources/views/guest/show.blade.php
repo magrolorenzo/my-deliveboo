@@ -46,8 +46,23 @@
             </div> {{-- Chiusura Container --}}
         </section> {{-- Chiusura info sextion --}}
 
+        {{-- Sezione per carrello Mobile --}}
+        <section class="cart-ref" v-if="cart.contents != 0">
+            <div class="container">
+                <div class="row">
+                    <div class="cart-ref-container col-12 d-lg-none">
+                        <a href="#cart">
+                            <i class="fas fa-cart-arrow-down"></i>
+                            Vai al carrello
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         {{-- Sezione menu e carrello--}}
         <section class="dishes-section">
+
             <div class="container d-none" :class="!isLoading ? 'not-loading' : ''">
                 <div class="row">
                     {{-- Titolo --}}
@@ -114,6 +129,9 @@
                                 <div class="price">
                                     <span>@{{ cartItem.unit_price }} €</span>
                                 </div>
+                            </li>
+                            <li v-if="cart.contents == 0">
+                                <span>Il tuo carrello è vuoto</span>
                             </li>
 
                             <li class="list-group-item d-flex justify-content-between align-items-center px-0 my-3 subtot">
