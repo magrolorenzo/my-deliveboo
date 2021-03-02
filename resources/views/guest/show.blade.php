@@ -138,6 +138,7 @@
                         </a>
 
                     </div> {{-- Chiusura col-4 -> Carrello --}}
+                    
                 </div>{{-- Fine row --}}
             </div>{{-- Fine container --}}
         </section>
