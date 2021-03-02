@@ -77,16 +77,18 @@
                             <div class="card border-info mt-2 mb-2 col-12 col-md-5 p-0">
 
                                 <div class="card-header  text-white bg-info">
-                                    <h4>Riepilogo Carrello:</h4>
+                                    <h4><i class="fas fa-shopping-cart"></i> Riepilogo Carrello</h4>
                                 </div>
 
                                 <div class="card-body">
-                                    <h5>Ristorante:</h5>
-                                    <p>
-                                        <input type="text" name="restaurant_id" class="form-control d-none" v-model="currentRestaurantId">
-                                        {{$restaurant->name}} - #<span  id="restaurant-id">{{$restaurant->id}}</span>
-                                    </p>
-                                        
+                                    <div class="">
+                                        {{-- <h5>Ristorante:</h5> --}}
+                                        <h5>
+
+                                            {{$restaurant->name}} - #<span  id="restaurant-id">{{$restaurant->id}}</span>
+                                        </h5>
+                                    </div>
+
                                     {{-- <h6>
                                         <strong>Ristorante: </strong>{{$restaurant->name}} - #<span id="restaurant-id">{{$restaurant->id}}</span>
                                     </h6> --}}
@@ -159,6 +161,8 @@
 
                         <div class="d-none">
                             <!-- Hidden inputs  -->
+                            {{-- ID ristorante --}}
+                            <input type="text" name="restaurant_id" class="form-control d-none" v-model="currentRestaurantId">
                             {{-- JSON Carrello --}}
                             <input type="text" name="currentCart" class="form-control" v-model="JSONCart" readonly hidden>
                             {{-- Braintree Token --}}
