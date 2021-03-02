@@ -1,0 +1,40 @@
+footer {
+    padding: 20px 0 20px 0;
+    background-color: #ffad00;
+}
+
+.footer-container-top {
+    display: flex;
+    justify-content: space-between;
+    .row {
+        width: 100%;
+    }
+    .card {
+        margin-top: 10px;
+    }
+    .foot-flex {
+        justify-content: space-between;
+    }
+    ul li {
+        display: block;
+    }
+    .imgbox {
+        display: block;
+        img {
+            max-width: 55%;
+            max-height: 80px;
+        }
+
+    }
+}
+
+.footer-container-bottom {
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    small {
+        color: white;
+    }
+}
