@@ -83,8 +83,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="footer-container-bottom">
-                <div class="col-12">
+            <div class="col-12">
+                <div class="footer-container-bottom">
                     <div class="links">
                         <a href=""><i class="fab fa-twitter"></i></a>
                         <a href=""><i class="fab fa-facebook"></i></a>
