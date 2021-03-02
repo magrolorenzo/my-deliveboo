@@ -1,0 +1,51 @@
+footer {
+    padding: 20px 0 20px 0;
+    background-color: #ffad00;
+    h5 {
+        font-size: $spacing-unit * 2.2;
+    }
+    li {
+        font-size: $spacing-unit * 1.6;
+    }
+}
+
+.footer-container-top {
+    display: flex;
+    justify-content: space-between;
+    .row {
+        width: 100%;
+    }
+    .card {
+        margin-top: 10px;
+    }
+    .foot-flex {
+        justify-content: space-between;
+    }
+    ul li {
+        display: block;
+    }
+    .imgbox {
+
+        img {
+            max-width: 55%;
+            max-height: 80px;
+        }
+
+    }
+}
+
+.footer-container-bottom {
+    height: $spacing-unit * 4;
+    margin-top: $spacing-unit * 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .links i {
+        font-size: $spacing-unit * 2.5;
+        margin-right: 7px;
+    }
+    small {
+        font-size: $spacing-unit * 2;
+        color: white;
+    }
+}

@@ -19,7 +19,7 @@
 // Dashboard
 @import "partials/dashboard/header";
 @import "partials/dashboard/main";
-@import "partials/dashboard/footer";
+
 
 @import "partials/dashboard/home";
 @import "partials/dashboard/dishes";
@@ -28,5 +28,6 @@
 @import "partials/guest/header";
 @import "partials/guest/_welcome";
 @import "partials/guest/_braintree";
+@import "partials/guest/footer";
 
 @import "partials/mediaqueries";
