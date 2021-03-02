@@ -50,7 +50,7 @@
             <div class="container">
                 <div class="row">
                     {{-- Titolo --}}
-                    <div class="col-8">
+                    <div class="col-12 col-lg-8">
                         <div class="menu-title">
                             <h1 class="text-uppercase">
                                 Menù
@@ -61,7 +61,7 @@
                         <div class="container-fluid p-0">
                             <div class="row">
                                 {{-- Card piatto --}}
-                                <div class="col-6" v-if="dish.visible" v-for="dish in dishes">
+                                <div class="col-12 col-md-6" v-if="dish.visible" v-for="dish in dishes">
                                     <div class="dish-card my-2 p-2" :class="getCartQuantity(dish.id) != 0 ? 'addedToCart' : ''">
                                         {{-- Info piatto --}}
                                         <div class="dish-info">
@@ -89,7 +89,7 @@
 
 
                     {{-- Carrello --}}
-                    <div class="col-4 cart py-3">
+                    <div id="cart" class="col-12 col-lg-4 cart py-3">
                         <h5>Carrello</h5>
 
                         {{-- Lista elementi del carrello --}}
@@ -125,12 +125,17 @@
                         </ul>
 
                         {{-- Bottoni per checkout e per svotare carrello  --}}
-                        <div class="buttons-group" v-if="cart.subtotal != 0 ">
+                        <div class="buttons-group" v-if="cart.subtotal != 0">
                             <a href="{{ route('guest.checkout', ['id'=>$restaurant->id]) }}" class="btn btn-primary-brand" >
                                 Vai alla cassa
                             </a>
                             <button type="button" class="btn btn-danger ml-2" name="button" @click="empty"><i class="fas fa-trash-alt"></i></button>
                         </div>
+
+                        {{-- Cart Icon link --}}
+                        <a href="#cart" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
 
                     </div> {{-- Chiusura col-4 -> Carrello --}}
                 </div>{{-- Fine row --}}
