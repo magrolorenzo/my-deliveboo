@@ -1,25 +1,36 @@
 #welcome-blade{
 
+    h2 {
+
+        margin: 30px 0;
+    }
+
     #jumbotron {
         padding: 40px 0;
-        background-color: $backgroundBrandPr;
+        // background-color: $backgroundBrandPr;
+        // background-image: linear-gradient($backgroundBrandPr, white );
         height: 40vh;
         color: $textTitlePr;
-        background-image: url('../imgs/foods.png');
+        background-image: url('../imgs/foods.png'), linear-gradient($backgroundBrandPr, white );
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
+        h1 {
+            color: white;
+        }
         }
 
     .main {
-        background-color: $backgroundBrandPr;
+        background-color: #fff;
     }
 
     // categorie
     #category-container {
         position: relative;
+
         .category-container {
             overflow-x: hidden;
+            margin-bottom: 10px;
 
             // Category Card
             .card-size {
@@ -121,7 +132,7 @@
             box-shadow: 0 1px 4px rgb(0 0 0 / 8%), 0 0 0 1px rgb(0 0 0 / 4%);
             margin: 1px 1px 5px;
             border-radius: 3px;
-            background-color: $body-bg;
+            background-color: transparent;
             overflow: hidden;
 
             // parte superiore: img
@@ -136,7 +147,7 @@
             }
             &:hover {
                 transform: scale(1.1);
-
+                transition: all 0.3s;
             }
             // titolo
             .card-title {
