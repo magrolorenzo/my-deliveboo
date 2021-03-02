@@ -74,7 +74,7 @@
                 </div><!-- Fine Row Categorie -->
 
                 <!-- Bottone rimuovi i filtri -->
-                <div class="btn btn-warning ml-1 mt-10" @click="clearCategories()">
+                <div class="btn btn-warning ml-1" @click="clearCategories()">
                     Rimuovi filtri
                 </div>
             </div>
@@ -93,7 +93,7 @@
                     <div class="d-flex flex-wrap flex-conditions">
 
                         <!-- Card del ristorante -->
-                        <div v-for="(restaurant,index) in restaurants" class="card mb-3 restaurant-card" >
+                        <div v-for="(restaurant,index) in restaurants" class="card mb-3 restaurant-card bg-light" >
 
                             <a :href="'/show/'+restaurant.slug">
                                 {{-- Cover image --}}
