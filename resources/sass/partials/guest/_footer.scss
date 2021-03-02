@@ -38,11 +38,11 @@ footer {
     height: $spacing-unit * 4;
     margin-top: $spacing-unit * 2;
     display: flex;
-    justify-content: space-between;   
+    justify-content: space-between;
     align-items: center;
     .links i {
-        font-size: $spacing-unit * 3;
-        margin-right: 5px;
+        font-size: $spacing-unit * 2.5;
+        margin-right: 7px;
     }
     small {
         font-size: $spacing-unit * 2;
