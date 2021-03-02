@@ -23,7 +23,9 @@ Route::post('/pay-and-order', 'PaymentController@pay_and_order')->name('guest.pa
 
 Route::middleware('auth')->namespace('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
+
     Route::get('/orders', 'OrderController@index')->name('orders');
+    Route::get('/orders/{id}', 'OrderController@show')->name('orders.show');
 
     Route::resource('/restaurants', 'RestaurantController');
     Route::resource('/dishes', 'DishController');
