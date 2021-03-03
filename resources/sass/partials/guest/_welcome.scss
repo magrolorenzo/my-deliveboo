@@ -34,6 +34,7 @@
 
             // Category Card
             .card-size {
+                box-sizing: border-box;
                 min-width: 180px;
                 min-height: 90px;
                 display: flex;
@@ -48,9 +49,18 @@
                 font-weight: 700;
                 font-size: 16px;
                 cursor: pointer;
+                span{
+                    background-color: rgba(1,1,1,0.4);
+                    padding: 3px;
+                    border-radius: 5px;
+                }
 
-                &.selected {
-                    background-color: $orange;
+                &.selected{
+                    span{
+                        color: #121212;
+                        background-color: rgba(255,165,0, 0.9);
+                    }
+
                 }
             }
             #Italiano {
