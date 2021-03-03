@@ -7,18 +7,27 @@
 
 @section('content')
 <div id="app">
-    <div class="container ">
+    <div class="container">
         <div class="row">
+            <select class="mt-2" @change="changeRestaurant($event)" name="" id="selectRestaurant">
+                <option :value="restaurant.id" v-for="restaurant in restaurants">@{{restaurant.name}}</option>
+            </select>
             <div class="col-md-12 d-md-flex justify-content-between flex-wrap">
                 <input type="hidden" id="user-id" value="{{Auth::User()->id}}" />
-                <select @change="changeRestaurant($event)" name="" id="selectRestaurant">
-                    <option :value="restaurant.id" v-for="restaurant in restaurants">@{{restaurant.name}}</option>
-
-                </select>
-                <canvas id="myChart" width="400" height="400"></canvas>
-                <canvas id="myNewChart" width="400" height="400"></canvas>
+                <div class="row">
+                    <div class="col-6">
+                        <canvas id="myChart" width="1000" height="1000"></canvas>
 
 
+
+                    </div>
+                    <div class="col-6">
+                        <canvas id="myNewChart" width="1000" height="1000"></canvas>
+
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
