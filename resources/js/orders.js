@@ -3,6 +3,7 @@ var app = new Vue({
     data: {
         restaurants: [],
         selectedRestaurantId: 0,
+        selectedRestaurant: null,
         orders: []
     },
     methods: {
@@ -25,10 +26,26 @@ var app = new Vue({
             });
 
             this.orders = allOrders;
+            console.log(this.orders);
+            console.log(this.restaurants);
         },
         filterOrders(event) {
             // console.log(event.target.value);
             this.selectedRestaurantId = event.target.value;
+
+            if(this.selectedRestaurantId == 0){
+                this.selectedRestaurant = null;
+            }else{
+                for (var i = 0; i < this.restaurants.length; i++) {
+                    if(this.restaurants[i].id == this.selectedRestaurantId){
+                        this.selectedRestaurant = this.restaurants[i];
+                    }
+                }
+            }
+
+
+            console.log(this.orders);
+            console.log(this.restaurants);
         }
     },
     mounted() {
@@ -42,7 +59,7 @@ var app = new Vue({
             // console.log(userRestaurants);
             self.restaurants = userRestaurants;
             self.getAllOrders();
-            // console.log(self.orders);
+            console.log(self.orders);
         })
 
 
