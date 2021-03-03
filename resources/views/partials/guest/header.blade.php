@@ -3,31 +3,22 @@
         <div class="container">
             <!-- Left Side Of Navbar - Brand Logo -->
             <div class="d-flex align-items-center">
-                <a class="navbar-brand logo-brand m-0 p-0 d-flex align-items-center mr-2" href="{{ url('/') }}">
+                <a class="navbar-brand logo-brand m-0 p-0 d-flex align-items-center" href="{{ url('/') }}">
                     <img src="{{ asset('/images/logo-deliveboo.png') }}" alt="brand logo Deliveroo">
+                    <h5 class="m-0 ml-2 text-dark">DeliveBoo</h5>
                 </a>
-                <h5 class="m-0">DeliveBoo</h5>
             </div>
 
-            <!-- Right Side Of Navbar MOBILE - Hamburger menu -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                {{-- <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                </ul> --}}
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+            <div class="right-links">
+                <ul class="navbar-nav ml-auto flex-row">
                     <!-- Authentication Links -->
                     @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
-                    <li class="nav-item">
+                    <li class="nav-item ml-3">
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                     @endif
@@ -40,7 +31,7 @@
                         </a>
 
                         <!-- DropdownMenu -->
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="navbarDropdown">
                             <!-- Link to dashboard -->
                             <a class="dropdown-item" href="{{ route('admin.home') }}">
                                 Dashboard
@@ -59,7 +50,13 @@
                     </li>
                     @endguest
                 </ul>
+
+
             </div>
+
+            <!-- Right Side Of Navbar MOBILE - Hamburger menu -->
+
+
 
         </div> {{-- Fine Container --}}
     </nav>

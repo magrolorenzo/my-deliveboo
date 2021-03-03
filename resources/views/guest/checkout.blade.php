@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <div id="app">
+    <div id="app" v-cloak>
 
         <div class="container mt-5">
 
