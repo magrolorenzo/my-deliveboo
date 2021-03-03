@@ -5,9 +5,7 @@
         <div class="row justify-content-center">
             <div id="errors-root" class="col-md-8">
                 <h1>Ristorante</h1>
-                <div class="errors-list mt-4 mb-4" v-if="errors.length">
-                    <p class="alert alert-danger m-0" v-for="error in errors">@{{error}}</p>
-                </div>
+                
                 <form name="testform" id="restaurant-form" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -60,6 +58,11 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    {{-- Messaggi di errore validazione front end --}}
+                    <div class="errors-list mt-4 mb-4" v-if="errors.length">
+                        <p class="alert alert-danger m-0" v-for="error in errors">@{{error}}</p>
+                    </div>
+
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-success" @click="validateForm">

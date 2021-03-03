@@ -2,13 +2,11 @@
 
 @section('content')
     <div class="container">
-        
+
         <div class="row justify-content-center">
             <div id="errors-root" class="col-md-8">
                 <h1>Crea nuovo piatto</h1>
-                <div class="errors-list mt-4 mb-4" v-if="errors.length">
-                    <p class="alert alert-danger m-0" v-for="error in errors">@{{error}}</p>
-                </div>
+            
                 <form id="dish-form" name="dishform" action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
@@ -93,6 +91,11 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    {{-- Messaggi di errore validazione front end --}}
+                    <div class="errors-list mt-4 mb-4" v-if="errors.length">
+                        <p class="alert alert-danger m-0" v-for="error in errors">@{{error}}</p>
+                    </div>
+
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-success" @click="validateDish">
