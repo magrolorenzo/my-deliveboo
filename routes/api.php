@@ -22,3 +22,4 @@ Route::get('/filtered-restaurants/{id}', 'Api\RestaurantController@filtered');
 
 Route::get('/completed-orders', 'Api\OrderController@index');
 Route::get('/user-orders/{user_id}', 'Api\OrderController@getUserOrders');
+Route::get('/completed-orders/{id}', 'Api\OrderController@index');
