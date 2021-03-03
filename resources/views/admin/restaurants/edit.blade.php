@@ -26,10 +26,11 @@
                     </div>
                     <div class="form-group">
                         <label>P. Iva</label>
-                        <input name="piva" type="text" class="form-control" placeholder="Inserisci la partita iva" required value="{{old('piva', $restaurant->piva)}}">
-                        @error('piva')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        <p>
+                            <strong>
+                                {{$restaurant->piva}}
+                            </strong>
+                        </p>
                     </div>
                     <div class="form-group">
                         <label>Image</label>
