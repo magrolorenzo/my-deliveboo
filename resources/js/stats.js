@@ -164,18 +164,12 @@ var app = new Vue({
                         this.datas = [totalGennaio, totalFebbraio, totalMarzo, totalAprile, totalMaggio, totalGiugno,
                             totalLuglio, totalAgosto, totalSettembre, totalOttobre, totalNovembre, totalDicembre];
                         
-                        this.newDatas = [totalOrdersGennaio.length,
-                        totalOrdersFebbraio.length,
-                        totalOrdersMarzo.length,
-                        totalOrdersAprile.length,
-                        totalOrdersMaggio.length,
-                        totalOrdersGiugno.length,
-                        totalOrdersLuglio.length,
-                        totalOrdersAgosto.length,
-                        totalOrdersSettembre.length,
-                        totalOrdersOttobre.length,
-                        totalOrdersNovembre.length,
-                        totalOrdersDicembre.length]
+                        this.newDatas = [
+                            totalOrdersGennaio.length, totalOrdersFebbraio.length, totalOrdersMarzo.length,
+                            totalOrdersAprile.length, totalOrdersMaggio.length, totalOrdersGiugno.length, totalOrdersLuglio.length,
+                            totalOrdersAgosto.length, totalOrdersSettembre.length, totalOrdersOttobre.length, totalOrdersNovembre.length,
+                            totalOrdersDicembre.length
+                        ]
                         
                         }
                     
@@ -263,11 +257,12 @@ var app = new Vue({
         console.log(this.userId);
         console.log(this.currentRestaurant);
 
-
-        this.showStats((datas, newDatas) => {
+        const cb = (datas, newDatas) => {
             this.myChart = this.initChart('myChart', datas);
             this.myNewChart = this.initChart('myNewChart', newDatas);
 
-        });
+        }
+
+        this.showStats(cb);
     },
 });
