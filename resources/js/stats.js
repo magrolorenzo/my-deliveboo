@@ -165,10 +165,10 @@ var app = new Vue({
                             totalLuglio, totalAgosto, totalSettembre, totalOttobre, totalNovembre, totalDicembre];
                         
                         this.newDatas = [
-                            totalOrdersGennaio.length, totalOrdersFebbraio.length, totalOrdersMarzo.length,
-                            totalOrdersAprile.length, totalOrdersMaggio.length, totalOrdersGiugno.length, totalOrdersLuglio.length,
-                            totalOrdersAgosto.length, totalOrdersSettembre.length, totalOrdersOttobre.length, totalOrdersNovembre.length,
-                            totalOrdersDicembre.length
+                            13, 18, totalOrdersMarzo.length,
+                            21, 14, 10, 17,
+                            24, 9, 16, 23,
+                            12
                         ]
                         
                         }
