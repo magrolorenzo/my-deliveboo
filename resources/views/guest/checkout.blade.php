@@ -73,7 +73,6 @@
                         <!-- Carrello e Barintree row -->
                         <div class="form-row">
 
-
                             {{-- Carrello Marco --}}
                             <div id="cart" class="cart py-3  mt-2 mb-2 col-12 col-md-5">
                                 <h5>
@@ -104,76 +103,50 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 my-3 subtot">
                                         <div>
                                             <strong>Totale</strong>
-                                            {{-- <strong>
-                                            <p class="mb-0">(IVA inclusa)</p>
-                                        </strong> --}}
-                                    </div>
-                                    <span><strong>@{{ cart.subtotal }} €</strong></span>
-                                </li>
-                            </ul>
+                                        </div>
+                                        <span><strong>@{{ cart.subtotal }} €</strong></span>
+                                    </li>
+                                </ul>
 
-                            {{-- Bottoni per checkout e per svotare carrello  --}}
-                            {{-- <div class="buttons-group" v-if="cart.subtotal != 0">
-                            <a href="{{ route('guest.checkout', ['id'=>$restaurant->id]) }}" class="btn btn-primary-brand" >
-                            Vai alla cassa
-                        </a>
-                        <button type="button" class="btn btn-danger ml-2" name="button" @click="empty"><i class="fas fa-trash-alt"></i></button>
-                    </div> --}}
+                            </div> {{-- Chiusura col-4 -> Carrello --}}
 
-                    {{-- Cart Icon link --}}
-                    {{-- <a href="#cart" class="cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                </a> --}}
+                            <!-- Braintree section -->
+                            <div class="col d-flex justify-content-center">
+                                <section >
+                                    <label for="amount">
+                                        <div class="input-wrapper amount-wrapper">
+                                            <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" :value="cart.subtotal" readonly hidden>
+                                        </div>
+                                        <div class="bt-drop-in-wrapper">
+                                            <div id="bt-dropin"></div>
+                                        </div>
+                                    </label>
+                                </section>
+                            </div>
+                        </div> {{-- Chiusura form-row --}}
 
-            </div> {{-- Chiusura col-4 -> Carrello --}}
-
-
-
-
-
-            {{-- Card Carrello --}}
-
-            <!-- Braintree section -->
-            <div class="col d-flex justify-content-center">
-                <section >
-                    <label for="amount">
-                        <div class="input-wrapper amount-wrapper">
-                            <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" :value="cart.subtotal" readonly hidden>
+                        <div class="d-none">
+                            <!-- Hidden inputs  -->
+                            {{-- ID ristorante --}}
+                            <input type="text" name="restaurant_id" class="form-control d-none" v-model="currentRestaurantId">
+                            {{-- JSON Carrello --}}
+                            <input type="text" name="currentCart" class="form-control" v-model="JSONCart" readonly hidden>
+                            {{-- Braintree Token --}}
+                            <span id="token" hidden >{{$token}}</span>
+                            {{-- Braintree Nonce --}}
+                            <input id="nonce" name="payment_method_nonce" type="hidden" readonly />
                         </div>
 
-                        <div class="bt-drop-in-wrapper">
-                            <div id="bt-dropin"></div>
+                        <!-- BTN di submit del form -->
+                        <div class="text-center mt-3 mb-2">
+                            <button class="btn btn-success" type="submit">
+                                <span>Paga e ordina</span>
+                            </button>
                         </div>
-                    </label>
-                </section>
-            </div>
-        </div> {{-- Chiusura form-row --}}
 
-        <div class="d-none">
-            <!-- Hidden inputs  -->
-            {{-- ID ristorante --}}
-            <input type="text" name="restaurant_id" class="form-control d-none" v-model="currentRestaurantId">
-            {{-- JSON Carrello --}}
-            <input type="text" name="currentCart" class="form-control" v-model="JSONCart" readonly hidden>
-            {{-- Braintree Token --}}
-            <span id="token" hidden >{{$token}}</span>
-            {{-- Braintree Nonce --}}
-            <input id="nonce" name="payment_method_nonce" type="hidden" readonly />
-        </div>
-
-        <!-- BTN di submit del form -->
-        <div class="text-center mt-3 mb-2">
-            <button class="btn btn-primary" type="button" @click="checkInput">
-                Verifica
-            </button>
-            <button class="btn btn-success" type="submit">
-                <span>Paga e ordina</span>
-            </button>
-        </div>
-
-    </form>
-</div><!-- END col-12 -->
-</div><!-- END row -->
-</div><!-- END container -->
-</div>
+                    </form>
+                </div><!-- END col-12 -->
+            </div><!-- END row -->
+        </div><!-- END container -->
+    </div>
 @endsection

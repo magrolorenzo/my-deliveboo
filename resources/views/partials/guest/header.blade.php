@@ -2,9 +2,12 @@
     <nav id="guest-navbar" class="navbar navbar-expand-md navbar-dark">
         <div class="container">
             <!-- Left Side Of Navbar - Brand Logo -->
-            <a class="navbar-brand logo-brand m-0 p-0 d-flex" href="{{ url('/') }}">
-                <img src="{{ asset('/imgs/brand-logo.png') }}" alt="brand logo Deliveroo">
-            </a>
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand logo-brand m-0 p-0 d-flex align-items-center mr-2" href="{{ url('/') }}">
+                    <img src="{{ asset('/images/logo-deliveboo.png') }}" alt="brand logo Deliveroo">
+                </a>
+                <h5 class="m-0">DeliveBoo</h5>
+            </div>
 
             <!-- Right Side Of Navbar MOBILE - Hamburger menu -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
