@@ -44,6 +44,43 @@ var app = new Vue ({
 
         },
 
+
+        validateEditRestaurant(){
+
+            this.errors = [];
+
+            let thisForm = document.getElementById('restaurant-form');
+
+            var name = document.testform.name.value;
+            var address = document.testform.address.value;
+            // var piva = document.testform.piva.value;
+
+            event.preventDefault();
+
+            if (!name) {
+                this.errors.push('Attenzione! Inserisci il nome del ristorante!');
+            }
+
+            if (!address) {
+                this.errors.push('Attenzione! Inserisci l\'indirizzo del ristorante!');
+            }
+
+            // if(!piva || piva.length < this.minChars || isNaN(piva)) {
+            //     this.errors.push('Attenzione! la partita iva deve essere un numero di almeno 11 cifre!');
+            // }
+
+            if (!document.querySelector('form[name="testform"] input[name="categories[]"]:checked')) {
+                this.errors.push('Attenzione! Seleziona almeno una categoria!');
+            }
+
+            if (this.errors.length === 0) {
+                console.log("ok ");
+                thisForm.submit();
+            }
+
+
+        },
+
         validateDish(){
 
             event.preventDefault();
