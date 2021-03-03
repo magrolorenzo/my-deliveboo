@@ -8,7 +8,7 @@
                 <div class="errors-list mt-4 mb-4" v-if="errors.length">
                     <p class="alert alert-danger m-0" v-for="error in errors">@{{error}}</p>
                 </div>
-                <form name="testform" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->id]) }}" method="post" enctype="multipart/form-data">
+                <form name="testform" id="restaurant-form" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

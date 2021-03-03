@@ -12,10 +12,13 @@ var app = new Vue ({
 
             this.errors = [];
 
+            let thisForm = document.getElementById('restaurant-form');
+
             var name = document.testform.name.value;
             var address = document.testform.address.value;
             var piva = document.testform.piva.value;
 
+            event.preventDefault();
 
             if (!name) {
                 this.errors.push('Attenzione! Inserisci il nome del ristorante!');
@@ -32,6 +35,12 @@ var app = new Vue ({
             if (!document.querySelector('form[name="testform"] input[name="categories[]"]:checked')) {
                 this.errors.push('Attenzione! Seleziona almeno una categoria!');
             }
+
+            if (this.errors.length === 0) {
+                console.log("ok ");
+                thisForm.submit();
+            }
+
 
         },
 

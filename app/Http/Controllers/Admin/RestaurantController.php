@@ -46,7 +46,7 @@ class RestaurantController extends Controller
         $request->validate([
             'name' => 'required|max:50',
             'address' => 'required|max:50',
-            'piva' => 'required|digits:11',
+            'piva' => 'required|digits:11|unique:restaurants,piva',
             'img_file' => 'nullable|mimes:jpg,jpeg,png,bmp|max:512',
             'categories' => 'required|exists:categories,id'
         ]);
@@ -136,7 +136,7 @@ class RestaurantController extends Controller
         $request->validate([
             'name' => 'required|max:50',
             'address' => 'required|max:50',
-            'piva' => 'required|digits:11',
+            'piva' => 'required|digits:11|unique:restaurants,piva',
             'img_file' => 'nullable|mimes:jpg,jpeg,png,bmp|max:512',
             'categories' => 'required|exists:categories,id'
         ]);
