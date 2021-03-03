@@ -61,9 +61,9 @@
         </section>
 
         {{-- Sezione menu e carrello--}}
-        <section class="dishes-section">
-
-            <div class="container d-none" :class="!isLoading ? 'not-loading' : ''">
+        <section class="dishes-section" v-cloak>
+            {{-- :class="!isLoading ? 'not-loading' : ''" --}}
+            <div class="container " >
                 <div class="row">
                     {{-- Titolo --}}
                     <div class="col-12 col-lg-8">
@@ -154,7 +154,7 @@
                         </div>
 
                     </div> {{-- Chiusura col-4 -> Carrello --}}
-                    
+
                 </div>{{-- Fine row --}}
             </div>{{-- Fine container --}}
         </section>

@@ -3,6 +3,10 @@ body {
     // font-family: sans-serif;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 * {
     scroll-behavior: smooth;
 }

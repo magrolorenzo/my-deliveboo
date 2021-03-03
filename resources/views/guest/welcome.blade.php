@@ -24,7 +24,7 @@
             </div>
         </section>
         <!-- Main App: Filtri per categorie e stampa ristoranti -->
-        <div id="app" class="main">
+        <div id="app" class="main" v-cloak>
             <div class="container" >
                 <div class="row cat-row">
 

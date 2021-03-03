@@ -6,7 +6,7 @@
             <div id="errors-root" class="col-md-8">
                 <h1>Modifica il piatto</h1>
 
-                <form id="dish-form" name="dishform" action="{{ route('admin.dishes.update', ['dish' => $dish->id]) }}" method="post" enctype="multipart/form-data">
+                <form v-cloak id="dish-form" name="dishform" action="{{ route('admin.dishes.update', ['dish' => $dish->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -36,7 +36,7 @@
 
                     <div class="form-group">
                         <label>Ingredienti</label>
-                        <textarea name="ingredients" class="form-control" rows="8" cols="80" placeholder="Inserisci gli ingredienti">{{old('ingredients', $dish->ingredients)}}</textarea>
+                        <textarea name="ingredients" class="form-control" rows="5" cols="80" placeholder="Inserisci gli ingredienti">{{old('ingredients', $dish->ingredients)}}</textarea>
                         @error('ingredients')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -44,7 +44,7 @@
 
                     <div class="form-group">
                         <label>Description</label>
-                        <textarea name="description" class="form-control" rows="8" cols="80" placeholder="Inserisci la descrizione">{{
+                        <textarea name="description" class="form-control" rows="5" cols="80" placeholder="Inserisci la descrizione">{{
                             old('description', $dish->description)
                         }}</textarea>
                         @error('description')
@@ -94,7 +94,7 @@
                     <div class="errors-list mt-4 mb-4" v-if="errors.length">
                         <p class="alert alert-danger m-0" v-for="error in errors">@{{error}}</p>
                     </div>
-                    
+
                     <div class="form-group">
                         {{-- @click="validateDish" --}}
                         <button type="submit" class="btn btn-success" @click="validateDish">

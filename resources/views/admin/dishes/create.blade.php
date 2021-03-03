@@ -6,8 +6,8 @@
         <div class="row justify-content-center">
             <div id="errors-root" class="col-md-8">
                 <h1>Crea nuovo piatto</h1>
-            
-                <form id="dish-form" name="dishform" action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
+
+                <form v-cloak id="dish-form" name="dishform" action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group w-50 d-inline-block">

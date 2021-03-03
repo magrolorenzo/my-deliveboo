@@ -5,8 +5,8 @@
         <div class="row justify-content-center">
             <div id="errors-root" class="col-md-8">
                 <h1>Ristorante</h1>
-                
-                <form name="testform" id="restaurant-form" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->id]) }}" method="post" enctype="multipart/form-data">
+
+                <form v-cloak name="testform" id="restaurant-form" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
