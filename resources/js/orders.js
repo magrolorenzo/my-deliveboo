@@ -20,6 +20,13 @@ var app = new Vue({
 
             allRestaurant.forEach((currentRest) => {
                 let thisRestaurantOrders = currentRest.orders;
+
+                thisRestaurantOrders.forEach((order) => {
+                    order.restaurant_name = currentRest.name;
+                    order.created_at = dayjs(order.created_at).format('DD/MM/YYYY HH:mm');
+
+                });
+
                 if (thisRestaurantOrders.length != 0) {
                     allOrders = allOrders.concat(thisRestaurantOrders);
                 }
@@ -43,7 +50,6 @@ var app = new Vue({
                 }
             }
 
-
             console.log(this.orders);
             console.log(this.restaurants);
         }
@@ -56,10 +62,10 @@ var app = new Vue({
 
         axios.get('http://localhost:8000/api/user-orders/' + userId).then((response) => {
             let userRestaurants = response.data.results.userRestaurant;
-            // console.log(userRestaurants);
+            console.log(userRestaurants);
             self.restaurants = userRestaurants;
             self.getAllOrders();
-            console.log(self.orders);
+            // console.log(self.orders);
         })
 
 

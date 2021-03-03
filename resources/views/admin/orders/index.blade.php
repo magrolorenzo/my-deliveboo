@@ -45,7 +45,7 @@
                 <tr v-for="order in orders" v-if="selectedRestaurantId == 0 || selectedRestaurantId == order.restaurant_id">
                     <th scope="row"  class="align-middle">@{{ order.id }}</th>
                     <td  class="align-middle">@{{ order.created_at }}</td>
-                    <td  class="align-middle">@{{ order.restaurant_id }}</td>
+                    <td  class="align-middle">@{{ order.restaurant_id }} - @{{ order.restaurant_name }}</td>
                     <td  class="align-middle">@{{ order.amount }} €</td>
                     <td>
                         <a :href="'http://localhost:8000/admin/orders/' + order.id" class="btn btn-info">
