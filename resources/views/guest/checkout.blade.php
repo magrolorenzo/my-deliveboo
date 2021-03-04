@@ -138,11 +138,17 @@
                         </div>
 
                         <!-- BTN di submit del form -->
-                        <div class="text-center mt-3 mb-2">
+                        <div class="text-center mt-3 mb-2" v-if="cart.subtotal != 0">
                             <button class="btn btn-success" type="submit">
                                 <span>Paga e ordina</span>
                             </button>
                         </div>
+                        <div v-else>
+                            <a href="{{url()->previous()}}" class="btn btn-primary">
+                                🠔 Indietro
+                            </a>
+                        </div>
+
 
                     </form>
                 </div><!-- END col-12 -->
