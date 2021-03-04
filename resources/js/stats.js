@@ -165,9 +165,9 @@ var app = new Vue({
                             totalLuglio, totalAgosto, totalSettembre, totalOttobre, totalNovembre, totalDicembre];
                         
                         this.newDatas = [
-                            13, 18, totalOrdersMarzo.length,
+                            13, 17, totalOrdersMarzo.length,
                             21, 14, 10, 17,
-                            24, 9, 16, 23,
+                            19, 9, 16, 23,
                             12
                         ]
                         
@@ -187,7 +187,7 @@ var app = new Vue({
                 data: {
                     labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
                     datasets: [{
-                        label: 'Storico entrate',
+                        label: '',
                         data: data,
                         backgroundColor: [
                             '#71dbd4',
@@ -213,7 +213,7 @@ var app = new Vue({
                 options: {
                     title: {
                         display: true,
-                        text: 'Storico entrate',
+                        text: '',
                         fontSize: 30
                     },
 

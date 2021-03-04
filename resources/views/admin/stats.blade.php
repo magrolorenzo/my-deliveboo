@@ -14,14 +14,16 @@
             </select>
             <div class="col-md-12 d-md-flex justify-content-between flex-wrap">
                 <input type="hidden" id="user-id" value="{{Auth::User()->id}}" />
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col-6">
+                        <h2 class="text-center">Saldo entrate in euro</h2>
                         <canvas id="myChart" width="1000" height="1000"></canvas>
 
 
 
                     </div>
                     <div class="col-6">
+                        <h2 class="text-center">Totale numero ordini</h2>
                         <canvas id="myNewChart" width="1000" height="1000"></canvas>
 
 
