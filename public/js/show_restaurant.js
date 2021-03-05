@@ -102,11 +102,22 @@ var app = new Vue({
       KEY: 'cartContent-',
       contents: [],
       subtotal: 0
-    }
+    },
+    dishSelected: false,
+    thisSelectedDish: {},
+    isLoading: true
   },
   methods: {
     getRestaurantId: function getRestaurantId() {
       this.currentRestaurantId = document.getElementById("restaurant-id").innerHTML;
+    },
+    dishInfo: function dishInfo(dishObj) {
+      this.dishSelected = true;
+      this.thisSelectedDish = dishObj;
+    },
+    closeDishInfo: function closeDishInfo() {
+      this.dishSelected = false;
+      this.thisSelectedDish = {};
     },
     add: function add(dishObj) {
       var id = dishObj.id;
@@ -188,6 +199,19 @@ var app = new Vue({
       for (var i = 0; i < this.cart.contents.length; i++) {
         this.cart.subtotal = this.cart.subtotal + this.cart.contents[i].quantity * this.cart.contents[i].unit_price; // console.log(this.cart.subtotal);
       }
+    },
+    getCartQuantity: function getCartQuantity(dish_id) {
+      var currentCart = this.cart.contents; // carrello attuale
+
+      var itemQuantity = 0; // variabile appoggio, se vera l'elemento è nel carrello
+      // ciclo il carrello per cercare l'id dell'oggetto
+
+      currentCart.forEach(function (cartDish) {
+        if (cartDish.id == dish_id) {
+          itemQuantity = cartDish.quantity;
+        }
+      });
+      return itemQuantity;
     }
   },
   // ***************** Mounted
@@ -199,6 +223,8 @@ var app = new Vue({
     axios.get("http://localhost:8000/api/dishes/" + self.currentRestaurantId).then(function (response) {
       var thisRestaurantDishes = response.data.results;
       self.dishes = thisRestaurantDishes; // console.log(self.dishes);
+
+      self.isLoading = false;
     }); // controllo se c'è qlc nel carrello in local storage
 
     var _contents = localStorage.getItem(this.cart.KEY + this.currentRestaurantId);
@@ -219,11 +245,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\deliveboo\resources\js\show_restaurant.js */"./resources/js/show_restaurant.js");
-=======
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bool18\deliveboo\resources\js\show_restaurant.js */"./resources/js/show_restaurant.js");
->>>>>>> main
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\my-deliveboo\resources\js\show_restaurant.js */"./resources/js/show_restaurant.js");
 
 
 /***/ })

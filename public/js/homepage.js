@@ -205,10 +205,18 @@ var app = new Vue({
     },
     // Chiusura metodo per filtrare categorie
     moveRight: function moveRight() {
-      document.getElementById('cat').scrollLeft += 700;
+      if (window.matchMedia("(max-width: 768px)")) {
+        document.getElementById('cat').scrollLeft += 50;
+      }
+
+      document.getElementById('cat').scrollLeft += 500;
     },
     moveLeft: function moveLeft() {
-      document.getElementById('cat').scrollLeft -= 700;
+      if (window.matchMedia("(max-width: 768px)")) {
+        document.getElementById('cat').scrollLeft -= 150;
+      }
+
+      document.getElementById('cat').scrollLeft -= 500;
     }
   },
   // ***************** Mounted *****************
@@ -237,11 +245,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\esercizi\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
-=======
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bool18\deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
->>>>>>> main
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\my-deliveboo\resources\js\homepage.js */"./resources/js/homepage.js");
 
 
 /***/ })

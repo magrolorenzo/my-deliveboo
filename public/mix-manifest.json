@@ -2,7 +2,9 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/homepage.js": "/js/homepage.js",
+    "/js/orders.js": "/js/orders.js",
     "/js/payment.js": "/js/payment.js",
     "/js/show_restaurant.js": "/js/show_restaurant.js",
+    "/js/stats.js": "/js/stats.js",
     "/js/validation.js": "/js/validation.js"
 }

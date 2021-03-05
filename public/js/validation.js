@@ -102,9 +102,11 @@ var app = new Vue({
   methods: {
     validateForm: function validateForm() {
       this.errors = [];
+      var thisForm = document.getElementById('restaurant-form');
       var name = document.testform.name.value;
       var address = document.testform.address.value;
       var piva = document.testform.piva.value;
+      event.preventDefault();
 
       if (!name) {
         this.errors.push('Attenzione! Inserisci il nome del ristorante!');
@@ -121,15 +123,50 @@ var app = new Vue({
       if (!document.querySelector('form[name="testform"] input[name="categories[]"]:checked')) {
         this.errors.push('Attenzione! Seleziona almeno una categoria!');
       }
+
+      if (this.errors.length === 0) {
+        console.log("ok ");
+        thisForm.submit();
+      }
+    },
+    validateEditRestaurant: function validateEditRestaurant() {
+      this.errors = [];
+      var thisForm = document.getElementById('restaurant-form');
+      var name = document.testform.name.value;
+      var address = document.testform.address.value; // var piva = document.testform.piva.value;
+
+      event.preventDefault();
+
+      if (!name) {
+        this.errors.push('Attenzione! Inserisci il nome del ristorante!');
+      }
+
+      if (!address) {
+        this.errors.push('Attenzione! Inserisci l\'indirizzo del ristorante!');
+      } // if(!piva || piva.length < this.minChars || isNaN(piva)) {
+      //     this.errors.push('Attenzione! la partita iva deve essere un numero di almeno 11 cifre!');
+      // }
+
+
+      if (!document.querySelector('form[name="testform"] input[name="categories[]"]:checked')) {
+        this.errors.push('Attenzione! Seleziona almeno una categoria!');
+      }
+
+      if (this.errors.length === 0) {
+        console.log("ok ");
+        thisForm.submit();
+      }
     },
     validateDish: function validateDish() {
+      event.preventDefault();
+      var thisForm = document.getElementById('dish-form');
       this.errors = [];
       var name = document.dishform.name.value;
       var price = document.dishform.unit_price.value;
       var restaurant = document.dishform.restaurant_id.value;
 
       if (!name) {
-        this.errors.push('Attenzione! Inserisci il nome del ristorante!');
+        this.errors.push('Attenzione! Inserisci il nome del piatto!');
       }
 
       ;
@@ -141,35 +178,41 @@ var app = new Vue({
       if (!price || price < 0.01 || price > 999.99) {
         this.errors.push('Attenzione! il prezzo deve essere compreso tra 0.01 e e 999.99 €');
       }
-    },
-    validateCheckout: function validateCheckout() {
-      this.errors = [];
-      var name = document.checkoutform.customer_name.value;
-      var surname = document.checkoutform.customer_surname.value;
-      var mail = document.checkoutform.customer_email.value;
-      var address = document.checkoutform.delivery_address.value;
 
-      if (!name) {
-        this.errors.push('Attenzione! Inserisci il nome!');
+      if (this.errors.length === 0) {
+        console.log("ok ");
+        thisForm.submit();
       }
+    } // validateCheckout () {
+    //
+    //     this.errors = [];
+    //
+    //     var name = document.checkoutform.customer_name.value;
+    //     var surname = document.checkoutform.customer_surname.value;
+    //     var mail = document.checkoutform.customer_email.value;
+    //     var address = document.checkoutform.delivery_address.value;
+    //
+    //
+    //     if (!name) {
+    //         this.errors.push('Attenzione! Inserisci il nome!');
+    //     };
+    //
+    //     if (!surname) {
+    //         this.errors.push('Attenzione! Inserisci il cognome!');
+    //     }
+    //
+    //     if (!mail) {
+    //         this.errors.push('Attenzione! Inserisci la tua email!');
+    //     }
+    //     //else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.mail)) {
+    //     //     this.errors.push('Attenzione! La mail deve avere un formato valido!');
+    //     // }
+    //
+    //     if (!address) {
+    //         this.errors.push('Attenzione! Inserisci un indirizzo di consegna!');
+    //     }
+    // }
 
-      ;
-
-      if (!surname) {
-        this.errors.push('Attenzione! Inserisci il cognome!');
-      }
-
-      if (!mail) {
-        this.errors.push('Attenzione! Inserisci la tua email!');
-      } //else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.mail)) {
-      //     this.errors.push('Attenzione! La mail deve avere un formato valido!');
-      // }
-
-
-      if (!address) {
-        this.errors.push('Attenzione! Inserisci un indirizzo di consegna!');
-      }
-    }
   },
   mounted: function mounted() {}
 });
@@ -183,7 +226,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bool18\deliveboo\resources\js\validation.js */"./resources/js/validation.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean\my-deliveboo\resources\js\validation.js */"./resources/js/validation.js");
 
 
 /***/ })
