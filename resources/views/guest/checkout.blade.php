@@ -9,8 +9,9 @@
 
 @section('content')
     <div id="app" v-cloak>
+        <section id="checkout-section">
 
-        <div class="container mt-5">
+            <div class="container">
 
             <div class="row">
 
@@ -154,5 +155,7 @@
                 </div><!-- END col-12 -->
             </div><!-- END row -->
         </div><!-- END container -->
+        </section>
+
     </div>
 @endsection

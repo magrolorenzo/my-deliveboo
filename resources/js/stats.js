@@ -13,7 +13,7 @@ var app = new Vue({
         currentRestaurant: null,
         myChart: null,
         myNewChart: null,
-        
+
     },
 
     computed: {
@@ -74,9 +74,9 @@ var app = new Vue({
                     this.restaurants = userRestaurants;
                     if (this.currentRestaurant == null) {
                         this.currentRestaurant = this.restaurants[0].id
-                        
+
                     }
-                    
+
                     for (let index = 0; index < orders.length; index++) {
 
                         if (orders[index].restaurant_id == this.currentRestaurant) {
@@ -160,19 +160,19 @@ var app = new Vue({
                                     break;
                             };
                         }
-                        
+
                         this.datas = [totalGennaio, totalFebbraio, totalMarzo, totalAprile, totalMaggio, totalGiugno,
                             totalLuglio, totalAgosto, totalSettembre, totalOttobre, totalNovembre, totalDicembre];
-                        
+
                         this.newDatas = [
                             13, 17, totalOrdersMarzo.length,
                             21, 14, 10, 17,
                             19, 9, 16, 23,
                             12
                         ]
-                        
+
                         }
-                    
+
                     if (typeof cb === 'function') {
                         return cb(this.datas, this.newDatas)
                     }
@@ -189,6 +189,7 @@ var app = new Vue({
                     datasets: [{
                         label: '',
                         data: data,
+                        responsive: true,
                         backgroundColor: [
                             '#71dbd4',
                             '#FFAD00',
@@ -207,7 +208,7 @@ var app = new Vue({
                         borderWidth: 1,
                         borderColor: 'black'
                     }]
-                        
+
                 },
 
                 options: {
@@ -236,14 +237,14 @@ var app = new Vue({
                 }
 
             });
-            
+
         },
 
         updateChart(id, datas) {
             if (id == 'myChart') {
                 this.myChart.destroy()
                 this.myChart = this.initChart(id, datas)
-                
+
             } else {
                 this.myNewChart.destroy()
                 this.myNewChart = this.initChart(id, datas)

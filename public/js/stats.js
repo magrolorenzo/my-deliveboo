@@ -40146,6 +40146,7 @@ var app = new Vue({
           datasets: [{
             label: '',
             data: data,
+            responsive: true,
             backgroundColor: ['#71dbd4', '#FFAD00', '#71dbd4', '#FFAD00', '#71dbd4', '#FFAD00', '#71dbd4', '#FFAD00', '#71dbd4', '#FFAD00', '#71dbd4', '#FFAD00'],
             borderWidth: 1,
             borderColor: 'black'

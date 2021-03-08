@@ -1,27 +1,32 @@
 #welcome-blade{
 
     h2 {
-
         margin: 30px 0;
     }
 
     #jumbotron {
-        padding: 40px 0;
-        // background-color: $backgroundBrandPr;
-        // background-image: linear-gradient($backgroundBrandPr, white );
-        height: 40vh;
+        padding: 110px 0 40px 0;
+        height: 50vh;
         color: $textTitlePr;
-        background-image: url('../imgs/foods.png'), linear-gradient($backgroundBrandPr, white );
-        background-size: contain;
+        background-image: url('../images/welcome-page/jumbo.jpg');
+        background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        position: relative;
+
         h1 {
             color: white;
-        }
+            padding: 20px;
+            display: inline-block;
+            border-radius: 0 20px 0 20px;
+            background-color: rgba(1, 1, 1, 0.7);
         }
 
+    }
+
+
     .main {
-        background-color: #fff;
+        background-color: rgba(155, 183, 212, 0.2);
     }
 
     // categorie
@@ -33,66 +38,81 @@
             margin-bottom: 10px;
 
             // Category Card
-            .card-size {
+            .category-card {
                 box-sizing: border-box;
-                min-width: 180px;
-                min-height: 90px;
-                display: flex;
-                align-items: flex-end;
+                min-width: 120px;
+                max-height: 100px;
+                // display: flex;
+                // justify-content: space-between;
+                // align-items: flex-end;
                 color: #fff;
                 text-shadow: 0 1px 4px rgb(0 0 0 / 8%);
-                background-color: $backgroundBrandPr;
-                border-radius: 4px;
-                background-size: cover;
-                // background: -webkit-gradient(linear,left top,left bottom,color-stop(50%,transparent),to(rgba(0,0,0,.16)));
-                // background: linear-gradient(180deg, transparent 50%,rgba(0,0,0,.16));
-                font-weight: 700;
-                font-size: 16px;
+                border-radius: 0 20px 0 20px;
+                background-color:rgba(0, 161, 112, 0.8);// #00a170
                 cursor: pointer;
-                span{
+                overflow: hidden;
+
+                .category-image{
+                    width:100%;
+                    height:70%;
+                    padding: 10px;
+                    text-align: center;
+
+                    img{
+                        height: 100%;
+                    }
+                }
+
+                .category-title{
                     background-color: rgba(1,1,1,0.4);
-                    padding: 3px;
-                    border-radius: 5px;
+                    height: 30%;
+                    text-align: center;
+                    padding: 4px;
+
+                    span{
+                        font-weight: 400;
+                        font-size: 14px;
+                    }
                 }
 
                 &.selected{
-                    span{
+                    .category-title{
                         color: #121212;
                         background-color: rgba(255,165,0, 0.9);
                     }
-
                 }
+
             }
-            #Italiano {
-                background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/pasta.png');
-            }
-            #Giapponese {
-                background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/sushi-1.png');
-            }
-            #Cinese {
-                background-image: url('https://rs-menus-api.roocdn.com/images/c4d646bb-c071-441a-afa4-e625935f32d1/image.jpeg');
-            }
-            #Indiano {
-                background-image: url('https://f.roocdn.com/images/menus/212763/header-image.jpg');
-            }
-            #Fusion {
-                background-image: url('https://rs-menus-api.roocdn.com/images/3dbd97e3-8ce9-4c31-9a65-75dcf1cfa368/image.jpeg');
-            }
-            #Hamburger {
-                background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/burgers-1.png');
-            }
-            #Pizza {
-                background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/pizza.png');
-            }
-            #Kebab {
-                background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/kebab.png');
-            }
-            #Greco {
-                background-image: url('https://rs-menus-api.roocdn.com/images/4828a08c-2388-4f11-ac20-8c0362ea1c6e/image.jpeg');
-            }
-            #Thailandese {
-                background-image: url('https://f.roocdn.com/images/menus/54856/header-image.jpg');
-            }
+            // #Italiano {
+            //     background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/pasta.png');
+            // }
+            // #Giapponese {
+            //     background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/sushi-1.png');
+            // }
+            // #Cinese {
+            //     background-image: url('https://rs-menus-api.roocdn.com/images/c4d646bb-c071-441a-afa4-e625935f32d1/image.jpeg');
+            // }
+            // #Indiano {
+            //     background-image: url('https://f.roocdn.com/images/menus/212763/header-image.jpg');
+            // }
+            // #Fusion {
+            //     background-image: url('https://rs-menus-api.roocdn.com/images/3dbd97e3-8ce9-4c31-9a65-75dcf1cfa368/image.jpeg');
+            // }
+            // #Hamburger {
+            //     background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/burgers-1.png');
+            // }
+            // #Pizza {
+            //     background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/pizza.png');
+            // }
+            // #Kebab {
+            //     background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/kebab.png');
+            // }
+            // #Greco {
+            //     background-image: url('https://rs-menus-api.roocdn.com/images/4828a08c-2388-4f11-ac20-8c0362ea1c6e/image.jpeg');
+            // }
+            // #Thailandese {
+            //     background-image: url('https://f.roocdn.com/images/menus/54856/header-image.jpg');
+            // }
         }
 
         .category-arrow {

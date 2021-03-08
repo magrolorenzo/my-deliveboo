@@ -50,8 +50,14 @@
 
                         <div class="category-container d-flex justify-content-between" id="cat">
                             {{-- Pulsanti categorie --}}
-                            <div v-for="(category,index) in categories" class="mr-2 card-size p-1" :class="selectedCategories.includes(category.id)? 'selected' : ''" @click="selectedCategory(category.id)" :id="category.name">
-                                <span>@{{category.name}}</span>
+                            <div v-for="(category,index) in categories" class="category-card mr-2 " :class="selectedCategories.includes(category.id)? 'selected' : ''" @click="selectedCategory(category.id)" :id="category.name">
+                                <div class="category-image">
+                                    <img :src="'images/welcome-page/categories/' + category.name + '.png'" alt="category.name">
+                                </div>
+                                <div class="category-title">
+                                    <span>@{{category.name}}</span>
+
+                                </div>
                             </div>
                         </div>
 

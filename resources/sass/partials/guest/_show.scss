@@ -1,7 +1,9 @@
 // Sezione info del ristorante
 .info-section {
+    padding-top: 70px;
     height: $showRestaurantCoverHeight;
-
+    background-position: center;
+    background-size: cover;
     display: flex;
     flex-direction: row;
     align-items: center;

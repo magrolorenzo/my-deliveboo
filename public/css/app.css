@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
@@ -10944,139 +10944,6 @@ a.text-dark:focus {
   }
 }
 
-body {
-  font-family: "Roboto", "Nunito", sans-serif;
-}
-
-[v-cloak] {
-  display: none;
-}
-
-* {
-  scroll-behavior: smooth;
-}
-
-img {
-  max-width: 100%;
-}
-
-ul {
-  list-style-type: none;
-}
-
-ul li {
-  display: inline-block;
-}
-
-a,
-a:hover {
-  color: inherit;
-  text-decoration: none;
-}
-
-.navbar {
-  background-color: #ffad00;
-}
-
-.d-none.not-loading {
-  display: block !important;
-}
-
-.py-4 {
-  padding-bottom: 0 !important;
-  padding-top: 0 !important;
-}
-
-.links {
-  font-size: 18px;
-}
-
-.links a {
-  color: white;
-}
-
-.navbar-brand {
-  font-size: 30px;
-}
-
-.btn-primary-brand {
-  color: #fff;
-  background: #00ccbc;
-}
-
-.btn-primary-brand:hover {
-  color: #fff;
-  background: #00c2b3;
-}
-
-.btn-primary-alt {
-  color: #00ccbc;
-  background: #fff;
-}
-
-.btn-primary-alt:hover {
-  color: #00c2b3;
-  background: #fff;
-}
-
-.cart {
-  display: block;
-  width: 100%;
-  align-self: flex-start;
-  background-color: #fff;
-  border-radius: 0 0 2px 2px;
-  box-shadow: 0px 22px 24px 0px rgba(46, 51, 51, 0.07);
-}
-
-.cart .btn-primary-alt {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  padding: 0;
-  font-weight: bold;
-  font-size: 10px;
-  border: 2px solid #00ccbc;
-}
-
-.cart .subtot {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.cart .buttons-group {
-  display: flex;
-}
-
-.cart .buttons-group .btn-primary-brand {
-  flex-grow: 1;
-  padding: 15px 30px;
-}
-
-.cart .buttons-group .btn-danger {
-  width: 56px;
-  flex-grow: 0;
-}
-
-.cart .cart-icon {
-  width: 100px;
-  height: 100px;
-  position: fixed;
-  right: 10%;
-  bottom: 20%;
-  z-index: 10;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  color: #00ccbc;
-  border-radius: 50%;
-  box-shadow: 0px 22px 24px 0px rgba(0, 0, 0, 0.08);
-}
-
 * {
   scroll-behavior: smooth;
   box-sizing: border-box;
@@ -11119,7 +10986,7 @@ a:hover {
 }
 
 body {
-  font-family: "Roboto", "Nunito", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 [v-cloak] {
@@ -11146,10 +11013,6 @@ a,
 a:hover {
   color: inherit;
   text-decoration: none;
-}
-
-.navbar {
-  background-color: #ffad00;
 }
 
 .d-none.not-loading {
@@ -11310,6 +11173,10 @@ header nav {
   }
 }
 
+#main-dashboard-wrapper {
+  padding-top: 70px;
+}
+
 #main-dashboard-wrapper .row main .table-container {
   width: 70%;
   margin: auto;
@@ -11333,25 +11200,62 @@ header nav {
 
 header {
   height: 70px;
-  color: #2E3333;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 header nav#guest-navbar {
   height: 70px;
-  background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 header nav#guest-navbar .logo-brand {
   height: 32px;
+  transition: all 0.2s;
+}
+
+header nav#guest-navbar .logo-brand:hover {
+  color: orange;
+  transform: scale(1.1);
 }
 
 header nav#guest-navbar .logo-brand img {
   height: 100%;
 }
 
+header nav#guest-navbar .navbar-nav .dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0;
+}
+
+header nav#guest-navbar .navbar-nav .dropdown-menu .dropdown-item {
+  color: white;
+  padding: 8px;
+}
+
+header nav#guest-navbar .navbar-nav .dropdown-menu .dropdown-item:hover {
+  color: black;
+}
+
+header nav#guest-navbar .navbar-nav .dropdown-menu .logout {
+  color: red;
+}
+
+header nav#guest-navbar .navbar-nav .dropdown-menu .logout:hover {
+  color: red;
+}
+
 header nav#guest-navbar .navbar-nav .nav-link {
-  color: #2E3333;
+  color: white;
+}
+
+header nav#guest-navbar .navbar-nav .nav-link:hover {
+  color: orange;
 }
 
 #welcome-blade h2 {
@@ -11359,21 +11263,26 @@ header nav#guest-navbar .navbar-nav .nav-link {
 }
 
 #welcome-blade #jumbotron {
-  padding: 40px 0;
-  height: 40vh;
+  padding: 110px 0 40px 0;
+  height: 50vh;
   color: #440063;
-  background-image: url(/images/foods.png?3567b73de508c642d921a0f49e0212b5), linear-gradient(#00CCBC, white);
-  background-size: contain;
+  background-image: url(/images/jumbo.jpg?1fc8c0b3474ff65b38ceee567ff00494);
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
 }
 
 #welcome-blade #jumbotron h1 {
   color: white;
+  padding: 20px;
+  display: inline-block;
+  border-radius: 0 20px 0 20px;
+  background-color: rgba(1, 1, 1, 0.7);
 }
 
 #welcome-blade .main {
-  background-color: #fff;
+  background-color: rgba(155, 183, 212, 0.2);
 }
 
 #welcome-blade #category-container {
@@ -11385,71 +11294,44 @@ header nav#guest-navbar .navbar-nav .nav-link {
   margin-bottom: 10px;
 }
 
-#welcome-blade #category-container .category-container .card-size {
+#welcome-blade #category-container .category-container .category-card {
   box-sizing: border-box;
-  min-width: 180px;
-  min-height: 90px;
-  display: flex;
-  align-items: flex-end;
+  min-width: 120px;
+  max-height: 100px;
   color: #fff;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  background-color: #00CCBC;
-  border-radius: 4px;
-  background-size: cover;
-  font-weight: 700;
-  font-size: 16px;
+  border-radius: 0 20px 0 20px;
+  background-color: rgba(0, 161, 112, 0.8);
   cursor: pointer;
+  overflow: hidden;
 }
 
-#welcome-blade #category-container .category-container .card-size span {
+#welcome-blade #category-container .category-container .category-card .category-image {
+  width: 100%;
+  height: 70%;
+  padding: 10px;
+  text-align: center;
+}
+
+#welcome-blade #category-container .category-container .category-card .category-image img {
+  height: 100%;
+}
+
+#welcome-blade #category-container .category-container .category-card .category-title {
   background-color: rgba(1, 1, 1, 0.4);
-  padding: 3px;
-  border-radius: 5px;
+  height: 30%;
+  text-align: center;
+  padding: 4px;
 }
 
-#welcome-blade #category-container .category-container .card-size.selected span {
+#welcome-blade #category-container .category-container .category-card .category-title span {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+#welcome-blade #category-container .category-container .category-card.selected .category-title {
   color: #121212;
   background-color: rgba(255, 165, 0, 0.9);
-}
-
-#welcome-blade #category-container .category-container #Italiano {
-  background-image: url("https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/pasta.png");
-}
-
-#welcome-blade #category-container .category-container #Giapponese {
-  background-image: url("https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/sushi-1.png");
-}
-
-#welcome-blade #category-container .category-container #Cinese {
-  background-image: url("https://rs-menus-api.roocdn.com/images/c4d646bb-c071-441a-afa4-e625935f32d1/image.jpeg");
-}
-
-#welcome-blade #category-container .category-container #Indiano {
-  background-image: url("https://f.roocdn.com/images/menus/212763/header-image.jpg");
-}
-
-#welcome-blade #category-container .category-container #Fusion {
-  background-image: url("https://rs-menus-api.roocdn.com/images/3dbd97e3-8ce9-4c31-9a65-75dcf1cfa368/image.jpeg");
-}
-
-#welcome-blade #category-container .category-container #Hamburger {
-  background-image: url("https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/burgers-1.png");
-}
-
-#welcome-blade #category-container .category-container #Pizza {
-  background-image: url("https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/pizza.png");
-}
-
-#welcome-blade #category-container .category-container #Kebab {
-  background-image: url("https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/kebab.png");
-}
-
-#welcome-blade #category-container .category-container #Greco {
-  background-image: url("https://rs-menus-api.roocdn.com/images/4828a08c-2388-4f11-ac20-8c0362ea1c6e/image.jpeg");
-}
-
-#welcome-blade #category-container .category-container #Thailandese {
-  background-image: url("https://f.roocdn.com/images/menus/54856/header-image.jpg");
 }
 
 #welcome-blade #category-container .category-arrow {
@@ -11509,42 +11391,11 @@ header nav#guest-navbar .navbar-nav .nav-link {
   font-weight: 600;
 }
 
-.button {
-  cursor: pointer;
-  font-weight: 500;
-  left: 3px;
-  line-height: inherit;
-  position: relative;
-  text-decoration: none;
-  text-align: center;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 3px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  display: inline-block;
-}
-
-.button--small {
-  padding: 10px 20px;
-  font-size: 0.875rem;
-}
-
-.button--green {
-  outline: none;
-  background-color: #64d18a;
-  border-color: #64d18a;
-  color: white;
-  transition: all 200ms ease;
-}
-
-.button--green:hover {
-  background-color: #8bdda8;
-  color: white;
-}
-
 .info-section {
+  padding-top: 70px;
   height: 400px;
+  background-position: center;
+  background-size: cover;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -11778,6 +11629,44 @@ header nav#guest-navbar .navbar-nav .nav-link {
     width: 60%;
     max-width: 600px;
   }
+}
+
+#checkout-section {
+  padding-top: 90px;
+}
+
+.button {
+  cursor: pointer;
+  font-weight: 500;
+  left: 3px;
+  line-height: inherit;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: inline-block;
+}
+
+.button--small {
+  padding: 10px 20px;
+  font-size: 0.875rem;
+}
+
+.button--green {
+  outline: none;
+  background-color: #64d18a;
+  border-color: #64d18a;
+  color: white;
+  transition: all 200ms ease;
+}
+
+.button--green:hover {
+  background-color: #8bdda8;
+  color: white;
 }
 
 footer {

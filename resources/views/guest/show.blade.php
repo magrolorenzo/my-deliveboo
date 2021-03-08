@@ -9,7 +9,7 @@
     <div id="app">
 
         {{-- Sezione con info del ristorante --}}
-        <section class="info-section" style="background-image: url({{ asset('storage/'.$restaurant->img_cover) }}); background-position: center; background-size: cover">
+        <section class="info-section" style="background-image: url({{ asset('storage/'.$restaurant->img_cover) }})">
             <div class="container">
                 <div class="row">
                     <div class="col-12">

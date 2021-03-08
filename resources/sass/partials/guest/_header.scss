@@ -1,27 +1,67 @@
 header {
     height: $guestHeaderHeight;
-    color: $textPr;
-
-
+    color: white;
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
 
     nav#guest-navbar {
         height: $guestHeaderHeight;
-        background-color: #fff;
         border-bottom: 1px solid rgba(0,0,0,.08);
 
         // Brand Logo
         .logo-brand {
             height: 32px;
+            transition: all 0.2s;
+
+            &:hover{
+                color: orange;
+                transform: scale(1.1);
+            }
+
             img {
                 height: 100%;
             }
+
         }
 
         // Menu
         .navbar-nav {
+
+            .dropdown-menu{
+                background-color: rgba(0,0,0,0.7);
+                padding: 0;
+
+                .dropdown-item{
+                    color: white;
+                    padding: 8px;
+
+                    &:hover{
+                        color: black;
+                    }
+
+                }
+
+                .logout{
+                    color: red;
+
+                    &:hover{
+                        color: red;
+                    }
+                }
+            }
+
+
+
             // link
             .nav-link {
-                color: $textPr;
+                color: white;
+                &:hover{
+                    color: orange;
+                }
             }
         }
 

@@ -1,16 +1,10 @@
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Nunito");
-
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
-
 
 // Common
 @import 'partials/variables';
 @import 'partials/mixin';
-@import 'partials/common';
 @import 'partials/carousel';
-
 
 //Sass
 @import "partials/_common";
@@ -26,8 +20,9 @@
 //Guest
 @import "partials/guest/header";
 @import "partials/guest/_welcome";
-@import "partials/guest/_braintree";
 @import "partials/guest/show";
+@import "partials/guest/_checkout";
+@import "partials/guest/_braintree";
 @import "partials/guest/footer";
 
 @import "partials/mediaqueries";
