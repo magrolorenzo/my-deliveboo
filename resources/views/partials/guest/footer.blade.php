@@ -10,19 +10,19 @@
                             <h5 class="card-title">Scopri Deliveboo</h5>
                             <ul>
                                 <li>
-                                    <a href="#" class="card-subtitle mb-2 text-muted">Chi siamo</a>
+                                    <a href="#" class="card-subtitle mb-2 ">Chi siamo</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="card-subtitle mb-2 text-muted">Pressroom</a>
+                                    <a href="#" class="card-subtitle mb-2 ">Pressroom</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="card-subtitle mb-2 text-muted">Il nostro blog</a>
+                                    <a href="#" class="card-subtitle mb-2 ">Il nostro blog</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="card-subtitle mb-2 text-muted">Programmazione</a>
+                                    <a href="#" class="card-subtitle mb-2 ">Programmazione</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="card-subtitle mb-2 text-muted">Lavora con noi</a>
+                                    <a href="#" class="card-subtitle mb-2 ">Lavora con noi</a>
                                 </li>
                             </ul>
                         </div>
@@ -33,13 +33,13 @@
                             <h5 class="card-title">Note legali</h5>
                             <ul>
                                 <li>
-                                    <a href="#" class="card-subtitle mb-2 text-muted">Termini e condizioni</a>
+                                    <a href="#" class="card-subtitle mb-2 ">Termini e condizioni</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="card-subtitle mb-2 text-muted">Informativa sulla privacy</a>
+                                    <a href="#" class="card-subtitle mb-2 ">Informativa sulla privacy</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="card-subtitle mb-2 text-muted">Cookies</a>
+                                    <a href="#" class="card-subtitle mb-2 ">Cookies</a>
                                 </li>
                             </ul>
                         </div>
@@ -50,16 +50,16 @@
                             <h5 class="card-title">Aiuto</h5>
                             <ul>
                                 <li>
-                                    <a href="#" class="card-subtitle mb-2 text-muted">Contatti</a>
+                                    <a href="#" class="card-subtitle mb-2 ">Contatti</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="card-subtitle mb-2 text-muted">FAQ</a>
+                                    <a href="#" class="card-subtitle mb-2 ">FAQ</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="card-subtitle mb-2 text-muted">Tipi di cucina</a>
+                                    <a href="#" class="card-subtitle mb-2 ">Tipi di cucina</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="card-subtitle mb-2 text-muted">Mappa del sito</a>
+                                    <a href="#" class="card-subtitle mb-2 ">Mappa del sito</a>
                                 </li>
                             </ul>
                         </div>

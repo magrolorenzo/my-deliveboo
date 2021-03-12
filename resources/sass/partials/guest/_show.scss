@@ -124,10 +124,14 @@
     .dish-card {
         display: flex;
         flex-direction: row;
-        justify-content: space-between; align-items: center;
+        justify-content: space-between;
+        align-items: center;
         background-color: #fff;
         color: #828585;
         border-left: 4px solid transparent;
+        transition: all 0.2s ease;
+
+
         &.addedToCart {
             border-left: 5px solid rgba(0, 161, 112,1);
         }

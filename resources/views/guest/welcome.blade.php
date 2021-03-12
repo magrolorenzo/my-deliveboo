@@ -7,7 +7,7 @@
 
     @if (session("success_message"))
         <script type="text/javascript">
-            localStorage.clear();
+        localStorage.clear();
         </script>
     @endif
 
@@ -24,27 +24,21 @@
                     </div>
                 </div>
                 {{-- Messaggio di avvenuto ordine --}}
-                {{-- @if (session("success_message")) --}}
+                @if (session("success_message"))
                     <div class="alert alert-success w-100" role="alert" id="order-success-message">
-                        <div class="">
-
-                            <h4 class="alert-heading">Well done!</h4>
-                            <p>{{session("success_message")}}</p>
-                            <hr>
-                            <p class="mb-0">Acquista ancora presso uno dei nostri ristoranti!</p>
-                        </div>
+                        <h4 class="alert-heading">Well done!</h4>
+                        <p>{{session("success_message")}}</p>
+                        <hr>
+                        <p class="mb-0">Acquista ancora presso uno dei nostri ristoranti!</p>
                     </div>
-                {{-- @endif --}}
+                @endif
             </div>
         </section>
         <!-- Main App: Filtri per categorie e stampa ristoranti -->
         <div id="app" class="main" v-cloak>
+
             <div class="container" >
                 <div class="row cat-row">
-
-
-
-
                     <div class="col-12">
                         <h2>
                             Seleziona una categoria per filtrare i ristoranti!
@@ -53,6 +47,11 @@
 
                     <!-- Categorie -->
                     <div class="col-11 col-md-12" id="category-container">
+
+                        {{-- Freccia sinistra --}}
+                        <div class="category-arrow left" @click="moveLeft">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
 
                         <div class="category-container d-flex justify-content-between" id="cat">
                             {{-- Pulsanti categorie --}}
@@ -64,11 +63,6 @@
                                     <span>@{{category.name}}</span>
                                 </div>
                             </div>
-                        </div>
-
-                        {{-- Freccia sinistra --}}
-                        <div class="category-arrow left" @click="moveLeft">
-                            <i class="fas fa-chevron-left"></i>
                         </div>
 
                         {{-- Freccia destra --}}
@@ -99,7 +93,7 @@
                     <div class="d-flex flex-wrap flex-conditions mb-5">
 
                         <!-- Card del ristorante -->
-                        <div v-for="(restaurant,index) in restaurants" class="card mb-3 restaurant-card bg-light" >
+                        <div v-for="(restaurant,index) in restaurants" class="card bg-light restaurant-card" >
 
                             <a :href="'/show/'+restaurant.slug">
                                 {{-- Cover image --}}
@@ -116,21 +110,21 @@
                                         <strong>Indirizzo:</strong> @{{ restaurant.address }}
                                     </p>
                                     {{-- <p class="card-text">
-                                        <strong>P.IVA:</strong> @{{restaurant.piva }}
-                                    </p> --}}
-                                    <p class="card-text">
-                                        <strong>Categorie:</strong> <span v-for="category in restaurant.categories" class="badge badge-info ml-1 category-label"> @{{category.name}}</span>
-                                    </p>
-                                </div>
-                            </a>
+                                    <strong>P.IVA:</strong> @{{restaurant.piva }}
+                                </p> --}}
+                                <p class="card-text">
+                                    <strong>Categorie:</strong> <span v-for="category in restaurant.categories" class="badge badge-info ml-1 category-label"> @{{category.name}}</span>
+                                </p>
+                            </div>
+                        </a>
 
 
-                        </div><!-- END Card del ristorante -->
-                    </div><!-- END Container Ristoranti -->
-                </div>
+                    </div><!-- END Card del ristorante -->
+                </div><!-- END Container Ristoranti -->
             </div>
-        </div><!-- END Main App -->
-    </div>
+        </div>
+    </div><!-- END Main App -->
+</div>
 
 
 @endsection

@@ -17,13 +17,24 @@ footer {
         width: 100%;
     }
     .card {
-        margin-top: 10px;
+        margin: 10px;
+        border: 1px solid #00a170;
+        border-radius: 0 20px 0 20px;
+
     }
     .foot-flex {
         justify-content: space-between;
     }
     ul li {
         display: block;
+
+        a{
+            color: #222;
+
+            &:hover{
+                color: $orange ;
+            }
+        }
     }
     .imgbox {
 

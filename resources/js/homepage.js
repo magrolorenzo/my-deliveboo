@@ -97,18 +97,18 @@ var app = new Vue({
         }, // Chiusura metodo per filtrare categorie
 
         moveRight() {
-            if (window.matchMedia("(max-width: 768px)")) {
-                document.getElementById('cat').scrollLeft += 50;
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                document.getElementById('cat').scrollLeft += 85;
             }
 
-            document.getElementById('cat').scrollLeft += 500;
+            document.getElementById('cat').scrollLeft += 150;
 
         },
         moveLeft() {
-            if (window.matchMedia("(max-width: 768px)")) {
-                document.getElementById('cat').scrollLeft -= 150;
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                document.getElementById('cat').scrollLeft -= 85;
             }
-            document.getElementById('cat').scrollLeft -= 500;
+            document.getElementById('cat').scrollLeft -= 150;
         }
 
     },
