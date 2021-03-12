@@ -32,8 +32,7 @@
                 <!-- Left Side Of Navbar - Brand Logo -->
                 <div class="d-flex align-items-center">
                     <a class="navbar-brand logo-brand m-0 p-0 d-flex align-items-center" href="{{ url('/') }}">
-                        <img src="{{ asset('/images/logo-deliveboo.png') }}" alt="brand logo Deliveroo">
-                        <h5 class="m-0 ml-2 text-dark">DeliveBoo</h5>
+                        <h5 class="m-0 ml-2">DeliveBoo</h5>
                     </a>
                 </div>
 
@@ -94,7 +93,7 @@
 </header>
 
 
-<main class="py-4">
+<main  id="register-main">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">

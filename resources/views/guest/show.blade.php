@@ -16,7 +16,7 @@
                         <div class="info-container">
 
                             {{-- Sezione di sinistra con info ristorante --}}
-                            <div class="restaurant-info p-5">
+                            <div class="restaurant-info">
                                 <h1 id="restaurant-id" class="text-capitalize" hidden>{{ $restaurant->id }}</h1>
 
                                 {{-- Nome Ristorante --}}
@@ -28,7 +28,7 @@
                                 <p class="info-res">
                                     <span><i class="fas fa-utensils restaurant-icon"></i></span> Categorie:
                                     @foreach ($restaurant->categories as $category)
-                                        <span class="badge badge-info">{{ $category->name }}</span>
+                                        <span class="badge badge-info category-label">{{ $category->name }}</span>
                                     @endforeach
                                 </p>
 
@@ -88,9 +88,9 @@
                                             </div>
 
                                             <div class="quantity">
-                                                <a class="btn btn-primary-alt" @click="decrease(dish.id)">-</a>
+                                                <a class="btn quantity-btn minus" @click="decrease(dish.id)"><i class="fas fa-minus"></i></a>
                                                 <span>@{{ getCartQuantity(dish.id) }}</span>
-                                                <a class="btn btn-primary-alt" @click="add(dish)">+</a>
+                                                <a class="btn quantity-btn plus" @click="add(dish)"><i class="fas fa-plus"></i></a>
                                             </div>
                                         </div>
 
@@ -115,9 +115,9 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" v-for="cartItem in cart.contents">
                                 {{-- Quantità con pulsanti aggiungi/togli --}}
                                 <div class="quantity">
-                                    <a class="btn btn-primary-alt" @click="decrease(cartItem.id)">-</a>
+                                    <a class="btn quantity-btn minus" @click="decrease(cartItem.id)"><i class="fas fa-minus"></i></a>
                                     <span>@{{ cartItem.quantity }}</span>
-                                    <a class="btn btn-primary-alt" @click="add(cartItem)">+</a>
+                                    <a class="btn quantity-btn plus" @click="add(cartItem)"><i class="fas fa-plus"></i></a>
                                 </div>
 
                                 {{-- Nome --}}

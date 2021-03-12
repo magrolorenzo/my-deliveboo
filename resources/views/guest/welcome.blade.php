@@ -2,6 +2,7 @@
 @section('page-title', 'Deliveboo - Consegna a domicilio')
 
 @section('script')
+    {{-- <script src="{{ asset('js/animations.js') }}" defer></script> --}}
     <script src="{{ asset('js/homepage.js') }}" defer></script>
 
     @if (session("success_message"))
@@ -9,6 +10,7 @@
             localStorage.clear();
         </script>
     @endif
+
 @endsection
 
 @section('content')
@@ -21,6 +23,18 @@
                         <h1>Benvenuto!</h1>
                     </div>
                 </div>
+                {{-- Messaggio di avvenuto ordine --}}
+                {{-- @if (session("success_message")) --}}
+                    <div class="alert alert-success w-100" role="alert" id="order-success-message">
+                        <div class="">
+
+                            <h4 class="alert-heading">Well done!</h4>
+                            <p>{{session("success_message")}}</p>
+                            <hr>
+                            <p class="mb-0">Acquista ancora presso uno dei nostri ristoranti!</p>
+                        </div>
+                    </div>
+                {{-- @endif --}}
             </div>
         </section>
         <!-- Main App: Filtri per categorie e stampa ristoranti -->
@@ -28,20 +42,12 @@
             <div class="container" >
                 <div class="row cat-row">
 
-                    {{-- Messaggio di avvenuto ordine --}}
-                    @if (session("success_message"))
-                        <div class="alert alert-success w-100" role="alert">
-                            <h4 class="alert-heading">Well done!</h4>
-                            <p>{{session("success_message")}}</p>
-                            <hr>
-                            <p class="mb-0">Acquista ancora presso uno dei nostri ristoranti!</p>
-                        </div>
-                    @endif
+
 
 
                     <div class="col-12">
                         <h2>
-                            La selezione di DeliveBoo
+                            Seleziona una categoria per filtrare i ristoranti!
                         </h2>
                     </div>
 
@@ -56,7 +62,6 @@
                                 </div>
                                 <div class="category-title">
                                     <span>@{{category.name}}</span>
-
                                 </div>
                             </div>
                         </div>
@@ -75,7 +80,7 @@
                 </div><!-- Fine Row Categorie -->
 
                 <!-- Bottone rimuovi i filtri -->
-                <div class="btn btn-warning ml-1" @click="clearCategories()">
+                <div class="clear-categories btn ml-1" @click="clearCategories()">
                     Rimuovi filtri
                 </div>
             </div>
@@ -106,7 +111,7 @@
                                 </div>
                                 {{-- Info ristorante --}}
                                 <div class="card-body">
-                                    <h3 class="card-title">@{{ restaurant.name }}</h3>
+                                    <h3 class="card-title restaurant-label">@{{ restaurant.name }}</h3>
                                     <p class="card-text">
                                         <strong>Indirizzo:</strong> @{{ restaurant.address }}
                                     </p>
@@ -114,7 +119,7 @@
                                         <strong>P.IVA:</strong> @{{restaurant.piva }}
                                     </p> --}}
                                     <p class="card-text">
-                                        <strong>Categorie:</strong> <span v-for="category in restaurant.categories" class="badge badge-info ml-1"> @{{category.name}}</span>
+                                        <strong>Categorie:</strong> <span v-for="category in restaurant.categories" class="badge badge-info ml-1 category-label"> @{{category.name}}</span>
                                     </p>
                                 </div>
                             </a>

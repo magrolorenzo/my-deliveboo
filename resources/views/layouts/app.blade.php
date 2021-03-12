@@ -20,22 +20,40 @@
 
     <!-- FontAwesome CDN -->
     <script src="https://kit.fontawesome.com/43febffcb7.js" crossorigin="anonymous"></script>
+    {{-- jquery --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body>
+
     <!-- header (logo && nav bar) -->
     @include('partials.guest.header')
 
     <main id="guest-main">
+        <div id="loader-wrapper">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
         @yield('content')
     </main>
 
     <!-- footer -->
     @include('partials.guest.footer')
+    
     @yield('script')
+
+    <script type="text/javascript" async>
+        window.addEventListener("load", function(event) {
+            console.log("Tutte le risorse hanno terminato il caricamento!");
+            // document.getElementsByTagName('body').classList.add("loaded");
+            document.getElementById('guest-main').classList.add("loaded");
+        });
+    </script>
+
 </body>
 
 </html>

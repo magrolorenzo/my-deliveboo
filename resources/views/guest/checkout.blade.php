@@ -85,9 +85,9 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" v-for="cartItem in cart.contents">
                                         {{-- Quantità con pulsanti aggiungi/togli --}}
                                         <div class="quantity">
-                                            <a class="btn btn-primary-alt" @click="decrease(cartItem.id)"><i class="fas fa-minus"></i></a>
+                                            <a class="btn  quantity-btn minus" @click="decrease(cartItem.id)"><i class="fas fa-minus"></i></a>
                                             <span>@{{ cartItem.quantity }}</span>
-                                            <a class="btn btn-primary-alt" @click="add(cartItem)"><i class="fas fa-plus"></i></a>
+                                            <a class="btn  quantity-btn plus" @click="add(cartItem)"><i class="fas fa-plus"></i></a>
                                         </div>
 
                                         {{-- Nome --}}

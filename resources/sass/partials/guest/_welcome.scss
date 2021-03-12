@@ -22,6 +22,14 @@
             background-color: rgba(1, 1, 1, 0.7);
         }
 
+        #order-success-message{
+            // background-color: rgba(212,237,218, 0.8);
+            // background-color:rgba(0, 161, 112, 0.7);// #00a170
+            // color: #eee;
+            border-radius: 0 20px 0 20px;
+            opacity: 0.8;
+        }
+
     }
 
 
@@ -42,15 +50,14 @@
                 box-sizing: border-box;
                 min-width: 120px;
                 max-height: 100px;
-                // display: flex;
-                // justify-content: space-between;
-                // align-items: flex-end;
                 color: #fff;
                 text-shadow: 0 1px 4px rgb(0 0 0 / 8%);
                 border-radius: 0 20px 0 20px;
-                background-color:rgba(0, 161, 112, 0.8);// #00a170
+                background-color:rgba(0, 161, 112,1);// #00a170
                 cursor: pointer;
                 overflow: hidden;
+                transition: all 0.2s;
+
 
                 .category-image{
                     width:100%;
@@ -68,12 +75,18 @@
                     height: 30%;
                     text-align: center;
                     padding: 4px;
+                    transition: all 0.3s;
 
                     span{
                         font-weight: 400;
                         font-size: 14px;
                     }
                 }
+
+                &:active {
+                    transform: scale(0.9);
+                }
+
 
                 &.selected{
                     .category-title{
@@ -83,44 +96,12 @@
                 }
 
             }
-            // #Italiano {
-            //     background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/pasta.png');
-            // }
-            // #Giapponese {
-            //     background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/sushi-1.png');
-            // }
-            // #Cinese {
-            //     background-image: url('https://rs-menus-api.roocdn.com/images/c4d646bb-c071-441a-afa4-e625935f32d1/image.jpeg');
-            // }
-            // #Indiano {
-            //     background-image: url('https://f.roocdn.com/images/menus/212763/header-image.jpg');
-            // }
-            // #Fusion {
-            //     background-image: url('https://rs-menus-api.roocdn.com/images/3dbd97e3-8ce9-4c31-9a65-75dcf1cfa368/image.jpeg');
-            // }
-            // #Hamburger {
-            //     background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/burgers-1.png');
-            // }
-            // #Pizza {
-            //     background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/pizza.png');
-            // }
-            // #Kebab {
-            //     background-image: url('https://co-restaurants.roocdn.com/images/24e31bf6996eda7c898addda4291450f982b43c9/shortcut/kebab.png');
-            // }
-            // #Greco {
-            //     background-image: url('https://rs-menus-api.roocdn.com/images/4828a08c-2388-4f11-ac20-8c0362ea1c6e/image.jpeg');
-            // }
-            // #Thailandese {
-            //     background-image: url('https://f.roocdn.com/images/menus/54856/header-image.jpg');
-            // }
         }
 
         .category-arrow {
             display: flex;
             justify-content: center;
             align-items: center;
-            // width: 56px;
-            // height: 56px;
             position: absolute;
             font-size: 20px;
 
@@ -141,13 +122,21 @@
             }
         }
 
-        // .left {
-        //     left: -20px;
-        // }
-        //
-        // .right {
-        //     right: -20px;
-        // }
+    }
+
+    .clear-categories{
+        border-radius: 0 20px 0 20px;
+        color: white;
+        background-color: $red;
+        transition: all 0.2s;
+
+        &:hover{
+            background-color: darkred;
+        }
+
+        &:active {
+            transform: scale(0.9);
+        }
     }
 
     // ristoranti
@@ -156,29 +145,49 @@
             justify-content: space-between;
         }
 
-        .restaurant-card{
-            width: 350px;
-            // min-width: 350px;
+        .restaurant-card.card{
+            max-width: 350px;
             box-shadow: 0 1px 4px rgb(0 0 0 / 8%), 0 0 0 1px rgb(0 0 0 / 4%);
             margin: 1px 1px 5px;
-            border-radius: 3px;
+            // border-radius: 3px;
             background-color: transparent;
             overflow: hidden;
+            border-radius: 0 20px 0 20px;
 
             // parte superiore: img
             .cover-container{
                 height: 200px;
+
                 img {
                     height: 100%;
                     object-fit: cover;
                     object-position: center;
                 }
-
             }
+
+            .card-body{
+                .restaurant-label{
+                    padding: 10px;
+                    background-color:rgba(230,165,11,0.5);
+                    color: #222;
+                    border-radius: 0 10px 0 10px;
+                }
+
+                // .category-label{
+                //     font-weight: 400;
+                //     font-size: 12px;
+                //     border-radius: 0 10px 0 10px;
+                //     background-color:rgba(0, 161, 112,1);
+                //     // background-color:rgba(230,165,11,1);
+                //     // color: #222;
+                // }
+            }
+
             &:hover {
                 transform: scale(1.1);
-                transition: all 0.3s;
+                transition: all 0.2s;
             }
+
             // titolo
             .card-title {
                 font-size: 19px;
